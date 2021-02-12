@@ -1,8 +1,5 @@
-import 'dart:convert';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
 
 void main() => runApp(MyApp());
 

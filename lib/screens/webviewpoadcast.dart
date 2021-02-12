@@ -1,19 +1,12 @@
-import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_audio_stream/url_audio_stream.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-class webviewpodcast extends StatefulWidget {
-  //final j,weekday;
-  //webviewpodcast(this.j,this.weekday);
+import 'package:sound_chat/common/index.dart';
 
+class WebviewPodcast extends StatefulWidget {
   @override
-  _webviewpodcastState createState() => _webviewpodcastState();
+  _WebviewPodcastState createState() => _WebviewPodcastState();
 }
 
-class _webviewpodcastState extends State<webviewpodcast> {
+class _WebviewPodcastState extends State<WebviewPodcast> {
   bool play = true;
   String data;
   var superheros_length;

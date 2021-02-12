@@ -1,5 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
+import 'package:sound_chat/common/index.dart';
 
 class AllHomeInterview extends StatefulWidget {
   @override

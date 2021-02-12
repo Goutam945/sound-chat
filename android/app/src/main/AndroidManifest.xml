@@ -2,7 +2,7 @@
     package="com.example.sound_chat">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="sound_chat"
+        android:label="Sound Chat Radio"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

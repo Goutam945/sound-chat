@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../api/forgot.dart';
+import 'package:sound_chat/common/index.dart';
 
 class ForgotPassword extends StatefulWidget {
   @override

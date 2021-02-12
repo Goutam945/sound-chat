@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
-import '../OverlayHandlerProvider.dart';
+import 'package:sound_chat/common/index.dart';
 
 class VideoPlayerPage extends StatefulWidget {
   @override

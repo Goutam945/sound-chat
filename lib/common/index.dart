@@ -28,6 +28,12 @@ export 'package:sound_chat/api/update.dart';
 export 'package:sound_chat/screens/ForgotPassword.dart';
 export 'package:sound_chat/screens/Registration.dart';
 export 'package:wc_form_validators/wc_form_validators.dart';
+export 'package:sound_chat/api/forgot.dart';
+export 'package:webview_flutter/webview_flutter.dart';
+export 'package:photo_view/photo_view.dart';
+
+
+
 
 
 
