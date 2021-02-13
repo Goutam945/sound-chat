@@ -1,7 +1,6 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:sound_chat/common/index.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -11,22 +10,21 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
       ),
-      home: Subcribtion(),
+      home: Subscription(),
     );
   }
 }
 
-class Subcribtion extends StatefulWidget {
+class Subscription extends StatefulWidget {
   @override
-  _SubcribtionState createState() => _SubcribtionState();
+  _SubscriptionState createState() => _SubscriptionState();
 }
 
-class _SubcribtionState extends State<Subcribtion> {
+class _SubscriptionState extends State<Subscription> {
   String data;
-  var superheros_length;
+  var superherosLength;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getData();
   }
@@ -34,14 +32,11 @@ class _SubcribtionState extends State<Subcribtion> {
     http.Response response =
     await http.get("https://mintok.com/soundchat/wp-json/membership/v2/");
     if (response.statusCode == 200) {
-      data = response.body; //store response as string
+      data = response.body; 
       setState(() {
-        superheros_length = jsonDecode(
-            data)['data']; //get all the data from json string superheros
-        print(superheros_length.length); // just printed length of dathttps://www.impetrosys.com/soundchatradio/wp-content/uploads/2018/12/IMG-20181212-WA0060.jpga
+        superherosLength = jsonDecode(
+            data)['data']; 
       });
-      var venam = jsonDecode(data)['data'][4]['url'];
-      print(venam);
     } else {
       print(response.statusCode);
     }
@@ -57,7 +52,7 @@ class _SubcribtionState extends State<Subcribtion> {
         backgroundColor: Color(0xFFE18D13),
         //title: Text("Flutter Http Example"),
       ),
-      body: (superheros_length != null) ?ListView(
+      body: (superherosLength != null) ?ListView(
 
           children: [
       for(int i=1;i<5;i++)

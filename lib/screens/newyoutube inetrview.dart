@@ -1,5 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-import 'package:http/http.dart' as http;
 
 class InterviewNewPlayer extends StatefulWidget {
   @override
@@ -8,7 +7,6 @@ class InterviewNewPlayer extends StatefulWidget {
 
 class _InterviewNewPlayer extends State<InterviewNewPlayer> {
   String data;
-  var superherosLength;
   int day = 6;
   int j;
   String url;
@@ -22,27 +20,13 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
   @override
   void initState() {
     super.initState();
-    getData();
-  }
-
-  void getData() async {
-    http.Response response = await http.get(
-        "https://mintok.com/soundchat/wp-json/interview/v2/?post_type=qtvideo");
-    if (response.statusCode == 200) {
-      data = response.body;
-      setState(() {
-        superherosLength = jsonDecode(data)['data']
-            ['free_content'];
-      });
-    } else {
-      print(response.statusCode);
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    var superherosLength = (Provider.of<VideoResponse>(context, listen: false).data != null)?Provider.of<VideoResponse>(context, listen: false).data['data']['free_content']: null;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(

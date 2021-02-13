@@ -28,12 +28,9 @@ Future<UpdateResponse> createUpdateState(
   if (response.statusCode == 200) {
     Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (context) => DesignLogin()));
-    Toast.show("Succesfully ", context,
+    Toast.show("User details updated Successfully ", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     return UpdateResponse.fromJson(json.decode(response.body));
-  }
-  if (response.statusCode == 406) {
-    print(response.body);
   } else {
     throw Exception(response.body);
   }
@@ -41,18 +38,18 @@ Future<UpdateResponse> createUpdateState(
 
 class UpdateResponse {
   dynamic data;
-  int ID;
+  int id;
   dynamic message;
 
   UpdateResponse({
     this.data,
-    this.ID,
+    this.id,
     this.message,
   });
 
   UpdateResponse.fromJson(Map<dynamic, dynamic> json) {
     message = json['message'];
     data = message['data'];
-    ID = message['ID'];
+    id = message['ID'];
   }
 }

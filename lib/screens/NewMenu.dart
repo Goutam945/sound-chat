@@ -146,7 +146,7 @@ class NewMenuScreen extends StatelessWidget {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    gallerydesign()));
+                                                    GalleryDesign()));
                                       },
                                     ),
                                   ],
@@ -174,7 +174,7 @@ class NewMenuScreen extends StatelessWidget {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    Subcribtion()));
+                                                    Subscription()));
                                       },
                                     ),
                                   ],

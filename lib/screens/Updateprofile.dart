@@ -6,15 +6,13 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
+  final TextEditingController _firstname = TextEditingController();
+  final TextEditingController _lastname = TextEditingController();
 
   @override
   void initState() {
     super.initState();
   }
-
-  final TextEditingController _firstname = TextEditingController();
-  final TextEditingController _lastname = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +83,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 ],
               ),
             ),
-
             Container(
               height: MediaQuery.of(context).size.height/2,
               width: MediaQuery.of(context).size.width,
@@ -145,14 +142,12 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: 15,
                   ),
                   InkWell(
                     onTap: (){
-                      //Navigator.pushNamed(context, '/');
-                      createUpdateState(_firstname.text,_lastname.text,userResponse.ID,userResponse.data
+                      createUpdateState(_firstname.text,_lastname.text,userResponse.id,userResponse.data
                           ['user_login'],userResponse.data['user_nicename'],userResponse.data['user_email'],userResponse.data['display_name'],userResponse.data['phone'],context);
                     },
                     child: Container(

@@ -1,9 +1,13 @@
+import 'package:sound_chat/api/free_video.dart';
+import 'package:sound_chat/api/schedule.dart';
 import 'package:sound_chat/common/index.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => VideoResponse()),
+        ChangeNotifierProvider(create: (_) => ScheduleResponse()),
         ChangeNotifierProvider(create: (_) => LoginResponse()),
         ChangeNotifierProvider(
           create: (_) => OverlayHandlerProvider(),

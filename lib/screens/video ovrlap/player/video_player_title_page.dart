@@ -72,7 +72,6 @@ class _VideoPlayerTitlePageState extends State<VideoPlayerTitlePage> {
     return Consumer<OverlayHandlerProvider>(
         builder: (context, overlayProvider, _) {
           return Stack(
-            overflow: Overflow.clip,
             children: <Widget>[
               Row(
                 children: <Widget>[

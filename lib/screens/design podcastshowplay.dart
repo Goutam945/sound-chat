@@ -3,7 +3,6 @@ import 'package:sound_chat/common/index.dart';
 
 class PodcastPlayCloud extends StatefulWidget {
   final j, weekday;
-
   PodcastPlayCloud(this.j, this.weekday);
 
   @override
@@ -15,7 +14,6 @@ class _ListenState extends State<PodcastPlayCloud> {
   String data;
   var superherosLength;
   int day = 6;
-
   String audiourl;
 
   @override
@@ -23,26 +21,16 @@ class _ListenState extends State<PodcastPlayCloud> {
     // TODO: implement initState
     super.initState();
     getData();
-    // setState(() {
-    //   weekday=DateTime.now().weekday-1;
-    //   if(weekday==-1)
-    //     weekday=6;
-    // });
   }
 
   void getData() async {
     http.Response response = await http.get(
         "https://mintok.com/soundchat/wp-json/schedule/v2/?post_type=schedule");
     if (response.statusCode == 200) {
-      data = response.body; //store response as string
+      data = response.body;
       setState(() {
         superherosLength = jsonDecode(
-            data)['data']; //get all the data from json string superheros
-        print(superherosLength
-            .length); // just printed length of dathttps://www.impetrosys.com/soundchatradio/wp-content/uploads/2018/12/IMG-20181212-WA0060.jpga
-      });
-      var venam = jsonDecode(data)['data'][4]['url'];
-      print(venam);
+            data)['data']; });
     } else {
       print(response.statusCode);
     }

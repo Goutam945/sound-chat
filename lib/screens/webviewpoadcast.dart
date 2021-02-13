@@ -9,48 +9,33 @@ class WebviewPodcast extends StatefulWidget {
 class _WebviewPodcastState extends State<WebviewPodcast> {
   bool play = true;
   String data;
-  var superheros_length;
+  var superherosLength;
   int day=6;
-
   String audiourl;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getData();
-    // setState(() {
-    //   weekday=DateTime.now().weekday-1;
-    //   if(weekday==-1)
-    //     weekday=6;
-    // });
   }
   void getData() async {
     http.Response response = await http.get(
         "https://mintok.com/soundchat/wp-json/schedule/v2/?post_type=schedule");
     if (response.statusCode == 200) {
-      data = response.body; //store response as string
+      data = response.body;
       setState(() {
-        superheros_length = jsonDecode(
-            data)['data']; //get all the data from json string superheros
-        print(superheros_length
-            .length); // just printed length of dathttps://www.impetrosys.com/soundchatradio/wp-content/uploads/2018/12/IMG-20181212-WA0060.jpga
+        superherosLength = jsonDecode(
+            data)['data'];
       });
-      var venam = jsonDecode(data)['data'][4]['url'];
-      print(venam);
     } else {
       print(response.statusCode);
     }
   }
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
     double width=MediaQuery.of(context).size.width;
     double height=MediaQuery.of(context).size.height;
-    //int weekday=widget.weekday;
 
     return Stack(
       children: [
@@ -64,18 +49,11 @@ class _WebviewPodcastState extends State<WebviewPodcast> {
                     icon: Icon(Icons.arrow_back_rounded,color: Colors.white,size: 25,),
                     onPressed: () {
                       Navigator.of(context).pop();
-
                     },
                   );
                 }),
-            // title: Text("Flutter App"),
           ),
-          // body: Center(
-          //     child:Text("Welcome to Home Page",
-          //         style: TextStyle( color: Colors.black, fontSize: 30)
-          //     )
-          // ),
-          body: (superheros_length != null) ? ListView(
+          body: (superherosLength != null) ? ListView(
             children: [
               Container(height: height*0.0044,width:width,color: Color(0xFF780001),),
               Padding(

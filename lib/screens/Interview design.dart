@@ -1,46 +1,25 @@
-import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/index.dart';
 
-class Interviewdesign extends StatefulWidget {
+class InterviewDesign extends StatefulWidget {
   @override
-  _Interviewdesign createState() => _Interviewdesign();
+  _InterviewDesign createState() => _InterviewDesign();
 }
 
-class _Interviewdesign extends State<Interviewdesign> {
+class _InterviewDesign extends State<InterviewDesign> {
   String data;
-  var superherosLength;
   int day = 6;
   YoutubePlayerController mYoutubePlayerController;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getData();
-  }
-
-  void getData() async {
-    http.Response response = await http.get(
-        "https://mintok.com/soundchat/wp-json/interview/v2/?post_type=qtvideo");
-    if (response.statusCode == 200) {
-      data = response.body; //store response as string
-      setState(() {
-        superherosLength = jsonDecode(data)['data']
-            ['free_content']; //get all the data from json string superheros
-        print(superherosLength
-            .length); // just printed length of dathttps://www.impetrosys.com/soundchatradio/wp-content/uploads/2018/12/IMG-20181212-WA0060.jpga
-      });
-      var venam = jsonDecode(data)['data']['free_content'][4]['url'];
-      print(venam);
-    } else {
-      print(response.statusCode);
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    var superherosLength = (Provider.of<VideoResponse>(context, listen: false).data != null)?Provider.of<VideoResponse>(context, listen: false).data['data']['free_content']: null;
     return YoutubePlayerBuilder(
       player: YoutubePlayer(controller: mYoutubePlayerController),
       builder: (context, player) {

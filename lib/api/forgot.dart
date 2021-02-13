@@ -10,19 +10,14 @@ Future<ForgotResponse> createForgotResponse(String name,context) async {
 
   if (response.statusCode == 200) {
     dynamic forgotResponse = json.decode(response.body);
-    String responsecode = forgotResponse['code'];
-    print(responsecode);
+    String responseCode = forgotResponse['code'];
+    print(responseCode);
     Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (context) => DesignLogin()));
-
-    Toast.show("Succesfully Email", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-
-    print(response.body);
+    Toast.show("Email sent Successfully", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
     return ForgotResponse.fromJson(json.decode(response.body));
-  } if (response.statusCode == 406) {
-    print(response.body);
-
-  }else {
+  }
+  else {
     throw Exception(response.body);
   }
 }

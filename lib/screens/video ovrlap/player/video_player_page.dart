@@ -8,10 +8,8 @@ class VideoPlayerPage extends StatefulWidget {
 class _VideoPlayerPageState extends State<VideoPlayerPage> {
   VideoPlayerController _videoPlayerController;
   double aspectRatio = 16 / 9;
-
   _initVideo() {
     _videoPlayerController = VideoPlayerController.network(
-      //"https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4",
       "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8",
     );
     _videoPlayerController.setLooping(true);
@@ -26,15 +24,15 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   }
 
   @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
     _initVideo();
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,7 +42,6 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
         body: Column(
           children: <Widget>[
             _buildVideoPlayer(),
-            // Expanded(child: _buildVideosList()),
             Expanded(child: Text("Live video")),
           ],
         ),
@@ -56,7 +53,6 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
     return Consumer<OverlayHandlerProvider>(
         builder: (context, overlayProvider, _) {
       return Stack(
-        overflow: Overflow.clip,
         children: <Widget>[
           Container(
             color: Colors.black,
@@ -112,66 +108,4 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       );
     });
   }
-
-// Widget _buildVideosList() {
-//   return Consumer<OverlayHandlerProvider>(
-//     builder: (context, overlayProvider, _) {
-//       return AnimatedOpacity(
-//         duration: Duration(milliseconds: 500),
-//         opacity: overlayProvider.inPipMode ? 0 : 1,
-//         child: SingleChildScrollView(
-//           physics: BouncingScrollPhysics(),
-//           child: ListView.separated(
-//             padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-//             itemCount: 10,
-//             shrinkWrap: true,
-//             primary: false,
-//             separatorBuilder: (context, index) {
-//               return Container(height: 8.0,);
-//             },
-//             physics: NeverScrollableScrollPhysics(),
-//             itemBuilder: (context, index) {
-//               return Row(
-//                 children: <Widget>[
-//                   Container(
-//                     width: 150.0,
-//                     child: AspectRatio(
-//                       aspectRatio: 16/9,
-//                       child: Image.network(
-//                         "https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg",
-//                         fit: BoxFit.cover,
-//                       ),
-//                     ),
-//                   ),
-//                   Expanded(
-//                     child: Padding(
-//                       padding: const EdgeInsets.all(8.0),
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Text(
-//                             "Video Title",
-//                             style: Theme.of(context).textTheme.headline6.copyWith(
-//                               fontWeight: FontWeight.bold,
-//                             ),
-//                           ),
-//                           Text(
-//                             "Video SubTitle Description",
-//                             style: Theme.of(context).textTheme.bodyText1.copyWith(
-//                                 color: Colors.grey
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               );
-//             },
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
 }

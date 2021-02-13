@@ -1,3 +1,5 @@
+import 'package:sound_chat/api/free_video.dart';
+import 'package:sound_chat/api/schedule.dart';
 import 'package:sound_chat/common/index.dart';
 
 class VideoSplashScreen extends StatefulWidget {
@@ -12,6 +14,8 @@ class VideoState extends State<VideoSplashScreen> {
   @override
   void initState() {
     super.initState();
+    createVideoState(context);
+    createScheduleState(context);
     listener = () {};
     initializeVideo();
     playerController.play();

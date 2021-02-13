@@ -15,14 +15,11 @@ Future<SignUpResponse> createSignUpState(
   if (response.statusCode == 200) {
     Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (context) => DesignLogin()));
-    Toast.show("Succesfully Register", context,
+    Toast.show("Registered Successfully", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     return SignUpResponse.fromJson(json.decode(response.body));
-  }
-  if (response.statusCode == 406) {
-    print(response.body);
   } else {
-    Toast.show("Alredy Register", context,
+    Toast.show("user already registered", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     throw Exception(response.body);
   }
