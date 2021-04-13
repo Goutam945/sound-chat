@@ -1,234 +1,400 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sound_chat/common/index.dart';
 
-class SignupPage extends StatefulWidget {
+import 'Registrationshipnext.dart';
+class Registrationship extends StatefulWidget {
+  final user;
+  Registrationship(this.user);
   @override
   _SignupPageState createState() => _SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupPageState extends State<Registrationship> {
 
   @override
   void initState() {
    // SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
   }
-
+  final formKey = GlobalKey<FormState>();
+  bool _isObscure = true;
+  bool loader=false;
   //Future<SignUpResponse> _futureJwt;
-  final TextEditingController _name = TextEditingController();
+  final TextEditingController _firstname = TextEditingController();
+  final TextEditingController _lastname = TextEditingController();
   final TextEditingController _email = TextEditingController();
-  final TextEditingController _password = TextEditingController();
-
+  final TextEditingController _phone = TextEditingController();
+  final TextEditingController _country = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFE18D13),
-        leading: Builder(builder: (BuildContext context) {
-          return IconButton(
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 25,
-            ),
-            onPressed: () {
-              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewMenuscreen()));
-              Navigator.of(context).pop();
-            },
-          );
-        }),
-      ),
-      body: Container(
-        child: ListView(
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/3.5,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xFFE18D13),
-                      Color(0xFFE18D13)
-                    ],
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return SafeArea(
+      child: Stack(
+          children:[ Scaffold(
+            backgroundColor: Colors.black,
+            // appBar: AppBar(
+            //   backgroundColor: Color(0xFFE18D13),
+            //   //title: Text("Flutter Http Example"),
+            // ),
+            body:Form( key: formKey,
+              child: ListView(
+                children: [
+                  SizedBox(height: 20,),
+                  Center(child: Text("Member Registration",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 20,),
+                  Center(child: Text("Complete all fields below to create your account",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text("Personal Details",style: TextStyle(fontSize: 16,color: Colors.white),),
                   ),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(90)
-                  )
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Spacer(),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Icon(Icons.person,
-                      size: 90,
-                      color: Colors.white,
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
+                  decoration: InputDecoration(enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),errorBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ) ,disabledBorder:OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),focusedErrorBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                    labelText: "First Name",
+                    labelStyle: TextStyle(
+                        color:Color(0xFFA79A9A),
                     ),
-                  ),
-                  Spacer(),
+                    fillColor: Colors.white,
+                    focusedBorder:OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    hintText: 'First Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                    suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
 
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: 32,
-                          right: 32
-                      ),
-                      child: Text('Sign Up',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18
-                        ),
-                      ),
+                  ),
+                  controller: _firstname,
+                    validator: Validators.required(
+                        'Name is required'),
                     ),
                   ),
-                ],
-              ),
-            ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
+                  decoration: InputDecoration(enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),errorBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ) ,disabledBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),focusedErrorBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                    labelText: "Last Name",
+                    labelStyle: TextStyle(
+                      color:Color(0xFFA79A9A),
+                    ),
+                    fillColor: Colors.white,
+                    focusedBorder:OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    hintText: 'Last Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                    suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
 
-            Container(
-              height: MediaQuery.of(context).size.height/2,
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.only(top: 62),
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    width: MediaQuery.of(context).size.width/1.2,
-                    height: 45,
-                    padding: EdgeInsets.only(
-                        top: 4,left: 16, right: 16, bottom: 4
+                  ),
+                  controller: _lastname,
+                  validator: Validators.required(
+                      'Last Name is required'),
                     ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(50)
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
+                  decoration: InputDecoration(enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),errorBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ) ,disabledBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),focusedErrorBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                    labelText: "Email",
+                    labelStyle: TextStyle(
+                      color:Color(0xFFA79A9A),
+                    ),
+                    fillColor: Colors.white,
+                    focusedBorder:OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    hintText: 'Email Address:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                    suffixIcon: Icon(Icons.alternate_email,color: Color(0xFFA79A9A),),
+
+                  ),
+                  controller: _email,
+                  validator: Validators.required(
+                      'Email Address is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
+                  decoration: InputDecoration(enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),errorBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ) ,disabledBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),focusedErrorBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                    labelText: "Phone",
+                    labelStyle: TextStyle(
+                      color:Color(0xFFA79A9A),
+                    ),
+                    fillColor: Colors.white,
+                    focusedBorder:OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    hintText: 'Phone:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                    suffixIcon: Icon(Icons.phone_android,color: Color(0xFFA79A9A),),
+
+                  ),
+                  controller: _phone,
+                  validator: Validators.required(
+                      'Phone is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
+                  decoration: InputDecoration(enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),errorBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ) ,disabledBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),focusedErrorBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                    labelText: "Country",
+                    labelStyle: TextStyle(
+                      color:Color(0xFFA79A9A),
+                    ),
+                    fillColor: Colors.white,
+                    focusedBorder:OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderRadius: BorderRadius.circular(25.0),
+                    ),
+                    hintText: 'Country:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                    suffixIcon: Icon(Icons.account_balance_outlined,color: Color(0xFFA79A9A),),
+
+                  ),
+                  controller: _country,
+                  validator: Validators.required(
+                      'Country is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 95),
+                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),
+                    ) ),
+                      onPressed: () {
+                        if (formKey.currentState.validate())
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Registrationshipnext(widget.user,_firstname.text,_lastname.text,_email.text,_phone.text,_country.text)));
+                      },
+                      child: Text('Continue',style: TextStyle(fontSize: 16),),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                    margin: EdgeInsets.symmetric(
+                      horizontal: width * 0.2),
+                    child: Row(
+                      children: [
+                        IconButton(
+                         icon: Icon(FontAwesomeIcons.google,color: Colors.red,),
                         ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 5
-                          )
-                        ]
-                    ),
-                    child: TextField(controller: _name,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Username',
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width/1.2,
-                    height: 45,
-                    padding: EdgeInsets.only(
-                        top: 4,left: 16, right: 16, bottom: 4
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(50)
-                        ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 5
-                          )
-                        ]
-                    ),
-                    child: TextField(controller: _email,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Email',
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width/1.2,
-                    height: 45,
-                    padding: EdgeInsets.only(
-                        top: 4,left: 16, right: 16, bottom: 4
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(50)
-                        ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 5
-                          )
-                        ]
-                    ),
-                    child: TextField(controller: _password,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Password',
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  InkWell(
-                    onTap: (){
-                      //Navigator.pushNamed(context, '/');
-                      createSignUpState(_name.text,_email.text,_password.text,context);
-                    },
-                    child: Container(
-                      height: 45,
-                      width: MediaQuery.of(context).size.width/1.2,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xFFE18D13),
-                              Color(0xFFE18D13),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(50)
-                          )
-                      ),
-                      child: Center(
-                        child: Text('Sign Up'.toUpperCase(),
-                          style: TextStyle(
-                              color: Colors.white,
+                        Text("Sign up with Google",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFFE18D13),
                               fontWeight: FontWeight.bold
+
+                            ))
+                      ],
+                    ),
+                  )
+
+
+                  /* Column(
+                    children: [
+                      SizedBox(height: 40,),
+                      Text("Member Registration",style: TextStyle(fontSize: 19,color: Colors.white),),
+                      SizedBox(height: 10,),
+                      Text("Complete all fields below to create your account:",style: TextStyle(fontSize: 16,color: Colors.white),),
+                      SizedBox(height: 10,),
+                      Text("Personal Details",style: TextStyle(fontSize: 19,color: Colors.white),),
+                      SizedBox(height: 10,),
+
+                    Form(
+                      key: formKey,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Column(
+                            children: [
+                          Container(color: Color(0xFF464646),
+                            child: TextFormField( style: TextStyle(color: Colors.white),
+                              controller: _firstname,
+                              validator: Validators.required(
+                                  'Name is required'),
+                              decoration: InputDecoration(errorStyle: TextStyle(height: 0.5,),
+                                  hintText: 'First Name:',
+                                  contentPadding: EdgeInsets.only(
+                                      left: 20, top: 0)),
+                            ),
                           ),
+                          SizedBox(height: 10,),
+                          Container(color: Color(0xFF464646),
+                            child: TextFormField(  style: TextStyle(color: Colors.white),
+                              controller: _lastname,
+                              validator: Validators.required(
+                                  'Last Name is required'),
+                              decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
+                                  hintText: 'Last Name:',
+                                  contentPadding: EdgeInsets.only(
+                                      left: 20, top: 0)),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Text("Contact Details",style: TextStyle(fontSize: 19),),
+                          SizedBox(height: 10,),
+                          Container(color: Color(0xFF464646),
+                            child: TextFormField(  style: TextStyle(color: Colors.white),
+                              controller: _email,
+                              validator: Validators.required(
+                                  'Email is required'),
+                              decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
+                                  hintText: 'Email Address:',
+                                  contentPadding: EdgeInsets.only(
+                                      left: 20, top: 0)),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Container(color: Color(0xFF464646),
+                            child: TextFormField(  style: TextStyle(color: Colors.white),
+                              controller: _phone,
+                              validator: Validators.required(
+                                  'Phone is required'),
+                              decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
+                                  hintText: 'Phone:',
+                                  contentPadding: EdgeInsets.only(
+                                      left: 20, top: 0)),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Container(color: Color(0xFF464646),
+                            child: TextFormField(  style: TextStyle(color: Colors.white),
+                              controller: _country,
+                              validator: Validators.required(
+                                  'Country is required'),
+                              decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
+                                  hintText: 'Country:',
+                                  contentPadding: EdgeInsets.only(
+                                      left: 20, top: 0)),
+                            ),
+                          ),
+                          ]
                         ),
                       ),
                     ),
-                  ),
+                      SizedBox(height: 10,),
+                      ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14) ),
+                        onPressed: () {
+                          if (formKey.currentState.validate())
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Registrationshipnext(widget.user,_firstname.text,_lastname.text,_email.text,_phone.text,_country.text)));
+                        },
+                        child: Text('Continue',style: TextStyle(fontSize: 16),),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(
+                        color: Color(0xFF4472C4),
+                        margin: EdgeInsets.symmetric(
+                            horizontal: width * 0.2),
+                        child: Row(
+                          children: [
+                            IconButton(
+                              icon: Image.asset(
+                                'assets/gp.gif',
+                                color: Colors.red,
+                              ),
+                            ),
+                            Text("Sign up with Google",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),*/
+
                 ],
               ),
             ),
 
-            InkWell(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Have an account ?"),
-                  Text("Login",style: TextStyle(color: Color(0xFFE18D13)),),
-                ],
+          ),
+            /*Positioned(
+              top: AppBar().preferredSize.height*0.2,
+              left: width * 0.39865,
+              child: SizedBox(
+                height: height * 0.12168,
+                width: width * 0.21875,
+                child: Image.asset(
+                  'assets/soundpic.png',
+                ),
               ),
-              onTap: (){
-                Navigator.of(context)
-                    .pushReplacement(MaterialPageRoute(builder: (context) => DesignLogin()));
-              },
-            ),
-          ],
-
-        ),
+            ),*/
+          ]
       ),
     );
   }

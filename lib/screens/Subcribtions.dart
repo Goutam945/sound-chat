@@ -1,112 +1,232 @@
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/index.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-
-      theme: ThemeData(
-      ),
-      home: Subscription(),
-    );
-  }
-}
-
+import 'package:sound_chat/screens/Myaccountprofile.dart';
 class Subscription extends StatefulWidget {
   @override
   _SubscriptionState createState() => _SubscriptionState();
 }
 
 class _SubscriptionState extends State<Subscription> {
-  String data;
-  var superherosLength;
+  String user;
+  String email,name;
   @override
   void initState() {
     super.initState();
-    getData();
+    // getData();
+    _loadSavedData();
   }
-  void getData() async {
-    http.Response response =
-    await http.get("https://mintok.com/soundchat/wp-json/membership/v2/");
-    if (response.statusCode == 200) {
-      data = response.body; 
-      setState(() {
-        superherosLength = jsonDecode(
-            data)['data']; 
-      });
-    } else {
-      print(response.statusCode);
-    }
+  _loadSavedData() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
+        email = sharedPreferences.getString('email');
+        name = sharedPreferences.getString('name');
+      }
+    });
   }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Subcribtions"),
-        backgroundColor: Color(0xFFE18D13),
-        //title: Text("Flutter Http Example"),
-      ),
-      body: (superherosLength != null) ?ListView(
-
-          children: [
-      for(int i=1;i<5;i++)
-          Column(
+    return SafeArea(
+      child: Stack(
+        children:[ Scaffold(
+          backgroundColor: Colors.black,
+          // appBar: AppBar(
+          //   backgroundColor: Color(0xFFE18D13),
+          //   //title: Text("Flutter Http Example"),
+          // ),
+          body:ListView(
             children: [
+              SizedBox(height: 40,),
+              Center(child: Text("Member Registration",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
+              SizedBox(height: 20,),
+              Center(child: Text("Please choose a subscription plan to begin setting up your account.",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
+              SizedBox(height: 60,),
+              //  Column(
+             //    children: [
+             //      SizedBox(height: 40,),
+             //      Text("Member Registration",style: TextStyle(fontSize: 19,color: Colors.white),),
+             //      SizedBox(height: 10,),
+             //      Padding(
+             //        padding: const EdgeInsets.only(left: 15,right: 15),
+             //        child: Text("Please choose a subscription plan to begin setting up your account.",style: TextStyle(fontSize: 16,color: Colors.white),),
+             //      ),
+             //      SizedBox(height: 10,),
+             //      GestureDetector(
+             //        onTap: (){
+             //          setState(() {
+             //            user='Free user';
+             //          });
+             //          Navigator.of(context).push(
+             //              MaterialPageRoute(
+             //              builder: (context) =>
+             //                  Registrationship(user)));
+             //          // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?Registrationship(user):MyAccount()));
+             //        },
+             //        child: Container(color: Color(0xFFE18D13),height: 80,margin: EdgeInsets.only(left: 15,right: 15),
+             //          child: Center(
+             //            child: Text("Subcription1",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
+             //            ),
+             //          ),
+             //        ),
+             //      ),
+             //      SizedBox(height: 10,),
+             //      GestureDetector(
+             //        onTap: (){
+             //          setState(() {
+             //            user='Prime user';
+             //          });
+             //          Navigator.of(context).push(
+             //              MaterialPageRoute(
+             //                  builder: (context) =>
+             //                      Registrationship(user)));
+             //
+             //
+             //        },
+             //        child: Container(color: Color(0xFFE18D13),height: 80,margin: EdgeInsets.only(left: 15,right: 15),
+             //          child: Center(
+             //            child: Text("Subcription2",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
+             //            ),
+             //          ),
+             //        ),
+             //      ),
+             //      SizedBox(height: 10,),
+             //      Container(color: Color(0xFFE18D13),height: 80,margin: EdgeInsets.only(left: 15,right: 15),
+             //        child: Center(
+             //          child: Text("Subcription3",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
+             //          ),
+             //        ),
+             //      ),
+             //      // Divider(
+             //      //   color: Colors.black,
+             //      // ),
+             //    ],
+             // ),
               Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Container(color: Color(0xFF5bcc80),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: width * 0.2037,
-                        height: height * 0.1001,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                            border: Border.all(color: Color(0xFF5bcc80), width: 4)),
-                        child:Center(child: Text(jsonDecode(data)['data']['$i']['price_text'],style: TextStyle(color: Color(0xFF8A8989),fontSize: 20),textAlign: TextAlign.center,)),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Stack(
+                  children: [
+            Positioned(bottom: 10,top: 10,left: 20,right: 20,
+                child: GestureDetector(
+                     onTap: (){
+                       setState(() {
+                         user='Free user';
+                       });
+                       Navigator.of(context).push(
+                           MaterialPageRoute(
+                           builder: (context) =>
+                               Registrationship(user)));
+                       // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?Registrationship(user):MyAccount()));
+                     },
+                     child: Container(
+                       decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                       child: Center(
+                         child: Text("Subcription",textAlign: TextAlign.center,style: TextStyle(color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),
+                         ),
+                       ),
+                     ),
+                   ),
+            ),
+                    Container(width: 70,height: 70,padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(50)),
+                      child: Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                        child: Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(50)),
+                          child: Container(padding: EdgeInsets.all(0),decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                            child: Center(child: Text("1",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                          ),
+                        ),
                       ),
-                      Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 50),
-                            child: Text(jsonDecode(data)['data']['$i']['label'],style: TextStyle(color: Colors.white, fontSize: 20,),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 30,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Stack(
+                  children: [
+                    Positioned(bottom: 10,top: 10,left: 20,right: 20,
+                      child: GestureDetector(
+                    onTap: (){
+                           setState(() {
+                             user='Prime user';
+                           });
+                           Navigator.of(context).push(
+                               MaterialPageRoute(
+                                   builder: (context) =>
+                                       Registrationship(user)));
+                           },
+                        child: Container(
+                          decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                          child: Center(
+                            child: Text("Subcription",textAlign: TextAlign.center,style: TextStyle(color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),
                             ),
                           ),
-                          // Padding(
-                          //   padding: const EdgeInsets.only(left: 10),
-                          //   child: Text(jsonDecode(data)['data']['$i']['description'], style: TextStyle(color: Colors.white, fontSize: 14,),
-                          //   ),
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.only(left: 10),
-                          //   child: Text("test", style: TextStyle(color: Colors.white, fontSize: 14,),
-                          //   ),
-                          // ),
-                        ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    Container(width: 70,height: 70,padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(50)),
+                      child: Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                        child: Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(50)),
+                          child: Container(padding: EdgeInsets.all(0),decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                            child: Center(child: Text("2",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+              SizedBox(height: 30,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Stack(
+                  children: [
+                    Positioned(bottom: 10,top: 10,left: 20,right: 20,
+                      child: GestureDetector(
+                        child: Container(
+                          decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                          child: Center(
+                            child: Text("Subcription",textAlign: TextAlign.center,style: TextStyle(color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(width: 70,height: 70,padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(50)),
+                      child: Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                        child: Container(padding: EdgeInsets.all(5),decoration: BoxDecoration(color: Colors.pink,borderRadius: BorderRadius.circular(50)),
+                          child: Container(padding: EdgeInsets.all(0),decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50)),
+                            child: Center(child: Text("3",textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
 
-              ),
-              Divider(
-                color: Colors.black,
-              ),
             ],
-         ),
+          ),
 
-        ],
 
-      ):Center(
-        child: CircularProgressIndicator(),
+        ),
+         /* Positioned(
+            top: AppBar().preferredSize.height*0.2,
+            left: width * 0.39865,
+            child: SizedBox(
+              height: height * 0.12168,
+              width: width * 0.21875,
+              child: Image.asset(
+                'assets/soundpic.png',
+              ),
+            ),
+          ),*/
+      ]
       ),
-
     );
   }
 }

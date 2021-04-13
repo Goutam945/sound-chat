@@ -1,9 +1,10 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
+import 'package:sound_chat/screens/NewLogin.dart';
 
 Future<ForgotResponse> createForgotResponse(String name,context) async {
   final http.Response response =
-  await http.post('https://mintok.com/soundchat/wp-json/wp/v2/users/lost-password', headers: <String,String> {"content-type": "application/json"
+  await http.post( Uri.parse('https://mintok.com/soundchat/wp-json/wp/v2/users/lost-password'), headers: <String,String> {"content-type": "application/json"
   },body:jsonEncode({
     'username':name,
   }));
@@ -13,7 +14,7 @@ Future<ForgotResponse> createForgotResponse(String name,context) async {
     String responseCode = forgotResponse['code'];
     print(responseCode);
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => DesignLogin()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => NewLogin()));
     Toast.show("Email sent Successfully", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
     return ForgotResponse.fromJson(json.decode(response.body));
   }

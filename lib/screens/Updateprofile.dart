@@ -147,8 +147,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   ),
                   InkWell(
                     onTap: (){
-                      createUpdateState(_firstname.text,_lastname.text,userResponse.id,userResponse.data
-                          ['user_login'],userResponse.data['user_nicename'],userResponse.data['user_email'],userResponse.data['display_name'],userResponse.data['phone'],context);
+                      // createUpdateState(_firstname.text,_lastname.text,userResponse.id,userResponse.data
+                      //     ['user_login'],userResponse.data['user_nicename'],userResponse.data['user_email'],userResponse.data['display_name'],userResponse.data['phone'],context);
                     },
                     child: Container(
                       height: 45,

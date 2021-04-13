@@ -19,9 +19,8 @@ export 'package:sound_chat/api/login.dart';
 export 'package:sound_chat/screens/Videosplesh.dart';
 export 'package:toast/toast.dart';
 export 'package:sound_chat/screens/Subcribtions.dart';
-export 'package:sound_chat/screens/designhomeinterview.dart';
-export 'package:sound_chat/screens/updateScheduledesign.dart';
-export 'package:sound_chat/screens/webviewpoadcast.dart';
+export 'package:sound_chat/screens/DesignHomeinterview.dart';
+export 'package:sound_chat/screens/PodCast.dart';
 export 'package:sound_chat/screens/Updateprofile.dart';
 export 'package:sound_chat/api/signup.dart';
 export 'package:sound_chat/api/update.dart';
@@ -32,10 +31,21 @@ export 'package:sound_chat/api/forgot.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:photo_view/photo_view.dart';
 export 'package:sound_chat/api/free_video.dart';
-
-
-
-
+export 'package:shared_preferences/shared_preferences.dart';
+export 'package:splashscreen/splashscreen.dart';
+export 'package:sound_chat/common/appbar.dart';
+export 'package:sound_chat/api/free_video.dart';
+export 'package:sound_chat/common/appbar.dart';
+export 'package:sound_chat/screens/DesignGallery.dart';
+export 'package:sound_chat/screens/LiveChat.dart';
+export 'package:sound_chat/screens/Schedule%20design.dart';
+export 'package:sound_chat/screens/Shopping.dart';
+export 'package:carousel_slider/carousel_slider.dart';
+export 'package:sound_chat/api/schedule.dart';
+export 'package:sound_chat/api/galley.dart';
+export 'package:sound_chat/screens/DesignForgotpass.dart';
+export 'package:sound_chat/screens/DesignSignup.dart';
+export 'package:sound_chat/screens/DesignPodcastshowplay.dart';
 
 
 
