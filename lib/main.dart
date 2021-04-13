@@ -9,6 +9,7 @@ import 'api/all _orders.dart';
 import 'api/allproduct.dart';
 import 'api/galley.dart';
 import 'api/homeslider.dart';
+import 'api/membership.dart';
 import 'api/sendmail.dart';
 import 'api/termsofservices.dart';
 
@@ -26,6 +27,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => TermsResponse()),
         ChangeNotifierProvider(create: (_) => OrderResponse()),
         ChangeNotifierProvider(create: (_) => AllorderResponse()),
+        ChangeNotifierProvider(create: (_) => MembershipResponse()),
         ChangeNotifierProvider(
           create: (_) => OverlayHandlerProvider(),
         ),
