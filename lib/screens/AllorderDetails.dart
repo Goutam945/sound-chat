@@ -73,7 +73,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                         children: [
                                           SizedBox(
                                             width: width * 0.65,
-                                            child: Text("hghg",
+                                            child: Text("testing",
                                               style: TextStyle(
                                                   color:
                                                   Color(0xFFA39597),
@@ -87,7 +87,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                           SizedBox(
                                             width: width * 0.65,
                                             child: Text(
-                                             "ghgg",
+                                             "testing",
                                               style: TextStyle(
                                                   color:
                                                   Color(0xFFA19895),
@@ -97,7 +97,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                             ),
                                           ),
                                           Text(
-                                            "test:",
+                                            "testing:",
                                             style: TextStyle(
                                                 color: Color(0xFFA19895),
                                                 fontSize: 16,
