@@ -33,15 +33,15 @@ Future<AllorderResponse> createAllOrderState(int userid,
 }
 class AllorderResponse {
   int response;
-  dynamic message;
+  dynamic data;
 
   AllorderResponse({
 //    this.response,
-    this.message,
+    this.data,
   });
 
   AllorderResponse.fromJson(Map<String, dynamic> json) {
 //    response = json['code'];
-    message = json;
+    data = json;
   }
 }
