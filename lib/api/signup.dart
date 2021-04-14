@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
+import 'package:sound_chat/screens/NewLogin.dart';
 import 'package:sound_chat/screens/PaymentdetailsMembarship.dart';
 
 Future<SignUpResponse> createSignUpState(user,lid,
@@ -32,7 +33,7 @@ Future<SignUpResponse> createSignUpState(user,lid,
           MaterialPageRoute(
               builder: (context) =>
               (user['payment_type'] == 'payment') ? PaymentDetailsMember(
-                  user, uid, lid) : DesignLogin()));
+                  user, uid, lid) : NewLogin()));
       Toast.show(message, context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       return SignUpResponse.fromJson(json.decode(response.body));

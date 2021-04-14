@@ -1,6 +1,8 @@
+import 'package:sound_chat/api/all%20_orders.dart';
 import 'package:sound_chat/common/index.dart';
 
 import 'ContactAs.dart';
+import 'CouponCode.dart';
 import 'Myaccountprofile.dart';
 import 'NewLogin.dart';
 import 'OrderTracking.dart';
@@ -17,7 +19,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
   String name ;
   bool checklogin = true;
   bool checksignbutton=false;
-
+  int id;
   void initState() {
     super.initState();
     _loadSavedData();
@@ -29,6 +31,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
       if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
         checklogin=true;
         checksignbutton=false;
       }else{
@@ -133,6 +136,14 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       ),
                     if(checklogin)
                       ListTile(
+                        leading: Icon(Icons.shopping_cart_outlined,color: Colors.white70),
+                        title: Text('My Order',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
+                        onTap: () => {
+                          createAllOrderState(id,context),
+                        },
+                      ),
+                    if(checklogin)
+                      ListTile(
                       leading: Icon(Icons.location_on,color: Colors.white70),
                       title: Text('Order Tracking',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                       onTap: () => {
@@ -159,6 +170,12 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       title: Text('Notification',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal),),
                       onTap: () => {},
                     ),
+                    if(checklogin)
+                      ListTile(
+                          leading: Icon(Icons.menu_book,color: Colors.white70),
+                          title: Text('My Couponcode',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
+                          onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Couponcode()))..whenComplete(() =>   Navigator.of(context).pop())
+                      ),
                     if(checklogin)
                     ListTile(
                       leading: Icon(Icons.contact_phone,color: Colors.white70),

@@ -7,6 +7,7 @@ import 'package:sound_chat/screens/SpleshScreen.dart';
 import 'Model/ProductModellist.dart';
 import 'api/all _orders.dart';
 import 'api/allproduct.dart';
+import 'api/couponcode.dart';
 import 'api/galley.dart';
 import 'api/homeslider.dart';
 import 'api/membership.dart';
@@ -26,8 +27,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => AllproductResponse()),
         ChangeNotifierProvider(create: (_) => TermsResponse()),
         ChangeNotifierProvider(create: (_) => OrderResponse()),
-        ChangeNotifierProvider(create: (_) => AllorderResponse()),
         ChangeNotifierProvider(create: (_) => MembershipResponse()),
+        ChangeNotifierProvider(create: (_) => CoupncodeResponse()),
         ChangeNotifierProvider(
           create: (_) => OverlayHandlerProvider(),
         ),
