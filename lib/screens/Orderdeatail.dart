@@ -48,7 +48,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                 backgroundColor: Color(0xFFE18D13),
                 backwardsCompatibility: true,
               ),
-              body: ListView.builder(itemBuilder: (context, index) {
+              body: ListView.builder(itemCount: items.length,itemBuilder: (context, index) {
                 return Column(
                   children: [
                   SizedBox(height: 20),
@@ -104,7 +104,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                           DataCell(Text(items[index]['total_tax'].toString())),
                         ]),
                         DataRow(cells: [
-                          DataCell(Text('Payment methode',
+                          DataCell(Text('Payment method',
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold))),
                           DataCell(Text('')),
