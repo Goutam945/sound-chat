@@ -20,6 +20,7 @@ class SplashScreenState extends State<SpleshScreen> {
     createtermsState(context);
     createMembershipState(context);
     createCoupncodeState(context);
+    createCoupncodeState(context);
     _loadSavedData();
     super.initState();
     /*Timer(

@@ -6,6 +6,7 @@ import 'CouponCode.dart';
 import 'Myaccountprofile.dart';
 import 'NewLogin.dart';
 import 'OrderTracking.dart';
+import 'Orderdeatail.dart';
 import 'TermsConditions.dart';
 class NewMenuScreen extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
   String name ;
   bool checklogin = true;
   bool checksignbutton=false;
+  bool loader=false;
   int id;
   void initState() {
     super.initState();
@@ -139,7 +141,15 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         leading: Icon(Icons.shopping_cart_outlined,color: Colors.white70),
                         title: Text('My Order',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                         onTap: () => {
-                          createAllOrderState(id,context),
+                          createAllOrderState(id,context).whenComplete(() {
+                            setState(() {
+                              loader=false;
+                            });
+                        }),
+                        setState(() {
+                        loader=false;
+                        })
+
                         },
                       ),
                     if(checklogin)
@@ -149,7 +159,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       onTap: () => {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => StepperDemo())).whenComplete(() =>   Navigator.of(context).pop()),
-                      
+
                       },
                     ),
                     if(checklogin)
@@ -186,7 +196,8 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                     ListTile(
                       leading: Icon(Icons.settings,color: Colors.white70),
                       title: Text('Settings',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
-                      onTap: () => {Navigator.of(context).pop()},
+                      //onTap: () => {Navigator.of(context).pop()},
+                        //onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Orderdeatail()))..whenComplete(() =>   Navigator.of(context).pop())
                     ),
                     if(checklogin)
                     ListTile(
@@ -206,6 +217,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         },
 
                     ),
+                    if(loader)Center(child: CircularProgressIndicator(),)
                   ],
                 ),
               ),
@@ -739,6 +751,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                   ),
                 ),
               ],
+
             ),
           ),
           Positioned(

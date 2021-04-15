@@ -24,6 +24,8 @@ Future<OrderResponse> createOrderState(
     String shipcountry,
     List line_items,
     int id,
+    payment_method_title,
+    setPaid,
     context) async {
   final http.Response response = await http.post(
       Uri.parse('https://mintok.com/soundchat/wp-json/create_order/v2/'),
@@ -31,8 +33,8 @@ Future<OrderResponse> createOrderState(
       body: jsonEncode({
         "user_id": id,
         "payment_method": "bacs",
-        "payment_method_title": "Direct Bank Transfer",
-        "set_paid": true,
+        "payment_method_title": payment_method_title,
+        "set_paid": setPaid,
         "billing": {
           "first_name": firstname,
           "last_name": lastname,

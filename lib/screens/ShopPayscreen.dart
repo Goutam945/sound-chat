@@ -2,104 +2,252 @@ import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/api/create_order.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/ShoppingSccessful.dart';
-
 import 'Shopping.dart';
 import 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
+import 'package:http/http.dart' as http;
 
 class ShopPay extends StatefulWidget {
-  final firstname,lastname,address1,address2,city,state,postcode,country,email,phone,
-      shipname,shiplastname,shipaddress1,shipaddress2,shipcity,shipsate,shippostcode,shipcountry;
-  ShopPay(this.firstname,this.lastname,this.address1,this.address2,this.city,this.state,this.postcode,
-      this.country,this.email,this.phone,this.shipname,this.shiplastname,this.shipaddress1,this.shipaddress2,this.shipcity,
-      this.shipsate,this.shippostcode,this.shipcountry,);
+  final firstname,
+      lastname,
+      address1,
+      address2,
+      city,
+      state,
+      postcode,
+      country,
+      email,
+      phone,
+      shipname,
+      shiplastname,
+      shipaddress1,
+      shipaddress2,
+      shipcity,
+      shipsate,
+      shippostcode,
+      shipcountry;
+
+  ShopPay(
+      this.firstname,
+      this.lastname,
+      this.address1,
+      this.address2,
+      this.city,
+      this.state,
+      this.postcode,
+      this.country,
+      this.email,
+      this.phone,
+      this.shipname,
+      this.shiplastname,
+      this.shipaddress1,
+      this.shipaddress2,
+      this.shipcity,
+      this.shipsate,
+      this.shippostcode,
+      this.shipcountry,
+      );
+
   @override
   _ShopPayState createState() => _ShopPayState();
 }
+
 class _ShopPayState extends State<ShopPay> {
-  String radioItem = '';
-  var cart;
-  bool loader=false;
+  final _stripePayment = FlutterStripePayment();
+  final String publicationKey =
+      'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
+  final String secretKey =
+      'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
+  PaymentResponse _paymentMethod;
   String _paymentMethodId;
   String _errorMessage = "";
-  List line_items;
+  String clientSecret;
+  PaymentResponse paymentResponse1;
+  String radioItem = '';
+  var cart;
+  bool loader = false;
+  List lineItems;
   int id;
-  final _stripePayment = FlutterStripePayment();
+  String paymentMethodTitle = '';
+  bool setPaid;
+
+  Future<void> addCard() async {
+    var paymentResponse = await _stripePayment.addPaymentMethod();
+    setState(() {
+      if (paymentResponse.status == PaymentResponseStatus.succeeded) {
+        _paymentMethodId = paymentResponse.paymentMethodId;
+        _paymentMethod = paymentResponse;
+      } else {
+        _errorMessage = paymentResponse.errorMessage;
+      }
+    });
+  }
+
+  Future<void> createIntent(amount) async {
+    var url = Uri.parse('https://api.stripe.com/v1/payment_intents');
+    var response = await http.post(url,
+        headers: {'Authorization': 'Bearer $secretKey'},
+        encoding: Encoding.getByName('x-www-form-urlencoded'),
+        body: {'amount': '${(amount * 100).round()}', 'currency': 'INR'});
+    print('Response status: ${response.statusCode}');
+    if (response.statusCode == 200) {
+      print('Response body: ${response.body}');
+      dynamic data = json.decode(response.body);
+      setState(() {
+        clientSecret = data['client_secret'];
+        print("clientSecret: " + clientSecret);
+      });
+    } else {
+      throw Exception(response.body);
+    }
+  }
+
+  Future<void> authPayment(amount) async {
+    var paymentResponse = await _stripePayment.confirmPaymentIntent(
+        clientSecret, _paymentMethodId, amount * 100);
+    setState(() {
+      if (paymentResponse.status == PaymentResponseStatus.succeeded) {
+        _paymentMethodId = paymentResponse.paymentMethodId;
+        paymentResponse1 = paymentResponse;
+        createOrder();
+        // showDialog(
+        //     context: context,
+        //     builder: (context) => AlertDialog(
+        //           content: Column(
+        //             children: [
+        //               Text("Status: " + paymentResponse.status.toString()),
+        //               Text("paymentIntentId: " +
+        //                   paymentResponse.paymentIntentId.toString()),
+        //               Text("paymentMethodId: " + paymentResponse.toString()),
+        //             ],
+        //           ),
+        //         ));
+      } else {
+        _errorMessage = paymentResponse.errorMessage;
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              content: Text(_errorMessage.toString()),
+            ));
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    _stripePayment.setStripeSettings(
-        "{STRIPE_PUBLISHABLE_KEY}", "{STRIPE_APPLE_PAY_MERCHANTID}");
+    _stripePayment.setStripeSettings(publicationKey);
     _stripePayment.onCancel = () {
       print("the payment form was cancelled");
     };
     _loadSavedData();
   }
-  _loadSavedData() async{
+
+  _loadSavedData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
+      if (sharedPreferences.getString('email') != null &&
+          sharedPreferences.getString('email').isNotEmpty) {
         id = sharedPreferences.getInt('id');
       }
     });
   }
 
+  stripePay(amount) async {
+    addCard().whenComplete(
+            () => createIntent(amount).whenComplete(() => authPayment(amount)));
+  }
+
+  createOrder() {
+    createOrderState(
+        widget.firstname,
+        widget.lastname,
+        widget.address1,
+        widget.address2,
+        widget.city,
+        widget.state,
+        widget.postcode,
+        widget.country,
+        widget.email.trim(),
+        widget.phone,
+        widget.shipname,
+        widget.shiplastname,
+        widget.shipaddress1,
+        widget.shipaddress2,
+        widget.shipcity,
+        widget.shipsate,
+        widget.shippostcode,
+        widget.shipcountry,
+        lineItems,
+        id,
+        paymentMethodTitle,
+        setPaid,
+        context)
+        .whenComplete(() => showNonce())
+        .whenComplete(() =>
+        Provider.of<ProductModellist>(context, listen: false).removeAll());
+  }
+
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
-  void showNonce(BraintreePaymentMethodNonce nonce) {
+
+  void showNonce() {
     showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Sccessfully'),
+          title: Text('Success'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Column(
                   children: [
-                    SizedBox(height: 90,width: 90,
+                    SizedBox(
+                      height: 90,
+                      width: 90,
                       child: Image.network(
                         'https://www.cntraveller.in/wp-content/themes/cntraveller/images/check-circle.gif',
                         fit: BoxFit.fill,
                       ),
                     ),
-                    Text("Thankyou For Shopping",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic),)
+                    Text(
+                      "Thank you for Shopping",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic),
+                    )
                   ],
                 ),
-
               ],
             ),
           ),
           actions: <Widget>[
-            TextButton(
+            ElevatedButton(
               child: Text('Continue Shopping'),
               onPressed: () {
-                Provider.of<ProductModellist>(context, listen: false).removeAll();
-                Navigator.of(context)
-                    .pushReplacement(
+                Provider.of<ProductModellist>(context, listen: false)
+                    .removeAll();
+                Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => Shopping()));
               },
             ),
           ],
-
         );
       },
     );
   }
-    @override
+
+  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    cart= context.watch<ProductModellist>();
+    cart = context.watch<ProductModellist>();
     //send data list produt id and quatity
-    line_items= [
-      for(int i=0;i<cart.cart1.length;i++)
-        {
-          "product_id": cart.cart1[i].id,
-          "quantity": cart.cart1[i].quantity
-        }
+    lineItems = [
+      for (int i = 0; i < cart.cart1.length; i++)
+        {"product_id": cart.cart1[i].id, "quantity": cart.cart1[i].quantity}
     ];
-    print(line_items);
+    print(lineItems);
     //end
     return SafeArea(
         child: Stack(children: [
@@ -110,7 +258,7 @@ class _ShopPayState extends State<ShopPay> {
               backwardsCompatibility: true,
             ),
             bottomNavigationBar: Container(
-              height: height*0.0731,
+              height: height * 0.0731,
               color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -118,22 +266,25 @@ class _ShopPayState extends State<ShopPay> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.red),
                     onPressed: () {
-                      setState(() {
-                        loader=false;
-                      });
-                      createOrderState(widget.firstname,widget.lastname,widget.address1,widget.address2,widget.city,
-                          widget.state,widget.postcode,widget.country,widget.email,widget.phone,widget.shipname,widget.shiplastname,
-                          widget.shipaddress1,widget.shipaddress2,widget.shipcity,widget.shipsate,widget.shippostcode,widget.shipcountry,line_items,id,context).whenComplete(() => Navigator.of(context)
-                          .pushReplacement(
-                          MaterialPageRoute(builder: (context) => ShopSccess())));
-                      setState(() {
-                        loader=true;
-                      });
-                      Provider.of<ProductModellist>(context, listen: false).removeAll();//clear provider data
-
+                      // setState(() {
+                      //   loader = false;
+                      // });
+                      if (id == null) {
+                        Toast.show("Please Login before Shopping", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      } else if (radioItem == 'paypal') {
+                        pay();
+                      } else if (radioItem == 'stripe') {
+                        stripePay(cart.sum1);
+                      } else if (radioItem == 'cod') {
+                        createOrder();
+                      } else {
+                        Toast.show("please select payment method", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      }
                     },
                     child: Text(
-                      " Total Amount Pay:   \$"+cart.sum1.toString(),
+                      " Total Amount Pay:   \$" + cart.sum1.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -146,22 +297,39 @@ class _ShopPayState extends State<ShopPay> {
             ),
             body: Column(
               children: [
-                SizedBox(height: 50,width: width,
+                SizedBox(
+                  height: 50,
+                  width: width,
                   child: Row(
                     children: [
-                      Image.asset("assets/visa.png",),
-                      SizedBox(width: 10,),
-                      Image.asset("assets/mastercard.png",),
-                      SizedBox(width: 10,),
-                      Image.asset("assets/discover.png",),
-                      SizedBox(width: 10,),
-                      Image.asset("assets/paypal.png",),
+                      Image.asset(
+                        "assets/visa.png",
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        "assets/mastercard.png",
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        "assets/discover.png",
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        "assets/paypal.png",
+                      ),
                     ],
                   ),
                 ),
                 Align(
                     alignment: Alignment.centerLeft,
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -173,52 +341,53 @@ class _ShopPayState extends State<ShopPay> {
                                     fontFamily: 'Montserrat1',
                                     fontWeight: FontWeight.bold)),
                           ),
-
                           RadioListTile(
                             groupValue: radioItem,
                             title: Text('PayPal'),
-                            value: 'Item 1',
+                            value: 'paypal',
                             onChanged: (val) {
                               setState(() {
                                 radioItem = val;
-                                pay();
-
+                                setPaid = true;
+                                paymentMethodTitle =
+                                'Direct Bank Transfer (PayPal)';
+                                // pay();
                               });
                             },
                           ),
-
                           RadioListTile(
                             groupValue: radioItem,
                             title: Text('Credit Card (Stripe)'),
-                            value: 'Item 2',
+                            value: 'stripe',
                             onChanged: (val) {
                               setState(() {
                                 radioItem = val;
-                                Strippay();
+                                setPaid = true;
+                                paymentMethodTitle =
+                                'Direct Bank Transfer (Stripe)';
+                                // Strippay();
                               });
                             },
                           ),
                           RadioListTile(
                             groupValue: radioItem,
                             title: Text('Cash On Delivery'),
-                            value: 'Item 3',
+                            value: 'cod',
                             onChanged: (val) {
                               setState(() {
                                 radioItem = val;
+                                setPaid = false;
+                                paymentMethodTitle = 'COD';
                               });
                             },
                           ),
-               ]
-            )
-            )
+                        ]))
               ],
             ),
           ),
-          if(loader)Center(child: CircularProgressIndicator(),)
-        ]
-        )
-    );
+        ]));
   }
+
   pay() async {
     var request = BraintreeDropInRequest(
       tokenizationKey: tokenizationKey,
@@ -234,25 +403,9 @@ class _ShopPayState extends State<ShopPay> {
       ),
       cardEnabled: true,
     );
-    BraintreeDropInResult result =
-    await BraintreeDropIn.start(request);
+    BraintreeDropInResult result = await BraintreeDropIn.start(request);
     if (result != null) {
-      showNonce(result.paymentMethodNonce);
+      showNonce();
     }
   }
- Strippay() async {
-   var paymentResponse = await _stripePayment.addPaymentMethod();
-   setState(() {
-     if (paymentResponse.status ==
-         PaymentResponseStatus.succeeded) {
-       print(paymentResponse.paymentMethodId);
-       Toast.show(paymentResponse.paymentMethodId, context,
-           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-       _paymentMethodId = paymentResponse.paymentMethodId;
-     } else {
-       _errorMessage = paymentResponse.errorMessage;
-     }
-   });
- }
-
 }

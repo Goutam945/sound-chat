@@ -1,4 +1,7 @@
+import 'package:sound_chat/api/all%20_orders.dart';
 import 'package:sound_chat/common/index.dart';
+
+import 'Orderdeatail.dart';
 class AllOrderlist extends StatefulWidget {
   @override
   _AllOrderlistState createState() => _AllOrderlistState();
@@ -6,7 +9,7 @@ class AllOrderlist extends StatefulWidget {
 
 class _AllOrderlistState extends State<AllOrderlist> {
   bool play = true;
-  String data;
+  dynamic data;
   var superherosLength;
   String email;
   String name ;
@@ -28,95 +31,30 @@ class _AllOrderlistState extends State<AllOrderlist> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
- //   if(Provider.of<ScheduleResponse>(context, listen: false).data!=null)
-     // superherosLength = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+    if(Provider.of<AllorderResponse>(context, listen: false).data!=null)
+      data = Provider.of<AllorderResponse>(context, listen: false).data['data'];
     return SafeArea(
       child: Stack(
         children: [
           Scaffold(extendBody: false,
-            backgroundColor: Colors.black,
+            //backgroundColor: Colors.black,
               appBar: AppBar(
                 backgroundColor: Color(0xFFE18D13),
                 backwardsCompatibility: true,
               ),
-            body: SizedBox(height: height,
-              child: Column(
-                children: [
-                  SizedBox(height: 10,),
-                  Expanded(
-                    child: Container(
-                      //height: height * 0.7056,
-                      child: SingleChildScrollView(
-                        child:Column(
-                          children: [
-                           // for (int j = 0; j <10; j++)
-                              GestureDetector(
-                                onTap: () {
-                                  //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
-                                },
-                                child: Container(
-                                  margin: const EdgeInsets.only(top: 5),
-                                  color: Colors.white10,
-                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                          width: width * 0.3037,
-                                          child: Image.network(
-                                            'https://i0.wp.com/soundchatradio.com/wp-content/uploads/2021/02/cover-slick.jpg?resize=300%2C300&ssl=1',
-                                            fit: BoxFit.cover,
-                                          )),
-                                      Column(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            width: width * 0.65,
-                                            child: Text("testing",
-                                              style: TextStyle(
-                                                  color:
-                                                  Color(0xFFA39597),
-                                                  fontSize: 17,
-                                                  fontWeight:
-                                                  FontWeight.bold,
-                                                  fontFamily:
-                                                  'Montserrat'),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.65,
-                                            child: Text(
-                                             "testing",
-                                              style: TextStyle(
-                                                  color:
-                                                  Color(0xFFA19895),
-                                                  fontSize: 14,
-                                                  fontFamily:
-                                                  'Montserrat'),
-                                            ),
-                                          ),
-                                          Text(
-                                            "testing:",
-                                            style: TextStyle(
-                                                color: Color(0xFFA19895),
-                                                fontSize: 16,
-                                                fontFamily: 'Montserrat'),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                          ],
-    ),
-                      ),
-                    ),
-                  ),
-                ],
+            body: ListView.builder(itemCount: data.length,itemBuilder: (context, index){
+              return Card(
+               child: ListTile(onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Orderdeatail(data[index])));
+              },
+                title: Text("Order Sucess Id  "+data[index]['id'].toString()),
+                subtitle: Text(data[index]['date_created'].toString()),
+                leading: Icon(Icons.circle,color: Colors.red,),
+                trailing: Icon(Icons.arrow_forward_ios_outlined),
               ),
-            )
+
+              );
+            })
           ),
 //          Positioned(
 //            top: AppBar().preferredSize.height*0.2,

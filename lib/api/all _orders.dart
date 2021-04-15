@@ -19,6 +19,7 @@ Future<AllorderResponse> createAllOrderState(int userid,
 //      String message = data['message'];
 
       print(data);
+      Provider.of<AllorderResponse>(context, listen: false).data = data;
       Navigator.of(context)
          .pushReplacement(MaterialPageRoute(builder: (context) => AllOrderlist()));
       Toast.show(data.toString(), context,
@@ -31,8 +32,7 @@ Future<AllorderResponse> createAllOrderState(int userid,
     throw Exception(response.body);
   }
 }
-class AllorderResponse {
-  int response;
+class AllorderResponse with ChangeNotifier {
   dynamic data;
 
   AllorderResponse({
@@ -43,5 +43,6 @@ class AllorderResponse {
   AllorderResponse.fromJson(Map<String, dynamic> json) {
 //    response = json['code'];
     data = json;
+    notifyListeners();
   }
 }

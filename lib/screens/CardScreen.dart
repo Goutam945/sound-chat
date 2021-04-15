@@ -201,10 +201,22 @@ class CardScreen extends StatefulWidget {
 
 class _CardScreenState extends State<CardScreen> {
   int _itemCount = 0;
+  int id;
   var countprice;
   @override
   void initState() {
     super.initState();
+    _loadSavedData();
+  }
+
+  _loadSavedData() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      if (sharedPreferences.getString('email') != null &&
+          sharedPreferences.getString('email').isNotEmpty) {
+        id = sharedPreferences.getInt('id');
+      }
+    });
   }
 
   @override
@@ -216,10 +228,10 @@ class _CardScreenState extends State<CardScreen> {
       child: Stack(children: [
         cart.cart1.length == 0 ?
         Scaffold(
-        appBar: AppBar(
-        backgroundColor: Color(0xFFE18D13),
-      backwardsCompatibility: true,
-    ),
+            appBar: AppBar(
+              backgroundColor: Color(0xFFE18D13),
+              backwardsCompatibility: true,
+            ),
             body: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -242,7 +254,7 @@ class _CardScreenState extends State<CardScreen> {
               ),
             )):
         Scaffold(
-           // backgroundColor: Colors.black,
+          // backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Color(0xFFE18D13),
               backwardsCompatibility: true,
@@ -276,9 +288,14 @@ class _CardScreenState extends State<CardScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.red),
                     onPressed: () {
-                      Navigator.of(context)
-                          .pushReplacement(
-                          MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+                      if(id!=null){
+                        Navigator.of(context)
+                            .pushReplacement(
+                            MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+                      } else {
+                        Toast.show("Please Login before Shopping", context,
+                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                      }
                     },
                     child: Text(
                       "Pay",
@@ -300,23 +317,23 @@ class _CardScreenState extends State<CardScreen> {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         // width: width * 0.7737,
-                         height: height * 0.2201,
-                      decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                      bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(15)
-                      ),
-                      boxShadow: [
-                      BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                      ),
-                      ],),
+                        height: height * 0.2201,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15)
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -339,7 +356,7 @@ class _CardScreenState extends State<CardScreen> {
                               children: [
                                 SizedBox(width: width*0.5,
                                   child: Text(
-                                      cart.cart1[index].productname,
+                                    cart.cart1[index].productname,
                                     style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
                                   ),
                                 ),

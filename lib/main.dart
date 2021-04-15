@@ -29,6 +29,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => OrderResponse()),
         ChangeNotifierProvider(create: (_) => MembershipResponse()),
         ChangeNotifierProvider(create: (_) => CoupncodeResponse()),
+        ChangeNotifierProvider(create: (_) => AllorderResponse()),
         ChangeNotifierProvider(
           create: (_) => OverlayHandlerProvider(),
         ),

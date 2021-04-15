@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:audioplayer/audioplayer.dart';
 import 'package:sound_chat/api/allproduct.dart';
+import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
@@ -70,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
     createHomesliderState(context);
     createAllproductState(context);
     createtermsState(context);
+    createCoupncodeState(context);
   }
   void state(){
     setState(() {
