@@ -6,7 +6,7 @@ Future<CoupncodeResponse> createCoupncodeState(context) async {
   await http.get( Uri.parse('http://mintok.com/soundchat/wp-json/coupon/v2/'));
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    Provider.of<GalleryResponse>(context, listen: false).data = data;
+    Provider.of<CoupncodeResponse>(context, listen: false).data = data;
     return CoupncodeResponse.fromJson(json.decode(response.body));
   } else {
     Toast.show("server error", context,

@@ -141,15 +141,14 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         leading: Icon(Icons.shopping_cart_outlined,color: Colors.white70),
                         title: Text('My Order',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                         onTap: () => {
+                          setState(() {
+                            loader=true;
+                          }),
                           createAllOrderState(id,context).whenComplete(() {
                             setState(() {
                               loader=false;
                             });
                         }),
-                        setState(() {
-                        loader=false;
-                        })
-
                         },
                       ),
                     if(checklogin)
@@ -217,7 +216,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         },
 
                     ),
-                    if(loader)Center(child: CircularProgressIndicator(),)
+//                    if(loader)Center(child: CircularProgressIndicator(),)
                   ],
                 ),
               ),
@@ -754,6 +753,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
 
             ),
           ),
+          if(loader)Center(child: CircularProgressIndicator(),),
           Positioned(
             top: AppBar().preferredSize.height*0.1,
             left: width * 0.39865,
