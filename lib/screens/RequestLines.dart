@@ -39,28 +39,30 @@ class _RequestLinesState extends State<RequestLines> {
     return SafeArea(
       child: Stack(children: [
         Scaffold(
-          backgroundColor: Color(0xFFDEEBF7),
+          backgroundColor: Colors.black,
           appBar: AppBar(
             backgroundColor: Color(0xFFE18D13),
             //title: Text("Flutter Http Example"),
           ),
           body: ListView(
             children: [
-              Column(
+          Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
                 children: [
                   SizedBox(
                     height: 40,
                   ),
                   Text(
                     "Request Lines",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
                     "Tune in to SoundChat Radio Live",
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16,color: Colors.white),
                   ),
                   SizedBox(
                     height: 20,
@@ -70,43 +72,52 @@ class _RequestLinesState extends State<RequestLines> {
                       launchUrl("tel:+17185548598");
                     },
                     child: Image.asset(
-                      'assets/img1.png',
+                      'assets/us.png',
                       fit: BoxFit.fill,
-                      scale: 1.3,
+                      scale: 3,
                     ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   GestureDetector(
                     onTap: () {
                       launchUrl("tel:+442080680507");
                     },
                     child: Image.asset(
-                      'assets/img2.png',
+                      'assets/uk.png',
                       fit: BoxFit.fill,
-                      scale: 1.3,
+                      scale: 3,
                     ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   GestureDetector(
                     onTap: () {
                       launchUrl("tel:+16464847826");
                     },
                     child: Image.asset(
-                      'assets/img3.png',
+                      'assets/cn.png',
                       fit: BoxFit.fill,
-                      scale: 1.3,
+                      scale: 3,
                     ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   GestureDetector(
                     onTap: () {
                       whatsAppOpen();
                     },
                     child: Image.asset(
-                      'assets/imgg4.png',
+                      'assets/wa.png',
                       fit: BoxFit.fill,
-                      scale: 1.3,
+                      scale: 2.9,
                     ),
                   ),
                 ],
-              ),
+        )),
             ],
           ),
         ),

@@ -173,21 +173,27 @@ class _DesignForgotpass extends State<DesignForgotpass> {
               key: formKey,
               child: ListView(
                 children: [
-                  SizedBox(height: 95,),
-                  Container(
-                    height: height * 0.0585,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "SOUNDCHAT RADIO",
-                          style: TextStyle(color: Colors.white, fontSize: 36),
-                          textAlign: TextAlign.center,
-                        )
-                      ],
-                    ),
+                  SizedBox(height: 10,),
+                  Image.asset(
+                    "assets/soundpic.png",
+                    width: width * 0.316,
+                    height: height * 0.1902,
                   ),
-                  SizedBox(height: 40,),
+//                  SizedBox(height: 95,),
+//                  Container(
+//                    height: height * 0.0585,
+//                    child: Row(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: [
+//                        Text(
+//                          "SOUNDCHAT RADIO",
+//                          style: TextStyle(color: Colors.white, fontSize: 36),
+//                          textAlign: TextAlign.center,
+//                        )
+//                      ],
+//                    ),
+//                  ),
+                  SizedBox(height: 20,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
@@ -204,7 +210,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'UserName',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                          hintText: 'Username',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
                     ),

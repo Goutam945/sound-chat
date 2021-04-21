@@ -75,8 +75,13 @@ class _DesignLogin extends State<NewLogin> {
               key: formKey,
               child: ListView(
                 children: [
-                  SizedBox(height: 95,),
-                  Container(
+                  SizedBox(height: 10,),
+                  Image.asset(
+                    "assets/soundpic.png",
+                    width: width * 0.316,
+                    height: height * 0.1902,
+                  ),
+                  /*Container(
                     height: height * 0.0585,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -88,8 +93,8 @@ class _DesignLogin extends State<NewLogin> {
                         )
                       ],
                     ),
-                  ),
-                  SizedBox(height: 40,),
+                  ),*/
+                  SizedBox(height: 10,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: TextFormField(
@@ -107,7 +112,7 @@ class _DesignLogin extends State<NewLogin> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'UserName',
+                          hintText: 'Username',
                           hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
@@ -135,7 +140,24 @@ class _DesignLogin extends State<NewLogin> {
                               left: 20, top: 15)),
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => DesignForgotpass()));
+                    },
+                       child: Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                          child: Text(
+                            "Reset Password",
+                            textAlign: TextAlign.end,
+                            style: TextStyle(
+                                color: Colors.red[400], fontSize: 18),
+                          ),
+                        ),
+
+                  ),
+                  SizedBox(height: 10,),
                   Container(height: 60,
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: ElevatedButton(

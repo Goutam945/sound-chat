@@ -43,7 +43,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
         children: [
           Scaffold(
               extendBody: false,
-              // backgroundColor: Colors.black,
+               backgroundColor: Colors.black,
               appBar: AppBar(
                 backgroundColor: Color(0xFFE18D13),
                 backwardsCompatibility: true,
@@ -56,69 +56,81 @@ class _OrderdeatailState extends State<Orderdeatail> {
                         child: Text(
                       '[Order#${items[index]['id']}]',
                       style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color: Colors.green),
                     )),
-                    DataTable(
+                Theme(
+                data: Theme.of(context).copyWith(
+                dividerColor: Colors.white
+                ),
+                   child: DataTable(
                       columns: [
                         DataColumn(
                             label: Text('Product',
                                 style: TextStyle(
                                     fontSize: 18,
+                                    color: Colors.orange,
                                     fontWeight: FontWeight.bold))),
                         DataColumn(
                             label: Text('Quantity',
                                 style: TextStyle(
                                     fontSize: 18,
+                                    color: Colors.orange,
                                     fontWeight: FontWeight.bold))),
                         DataColumn(
                             label: Text('Price',
                                 style: TextStyle(
                                     fontSize: 18,
+                                     color: Colors.orange,
                                     fontWeight: FontWeight.bold))),
                       ],
                       rows: [
                         DataRow(cells: [
-                          DataCell(Text(items[index]['name'])),
-                          DataCell(Text(items[index]['quantity'].toString())),
-                          DataCell(Text(items[index]['price'].toString())),
+                          DataCell(Text(items[index]['name'],style: TextStyle(color: Color(0xFFA39597))),),
+                          DataCell(Text(items[index]['quantity'].toString(),style: TextStyle(color: Color(0xFFA39597)))),
+                          DataCell(Text(items[index]['price'].toString(),style: TextStyle(color: Color(0xFFA39597)))),
                         ]),
                         DataRow(cells: [
                           DataCell(Text('Subtotal',
                               style: TextStyle(
+                                  color: Color(0xFFA39597),
                                   fontSize: 15, fontWeight: FontWeight.bold))),
                           DataCell(Text('')),
-                          DataCell(Text(items[index]['subtotal'].toString())),
+                          DataCell(Text(items[index]['subtotal'].toString(),style: TextStyle(color: Color(0xFFA39597)))),
                         ]),
                         DataRow(cells: [
                           DataCell(Text('Shipping',
                               style: TextStyle(
+                                  color: Color(0xFFA39597),
                                   fontSize: 15, fontWeight: FontWeight.bold))),
                           DataCell(Text('')),
-                          DataCell(Text(widget.order['shipping_tax'])),
+                          DataCell(Text(widget.order['shipping_tax'],style: TextStyle(color: Color(0xFFA39597))),),
                         ]),
                         DataRow(cells: [
                           DataCell(Text('Tax',
                               style: TextStyle(
+                                  color: Color(0xFFA39597),
                                   fontSize: 15, fontWeight: FontWeight.bold))),
                           DataCell(Text('')),
-                          DataCell(Text(items[index]['total_tax'].toString())),
+                          DataCell(Text(items[index]['total_tax'].toString(),style: TextStyle(color: Color(0xFFA39597)))),
                         ]),
                         DataRow(cells: [
                           DataCell(Text('Payment method',
                               style: TextStyle(
+                                  color: Color(0xFFA39597),
                                   fontSize: 15, fontWeight: FontWeight.bold))),
                           DataCell(Text('')),
-                          DataCell(Text( widget.order['payment_method'])),
+                          DataCell(Text( widget.order['payment_method_title'],style: TextStyle(color: Color(0xFFA39597)))),
                         ]),
                         DataRow(cells: [
                           DataCell(Text('Total',
                               style: TextStyle(
+                                  color: Color(0xFFA39597),
                                   fontSize: 15, fontWeight: FontWeight.bold))),
                           DataCell(Text('')),
-                          DataCell(Text(items[index]['total'].toString())),
+                          DataCell(Text(items[index]['total'].toString(),style: TextStyle(color: Color(0xFFA39597)))),
                         ]),
                       ],
-                    ),
+                    )),
                   ],
                 );
               })),

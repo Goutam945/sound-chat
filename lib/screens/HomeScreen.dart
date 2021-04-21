@@ -3,6 +3,7 @@ import 'package:audioplayer/audioplayer.dart';
 import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
+import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/InetrviewvideoplayStudio.dart';
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
       if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
       }
     });
   }
@@ -42,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
   var Endtime;
   var Endtimemin;
   String show='22:00-23:59';
+  int id;
   var homeslider;
   @override
   void initState() {
@@ -72,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
     createAllproductState(context);
     createtermsState(context);
     createCoupncodeState(context);
+    createSubcriptionlevalState(id,context);
   }
   void state(){
     setState(() {

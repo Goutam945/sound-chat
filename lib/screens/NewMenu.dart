@@ -1,4 +1,7 @@
 import 'package:sound_chat/api/all%20_orders.dart';
+import 'package:sound_chat/api/cancel_subcription.dart';
+import 'package:sound_chat/api/membership.dart';
+import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/index.dart';
 
 import 'ContactAs.dart';
@@ -22,6 +25,8 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
   bool checksignbutton=false;
   bool loader=false;
   int id;
+  int staticlibid=2;
+  dynamic data;
   void initState() {
     super.initState();
     _loadSavedData();
@@ -95,6 +100,8 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    if(Provider.of<SubcriptionlevalResponse>(context, listen: false).data!=null)
+      data = Provider.of<SubcriptionlevalResponse>(context, listen: false).data['response'];
     return SafeArea(
       child: Stack(
         children: [
@@ -117,6 +124,8 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                               style: TextStyle(color: Colors.white, fontSize: 20,fontStyle: FontStyle.italic,decoration: TextDecoration.underline,),textAlign: TextAlign.start,
                             ),
                           ),
+                         //for(int i=1;i<=data.length;i++)
+                          //Text(data['$i']["level_id"].toString())
                         ],
                       ),
                       decoration: BoxDecoration(
@@ -161,11 +170,21 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
 
                       },
                     ),
+                    for(int i=1;i<=data.length;i++)
                     if(checklogin)
                     ListTile(
                       leading: Icon(Icons.subscriptions,color: Colors.white70),
                       title: Text('Cancel Subscription',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
-                      onTap: () => {Navigator.of(context).pop()},
+                      onTap: () => {
+                          setState(() {
+                            loader=true;
+                          }),
+                        createCancelsubcripState(id,data['$i']["level_id"].toString(),context).whenComplete(() {
+                            setState(() {
+                              loader=false;
+                            });
+                          }),
+                        },
                     ),
                     if(checklogin)
                     ListTile(

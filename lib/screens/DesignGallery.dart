@@ -137,20 +137,20 @@ String email,name;
             ),
           ),
           body: (superherosLength != null)
-              ? ListView(
+              ? Column(
                   children: [
-                    Column(
-                      children: [
-                        SizedBox(
-                          child: Image.asset(
-                            'assets/soundbk.png',
-                            fit: BoxFit.fitWidth,
-                          ),
-                          height: height * 0.2002,
-                          width: width * 1.018,
-                        ),
-                      ],
-                    ),
+//                    Column(
+//                      children: [
+//                        SizedBox(
+//                          child: Image.asset(
+//                            'assets/soundbk.png',
+//                            fit: BoxFit.fitWidth,
+//                          ),
+//                          height: height * 0.2002,
+//                          width: width * 1.018,
+//                        ),
+//                      ],
+//                    ),
                     SizedBox(
                       height: height * 0.02634,
                     ),
@@ -237,146 +237,295 @@ String email,name;
                     SizedBox(
                       height: 20,
                     ),
-                    for (int j = 0; j < superherosLength[imgcount]
-                    ['img_gallery_pic'].length; j = j + 4)
+//                    for (int j = 0; j < superherosLength[imgcount]
+//                    ['img_gallery_pic'].length; j = j + 4)
+//                      SizedBox(
+//                        height: 400,
+//                        child: Row(
+//                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                          children: [
+//                            Column(
+//                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                              children: [
+//                                if(superherosLength[imgcount]
+//                                ['img_gallery_pic'].length>j+0)
+//                                GestureDetector(
+//                                  onTap: () {
+//                                    Navigator.of(context).push(MaterialPageRoute(
+//                                        builder: (context) => FullImage(
+//                                            superherosLength[imgcount]
+//                                                ['img_gallery_pic'][j + 0])));
+//                                  },
+//                                  child: Container(
+//                                    width: width * 0.3997,
+//                                    height: height * 0.3023,
+//                                    child: ClipRRect(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      child: CachedNetworkImage(
+//                                        imageUrl: superherosLength[imgcount]
+//                                            ['img_gallery_pic'][j + 0],
+//                                        fit: BoxFit.fill,
+//                                        placeholder: (context, url) => Center(
+//                                            child: CircularProgressIndicator()),
+//                                        errorWidget: (context, url, error) =>
+//                                            Icon(Icons.error),
+//                                      ),
+//                                    ),
+//                                    decoration: BoxDecoration(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      color: Colors.white,
+//                                    ),
+//                                  ),
+//                                ),
+//                                if(superherosLength[imgcount]
+//                                ['img_gallery_pic'].length>j+1)
+//                                GestureDetector(
+//                                  onTap: () {
+//                                    Navigator.of(context).push(MaterialPageRoute(
+//                                        builder: (context) => FullImage(
+//                                            superherosLength[imgcount]
+//                                                ['img_gallery_pic'][j + 1])));
+//                                  },
+//                                  child: Container(
+//                                    width: width * 0.3997,
+//                                    height: height * 0.1393,
+//                                    child: ClipRRect(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      child: CachedNetworkImage(
+//                                        imageUrl: superherosLength[imgcount]
+//                                            ['img_gallery_pic'][j + 1],
+//                                        fit: BoxFit.fill,
+//                                        placeholder: (context, url) => Center(
+//                                            child: CircularProgressIndicator()),
+//                                        errorWidget: (context, url, error) =>
+//                                            Icon(Icons.error),
+//                                      ),
+//                                    ),
+//                                    decoration: BoxDecoration(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      color: Colors.white,
+//                                    ),
+//                                  ),
+//                                ),
+//                              ],
+//                            ),
+//                            Column(
+//                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                              children: [
+//                                if(superherosLength[imgcount]
+//                            ['img_gallery_pic'].length>j+2)
+//                                GestureDetector(
+//                                  onTap: () {
+//                                    Navigator.of(context).push(MaterialPageRoute(
+//                                        builder: (context) => FullImage(
+//                                            superherosLength[imgcount]
+//                                                ['img_gallery_pic'][j + 2])));
+//                                  },
+//                                  child: Container(
+//                                    width: width * 0.3997,
+//                                    height: height * 0.1393,
+//                                    child: ClipRRect(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      child: CachedNetworkImage(
+//                                        imageUrl: superherosLength[imgcount]
+//                                            ['img_gallery_pic'][j + 2],
+//                                        fit: BoxFit.fill,
+//                                        placeholder: (context, url) => Center(
+//                                            child: CircularProgressIndicator()),
+//                                        errorWidget: (context, url, error) =>
+//                                            Icon(Icons.error),
+//                                      ),
+//                                    ),
+//                                    decoration: BoxDecoration(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      color: Colors.white,
+//                                    ),
+//                                  ),
+//                                ),
+//                                if(superherosLength[imgcount]
+//                                ['img_gallery_pic'].length>j+3)
+//                                GestureDetector(
+//                                  onTap: () {
+//                                    Navigator.of(context).push(MaterialPageRoute(
+//                                        builder: (context) => FullImage(
+//                                            superherosLength[imgcount]
+//                                                ['img_gallery_pic'][j + 3])));
+//                                  },
+//                                  child: Container(
+//                                    width: width * 0.3997,
+//                                    height: height * 0.3023,
+//                                    child: ClipRRect(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      child: CachedNetworkImage(
+//                                        imageUrl: superherosLength[imgcount]
+//                                            ['img_gallery_pic'][j + 3],
+//                                        fit: BoxFit.fill,
+//                                        placeholder: (context, url) => Center(
+//                                            child: CircularProgressIndicator()),
+//                                        errorWidget: (context, url, error) =>
+//                                            Icon(Icons.error),
+//                                      ),
+//                                    ),
+//                                    decoration: BoxDecoration(
+//                                      borderRadius: BorderRadius.circular(15),
+//                                      color: Colors.white,
+//                                    ),
+//                                  ),
+//                                ),
+//                              ],
+//                            ),
+//                          ],
+//                        ),
+//                      ),
+
+                      Container(height: height*0.5,
+                    child:SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+                          for (int j = 0; j < superherosLength[imgcount]
+                          ['img_gallery_pic'].length; j = j + 4)
                       SizedBox(
-                        height: 400,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                if(superherosLength[imgcount]
-                                ['img_gallery_pic'].length>j+0)
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => FullImage(
-                                            superherosLength[imgcount]
+                      height:400,
+                         child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  if(superherosLength[imgcount]
+                                  ['img_gallery_pic'].length>j+0)
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => FullImage(
+                                                superherosLength[imgcount]
                                                 ['img_gallery_pic'][j + 0])));
-                                  },
-                                  child: Container(
-                                    width: width * 0.3997,
-                                    height: height * 0.3023,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: CachedNetworkImage(
-                                        imageUrl: superherosLength[imgcount]
+                                      },
+                                      child: Container(
+                                        width: width * 0.3997,
+                                        height: height * 0.3023,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: CachedNetworkImage(
+                                            imageUrl: superherosLength[imgcount]
                                             ['img_gallery_pic'][j + 0],
-                                        fit: BoxFit.fill,
-                                        placeholder: (context, url) => Center(
-                                            child: CircularProgressIndicator()),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
+                                            fit: BoxFit.fill,
+                                            placeholder: (context, url) => Center(
+                                                child: CircularProgressIndicator()),
+                                            errorWidget: (context, url, error) =>
+                                                Icon(Icons.error),
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                if(superherosLength[imgcount]
-                                ['img_gallery_pic'].length>j+1)
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => FullImage(
-                                            superherosLength[imgcount]
+                                  if(superherosLength[imgcount]
+                                  ['img_gallery_pic'].length>j+1)
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => FullImage(
+                                                superherosLength[imgcount]
                                                 ['img_gallery_pic'][j + 1])));
-                                  },
-                                  child: Container(
-                                    width: width * 0.3997,
-                                    height: height * 0.1393,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: CachedNetworkImage(
-                                        imageUrl: superherosLength[imgcount]
+                                      },
+                                      child: Container(
+                                        width: width * 0.3997,
+                                        height: height * 0.1393,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: CachedNetworkImage(
+                                            imageUrl: superherosLength[imgcount]
                                             ['img_gallery_pic'][j + 1],
-                                        fit: BoxFit.fill,
-                                        placeholder: (context, url) => Center(
-                                            child: CircularProgressIndicator()),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
+                                            fit: BoxFit.fill,
+                                            placeholder: (context, url) => Center(
+                                                child: CircularProgressIndicator()),
+                                            errorWidget: (context, url, error) =>
+                                                Icon(Icons.error),
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                if(superherosLength[imgcount]
-                            ['img_gallery_pic'].length>j+2)
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => FullImage(
-                                            superherosLength[imgcount]
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  if(superherosLength[imgcount]
+                                  ['img_gallery_pic'].length>j+2)
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => FullImage(
+                                                superherosLength[imgcount]
                                                 ['img_gallery_pic'][j + 2])));
-                                  },
-                                  child: Container(
-                                    width: width * 0.3997,
-                                    height: height * 0.1393,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: CachedNetworkImage(
-                                        imageUrl: superherosLength[imgcount]
+                                      },
+                                      child: Container(
+                                        width: width * 0.3997,
+                                        height: height * 0.1393,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: CachedNetworkImage(
+                                            imageUrl: superherosLength[imgcount]
                                             ['img_gallery_pic'][j + 2],
-                                        fit: BoxFit.fill,
-                                        placeholder: (context, url) => Center(
-                                            child: CircularProgressIndicator()),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
+                                            fit: BoxFit.fill,
+                                            placeholder: (context, url) => Center(
+                                                child: CircularProgressIndicator()),
+                                            errorWidget: (context, url, error) =>
+                                                Icon(Icons.error),
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                if(superherosLength[imgcount]
-                                ['img_gallery_pic'].length>j+3)
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(MaterialPageRoute(
-                                        builder: (context) => FullImage(
-                                            superherosLength[imgcount]
+                                  if(superherosLength[imgcount]
+                                  ['img_gallery_pic'].length>j+3)
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => FullImage(
+                                                superherosLength[imgcount]
                                                 ['img_gallery_pic'][j + 3])));
-                                  },
-                                  child: Container(
-                                    width: width * 0.3997,
-                                    height: height * 0.3023,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: CachedNetworkImage(
-                                        imageUrl: superherosLength[imgcount]
+                                      },
+                                      child: Container(
+                                        width: width * 0.3997,
+                                        height: height * 0.3023,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: CachedNetworkImage(
+                                            imageUrl: superherosLength[imgcount]
                                             ['img_gallery_pic'][j + 3],
-                                        fit: BoxFit.fill,
-                                        placeholder: (context, url) => Center(
-                                            child: CircularProgressIndicator()),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
+                                            fit: BoxFit.fill,
+                                            placeholder: (context, url) => Center(
+                                                child: CircularProgressIndicator()),
+                                            errorWidget: (context, url, error) =>
+                                                Icon(Icons.error),
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(15),
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
+                                ],
+                              ),
+                            ],
+                          )),
+                        ],
+                      ),
+                    ),)
+
                   ],
                 )
               : Center(child: CircularProgressIndicator()),

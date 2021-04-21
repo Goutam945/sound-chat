@@ -43,8 +43,10 @@ class _SubscriptionState extends State<Subscription> {
           backgroundColor: Colors.black,
           body: ListView(
             children: [
-              SizedBox(
-                height: 40,
+              Image.asset(
+                "assets/soundpic.png",
+                width: width * 0.316,
+                height: height * 0.1902,
               ),
               Center(
                   child: Text(
@@ -64,7 +66,7 @@ class _SubscriptionState extends State<Subscription> {
                     style: TextStyle(fontSize: 16, color: Color(0xFFA79A9A)),
                   )),
               SizedBox(
-                height: 60,
+                height: 20,
               ),
               for(int i=1;i<=data.length;i++)
                 Padding(

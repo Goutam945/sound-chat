@@ -37,20 +37,20 @@ class _AllOrderlistState extends State<AllOrderlist> {
       child: Stack(
         children: [
           Scaffold(extendBody: false,
-            //backgroundColor: Colors.black,
+            backgroundColor: Colors.black,
               appBar: AppBar(
                 backgroundColor: Color(0xFFE18D13),
                 backwardsCompatibility: true,
               ),
             body: ListView.builder(itemCount: data.length,itemBuilder: (context, index){
-              return Card(
+              return Card(color: Color(0xFF252525),
                child: ListTile(onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Orderdeatail(data[index])));
               },
-                title: Text("Order Sucess Id  "+data[index]['id'].toString()),
-                subtitle: Text(data[index]['date_created'].toString()),
+                title: Text("Order Sucess Id  "+data[index]['id'].toString(),style: TextStyle(color: Color(0xFFA39597)),),
+                subtitle: Text(data[index]['date_created'].toString(),style: TextStyle(color: Color(0xFFA39597))),
                 leading: Icon(Icons.circle,color: Colors.red,),
-                trailing: Icon(Icons.arrow_forward_ios_outlined),
+                trailing: Icon(Icons.arrow_forward_ios_outlined,color: Color(0xFFA39597),),
               ),
 
               );

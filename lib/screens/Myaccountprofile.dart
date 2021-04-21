@@ -1,8 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sound_chat/api/cancel_subcription.dart';
+import 'package:sound_chat/api/subcribtion_lable.dart';
 
+import 'ChnagePassword.dart';
 import 'DesignForgotpass.dart';
 import 'DesignUpdate.dart';
 import 'Updateprofile.dart';
@@ -20,6 +24,9 @@ String name;
 String phone;
 String country;
 String image;
+bool loader=false;
+dynamic data;
+int id;
   _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
@@ -29,6 +36,7 @@ String image;
         phone = sharedPreferences.getString('phone');
         country = sharedPreferences.getString('country');
         image = sharedPreferences.getString('image');
+        id = sharedPreferences.getInt('id');
       }
     });
   }
@@ -63,6 +71,8 @@ void initState() {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    if(Provider.of<SubcriptionlevalResponse>(context, listen: false).data!=null)
+      data = Provider.of<SubcriptionlevalResponse>(context, listen: false).data['response'];
     return SafeArea(
       child: Stack(
         children: [
@@ -97,8 +107,8 @@ void initState() {
                     style: TextStyle(fontSize: 16,color: Colors.white),
                   ),
                   SizedBox(height: 5,),
-                  Text(
-                    'Subscription_title',
+                  for(int i=1;i<=data.length;i++)
+                  Text( data['$i']["label"].toString(),
                     style: TextStyle(fontSize: 16,color: Colors.orange,fontStyle: FontStyle.italic),
                   ),
                   SizedBox(height: 5,),
@@ -169,7 +179,7 @@ void initState() {
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => DesignForgotpass()));
+                                  builder: (context) => ChangePassword()));
                             },
                             child: Text(
                               "Change Password",
@@ -214,7 +224,7 @@ void initState() {
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
-                            'Cancel Subscription_plan: ',
+                            'Cancel Subscription: ',
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
@@ -224,24 +234,36 @@ void initState() {
                         ],
                       ),
                       SizedBox(width: 30,),
+                      for(int i=1;i<=data.length;i++)
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "subscription_plan:",
+                            data['$i']["label"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
-                            "Expiry_date",
+                            data['$i']["expire_time"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
-                            "subscription_start",
+                            data['$i']["start_time"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
-                          Text(
-                            "%Link%",
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                          ),
+                          GestureDetector(
+                              onTap: () => {
+                                setState(() {
+                                  loader=true;
+                                }),
+                                createCancelsubcripState(id,data['$i']["level_id"].toString(),context).whenComplete(() {
+                                  setState(() {
+                                    loader=false;
+                                  });
+                                }),
+                              },
+                         child: Text(
+                            "Cancel Subscription",
+                            style: TextStyle(fontSize: 16,color: Colors.orange),
+                          )),
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -479,6 +501,7 @@ void initState() {
               ),
             ),
           ),
+          if(loader)Center(child: CircularProgressIndicator(),),
           /*Positioned(
             top: AppBar().preferredSize.height*0.2,
             left: width * 0.39865,

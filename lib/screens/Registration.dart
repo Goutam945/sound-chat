@@ -47,19 +47,21 @@ class _SignupPageState extends State<Registrationship> {
             key: formKey,
             child: ListView(
               children: [
-                SizedBox(
-                  height: 20,
+                Image.asset(
+                  "assets/soundpic.png",
+                  width: width * 0.316,
+                  height: height * 0.1902,
                 ),
-                Center(
-                    child: Text(
-                      "Member Registration",
-                      style: TextStyle(
-                          fontSize: 19,
-                          color: Color(0xFFE18D13),
-                          fontWeight: FontWeight.bold),
-                    )),
+//                Center(
+//                    child: Text(
+//                      "Member Registration",
+//                      style: TextStyle(
+//                          fontSize: 19,
+//                          color: Color(0xFFE18D13),
+//                          fontWeight: FontWeight.bold),
+//                    )),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Center(
                     child: Text(

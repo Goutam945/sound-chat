@@ -65,9 +65,14 @@ class _SignupnextPageState extends State<Registrationshipnext> {
             body:Form(key: formKey,
               child: ListView(
                 children: [
-                  SizedBox(height: 20,),
-                  Center(child: Text("Member Registration",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 10,),
+                  Image.asset(
+                    "assets/soundpic.png",
+                    width: width * 0.316,
+                    height: height * 0.1902,
+                  ),
+                 // Center(child: Text("Member Registration",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 10,),
                   Center(child: Text("Complete all fields below to create your account",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
                   SizedBox(height: 20,),
                   Padding(
@@ -289,7 +294,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                       child: Text('Continue',style: TextStyle(fontSize: 16),),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 20,),
 
 
 
@@ -427,7 +432,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
 
                     ],
                   ),*/
-                  if(loader)Center(child: CircularProgressIndicator(),)
+
                 ],
 
               ),
@@ -436,6 +441,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
 
 
           ),
+            if(loader)Center(child: CircularProgressIndicator(),)
             /* Positioned(
               top: AppBar().preferredSize.height*0.2,
               left: width * 0.39865,

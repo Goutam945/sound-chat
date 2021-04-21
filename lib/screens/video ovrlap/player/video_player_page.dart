@@ -339,7 +339,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                           child: Container(
                           child: Center(
                             child: Text(
-                              "No login Please check",
+                              "Please login to start chatting",
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
