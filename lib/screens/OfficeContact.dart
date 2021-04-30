@@ -25,7 +25,7 @@ class _OfficeContactState extends State<OfficeContact> {
               backgroundColor: Color(0xFFE18D13),
               //title: Text("Flutter Http Example"),
             ),
-            body:ListView(
+           /* body:ListView(
               children: [
                 SizedBox(height: 40,),
                 Center(child: Text("Office Contact Details",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
@@ -120,6 +120,185 @@ class _OfficeContactState extends State<OfficeContact> {
                 //   ],
                 // ),
 
+
+              ],
+            ),*/
+            body:ListView(
+              children: [
+//                Image.asset(
+//                  'assets/contact-detail.png',
+//                  fit: BoxFit.fill,
+//                  scale: 2.9,
+//                ),
+                SizedBox(height: 40,),
+                Center(child: Text("Office Contact Details",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
+                SizedBox(height: 20,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: Stack(
+                    children: [
+                      Column(
+                        children: [
+                          /*Container(
+                            width: 70,
+                            height: 70,
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                                color: Colors.orange,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: Container(
+                                padding: EdgeInsets.all(5),
+                                child: Container(
+                                  padding: EdgeInsets.all(0),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Center(
+                                      child: Text(
+                                        "1",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 20, fontWeight: FontWeight.bold),
+                                      )),
+                                ),
+                              ),
+                            ),
+                          ),*/
+                          Align(alignment: Alignment.centerLeft,
+                            child: Text(
+                              "New York Office",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Container(height: 0.5,color: Colors.orangeAccent,),
+                          Container(height: 200,width: 410,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                            child: Column(
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.home_outlined,size: 42,color: Color(0xFFA39597),),
+                                      SizedBox(width: 20,),
+                                      Text("139-20 C 109th Ave,\n Jamaica, NY, 11435", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.phone,size: 40,color: Color(0xFFA39597),),
+                                      SizedBox(width: 20,),
+                                      Text("(347)-514-7520 ", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.email_outlined,size: 40,color: Color(0xFFA39597),),
+                                      SizedBox(width: 20,),
+                                      Text("info@soundchatradio.com,\n irishandchin@gmail.com", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                    ],
+                                  ),
+                                ]),),
+                          SizedBox(height: 20,),
+                          Align(alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Kingston, Jamaica',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          Container(height: 0.5,color: Colors.orangeAccent,),
+                          Container(height: 200,width: 400,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                            child: Column(
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.home_outlined,size: 42,color: Color(0xFFA39597),),
+                                      SizedBox(width: 20,),
+                                      Text("22 Westminster Rd,\n Kingston 10,Jamaica,11435", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.phone,size: 40,color: Color(0xFFA39597)),
+                                      SizedBox(width: 20,),
+                                      Text("+1 (876)-000-0000,\n(347)-514-7520 ", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                    ],
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.email_outlined,size: 40,color: Color(0xFFA39597),),
+                                      SizedBox(width: 20,),
+                                      Text("jamaica@soundchatradio.com,\n irishandchin@gmail.com", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                    ],
+                                  ),
+                                ]),),
+
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+//                   Stack(
+//                    children: [
+//                        Container(height: 400,width: 400,color:Colors.black ,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 80),
+//                          child: Column(
+//                              children: [
+//                                SizedBox(height: 20,),
+//                                Row(
+//                                  children: [
+//                                    Icon(Icons.home_outlined,size: 42,color: Color(0xFFA39597),),
+//                                    SizedBox(width: 20,),
+//                                    Text("22 Westminster Rd,\n Kingston 10,Jamaica,11435", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+//                                  ],
+//                                ),
+//                                SizedBox(height: 10,),
+//                                Row(
+//                                  children: [
+//                                    Icon(Icons.phone,size: 40,color: Color(0xFFA39597)),
+//                                    SizedBox(width: 20,),
+//                                    Text("+1 (876)-000-0000,\n(347)-514-7520 ", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+//                                  ],
+//                                ),
+//                                SizedBox(height: 10,),
+//                                Row(
+//                                  children: [
+//                                    Icon(Icons.email_outlined,size: 40,color: Color(0xFFA39597),),
+//                                    SizedBox(width: 20,),
+//                                    Text("jamaica@soundchatradio.com,\n irishandchin@gmail.com", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+//                                  ],
+//                                ),
+//                              ]),),
+//                  Positioned(
+//                    child:Container(
+//                        width: 80,
+//                        height: 80,
+//                        child: Image.asset(
+//                          'assets/fl03.png',
+//                          fit: BoxFit.fill,
+//                        ),),
+//                      ),
+//                    ],
+//                  ),
 
               ],
             ),

@@ -10,6 +10,7 @@ import 'Myaccountprofile.dart';
 import 'NewLogin.dart';
 import 'OrderTracking.dart';
 import 'Orderdeatail.dart';
+import 'Subcriptionplans.dart';
 import 'TermsConditions.dart';
 class NewMenuScreen extends StatefulWidget {
   @override
@@ -140,9 +141,18 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         leading: Icon(Icons.account_circle,color: Colors.white70),
                         title: Text('MyAccount',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                         onTap: () => {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop()),
-
+                                  setState(() {
+                                    loader=true;
+                                  }),
+                          createSubcriptionlevalState(id,context).whenComplete((){
+                        Navigator.of(context).push(MaterialPageRoute(
+                             builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop());
+                            setState(() {
+                              loader=false;
+                            });
+                        })
+//                        Navigator.of(context).push(MaterialPageRoute(
+//                              builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop()),
                         },
                       ),
                     if(checklogin)
@@ -170,7 +180,8 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
 
                       },
                     ),
-                    for(int i=1;i<=data.length;i++)
+                    //for (int i = 0; i < data.length; i++)
+                    for(int i=0;i<((data!=null)?data.length:0);i++)
                     if(checklogin)
                     ListTile(
                       leading: Icon(Icons.subscriptions,color: Colors.white70),
@@ -179,24 +190,31 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                           setState(() {
                             loader=true;
                           }),
-                        createCancelsubcripState(id,data['$i']["level_id"].toString(),context).whenComplete(() {
+                        createCancelsubcripState(id,data[i]["level_id"].toString(),context).whenComplete(() {
                             setState(() {
                               loader=false;
                             });
                           }),
                         },
                     ),
-                    if(checklogin)
+                    // if(checklogin)
+                    ListTile(
+                      leading: Icon(Icons.notification_important,color: Colors.white70,),
+                      title: Text('Notification',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal),),
+                      onTap: () => {},
+                    ),
+                   // if(checklogin)
                     ListTile(
                       leading: Icon(Icons.inbox,color: Colors.white70),
                       title: Text('Terms & Condition',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                       onTap: () =>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TermsConditions()))
                     ),
-                    if(checklogin)
+
+                    if(checksignbutton)
                     ListTile(
-                      leading: Icon(Icons.notification_important,color: Colors.white70,),
-                      title: Text('Notification',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal),),
-                      onTap: () => {},
+                      leading: Icon(Icons.subscriptions,color: Colors.white70,),
+                      title: Text('Subscription Plans',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal),),
+                        onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Subscriptionplans()))..whenComplete(() =>   Navigator.of(context).pop())
                     ),
                     if(checklogin)
                       ListTile(
@@ -204,19 +222,19 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                           title: Text('My Couponcode',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                           onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Couponcode()))..whenComplete(() =>   Navigator.of(context).pop())
                       ),
-                    if(checklogin)
+                   // if(checklogin)
                     ListTile(
                       leading: Icon(Icons.contact_phone,color: Colors.white70),
-                      title: Text('Contact us',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
+                      title: Text('Contact Page',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                       onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Contact()))..whenComplete(() =>   Navigator.of(context).pop())
                     ),
-                    if(checklogin)
-                    ListTile(
-                      leading: Icon(Icons.settings,color: Colors.white70),
-                      title: Text('Settings',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
-                      //onTap: () => {Navigator.of(context).pop()},
-                        //onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Orderdeatail()))..whenComplete(() =>   Navigator.of(context).pop())
-                    ),
+//                    if(checklogin)
+//                    ListTile(
+//                      leading: Icon(Icons.settings,color: Colors.white70),
+//                      title: Text('Settings',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
+//                      //onTap: () => {Navigator.of(context).pop()},
+//                        //onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Orderdeatail()))..whenComplete(() =>   Navigator.of(context).pop())
+//                    ),
                     if(checklogin)
                     ListTile(
                       leading: Icon(Icons.logout,color: Colors.white70),
@@ -378,11 +396,17 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                         fit: BoxFit.fill,
                                       )),
                                   onTap: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) =>
-                                    //             Subscription()));
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
+                                    setState(() {
+                                      loader=true;
+                                    });
+                                    createSubcriptionlevalState(id,context).whenComplete((){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
+                                      setState(() {
+                                        loader=false;
+                                      });
+                                    });
+                                    //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
+
                                   },
                                 ),
                               ),

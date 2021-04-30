@@ -1,3 +1,4 @@
+import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/shared_preferences.dart';
@@ -31,6 +32,7 @@ Future<LoginResponse> createLoginState(
       String userlogin=data['user_login'];
       Sharedpreferences().saveData(email,name,phone,image,country,id,userlogin);
       print(id);
+      createSubcriptionlevalState(id,context);
       //
       // int id = message['ID'];
       // //dynamic data = message['data'];

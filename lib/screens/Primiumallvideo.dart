@@ -53,7 +53,8 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                   child: Align(alignment: Alignment.centerLeft,child: Text("PRIMIUM INTERVIEWS",textAlign: TextAlign.center,style: TextStyle( color: Colors.white, fontSize: 15,fontFamily: 'Montserrat'))),
                 ),
                 Expanded(
-                  child: GridView.count(crossAxisCount: 3,
+                  child:
+                  GridView.count(crossAxisCount: 3,
                     primary: false,
                    // padding: const EdgeInsets.all(16),
                     crossAxisSpacing: 10,
@@ -61,16 +62,6 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                     children: <Widget>[
                   for (int i = 0; i < superherosLength['premium_content'].length; i++)
                     GestureDetector(child:
-                    // CachedNetworkImage(
-                    //     //imageUrl:  jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,
-                    //     imageUrl: superherosLength['premium_content'][i]
-                    //         ['featured_img'],
-                    //     fit: BoxFit.cover,
-                    //     placeholder: (context, url) =>
-                    //         Center(child: CircularProgressIndicator()),
-                    //     errorWidget: (context, url, error) =>
-                    //         Icon(Icons.error),
-                    //   ),
                     Stack(
                       children: [
                         SizedBox.expand(
@@ -93,7 +84,9 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                                 blurRadius: 15.0,
                               ),
                             ]),
-                            child: SizedBox(height:30,child: Text(superherosLength['premium_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
+                            child: SizedBox(height:30,child: Text(superherosLength['premium_content'][i]['post_title'],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
                       ],
                     ),
 

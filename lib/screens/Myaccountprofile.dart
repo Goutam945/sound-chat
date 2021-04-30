@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sound_chat/api/cancel_subcription.dart';
@@ -88,27 +90,51 @@ void initState() {
                 children: [
                   SizedBox(height: 20,),
                   Center(
-                    child: CircleAvatar(
-                      radius: 50,backgroundColor: Colors.green,
-                      child: (_image != null)?ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Container(
-                              height: 100,
-                              width: 100,
-                              child: Image.file(
-                                _image,
-                                fit: BoxFit.cover,
-                              ))):Icon(Icons.account_circle,size: 70,),
-                    ),
-                  ),
+//                      child: CachedNetworkImage(
+//                        imageUrl: image,
+//                        fit: BoxFit.cover,
+//                        placeholder: (context, url) => Center(
+//                            child:
+//                            CircularProgressIndicator()),
+//                        errorWidget:
+//                            (context, url, error) =>
+//                            Icon(Icons.error),
+//                      ),
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => Fullview(image)));
+                      },
+                      child: Container(
+                        width: width * 0.2537,
+                        height: height * 0.1553,
+                          child: CachedNetworkImage(
+                            imageUrl: image,
+                            fit: BoxFit.fill,
+                            imageBuilder: (context, imageProvider) => CircleAvatar(
+                              radius: 50,
+                              backgroundImage: imageProvider,
+                            ),
+                            placeholder: (context, url) => Center(
+                                child:
+                                CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white),
+                      ),
+                  ),),
                   SizedBox(height: 10,),
                   Text(
                     name.toString(),
                     style: TextStyle(fontSize: 16,color: Colors.white),
                   ),
                   SizedBox(height: 5,),
-                  for(int i=1;i<=data.length;i++)
-                  Text( data['$i']["label"].toString(),
+                  for(int i=0;i<((data!=null)?data.length:0);i++)
+                    //for (int i = 0; i < data.length; i++)
+                  Text( data[i]["label"].toString(),
                     style: TextStyle(fontSize: 16,color: Colors.orange,fontStyle: FontStyle.italic),
                   ),
                   SizedBox(height: 5,),
@@ -234,19 +260,20 @@ void initState() {
                         ],
                       ),
                       SizedBox(width: 30,),
-                      for(int i=1;i<=data.length;i++)
+                      for(int i=0;i<((data!=null)?data.length:0);i++)
+                     // for (int i = 0; i < data.length; i++)
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            data['$i']["label"].toString(),
+                            data[i]["label"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
-                            data['$i']["expire_time"].toString(),
+                            data[i]["expire_time"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
-                            data['$i']["start_time"].toString(),
+                            data[i]["start_time"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           GestureDetector(
@@ -254,7 +281,7 @@ void initState() {
                                 setState(() {
                                   loader=true;
                                 }),
-                                createCancelsubcripState(id,data['$i']["level_id"].toString(),context).whenComplete(() {
+                                createCancelsubcripState(id,data[i]["level_id"].toString(),context).whenComplete(() {
                                   setState(() {
                                     loader=false;
                                   });
@@ -514,6 +541,45 @@ void initState() {
             ),
           ),*/
         ],
+      ),
+    );
+  }
+}
+class Fullview extends StatefulWidget {
+  final image;
+  Fullview(this.image);
+  @override
+  _FullImageState createState() => _FullImageState();
+}
+
+class _FullImageState extends State<Fullview> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: Builder(builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+                size: 25,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          }),
+        ),
+        body: Center(
+          child: Container(
+            child: PhotoView(
+              imageProvider: CachedNetworkImageProvider(widget.image),
+            ),
+          ),
+        ),
       ),
     );
   }

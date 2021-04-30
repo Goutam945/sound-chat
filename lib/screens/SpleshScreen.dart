@@ -12,6 +12,7 @@ class SpleshScreen extends StatefulWidget {
 class SplashScreenState extends State<SpleshScreen> {
   String email;
   String name;
+  int id;
 
   @override
   void initState() {
@@ -48,6 +49,7 @@ class SplashScreenState extends State<SpleshScreen> {
           sharedPreferences.getString('email').isNotEmpty) {
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
       }
     });
   }

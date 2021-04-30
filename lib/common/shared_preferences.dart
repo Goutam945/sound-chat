@@ -11,4 +11,8 @@ class Sharedpreferences {
    if(id!=null) sharedPreferences.setInt("id", id);
    if(userlogin!=null) sharedPreferences.setString("userlogin", userlogin);
   }
+//  saveDatalid(int levalid) async {
+//    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+//    if(levalid!=null) sharedPreferences.setInt("levalid", levalid);
+//  }
 }

@@ -4,11 +4,17 @@ import 'package:sound_chat/screens/AllorderDetails.dart';
 
 Future<SubcriptionlevalResponse> createSubcriptionlevalState(
     int userid, context) async {
-  final http.Response response = await http.get(
-      Uri.parse(
-          'https://mintok.com/soundchat/wp-content/plugins/indeed-membership-pro/apigate.php?ihch=wCKu3yKzZSCqvU93SKlvZC1i6v&action=get_user_levels&uid=$userid'),
-      );
-
+//  final http.Response response = await http.get(
+//      Uri.parse(
+//          'https://mintok.com/soundchat/wp-content/plugins/indeed-membership-pro/apigate.php?ihch=wCKu3yKzZSCqvU93SKlvZC1i6v&action=get_user_levels&uid=$userid'),
+//      );
+  final http.Response response = await http.post(
+      Uri.parse('https://mintok.com/soundchat/wp-json/membership-subs/v2'),
+      // headers: <String, String>{"content-type": "application/json"},
+      body: {
+        'user_id': "$userid",
+        'ihch': "wCKu3yKzZSCqvU93SKlvZC1i6v",
+      });
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
 //    int status = data['status'];

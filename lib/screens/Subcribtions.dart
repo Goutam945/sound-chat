@@ -109,7 +109,7 @@ class _SubscriptionState extends State<Subscription> {
                         height: 70,
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: Colors.pink,
+                            color: Colors.orange,
                             borderRadius: BorderRadius.circular(50)),
                         child: Container(
                           padding: EdgeInsets.all(5),
@@ -119,7 +119,7 @@ class _SubscriptionState extends State<Subscription> {
                           child: Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                color: Colors.pink,
+                                color: Colors.orange,
                                 borderRadius: BorderRadius.circular(50)),
                             child: Container(
                               padding: EdgeInsets.all(0),

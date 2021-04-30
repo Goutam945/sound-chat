@@ -14,13 +14,14 @@ class HomeScreen extends StatefulWidget {
 SharedPreferences localStorage;
 class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
   //Storage shareprifrance code
+  int id;
   _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
       if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
+        id = sharedPreferences.getInt('id');
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
-        id = sharedPreferences.getInt('id');
       }
     });
   }
@@ -44,13 +45,12 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
   var Endtime;
   var Endtimemin;
   String show='22:00-23:59';
-  int id;
   var homeslider;
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     _loadSavedData();
+    WidgetsBinding.instance.addObserver(this);
     MediaNotification.setListener('pause', () {
       callAudio("pause");
       stream.pause();
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
     createAllproductState(context);
     createtermsState(context);
     createCoupncodeState(context);
-    createSubcriptionlevalState(id,context);
+   // createSubcriptionlevalState(id,context);
   }
   void state(){
     setState(() {
@@ -1377,9 +1377,13 @@ class _HomeScreenState extends State<HomeScreen>with WidgetsBindingObserver {
                               ),
                               padding: EdgeInsets.only(bottom: 30),
                               onPressed: () {
+                              /*  createSubcriptionlevalState(id,context).whenComplete((){
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => NewMenuScreen()));
-                              },
+                              });*/
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => NewMenuScreen()));
+                                }
                             ),
                           ],
                         ),
