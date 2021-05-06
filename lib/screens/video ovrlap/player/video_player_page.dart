@@ -120,7 +120,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                         children: [
                           Icon(
                             Icons.home,
-                            size: width * 0.13,
+                            size: width * 0.1,
                             color: Color(0xFFE18D13),
                           ),
                           Padding(
@@ -153,7 +153,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                         children: [
                           Icon(
                             Icons.radio,
-                            size: width * 0.12,
+                            size: width * 0.1,
                             color: Color(0xFFE18D13),
                           ),
                           Padding(
@@ -185,7 +185,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                       child: Row(
                         children: [
                           Icon(Icons.live_tv,
-                              size: width * 0.12, color: Color(0xFFE18D13)),
+                              size: width * 0.1, color: Color(0xFFE18D13)),
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Text(
@@ -211,7 +211,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                     IconButton(
                       icon: Icon(
                         Icons.more_vert,
-                        size: width * 0.13,
+                        size: width * 0.12,
                         color: Colors.white,
                       ),
                       padding: EdgeInsets.only(bottom: 30),

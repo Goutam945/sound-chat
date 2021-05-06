@@ -243,6 +243,19 @@ class _DesignLogin extends State<NewLogin> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: height * 0.03189,
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("CONTINUE AS GUEST",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFF66BA5F),
+                          ),
+                          textAlign: TextAlign.center))
                 ],
               ),
             ),

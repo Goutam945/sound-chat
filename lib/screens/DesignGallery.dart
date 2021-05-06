@@ -37,105 +37,7 @@ String email,name;
         children:[ Scaffold(
           backgroundColor: Colors.black,
           appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-          bottomNavigationBar:   Container(
-            height: height * 0.085,
-            color: Color(0xFF780001),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 5,bottom: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.home,
-                          size: width * 0.13,
-                          color: Color(0xFFE18D13),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            "HOME",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                    },
-                  ),
-                  VerticalDivider(
-                    thickness: 1,
-                    color: Color(0xFFB71613),
-                  ),
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.radio,
-                          size: width * 0.12,
-                          color: Color(0xFFE18D13),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            "LISTEN",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                    },
-                  ),
-                  VerticalDivider(
-                    thickness: 1,
-                    color: Color(0xFFB71613),
-                  ),
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(Icons.live_tv,
-                            size: width * 0.12,
-                            color: Color(0xFFE18D13)),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            "WATCH",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      OverlayService().addVideosOverlay(context, VideoPlayerPage());
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.more_vert,
-                      size: width * 0.13,
-                      color: Colors.white,
-                    ),
-                    padding: EdgeInsets.only(bottom: 30),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => NewMenuScreen()));
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
+          bottomNavigationBar:   Bottumnavation(),
           body: (superherosLength != null)
               ? Column(
                   children: [
@@ -174,21 +76,22 @@ String email,name;
                                         padding:
                                             const EdgeInsets.only(top: 10, left: 5),
                                         child: Container(
-                                          width: width * 0.2037,
-                                          height: height * 0.1053,
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(50),
+                                          width: width * 0.2137,
+                                          height: height * 0.1153,
                                             child: CachedNetworkImage(
                                               imageUrl: superherosLength[i]
                                                   ['featured_img'],
-                                              fit: BoxFit.fill,
+                                              fit: BoxFit.cover,
+                                              imageBuilder: (context, imageProvider) => CircleAvatar(
+                                                radius: 50,
+                                                backgroundImage: imageProvider,
+                                              ),
                                               placeholder: (context, url) => Center(
                                                   child:
                                                       CircularProgressIndicator()),
                                               errorWidget: (context, url, error) =>
                                                   Icon(Icons.error),
                                             ),
-                                          ),
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Colors.white),
@@ -386,7 +289,7 @@ String email,name;
                           for (int j = 0; j < superherosLength[imgcount]
                           ['img_gallery_pic'].length; j = j + 4)
                       SizedBox(
-                      height:400,
+                      height:480,
                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

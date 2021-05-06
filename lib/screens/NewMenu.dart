@@ -18,7 +18,8 @@ class NewMenuScreen extends StatefulWidget {
 }
 
 class _NewMenuScreenState extends State<NewMenuScreen> {
-  AudioStream stream = new AudioStream('https://s2.voscast.com:9059/stream');
+  AudioPlayer audioPlayer =
+  new AudioPlayer(playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   String email;
   String name ;
@@ -321,7 +322,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                               fit: BoxFit.fill,
                                             )),
                                         onTap: () {
-                                          stream.stop();
+                                          audioPlayer.pause();
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
@@ -448,7 +449,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                         width: width * 0.36458,
                                         child: Image.asset(
                                           'assets/time.png',
-                                          scale: 2.5,
+                                          //scale: 2.5,
                                         )),
                                     onTap: () {
                                       Navigator.of(context).push(

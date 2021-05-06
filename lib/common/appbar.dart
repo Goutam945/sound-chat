@@ -10,9 +10,15 @@ class Appbar extends PreferredSize {
   Appbar(this.email,this.name);
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return AppBar(flexibleSpace: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.red, Colors.orange],
+        ),
+      ),
+    ),
       automaticallyImplyLeading: false,
-      backgroundColor: Color(0xFFE18D13),
+     // backgroundColor: Color(0xFFE18D13),
       leading: Builder(
           builder: (BuildContext context){
             return IconButton(

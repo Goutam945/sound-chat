@@ -9,7 +9,6 @@ export 'package:sound_chat/screens/video%20ovrlap/OverlayHandlerProvider.dart';
 export 'package:sound_chat/screens/video%20ovrlap/overlay_service.dart';
 export 'package:sound_chat/screens/video%20ovrlap/player/video_player_page.dart';
 export 'package:sound_chat/screens/video%20ovrlap/player/video_player_title_page.dart';
-export 'package:url_audio_stream/url_audio_stream.dart';
 export 'package:youtube_player_flutter/youtube_player_flutter.dart';
 export 'package:sound_chat/screens/DesignLogin.dart';
 export 'package:sound_chat/screens/NewMenu.dart';
@@ -46,6 +45,7 @@ export 'package:sound_chat/api/galley.dart';
 export 'package:sound_chat/screens/DesignForgotpass.dart';
 export 'package:sound_chat/screens/DesignSignup.dart';
 export 'package:sound_chat/screens/DesignPodcastshowplay.dart';
-
+export 'package:audioplayers/audioplayers.dart';
+export 'package:sound_chat/common/bottumnavation.dart';
 
 

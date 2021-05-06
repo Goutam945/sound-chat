@@ -41,15 +41,18 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Colors.black,
-          body: ListView(
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+          ),
+          body: Column(
             children: [
-              Image.asset(
-                "assets/soundpic.png",
-                width: width * 0.316,
-                height: height * 0.1902,
-              ),
+//              Image.asset(
+//                "assets/soundpic.png",
+//                width: width * 0.316,
+//                height: height * 0.1902,
+//              ),
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               for(int i=1;i<=data.length;i++)
                 Padding(
@@ -124,6 +127,16 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                   ),
                 ),
             ],
+          ),
+        ), Positioned(
+          top: AppBar().preferredSize.height*0.1,
+          left: width * 0.39865,
+          child: SizedBox(
+            height: height * 0.13168,
+            width: width * 0.21875,
+            child: Image.asset(
+              'assets/soundpic.png',
+            ),
           ),
         ),
       ]),

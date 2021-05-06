@@ -41,18 +41,25 @@ class _SubscriptionState extends State<Subscription> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Colors.black,
-          body: ListView(
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+          ),
+          body: Column(
             children: [
-              Image.asset(
-                "assets/soundpic.png",
-                width: width * 0.316,
-                height: height * 0.1902,
+//              Image.asset(
+//                "assets/soundpic.png",
+//                width: width * 0.316,
+//                height: height * 0.1902,
+//              ),
+              SizedBox(
+                height: 40,
               ),
               Center(
                   child: Text(
                     "Member Registration",
                     style: TextStyle(
                         fontSize: 19,
+                        fontFamily: 'Montserrat1',
                         color: Color(0xFFE18D13),
                         fontWeight: FontWeight.bold),
                   )),
@@ -63,7 +70,7 @@ class _SubscriptionState extends State<Subscription> {
                   child: Text(
                     "Please choose a subscription plan to begin setting up your account.",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Color(0xFFA79A9A)),
+                    style: TextStyle(fontSize: 16,fontFamily: 'Montserrat1', color: Color(0xFFA79A9A)),
                   )),
               SizedBox(
                 height: 20,
@@ -98,6 +105,7 @@ class _SubscriptionState extends State<Subscription> {
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
+                                    fontFamily: 'Montserrat1',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -141,6 +149,17 @@ class _SubscriptionState extends State<Subscription> {
                   ),
                 ),
             ],
+          ),
+        ),
+        Positioned(
+          top: AppBar().preferredSize.height*0.1,
+          left: width * 0.39865,
+          child: SizedBox(
+            height: height * 0.13168,
+            width: width * 0.21875,
+            child: Image.asset(
+              'assets/soundpic.png',
+            ),
           ),
         ),
       ]),

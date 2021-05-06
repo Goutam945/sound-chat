@@ -171,7 +171,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
             ),
             Form(
               key: formKey,
-              child: ListView(
+              child: Column(
                 children: [
                   SizedBox(height: 10,),
                   Image.asset(
@@ -216,7 +216,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                     ),
                   ),
                   SizedBox(height: 30,),
-                  Container(height: 60,
+                  Container(height: 60,width: width,
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Colors.orange,
 //                      shape: new RoundedRectangleBorder(
@@ -237,7 +237,18 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                       child: Text('Change',style: TextStyle(fontSize: 20),),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 40,),
+                  GestureDetector(
+                      onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                 child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: Image.asset(
+                        "assets/backbutton.png",color: Color(0xFF66BA5F),
+                        fit: BoxFit.fill,
+                      ))),
                 ],
               ),
             ),

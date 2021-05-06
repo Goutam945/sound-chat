@@ -1,5 +1,5 @@
 import 'package:sound_chat/common/index.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'NewLogin.dart';
 class ScheduleDesign extends StatefulWidget {
   @override
@@ -37,7 +37,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
       }
     });
   }
-  AudioStream stream = new AudioStream('https://s2.voscast.com:9059/stream');
+  AudioPlayer audioPlayer =
+  new AudioPlayer(playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
 
   @override
   Widget build(BuildContext context) {
@@ -50,105 +51,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
         children:[ Scaffold(
           backgroundColor: Colors.black,
           appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-          bottomNavigationBar:   Container(
-            height: height * 0.085,
-            color: Color(0xFF780001),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 5,bottom: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.home,
-                          size: width * 0.13,
-                          color: Color(0xFFE18D13),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            "HOME",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                    },
-                  ),
-                  VerticalDivider(
-                    thickness: 1,
-                    color: Color(0xFFB71613),
-                  ),
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.radio,
-                          size: width * 0.12,
-                          color: Color(0xFFE18D13),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            "LISTEN",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
-                    },
-                  ),
-                  VerticalDivider(
-                    thickness: 1,
-                    color: Color(0xFFB71613),
-                  ),
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(Icons.live_tv,
-                            size: width * 0.12,
-                            color: Color(0xFFE18D13)),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Text(
-                            "WATCH",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    onTap: () {
-                      OverlayService().addVideosOverlay(context, VideoPlayerPage());
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.more_vert,
-                      size: width * 0.13,
-                      color: Colors.white,
-                    ),
-                    padding: EdgeInsets.only(bottom: 30),
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => NewMenuScreen()));
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
+          bottomNavigationBar:   Bottumnavation(),
           body: (superherosLength != null)
               ? ListView(
                   children: [
@@ -500,7 +403,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Color(0xFFA79A9A),
-                                    fontSize: width * 0.0438,
+                                    fontSize: width * 0.0428,
                                   ))),
                         ),
                         Container(
@@ -569,7 +472,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                             j++)
                               GestureDetector(
                                 onTap: () {
-                                  stream.stop();
+                                  audioPlayer.pause();
                                   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
                                 },
                                 child: Container(

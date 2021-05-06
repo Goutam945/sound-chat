@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
-    return MaterialApp(debugShowCheckedModeBanner: false,
+    return MaterialApp(debugShowCheckedModeBanner: false,  theme: ThemeData(fontFamily: 'Montserrat1'),
         home: checkinternet
             ? Container(color: Colors.white,
               child: Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
