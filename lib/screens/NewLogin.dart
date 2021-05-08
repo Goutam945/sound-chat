@@ -1,8 +1,12 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sound_chat/common/index.dart';
 
+import 'googlesign.dart';
+GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
 class NewLogin extends StatefulWidget {
   @override
   _DesignLogin createState() => _DesignLogin();
@@ -20,6 +24,14 @@ class _DesignLogin extends State<NewLogin> {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool loader = false;
+
+  FirebaseUser _user;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  bool isSignIn =false;
+  bool google =false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +197,14 @@ class _DesignLogin extends State<NewLogin> {
                   Text("OR", textAlign: TextAlign.center,
                     style: TextStyle(color: Color(0xFFA79A9A), fontSize: 16),),
                   SizedBox(height: 10,),
-                  Container(height: 60,
+                  GestureDetector(
+                      onTap: () {
+                         //signInWithGoogle();
+                        signInWithGoogle().whenComplete((){
+                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
+                         });
+                      },
+                  child:Container(height: 60,
                     color: Colors.indigoAccent,
                     margin: EdgeInsets.symmetric(
                         horizontal: width * 0.07),
@@ -204,7 +223,7 @@ class _DesignLogin extends State<NewLogin> {
                             ))
                       ],
                     ),
-                  ),
+                  )),
                   SizedBox(
                     height: height * 0.0785,
                   ),

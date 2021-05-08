@@ -63,3 +63,4 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.braintreepayments.api:braintree:3.16.1'
 }
+apply plugin: 'com.google.gms.google-services'
