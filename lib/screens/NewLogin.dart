@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sound_chat/common/index.dart';
 
+import 'Googlesign.dart';
+
 class NewLogin extends StatefulWidget {
   @override
   _DesignLogin createState() => _DesignLogin();
@@ -185,24 +187,31 @@ class _DesignLogin extends State<NewLogin> {
                   Text("OR", textAlign: TextAlign.center,
                     style: TextStyle(color: Color(0xFFA79A9A), fontSize: 16),),
                   SizedBox(height: 10,),
-                  Container(height: 60,
-                    color: Colors.indigoAccent,
-                    margin: EdgeInsets.symmetric(
-                        horizontal: width * 0.07),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.google, color: Colors
-                              .white,),
-                        ),
-                        Text("Sign up with Google", textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
+                  GestureDetector(
+                    onTap: (){
+                      signInWithGoogle().whenComplete((){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeScreen()));
+                      });
+                    },
+                    child: Container(height: 60,
+                      color: Colors.indigoAccent,
+                      margin: EdgeInsets.symmetric(
+                          horizontal: width * 0.07),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            icon: Icon(FontAwesomeIcons.google, color: Colors
+                                .white,),
+                          ),
+                          Text("Sign up with Google", textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold
 
-                            ))
-                      ],
+                              ))
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
