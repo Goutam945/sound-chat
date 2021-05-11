@@ -52,6 +52,7 @@
                <category android:name="android.intent.category.DEFAULT" />
                <category android:name="android.intent.category.BROWSABLE" />
                <data android:scheme="com.example.soundchat.braintree" />
+               <action android:name="FLUTTER_NOTIFICATION_CLICK" />
            </intent-filter>
        </activity>
        <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>

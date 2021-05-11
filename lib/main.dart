@@ -1,4 +1,5 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:sound_chat/api/create_order.dart';
 import 'package:sound_chat/api/free_video.dart';
 import 'package:sound_chat/api/schedule.dart';
@@ -16,7 +17,9 @@ import 'api/sendmail.dart';
 import 'api/subcribtion_lable.dart';
 import 'api/termsofservices.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [
@@ -42,6 +45,7 @@ void main() {
     ),
   );
 }
+
 
 class MyApp extends StatefulWidget {
   @override

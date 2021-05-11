@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
 import 'package:sound_chat/api/membership.dart';
@@ -16,6 +17,11 @@ class SplashScreenState extends State<SpleshScreen> {
 
   @override
   void initState() {
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+    _firebaseMessaging.getToken().then((token) {
+      // createFCMTokenState(token);
+      print('token: $token');
+    });
     createVideoState(context);
     createScheduleState(context);
     createGalleryState(context);
