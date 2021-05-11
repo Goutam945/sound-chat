@@ -48,26 +48,6 @@ void initState() {
   _loadSavedData();
   }
 
-  File _image;
-  final picker = ImagePicker();
-
-  Future getImage() async {
-    // final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    //
-    // setState(() {
-    //   if (pickedFile != null) {
-    //     _image = File(pickedFile.path);
-    //     print(_image);
-    //   } else {
-    //     print('No image selected.');
-    //   }
-    // });
-    var choosedimage = await ImagePicker.pickImage(source: ImageSource.gallery);
-    //set source: ImageSource.camera to get image from camera
-    setState(() {
-      _image = choosedimage;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

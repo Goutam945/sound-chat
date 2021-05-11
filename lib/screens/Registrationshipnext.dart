@@ -41,12 +41,14 @@ class _SignupnextPageState extends State<Registrationshipnext> {
 //   });
 // }
   File _image; //variable for choosed file
-
+  final picker = ImagePicker();
   Future<void> getImage() async {
-    var choosedimage = await ImagePicker.pickImage(source: ImageSource.gallery);
+   // var choosedimage = await ImagePicker.pickImage(source: ImageSource.gallery);
+    PickedFile imageFile = await picker.getImage(source: ImageSource.gallery);
     //set source: ImageSource.camera to get image from camera
     setState(() {
-      _image = choosedimage;
+    //  _image = choosedimage;
+      _image = File(imageFile.path);
     });
   }
 

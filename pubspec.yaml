@@ -41,15 +41,18 @@ dependencies:
   flutter_braintree: ^1.1.0+1
   flutter_stripe_payment: ^0.0.12
   connectivity: ^3.0.2
-  audioplayer: ^0.8.1
-  #image_picker: ^0.7.4
-  image_picker: ^0.6.6+1
+#  audioplayer: ^0.8.1
+  image_picker: ^0.7.4
+  #image_picker: ^0.6.6+1
   flutter_html: ^1.2.0
   whatsapp_unilink: ^1.0.0+1
   file_picker: ^1.4.3+2
   audioplayers: ^0.18.3
   shimmer: ^2.0.0
-
+  firebase_messaging:
+  firebase_core:
+  #firebase_auth:
+ # google_sign_in:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
