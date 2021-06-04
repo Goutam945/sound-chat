@@ -58,23 +58,27 @@ class _SignupnextPageState extends State<Registrationshipnext> {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Stack(
-          children:[ Scaffold(
+          children:[
+            Scaffold(
             backgroundColor: Colors.black,
             // appBar: AppBar(
             //   backgroundColor: Color(0xFFE18D13),
             //   //title: Text("Flutter Http Example"),
             // ),
+            appBar: AppBar(
+              backgroundColor: Colors.black,
+            ),
             body:Form(key: formKey,
               child: ListView(
                 children: [
-                  SizedBox(height: 10,),
-                  Image.asset(
-                    "assets/soundpic.png",
-                    width: width * 0.316,
-                    height: height * 0.1902,
-                  ),
+                  // SizedBox(height: 10,),
+                  // Image.asset(
+                  //   "assets/soundpic.png",
+                  //   width: width * 0.316,
+                  //   height: height * 0.1902,
+                  // ),
                  // Center(child: Text("Member Registration",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 40,),
                   Center(child: Text("Complete all fields below to create your account",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
                   SizedBox(height: 20,),
                   Padding(
@@ -243,7 +247,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                       onPressed: () {
                         getImage();
                       },
-                      child: Text('Upload profile photo',style: TextStyle(fontSize: 16,color: Colors.black),),
+                      child: Text('Upload profile',style: TextStyle(fontSize: 16,color: Colors.black),),
                     ),
                   ),
                   Row(
@@ -267,33 +271,37 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                   SizedBox(height: 10,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 80),
-                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        )
-                    ),
-                      onPressed: () {
-                        if (formKey.currentState.validate()) {
-                          createSignUpState(widget.user,widget.lid,
-                              _username.text, widget.email,widget.firtname,widget.lastname,_password.text,widget.phone,widget.country,_coupon.text,_image, context).whenComplete(() {
+                    child: SizedBox(height: 50,
+                      child: ElevatedButton(
+                        style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                          )
+                      ),
+                        onPressed: () {
+                          if (formKey.currentState.validate())
+                          {
                             setState(() {
-                              loader=false;
+                              loader=true;
                             });
-                            // Navigator.of(context).push(
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //         (widget.user['payment_type']=='payment')?PaymentDetailsMember(widget.user,widget.lid):DesignLogin()));
-                          });
-                          setState(() {
-                            loader=true;
-                          });
-                        }
-                        // Navigator.of(context).push(
-                        //     MaterialPageRoute(
-                        //         builder: (context) =>
-                        //         (widget.user['payment_type']=='payment')?PaymentDetailsMember(widget.user,widget.lid):DesignLogin()));
-                      },
-                      child: Text('Continue',style: TextStyle(fontSize: 16),),
+                            createSignUpState(widget.user,widget.lid,
+                                _username.text, widget.email,widget.firtname,widget.lastname,_password.text,widget.phone,widget.country,_coupon.text,_image, context).whenComplete(() {
+                              setState(() {
+                                loader=false;
+                              });
+                              // Navigator.of(context).push(
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //         (widget.user['payment_type']=='payment')?PaymentDetailsMember(widget.user,widget.lid):DesignLogin()));
+                            });
+                          }
+                          // Navigator.of(context).push(
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //         (widget.user['payment_type']=='payment')?PaymentDetailsMember(widget.user,widget.lid):DesignLogin()));
+                        },
+                        child: Text('Continue',style: TextStyle(fontSize: 16),),
+                      ),
                     ),
                   ),
                   SizedBox(height: 20,),
@@ -443,18 +451,18 @@ class _SignupnextPageState extends State<Registrationshipnext> {
 
 
           ),
-            if(loader)Center(child: CircularProgressIndicator(),)
-            /* Positioned(
-              top: AppBar().preferredSize.height*0.2,
+            if(loader)Center(child: CircularProgressIndicator(),),
+            Positioned(
+              top: AppBar().preferredSize.height*0.1,
               left: width * 0.39865,
               child: SizedBox(
-                height: height * 0.12168,
+                height: height * 0.13168,
                 width: width * 0.21875,
                 child: Image.asset(
                   'assets/soundpic.png',
                 ),
               ),
-            ),*/
+            ),
           ]
       ),
     );

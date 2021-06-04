@@ -25,7 +25,8 @@ class _ShoppingState extends State<Shopping> {
         Scaffold(
             backgroundColor: Colors.black,
             appBar: PreferredSize(child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
-            body:(product != null)? Column(
+          bottomNavigationBar:   Bottumnavation(),
+          body:(product != null)? Column(
               children: [
                 SizedBox(height: 10,),
                 Expanded(
@@ -48,7 +49,7 @@ class _ShoppingState extends State<Shopping> {
                                     child: Opacity(
                                       opacity: 1,
                                       child: CachedNetworkImage(
-                                        imageUrl:product[i]['images'][0]['src'],
+                                        imageUrl:product[i]['image'],
                                         fit: BoxFit.cover,
                                         placeholder: (context, url) => Center(
                                             child: CircularProgressIndicator()),
@@ -59,7 +60,7 @@ class _ShoppingState extends State<Shopping> {
                                   ),
                                 ),
                                 SizedBox(height: 20,
-                                  child: Text(product[i]['name'],
+                                  child: Text(product[i]['title'],
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.normal,
@@ -67,7 +68,7 @@ class _ShoppingState extends State<Shopping> {
                                     ),
                                   ),
                                 ),
-                                Text("\$"+product[i]['price'],
+                                Text("\$"+product[i]['Price'],
                                   style: TextStyle(
                                     color: Colors.red,
                                     fontWeight: FontWeight.normal,

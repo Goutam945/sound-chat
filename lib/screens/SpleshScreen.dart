@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
 import 'package:sound_chat/api/membership.dart';
+import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/api/search_api.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/termsofservices.dart';
@@ -14,6 +15,7 @@ class SplashScreenState extends State<SpleshScreen> {
   String email;
   String name;
   int id;
+  int sliderid;
 
   @override
   void initState() {
@@ -23,9 +25,10 @@ class SplashScreenState extends State<SpleshScreen> {
       print('token: $token');
     });
     createVideoState(context);
+    createPhoneinterviewState(context);
     createScheduleState(context);
     createGalleryState(context);
-    createHomesliderState(context);
+    createHomesliderState(sliderid,context);
     createtermsState(context);
     createMembershipState(context);
     createCoupncodeState(context);

@@ -303,23 +303,25 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 80),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF8E0E14),
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0),
-                      )),
-                  onPressed: () {
-                    addCard().whenComplete(() => createIntent(double.parse(widget.subscription['price'])).whenComplete(() =>
-                        authPayment(double.parse(widget.subscription['price'])) /*.whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(paymentResponse1.status == PaymentResponseStatus.succeeded)?SuccessScreen():FailedScreen())))*/));
-                    // Navigator.of(context).push(
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             PaymentDetailsMembernext()));
-                  },
-                  child: Text(
-                    'Pay \$${widget.subscription['price']}',
-                    style: TextStyle(fontSize: 16),
+                child: SizedBox(height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Color(0xFF8E0E14),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        )),
+                    onPressed: () {
+                      addCard().whenComplete(() => createIntent(double.parse(widget.subscription['price'])).whenComplete(() =>
+                          authPayment(double.parse(widget.subscription['price'])) /*.whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(paymentResponse1.status == PaymentResponseStatus.succeeded)?SuccessScreen():FailedScreen())))*/));
+                      // Navigator.of(context).push(
+                      //     MaterialPageRoute(
+                      //         builder: (context) =>
+                      //             PaymentDetailsMembernext()));
+                    },
+                    child: Text(
+                      'Pay \$${widget.subscription['price']}',
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ),
               ),

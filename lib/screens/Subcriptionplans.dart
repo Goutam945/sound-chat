@@ -44,7 +44,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
           appBar: AppBar(
             backgroundColor: Colors.black,
           ),
-          body: Column(
+          body: ListView(
             children: [
 //              Image.asset(
 //                "assets/soundpic.png",

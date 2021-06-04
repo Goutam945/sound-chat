@@ -19,8 +19,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
   void initState() {
     super.initState();
     setState(() {
-      weekday = DateTime.now().weekday - 1;
-      if (weekday == -1) weekday = 6;
+      // weekday = DateTime.now().weekday - 1;
+      // if (weekday == -1) weekday = 6;
+      weekday =7- DateTime.now().weekday;
     });
     _loadSavedData();
   }
@@ -66,7 +67,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                         ),
                         Container(
                           color: Color(0xFF252525),
-                          height: height * 0.1024,
+                          height: height * 0.1224,
                           width: width,
                           child: Padding(
                             padding: const EdgeInsets.only(top: 40),
@@ -113,13 +114,13 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                     setState(() {
                                       dropdownValue = newValue;
 
-                                      if (dropdownValue == 'Sunday') weekday = 6;
-                                      if (dropdownValue == 'Monday') weekday = 0;
-                                      if (dropdownValue == 'Tuesday') weekday = 1;
-                                      if (dropdownValue == 'Wednesday') weekday = 2;
+                                      if (dropdownValue == 'Sunday') weekday = 0;
+                                      if (dropdownValue == 'Monday') weekday = 6;
+                                      if (dropdownValue == 'Tuesday') weekday = 5;
+                                      if (dropdownValue == 'Wednesday') weekday = 4;
                                       if (dropdownValue == 'Thursday') weekday = 3;
-                                      if (dropdownValue == 'Friday') weekday = 4;
-                                      if (dropdownValue == 'Saturday') weekday = 5;
+                                      if (dropdownValue == 'Friday') weekday = 2;
+                                      if (dropdownValue == 'Saturday') weekday = 1;
                                     });
                                   },
                                   items: <String>[
@@ -161,13 +162,10 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                           GestureDetector(
                                             onTap: () {
                                               audioPlayer.pause();
-
-                                              // Navigator.of(context).push(
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) =>
-                                              //             PodcastPlayCloud(
-                                              //                 j, weekday)));
-                                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
+                                              Navigator.push(context,
+                                                  PageTransition(type:
+                                                  PageTransitionType.rightToLeft, child:(email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
+                                              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
                                             },
                                             child: Container(
                                              // padding: const EdgeInsets.only(top: 5),

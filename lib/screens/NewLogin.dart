@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sound_chat/common/index.dart';
 
 class NewLogin extends StatefulWidget {
@@ -21,6 +23,31 @@ class _DesignLogin extends State<NewLogin> {
   final TextEditingController _password = TextEditingController();
   bool loader = false;
 
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  Future<void> signInWithGoogle() async {
+    final googleSignIn = GoogleSignIn();
+    final googleUser = await googleSignIn.signIn();
+    if (googleUser != null) {
+      final googleAuth = await googleUser.authentication;
+      if (googleAuth.idToken != null) {
+        final userCredential = await _firebaseAuth.signInWithCredential(
+          GoogleAuthProvider.credential(
+              idToken: googleAuth.idToken, accessToken: googleAuth.accessToken),
+        );
+        print(googleAuth.idToken);
+        return userCredential.user;
+      }
+    } else {
+      throw FirebaseAuthException(
+        message: "Sign in aborded by user",
+        code: "ERROR_ABORDER_BY_USER",
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery
@@ -34,32 +61,6 @@ class _DesignLogin extends State<NewLogin> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-//          body: Center(
-//            child: Container(
-//              constraints: BoxConstraints.expand(),
-//              decoration: BoxDecoration(
-//                  image: DecorationImage(
-//                      image: NetworkImage(
-//                          "https://flutter-examples.com/wp-content/uploads/2020/02/dice.jpg"),
-//                      fit: BoxFit.cover)),
-//              child: ClipRRect(
-//                child: BackdropFilter(
-//                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-//                  child: Container(
-//                    alignment: Alignment.center,
-//                    color: Colors.grey.withOpacity(0.1),
-//                    child: Text(
-//                      "Blur Background Image in Flutter",
-//                      textAlign: TextAlign.center,
-//                      style:
-//                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-//                    ),
-//                  ),
-//                ),
-//              ),
-//            ),
-//          )
-
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -112,7 +113,7 @@ class _DesignLogin extends State<NewLogin> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'Username',
+                          hintText: 'Username/Mobilenumber',
                           hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
@@ -142,8 +143,9 @@ class _DesignLogin extends State<NewLogin> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DesignForgotpass()));
+                      Navigator.push(context,
+                          PageTransition(type:
+                          PageTransitionType.rightToLeft, child: DesignForgotpass()));
                     },
                        child: Padding(
                           padding:
@@ -185,24 +187,35 @@ class _DesignLogin extends State<NewLogin> {
                   Text("OR", textAlign: TextAlign.center,
                     style: TextStyle(color: Color(0xFFA79A9A), fontSize: 16),),
                   SizedBox(height: 10,),
-                  Container(height: 60,
-                    color: Colors.indigoAccent,
-                    margin: EdgeInsets.symmetric(
-                        horizontal: width * 0.07),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(FontAwesomeIcons.google, color: Colors
-                              .white,),
-                        ),
-                        Text("Sign up with Google", textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
+                  GestureDetector(
+                    onTap: (){
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => Googlesigninuser()));
+                      signInWithGoogle().whenComplete((){
+                        Navigator.push(context,
+                            PageTransition(type:
+                            PageTransitionType.rightToLeft, child: HomeScreen()));
+                      });
+                    },
+                    child: Container(height: 60,
+                      color: Colors.indigoAccent,
+                      margin: EdgeInsets.symmetric(
+                          horizontal: width * 0.07),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            icon: Icon(FontAwesomeIcons.google, color: Colors
+                                .white,),
+                          ),
+                          Text("Sign up with Google", textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold
 
-                            ))
-                      ],
+                              ))
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -222,8 +235,9 @@ class _DesignLogin extends State<NewLogin> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Subscription()));
+                          Navigator.push(context,
+                              PageTransition(type:
+                              PageTransitionType.rightToLeft, child: Subscription()));
                         },
                         child: Column(
                           children: [
@@ -267,3 +281,4 @@ class _DesignLogin extends State<NewLogin> {
     );
   }
 }
+

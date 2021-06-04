@@ -39,19 +39,18 @@ class _SignupPageState extends State<Registrationship> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Colors.black,
-          // appBar: AppBar(
-          //   backgroundColor: Color(0xFFE18D13),
-          //   //title: Text("Flutter Http Example"),
-          // ),
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+          ),
           body: Form(
             key: formKey,
             child: ListView(
               children: [
-                Image.asset(
-                  "assets/soundpic.png",
-                  width: width * 0.316,
-                  height: height * 0.1902,
-                ),
+                // Image.asset(
+                //   "assets/soundpic.png",
+                //   width: width * 0.316,
+                //   height: height * 0.1902,
+                // ),
 //                Center(
 //                    child: Text(
 //                      "Member Registration",
@@ -61,7 +60,7 @@ class _SignupPageState extends State<Registrationship> {
 //                          fontWeight: FontWeight.bold),
 //                    )),
                 SizedBox(
-                  height: 10,
+                  height: 40,
                 ),
                 Center(
                     child: Text(
@@ -329,34 +328,36 @@ class _SignupPageState extends State<Registrationship> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 95),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF8E0E14),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        )),
-                    onPressed: () {
-                      if (formKey.currentState.validate())
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Registrationshipnext(
-                                widget.lid,
-                                widget.user,
-                                _firstname.text,
-                                _lastname.text,
-                                _email.text,
-                                _phone.text,
-                                _country.text)));
-                    },
-                    child: Text(
-                      'Continue',
-                      style: TextStyle(fontSize: 16),
+                  child: SizedBox(height: 50,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color(0xFF8E0E14),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                          )),
+                      onPressed: () {
+                        if (formKey.currentState.validate())
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Registrationshipnext(
+                                  widget.lid,
+                                  widget.user,
+                                  _firstname.text,
+                                  _lastname.text,
+                                  _email.text,
+                                  _phone.text,
+                                  _country.text)));
+                      },
+                      child: Text(
+                        'Continue',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Container(
+                /*Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(50)),
@@ -376,7 +377,7 @@ class _SignupPageState extends State<Registrationship> {
                               fontWeight: FontWeight.bold))
                     ],
                   ),
-                )
+                )*/
 
                 /* Column(
                     children: [
@@ -497,17 +498,17 @@ class _SignupPageState extends State<Registrationship> {
             ),
           ),
         ),
-        /*Positioned(
-              top: AppBar().preferredSize.height*0.2,
-              left: width * 0.39865,
-              child: SizedBox(
-                height: height * 0.12168,
-                width: width * 0.21875,
-                child: Image.asset(
-                  'assets/soundpic.png',
-                ),
-              ),
-            ),*/
+        Positioned(
+          top: AppBar().preferredSize.height*0.1,
+          left: width * 0.39865,
+          child: SizedBox(
+            height: height * 0.13168,
+            width: width * 0.21875,
+            child: Image.asset(
+              'assets/soundpic.png',
+            ),
+          ),
+        ),
       ]),
     );
   }

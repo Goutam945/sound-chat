@@ -80,7 +80,7 @@ String email,name;
                                           height: height * 0.1153,
                                             child: CachedNetworkImage(
                                               imageUrl: superherosLength[i]
-                                                  ['featured_img'],
+                                                  ['feature_img'],
                                               fit: BoxFit.cover,
                                               imageBuilder: (context, imageProvider) => CircleAvatar(
                                                 radius: 50,

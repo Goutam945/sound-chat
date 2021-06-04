@@ -100,17 +100,19 @@ class _PaymentDetailsMembernextPageState extends State<PaymentDetailsMembernext>
                 SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80),
-                  child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0),
-                      )),
-                    onPressed: () {
-                      // Navigator.of(context).push(
-                      //     MaterialPageRoute(
-                      //         builder: (context) =>
-                      //             PaymentDetailsMember()));
-                    },
-                    child: Text('Continue',style: TextStyle(fontSize: 16),),
+                  child: SizedBox(height: 50,
+                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        )),
+                      onPressed: () {
+                        // Navigator.of(context).push(
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             PaymentDetailsMember()));
+                      },
+                      child: Text('Continue',style: TextStyle(fontSize: 16),),
+                    ),
                   ),
                 ),
 

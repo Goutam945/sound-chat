@@ -20,12 +20,14 @@ class _ScheduleDesign extends State<ScheduleDesign> {
     super.initState();
     _loadSavedData();
     setState(() {
-      weekday = DateTime.now().weekday - 1;
-      if (weekday == -1) weekday = 6;
-
-      day=DateTime.now().weekday-1;
-      if(day==-1)
-        day=6;
+      // weekday = DateTime.now().weekday - 1;
+      // if (weekday == -1) weekday = 6;
+      //
+      // day=DateTime.now().weekday-1;
+      // if(day==-1)
+      //   day=6;
+      weekday = 7- DateTime.now().weekday;
+      day= 7- DateTime.now().weekday;
     });
   }
   _loadSavedData() async{
@@ -120,16 +122,18 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                           child: SizedBox(
                                               width: 120,
                                               child: Center(
-                                                child: Text(
-                                                  superherosLength[weekday]
-                                                          ['shows'][j]['show_name']
-                                                      .toString(),
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 14,
-                                                    fontStyle: FontStyle.italic,
+                                                child: SizedBox(height: 20,
+                                                  child: Text(
+                                                    superherosLength[weekday]
+                                                            ['shows'][j]['show_name']
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14,
+                                                      fontStyle: FontStyle.italic,
+                                                    ),
+                                                    textAlign: TextAlign.center,
                                                   ),
-                                                  textAlign: TextAlign.center,
                                                 ),
                                               )),
                                         ),
@@ -392,6 +396,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                           ],
                         ),
                       ),*/
+
                     Row(
                       children: [
                         Container(
@@ -425,13 +430,20 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                 setState(() {
                                   dropdownValue = newValue;
 
-                                  if (dropdownValue == 'Sunday') day = 6;
+                                 /* if (dropdownValue == 'Sunday') day = 6;
                                   if (dropdownValue == 'Monday') day = 0;
                                   if (dropdownValue == 'Tuesday') day = 1;
                                   if (dropdownValue == 'Wednesday') day = 2;
                                   if (dropdownValue == 'Thursday') day = 3;
                                   if (dropdownValue == 'Friday') day = 4;
-                                  if (dropdownValue == 'Saturday') day = 5;
+                                  if (dropdownValue == 'Saturday') day = 5;*/
+                                  if (dropdownValue == 'Sunday') day = 0;
+                                  if (dropdownValue == 'Saturday') day = 1;
+                                  if (dropdownValue == 'Friday') day = 2;
+                                  if (dropdownValue == 'Thursday') day = 3;
+                                  if (dropdownValue == 'Wednesday') day = 4;
+                                  if (dropdownValue == 'Tuesday') day = 5;
+                                  if (dropdownValue == 'Monday') day = 6;
                                 });
                               },
                               items: <String>[
@@ -473,8 +485,12 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                               GestureDetector(
                                 onTap: () {
                                   audioPlayer.pause();
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
-                                },
+                                  //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
+
+                                  Navigator.push(context,
+                                      PageTransition(type:
+                                      PageTransitionType.rightToLeft, child: (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
+                                  },
                                 child: Container(
                                   // padding: const EdgeInsets.only(top: 5),
                                   margin: const EdgeInsets.only(top: 5),

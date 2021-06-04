@@ -33,8 +33,13 @@ class Bottumnavation extends StatelessWidget {
                 ],
               ),
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => HomeScreen()));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => HomeScreen()));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
+                    ModalRoute.withName('/')
+                );
               },
             ),
             VerticalDivider(
@@ -60,8 +65,13 @@ class Bottumnavation extends StatelessWidget {
                 ],
               ),
               onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => HomeScreen()));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => HomeScreen()));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
+                    ModalRoute.withName('/')
+                );
               },
             ),
             VerticalDivider(
@@ -96,8 +106,13 @@ class Bottumnavation extends StatelessWidget {
               ),
               padding: EdgeInsets.only(bottom: 30),
               onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => NewMenuScreen()));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //     builder: (context) => NewMenuScreen()));
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) => NewMenuScreen()),
+                    ModalRoute.withName('/')
+                );
               },
             ),
           ],

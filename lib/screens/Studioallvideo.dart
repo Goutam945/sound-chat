@@ -56,7 +56,7 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                               child: Container(
                                 child: Opacity(opacity: 0.8,
                                   child: CachedNetworkImage(
-                                    imageUrl: superherosLength['free_content'][i]['featured_img'],fit: BoxFit.cover,
+                                    imageUrl: superherosLength['free_content'][i]['feature_img'],fit: BoxFit.cover,
 
                                     placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                                     errorWidget: (context, url, error) => Icon(Icons.error),
@@ -82,7 +82,7 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           InterviewNewPlayer(
-                                              superherosLength['free_content'][i]['free_video_url'],superherosLength['free_content'][i]['post_title'])));
+                                              superherosLength['free_content'][i]['video_url'],superherosLength['free_content'][i]['post_title'])));
                             });
                           },
 

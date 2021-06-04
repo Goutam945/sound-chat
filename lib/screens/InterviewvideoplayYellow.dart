@@ -130,7 +130,7 @@ class _InterviewDesign extends State<InterviewPlay> {
               SingleChildScrollView(padding: EdgeInsets.all(5),  scrollDirection: Axis.horizontal,
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    for (int i = 0; i < superherosLength['category'][0]['The big yellow tent'].length; i++)
+                    for (int i = 0; i < superherosLength['yellow_content'].length; i++)
                       Row(
                         children: [
 
@@ -140,7 +140,7 @@ class _InterviewDesign extends State<InterviewPlay> {
     child: ClipRRect(borderRadius: BorderRadius.circular(10),
                               child: GestureDetector(child:
                           CachedNetworkImage(
-                            imageUrl: superherosLength['category'][0]['The big yellow tent'][i]['details']['featured_img'],fit: BoxFit.fill,
+                            imageUrl: superherosLength['yellow_content'][i]['feature_img'],fit: BoxFit.fill,
                             placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) => Icon(Icons.error),
                           ),
@@ -148,9 +148,9 @@ class _InterviewDesign extends State<InterviewPlay> {
 
                             onTap: (){
                               setState(() {
-                                url = superherosLength['category'][0]['The big yellow tent'][i]['details']['free_video_url'];
-                                imageUrl=superherosLength['category'][0]['The big yellow tent'][i]['details']['featured_img'];
-                                titlepost=superherosLength['category'][0]['The big yellow tent'][i]['details']['post_title'];
+                                url =  superherosLength['yellow_content'][i]['video_url'];
+                                imageUrl= superherosLength['yellow_content'][i]['feature_img'];
+                                titlepost= superherosLength['yellow_content'][i]['post_title'];
                                 //isTrue = true;
                                 isTrue =false;
                               });

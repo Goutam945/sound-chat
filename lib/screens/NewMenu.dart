@@ -10,6 +10,7 @@ import 'Myaccountprofile.dart';
 import 'NewLogin.dart';
 import 'OrderTracking.dart';
 import 'Orderdeatail.dart';
+import 'SocketExample.dart';
 import 'Subcriptionplans.dart';
 import 'TermsConditions.dart';
 class NewMenuScreen extends StatefulWidget {
@@ -132,9 +133,6 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       ),
                       decoration: BoxDecoration(
                           color: Color(0xFFE18D13),
-                          // image: DecorationImage(
-                          //     fit: BoxFit.fill,
-                          //     image: AssetImage('assets/images/cover.jpg'))
                       ),
                     ),
                     if(checklogin)
@@ -142,18 +140,18 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         leading: Icon(Icons.account_circle,color: Colors.white70),
                         title: Text('MyAccount',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                         onTap: () => {
-                                  setState(() {
+                                  /*setState(() {
                                     loader=true;
                                   }),
                           createSubcriptionlevalState(id,context).whenComplete((){
                         Navigator.of(context).push(MaterialPageRoute(
                              builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop());
-                            setState(() {
+                        setState(() {
                               loader=false;
                             });
-                        })
-//                        Navigator.of(context).push(MaterialPageRoute(
-//                              builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop()),
+                        })*/
+                       Navigator.of(context).push(MaterialPageRoute(
+                             builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop()),
                         },
                       ),
                     if(checklogin)
@@ -176,9 +174,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                       leading: Icon(Icons.location_on,color: Colors.white70),
                       title: Text('Order Tracking',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                       onTap: () => {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => StepperDemo())).whenComplete(() =>   Navigator.of(context).pop()),
-
+                        Navigator.push(context,
+                            PageTransition(type:
+                            PageTransitionType.rightToLeft, child: StepperDemo()))..whenComplete(() =>   Navigator.of(context).pop())
                       },
                     ),
                     //for (int i = 0; i < data.length; i++)
@@ -202,32 +200,49 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                     ListTile(
                       leading: Icon(Icons.notification_important,color: Colors.white70,),
                       title: Text('Notification',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal),),
-                      onTap: () => {},
+                      onTap: () => {
+                        Navigator.push(context,
+                            PageTransition(type:
+                            PageTransitionType.rightToLeft, child: ChatPage()))..whenComplete(() =>   Navigator.of(context).pop())
+                      },
                     ),
                    // if(checklogin)
                     ListTile(
                       leading: Icon(Icons.inbox,color: Colors.white70),
                       title: Text('Terms & Condition',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
-                      onTap: () =>Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TermsConditions()))
+                      onTap: () => Navigator.push(context,
+                                   PageTransition(type:
+                                  PageTransitionType.rightToLeft, child: TermsConditions()))..whenComplete(() =>   Navigator.of(context).pop())
                     ),
 
                     if(checksignbutton)
                     ListTile(
                       leading: Icon(Icons.subscriptions,color: Colors.white70,),
                       title: Text('Subscription Plans',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal),),
-                        onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Subscriptionplans()))..whenComplete(() =>   Navigator.of(context).pop())
+                        onTap: () =>
+                                   Navigator.push(context,
+                                    PageTransition(type:
+                                     PageTransitionType.rightToLeft, child: Subscriptionplans()))..whenComplete(() =>   Navigator.of(context).pop())
                     ),
                     if(checklogin)
                       ListTile(
                           leading: Icon(Icons.menu_book,color: Colors.white70),
                           title: Text('My Couponcode',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
-                          onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Couponcode()))..whenComplete(() =>   Navigator.of(context).pop())
+                          onTap: () =>
+                                       Navigator.push(context,
+                                       PageTransition(type:
+                                       PageTransitionType.rightToLeft, child: Couponcode()))..whenComplete(() =>   Navigator.of(context).pop())
                       ),
                    // if(checklogin)
                     ListTile(
                       leading: Icon(Icons.contact_phone,color: Colors.white70),
                       title: Text('Contact Page',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
-                      onTap: () =>  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Contact()))..whenComplete(() =>   Navigator.of(context).pop())
+                      onTap: () => Navigator.push(context,
+                                    PageTransition(type:
+                                    PageTransitionType.rightToLeft, child: Contact()))..whenComplete(() =>   Navigator.of(context).pop())
+
+
+
                     ),
 //                    if(checklogin)
 //                    ListTile(
@@ -250,7 +265,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                         title: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.normal)),
                         onTap: (){
                          // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DesignLogin()));
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>NewLogin()));
+                        Navigator.push(context,
+                            PageTransition(type:
+                            PageTransitionType.rightToLeft, child: NewLogin()));
                         },
 
                     ),
@@ -289,10 +306,12 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                           fit: BoxFit.fill,
                                         )),
                                     onTap: () {
-                                      // Navigator.of(context).push(MaterialPageRoute(
-                                      //     builder: (context) => LivechatRoom()));
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():LivechatRoom()));
-                                    },
+                                     // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():LivechatRoom()));
+                                      Navigator.push(context,
+                                          PageTransition(type:
+                                          PageTransitionType.rightToLeft, child: (email==null)?NewLogin():LivechatRoom()));
+
+                                      },
                                   ),
                                 ],
                               ),
@@ -323,10 +342,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                             )),
                                         onTap: () {
                                           audioPlayer.pause();
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AllHomeInterview()));
+                                          Navigator.push(context,
+                                              PageTransition(type:
+                                              PageTransitionType.rightToLeft, child: AllHomeInterview()));
                                         },
                                       ),
                                     ],
@@ -361,10 +379,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                           fit: BoxFit.fill,
                                         )),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                              Shopping()));
+                                      Navigator.push(context,
+                                          PageTransition(type:
+                                          PageTransitionType.rightToLeft, child: Shopping()));
                                     },
                                   ),
                                   GestureDetector(
@@ -376,10 +393,13 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                           fit: BoxFit.fill,
                                         )),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  GalleryDesign()));
+                                      // Navigator.of(context).push(
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             GalleryDesign()));
+                                      Navigator.push(context,
+                                          PageTransition(type:
+                                          PageTransitionType.rightToLeft, child: GalleryDesign()));
                                     },
                                   ),
                                 ],
@@ -397,16 +417,19 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                         fit: BoxFit.fill,
                                       )),
                                   onTap: () {
-                                    setState(() {
+                                    /*setState(() {
                                       loader=true;
                                     });
                                     createSubcriptionlevalState(id,context).whenComplete((){
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
+                                      Navigator.push(context,
+                                          PageTransition(type:
+                                          PageTransitionType.rightToLeft, child:(email==null)?NewLogin():MyAccount(email,name)));
+
                                       setState(() {
                                         loader=false;
                                       });
-                                    });
-                                    //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
+                                    });*/
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
 
                                   },
                                 ),
@@ -430,10 +453,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                       ),
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PodcastSchedule()));
+                                      Navigator.push(context,
+                                          PageTransition(type:
+                                          PageTransitionType.rightToLeft, child: PodcastSchedule()));
                                     },
                                   ),
                                 ],
@@ -452,10 +474,9 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                                           //scale: 2.5,
                                         )),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ScheduleDesign()));
+                                      Navigator.push(context,
+                                          PageTransition(type:
+                                          PageTransitionType.rightToLeft, child: ScheduleDesign()));
                                     },
 
                                   ),

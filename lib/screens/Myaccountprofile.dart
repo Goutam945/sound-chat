@@ -185,9 +185,14 @@ void initState() {
                             'Password:',
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
+                          Text(
+                            'Update Profile:',
+                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                          ),
+
                         ],
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(width: 10,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -209,6 +214,18 @@ void initState() {
                             },
                             child: Text(
                               "Change Password",
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                  color: Color(0xFF8E0E14), fontSize: 16),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => DesignUpdate()));
+                            },
+                            child: Text(
+                              "upgrade profile",
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                   color: Color(0xFF8E0E14), fontSize: 16),

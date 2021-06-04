@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 import 'package:sound_chat/common/index.dart';
 class DesignUpdate extends StatefulWidget {
   @override
@@ -211,7 +214,17 @@ class _DesignUpdate extends State<DesignUpdate> {
     super.initState();
     _loadSavedData();
   }
-
+  File _image; //variable for choosed file
+  final picker = ImagePicker();
+  Future<void> getImage() async {
+    PickedFile imageFile = await picker.getImage(source: ImageSource.gallery);
+    //var choosedimage = await ImagePicker.pickImage(source: ImageSource.gallery);
+    //set source: ImageSource.camera to get image from camera
+    setState(() {
+      //_image = choosedimage;
+      _image = File(imageFile.path);
+    });
+  }
 
   _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -225,11 +238,11 @@ class _DesignUpdate extends State<DesignUpdate> {
     });
   }
   //Future<SignUpResponse> _futureJwt;
-  final TextEditingController _firstname = TextEditingController();
-  final TextEditingController _lastname = TextEditingController();
+  final TextEditingController _username = TextEditingController();
   final TextEditingController _email = TextEditingController();
-  final TextEditingController _nicke = TextEditingController();
-  final TextEditingController _displayname = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _country = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -265,7 +278,7 @@ class _DesignUpdate extends State<DesignUpdate> {
                         borderSide: const BorderSide(color: Colors.white, width: 2.0),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
-                        labelText: "First Name",
+                        labelText: " Username",
                         labelStyle: TextStyle(
                           color:Color(0xFFA79A9A),
                         ),
@@ -274,48 +287,13 @@ class _DesignUpdate extends State<DesignUpdate> {
                           borderSide: const BorderSide(color: Colors.white, width: 2.0),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        hintText: 'First Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                        hintText: 'Userame:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                         suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
 
                       ),
-                      controller: _firstname,
+                      controller: _username,
                       validator: Validators.required(
-                          'Name is required'),
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
-                      decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),errorBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ) ,disabledBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),focusedErrorBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                        labelText: "Last Name",
-                        labelStyle: TextStyle(
-                          color:Color(0xFFA79A9A),
-                        ),
-                        fillColor: Colors.white,
-                        focusedBorder:OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                        hintText: 'Last Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
-
-                      ),
-                      controller: _lastname,
-                      validator: Validators.required(
-                          'Last Name is required'),
+                          'Userame required'),
                     ),
                   ),
                   SizedBox(height: 20,),
@@ -345,12 +323,12 @@ class _DesignUpdate extends State<DesignUpdate> {
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         hintText: 'Email:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        suffixIcon: Icon(Icons.alternate_email_outlined,color: Color(0xFFA79A9A),),
+                        suffixIcon: Icon(Icons.email_outlined,color: Color(0xFFA79A9A),),
 
                       ),
                       controller: _email,
                       validator: Validators.required(
-                          'email is required'),
+                          'Email required'),
                     ),
                   ),
                   SizedBox(height: 20,),
@@ -370,7 +348,7 @@ class _DesignUpdate extends State<DesignUpdate> {
                         borderSide: const BorderSide(color: Colors.white, width: 2.0),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
-                        labelText: "Nicke Name",
+                        labelText: "phone",
                         labelStyle: TextStyle(
                           color:Color(0xFFA79A9A),
                         ),
@@ -379,11 +357,46 @@ class _DesignUpdate extends State<DesignUpdate> {
                           borderSide: const BorderSide(color: Colors.white, width: 2.0),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        hintText: 'Nicke Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                        hintText: 'Phone:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                        suffixIcon: Icon(Icons.phone,color: Color(0xFFA79A9A),),
+
+                      ),
+                      controller: _phone,
+                      validator: Validators.required(
+                          'phone is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),errorBorder:OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ) ,disabledBorder:OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),focusedErrorBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                        labelText: "Name",
+                        labelStyle: TextStyle(
+                          color:Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder:OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                         suffixIcon: Icon(Icons.supervised_user_circle_sharp,color: Color(0xFFA79A9A),),
 
                       ),
-                      controller: _nicke,
+                      controller: _name,
                       validator: Validators.required(
                           'nicke name is required'),
                     ),
@@ -405,7 +418,7 @@ class _DesignUpdate extends State<DesignUpdate> {
                         borderSide: const BorderSide(color: Colors.white, width: 2.0),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
-                        labelText: "Displayname",
+                        labelText: "Country",
                         labelStyle: TextStyle(
                           color:Color(0xFFA79A9A),
                         ),
@@ -414,52 +427,75 @@ class _DesignUpdate extends State<DesignUpdate> {
                           borderSide: const BorderSide(color: Colors.white, width: 2.0),
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        hintText: 'Displayname:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
+                        hintText: 'Country:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                        suffixIcon: Icon(Icons.home_work_outlined,color: Color(0xFFA79A9A),),
 
                       ),
-                      controller: _displayname,
+                      controller: _country,
                       validator: Validators.required(
                           'Country is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  CircleAvatar(
+                    radius: 50,backgroundColor: Colors.green,
+                    child: (_image != null)?ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Container(
+                            height: 100,
+                            width: 100,
+                            child: Image.file(
+                              _image,
+                              fit: BoxFit.cover,
+                            ))):Icon(Icons.account_circle,size: 70,),
+                  ),
+                  SizedBox(height: 10,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 80),
+                    child: ElevatedButton(style:ElevatedButton.styleFrom(primary: Colors.white,
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        )),
+                      onPressed: () {
+                        getImage();
+                      },
+                      child: Text('Upload profile',style: TextStyle(fontSize: 16,color: Colors.black),),
                     ),
                   ),
                   SizedBox(height: 20,),
                   //Text(userlogin.toString(),style: TextStyle(color: Colors.white),),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 80),
-                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        )),
-                      onPressed: () {
-                        if (formKey.currentState.validate()) {
-                          createUpdateState(
-                              _firstname.text,
-                              _lastname.text,
-                              _email.text,
-                              phone,
-                              _displayname.text,
-                              //userResponse.data['display_name'],
-                              //userResponse.id,
-                              id,
-                              userlogin,
-                              //userResponse.data['user_login'],
-                              //userResponse.data['user_nicename'],
-                              _nicke.text,
-                              context)
-                              .whenComplete(() {
-                            setState(() {
-                              loader = false;
+                    child: SizedBox(height: 50,
+                      child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                          )),
+                        onPressed: () {
+                          if (formKey.currentState.validate()) {
+                            createUpdateState(
+                                id,
+                                _username.text,
+                                _email.text,
+                                _phone.text,
+                                _name.text,
+                                _country.text,
+                                _image,
+                                context)
+                                .whenComplete(() {
+                              setState(() {
+                                loader = false;
+                              });
                             });
-                          });
-                          setState(() {
-                            loader = true;
-                          });
-                          ;
-                        }
+                            setState(() {
+                              loader = true;
+                            });
+                            ;
+                          }
 
-                      },
-                      child: Text('Update',style: TextStyle(fontSize: 16),),
+                        },
+                        child: Text('Update',style: TextStyle(fontSize: 16),),
+                      ),
                     ),
                   ),
 

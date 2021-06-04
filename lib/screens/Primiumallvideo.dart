@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/NewLogin.dart';
 import 'PrimiumvideoPlay.dart';
 class PrimiumvideoScreen extends StatefulWidget {
   PrimiumvideoScreen({Key key}) : super(key: key);
@@ -68,7 +69,7 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                           child: Container(
                             child: Opacity(opacity: 0.8,
                               child: CachedNetworkImage(
-                                  imageUrl: superherosLength['premium_content'][i]['featured_img'],fit: BoxFit.cover,
+                                  imageUrl: superherosLength['premium_content'][i]['feature_img'],fit: BoxFit.cover,
                                 placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                                 errorWidget: (context, url, error) => Icon(Icons.error),
                               ),
@@ -93,10 +94,10 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => (email == null)
-                                ? DesignLogin()
+                                ? NewLogin()
                                 : Primiumvideo(
                                     superherosLength['premium_content'][i]
-                                        ['premium_video_url'],
+                                        ['video_url'],
                                     superherosLength['premium_content'][i]
                                         ['post_title'])));
                         // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);

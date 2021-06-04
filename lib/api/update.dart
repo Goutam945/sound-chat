@@ -1,69 +1,70 @@
+import 'dart:io';
+
+import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/shared_preferences.dart';
 
 Future<UpdateResponse> createUpdateState(
-    String firstname,
-    String lastname,
+    int userid,
+    String username,
     String email,
     String phone,
     String name,
-    int userid,
-    String userlogin,
-    String usernicename,
+    String country,
+    File profilepic,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('https://mintok.com/soundchat/wp-json/wp/v2/users/update_user'),
+      Uri.parse('http://3.23.210.57:3000/api/v1/auth/updateprofile'),
       headers: <String, String>{"content-type": "application/json"},
       body: jsonEncode({
-        'display_name': name,
-        'user_email': email,
         'user_id': userid,
-        'user_login': userlogin,
-        'user_nicename': usernicename,
-        'last_name': lastname,
-        'first_name': firstname,
-        'phone': phone,
+        'username': username,
+        'email': email,
+        'mobileno': phone,
+        'fname': name,
+        'country': country,
+        'profilepic': 'profilepic',
 
       }));
+  /*var request = http.MultipartRequest('POST',
+      Uri.parse('http://3.23.210.57:3000/api/v1/auth/updateprofile'));
+  request.fields['user_id'] = "$userid";
+  request.fields['username'] = username;
+  request.fields['email'] = email;
+  request.fields['mobileno'] = phone;
+  request.fields['fname'] = name;
+  request.fields['country'] = country;
+ request.files.add(await http.MultipartFile.fromPath(
+      'profilepic', profilepic.path,
+      filename: profilepic.path.split('/').last));
+
+  var streamResponse = await request.send();
+  var response = await http.Response.fromStream(streamResponse);*/
+
 
   if (response.statusCode == 200) {
-  //   Navigator.of(context)
-  //       .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
-  //   Toast.show("User details updated Successfully ", context,
-  //       duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-  //   return UpdateResponse.fromJson(json.decode(response.body));
-  // } else {
-  //   throw Exception(response.body);
-  // }
     print(response.body);
     dynamic updateResponse = json.decode(response.body);
     print(response.body);
-    String code = updateResponse['code'];
-    dynamic message = updateResponse['message'];
-    if(code == '200'){
-
-      dynamic data = message['data'];
-      //Sharefrifrance
-      String email=data['user_email'];
-      String name=data['first_name'];
-      String phone=data['phone'];
-      String image=data['image'];
+    if(response.statusCode == 200){
+      dynamic data = updateResponse['data'];
+      String email=data['email'];
+      String name=data['fname'];
+      String phone=data['mobileno'];
+      String image=data['profilepic'];
       String country=data['country'];
-      int id = message['ID'];
-      String userlogin=data['user_login'];
+      int id = data['id'];
+      String userlogin=data['username'];
       Sharedpreferences().saveData(email,name,phone,image,country,id,userlogin);
-      //
-      // int id = message['ID'];
-      // //dynamic data = message['data'];
-      // Provider.of<UpdateResponse>(context, listen: false).data = data;
-      // Provider.of<UpdateResponse>(context, listen: false).id = id;
+      print(id);
+      createSubcriptionlevalState(id,context);
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
       Toast.show("Update Successfully", context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     } else {
-      Toast.show(message, context,
+      Toast.show("Error", context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     }
     return UpdateResponse.fromJson(json.decode(response.body));
@@ -74,18 +75,11 @@ Future<UpdateResponse> createUpdateState(
 
 class UpdateResponse {
   dynamic data;
-  int id;
-  dynamic message;
-
   UpdateResponse({
     this.data,
-    this.id,
-    this.message,
   });
 
   UpdateResponse.fromJson(Map<dynamic, dynamic> json) {
-    message = json['message'];
-    data = message['data'];
-    id = message['ID'];
+    data = json['data'];
   }
 }

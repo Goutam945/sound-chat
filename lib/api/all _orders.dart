@@ -4,7 +4,7 @@ import 'package:sound_chat/screens/AllorderDetails.dart';
 Future<AllorderResponse> createAllOrderState(int userid,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('https://mintok.com/soundchat/wp-json/orders/v2/'),
+      Uri.parse('http://3.23.210.57:3000/api/v1/auth/listorder'),
      // headers: <String, String>{"content-type": "application/json"},
       body: {
         'user_id': "$userid",
@@ -13,6 +13,7 @@ Future<AllorderResponse> createAllOrderState(int userid,
 
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
+
 //    int status = data['status'];
 //    if(status==200)
     {

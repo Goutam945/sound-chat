@@ -4,6 +4,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
+import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/InetrviewvideoplayStudio.dart';
@@ -53,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   String show = '22:00-23:59';
   var homeslider;
   int imageNo = 0;
-
+int sliderid;
   @override
   void initState() {
     super.initState();
@@ -79,9 +80,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     state();
     //apis calls
     createVideoState(context);
+    createPhoneinterviewState(context);
     createScheduleState(context);
     createGalleryState(context);
-    createHomesliderState(context);
+    createHomesliderState(sliderid,context);
     createAllproductState(context);
     createtermsState(context);
     createCoupncodeState(context);
@@ -90,12 +92,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   void state() {
     setState(() {
-      weekday =
-          DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday - 1;
-      if (weekday == -1) weekday = 6;
-      day =
-          DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday - 1;
-      if (day == -1) day = 6;
+      weekday =7-
+          DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
+     //if (weekday == -1) weekday = 6;
+      day =7-
+          DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
+      //if (day == -1) day = 6;
     });
   }
 
@@ -155,6 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    print(id);
     if (Provider.of<VideoResponse>(context, listen: false).data != null)
       superherosLength =
       Provider.of<VideoResponse>(context, listen: false).data['data'];
@@ -243,13 +246,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           child: (homeslider != null)
                               ? Stack(
                             children: [
-                              ImageFiltered(
-                                imageFilter: ImageFilter.blur(
-                                    sigmaY: 30, sigmaX: 30),
-                                child: SizedBox.expand(
-                                  child: Image.network(
-                                    homeslider[imageNo]['image'],
-                                    fit: BoxFit.fill,
+                              Padding(
+                                padding: const EdgeInsets.only(top: 50),
+                                child: ImageFiltered(
+                                  imageFilter: ImageFilter.blur(
+                                      sigmaY: 30, sigmaX: 30),
+                                  child: SizedBox.expand(
+                                    child: Image.network(
+                                      homeslider[imageNo]['img'],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -277,7 +283,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                       margin: EdgeInsets.symmetric(
                                           horizontal: 5.0),
                                       child: CachedNetworkImage(
-                                        imageUrl: homeslider[i]['image'],
+                                        imageUrl: homeslider[i]['img'],
                                         fit: BoxFit.contain,
                                         placeholder: (context, url) =>
                                             SizedBox(
@@ -622,17 +628,15 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                           mainAxisAlignment:
                           MainAxisAlignment.spaceEvenly,
                           children: [
-                            for (int i = 0;
-                            i <
-                                superherosLength['free_content']
-                                    .length;
+                            for (int i = 0; i < superherosLength
+                            ['free_content'].length;
                             i++)
                               Row(
                                 children: [
                                   Container(
                                       child: SizedBox(
-                                          width: 80,
-                                          height: 60,
+                                          width: 90,
+                                          height: 80,
                                           child: ClipRRect(
                                               borderRadius:
                                               BorderRadius.circular(
@@ -641,7 +645,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                                 child: CachedNetworkImage(
                                                   imageUrl: superherosLength[
                                                   'free_content']
-                                                  [i]['featured_img'],
+                                                  [i]['feature_img'],
                                                   fit: BoxFit.cover,
                                                   placeholder: (context,
                                                       url) =>
@@ -658,7 +662,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                                           superherosLength[
                                                           'free_content'][i]
                                                           [
-                                                          'free_video_url'],
+                                                          'video_url'],
                                                           superherosLength[
                                                           'free_content'][i]
                                                           [
@@ -780,8 +784,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                                 ),
                                 // padding: EdgeInsets.only(bottom: 30),
                                 onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => NewMenuScreen()));
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => NewMenuScreen()));
+
+                                  Navigator.push(context,
+                                      PageTransition(type:
+                                      PageTransitionType.rightToLeft, child: NewMenuScreen()));
                                 }),
                           ],
                         ),
@@ -793,8 +801,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             ),
             Positioned(
               top: AppBar().preferredSize.height * 0.2,
-              left: 0,
-              right: 0,
+              left: width*0.4,
+              // right: 0,
               child: SizedBox(
                 height: 90,
                 width: 90,

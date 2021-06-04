@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 Future<AllproductResponse> createAllproductState(context) async {
   final http.Response response =
-  await http.get( Uri.parse('https://mintok.com/soundchat/wp-json/product/v2/'));
+  await http.post( Uri.parse('http://3.23.210.57:3000/api/v1/auth/listproduct'));
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
     Provider.of<AllproductResponse>(context, listen: false).data = data;

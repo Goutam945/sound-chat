@@ -4,13 +4,14 @@ import 'package:sound_chat/screens/NewLogin.dart';
 
 Future<ForgotResponse> createForgotResponse(String name,context) async {
   final http.Response response =
-  await http.post( Uri.parse('https://mintok.com/soundchat/wp-json/wp/v2/users/lost-password'), headers: <String,String> {"content-type": "application/json"
+  await http.post( Uri.parse('http://3.23.210.57:3000/api/v1/forgetpassword'), headers: <String,String> {"content-type": "application/json"
   },body:jsonEncode({
-    'username':name,
+    'mobile_no':name,
   }));
 
   if (response.statusCode == 200) {
     dynamic forgotResponse = json.decode(response.body);
+    print(response.body.toString());
     String responseCode = forgotResponse['code'];
     print(responseCode);
     Navigator.of(context)

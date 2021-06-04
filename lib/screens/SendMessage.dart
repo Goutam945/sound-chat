@@ -206,26 +206,28 @@ class _SendMessageState extends State<SendMessage> {
                 SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 60),
-                  child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0),) ),
-                    onPressed: () {
-                      createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    NewMenuScreen()));
-                        setState(() {
-                          loader=false;
+                  child: SizedBox(height: 50,
+                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0),) ),
+                      onPressed: () {
+                        createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      NewMenuScreen()));
+                          setState(() {
+                            loader=false;
+                          });
                         });
-                      });
-                      setState(() {
-                        loader=true;
-                      });
-                    },
-                    child: Text('Send Now',style: TextStyle(fontSize: 16),),
+                        setState(() {
+                          loader=true;
+                        });
+                      },
+                      child: Text('Send Now',style: TextStyle(fontSize: 16),),
+                    ),
                   ),
                 ),
-
+                SizedBox(height: 10,),
                 /*Column(
                   children: [
                     SizedBox(height: 40,),

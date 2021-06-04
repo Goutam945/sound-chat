@@ -40,9 +40,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                   height: 300,
                   child: PageView(
                     children: [
-                      for (int j = 0; j < widget.product['images'].length; j++)
+                     //for (int j = 0; j < widget.product['images'].length; j++)
                         CachedNetworkImage(
-                          imageUrl:widget.product['images'][j]['src'],
+                          //imageUrl:widget.product[j]['images'],
+                          imageUrl:widget.product['image'],
                           fit: BoxFit.fill,
                           placeholder: (context, url) => Center(
                               child: CircularProgressIndicator()),
@@ -52,59 +53,21 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ],
                   ),
                 ),
-                // CarouselSlider(
-                //   options: CarouselOptions(
-                //     height: height*0.3658, autoPlay: false,
-                //     enlargeCenterPage: true,
-                //     viewportFraction: 1,
-                //     // autoPlayInterval: Duration(seconds: 4),
-                //     //autoPlayAnimationDuration: Duration(seconds: 1),
-                //   ),
-                //   items: [
-                //     'https://i0.wp.com/soundchatradio.com/wp-content/uploads/2018/12/black-hoodie-back.jpg?fit=600%2C800&ssl=1',
-                //     'https://i2.wp.com/soundchatradio.com/wp-content/uploads/2018/12/red-hoodie-back.jpg?fit=600%2C800&ssl=1',
-                //     'https://i0.wp.com/soundchatradio.com/wp-content/uploads/2021/02/cover-slick.jpg?fit=600%2C800&ssl=1',
-                //     'https://i1.wp.com/soundchatradio.com/wp-content/uploads/2018/12/Sherry.jpg?fit=600%2C800&ssl=1',
-                //     'https://i2.wp.com/soundchatradio.com/wp-content/uploads/2018/12/blue-hoodie-back.jpg?fit=600%2C800&ssl=1'
-                //   ].map((i) {
-                //     return Builder(
-                //       builder: (BuildContext context) {
-                //         return Container(
-                //             width: MediaQuery.of(context).size.width,
-                //             margin: EdgeInsets.symmetric(horizontal: 5.0),
-                //             decoration: BoxDecoration(color: Colors.white10),
-                //             child: Image.network(
-                //               i,
-                //               fit: BoxFit.fill,
-                //             ));
-                //       },
-                //     );
-                //   }).toList(),
-                // ),
-//                 CachedNetworkImage(height: height*0.3658,
-//                   imageUrl:widget.product['images'][0]['src'],
-//                  fit: BoxFit.fill,
-//                  placeholder: (context, url) => Center(
-//                      child: CircularProgressIndicator()),
-//                  errorWidget: (context, url, error) =>
-//                      Icon(Icons.error),
-//                ),
-                Text(widget.product['name'],
+                Text(widget.product['title'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color(0xFF535353),
                         fontSize: 20,
                         fontFamily: 'Montserrat1',
                         fontWeight: FontWeight.bold)),
-                Text("\$"+widget.product['price'],
+                Text("\$"+widget.product['Price'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 15,
                         fontFamily: 'Montserrat1',
                         fontWeight: FontWeight.bold)),
-                Text(
-                    "I’m not waiting on death to honor the legends in our culture” – Irish & Chin takes the time to honor our legends in the industry while they are still alive and can see how much we really appreciate them for their contribution to the culture",
+                Text(widget.product['description'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color(0xFF535353),
@@ -171,7 +134,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     Container(padding: EdgeInsets.only(left: width*0.0186,),
                       height: height * 0.0702,
                       child: Center(
-                        child: Text("Size:",style: TextStyle(
+                        child: Text("Size:   ",style: TextStyle(
                             color: Color(0xFF535353),
                             fontSize: 20,
                             fontWeight: FontWeight.bold)),),
@@ -225,7 +188,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     Container(padding: EdgeInsets.only(left: width*0.0186,),
                       height: height * 0.0702,
                       child: Center(
-                          child: Text("Color:",style: TextStyle(
+                          child: Text("Color: ",style: TextStyle(
                               color: Color(0xFF535353),
                               fontSize: 20,
                               fontWeight: FontWeight.bold)),),
@@ -270,6 +233,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ),
                   ],
                 ),
+
                 SizedBox(height: height*0.0146,),
                 Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -299,7 +263,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                             itemFound=false;
                           });}
                         if(!itemFound)//endd*/
-                          Provider.of<ProductModellist>(context, listen: false).add1(widget.product['name'], double.parse(widget.product['price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['images'][0]['src'],context);
+                          Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['image'],context);
                         print(cart.cart1.length.toString());
                         Toast.show("Added to cart", context,
                             duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
@@ -308,9 +272,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ),
                     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
                       onPressed: () {
-                        Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['name'],double.parse(widget.product['price']), dropdownSize, dropdownValue, _itemCount,
+                        Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,
                             widget.product['id'],
-                            widget.product['images'][0]['src'],context);
+                            widget.product['image'],context);
                       },
                       child: Text('Buy Now',style: TextStyle(fontSize: 13),),
                     ),

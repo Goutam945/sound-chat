@@ -169,7 +169,7 @@ String email,name;
                                       child: CachedNetworkImage(
                                         imageUrl:
                                             superherosLength['premium_content'][i]
-                                                ['featured_img'],
+                                                ['feature_img'],
                                         fit: BoxFit.fill,
                                         placeholder: (context, url) => Center(
                                             child: CircularProgressIndicator()),
@@ -180,10 +180,10 @@ String email,name;
                                         setState(() {
                                           url =
                                               superherosLength['premium_content']
-                                                  [i]['premium_video_url'];
+                                                  [i]['video_url'];
                                           imageUrl =
                                               superherosLength['premium_content']
-                                                  [i]['featured_img'];
+                                                  [i]['feature_img'];
                                           titlepost =
                                               superherosLength['premium_content']
                                                   [i]['post_title'];

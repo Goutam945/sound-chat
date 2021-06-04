@@ -1,3 +1,4 @@
+import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/common/appbar.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/InetrviewvideoplayStudio.dart';
@@ -9,6 +10,8 @@ import 'package:sound_chat/screens/Yellowallvideo.dart';
 import "dart:math";
 
 import 'NewLogin.dart';
+import 'PhoneinterviewPlayer.dart';
+import 'Phoneinterviewallvideo.dart';
 class AllHomeInterview extends StatefulWidget {
   @override
   _AllHomeInterviewState createState() => _AllHomeInterviewState();
@@ -56,7 +59,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var superherosLength = (Provider.of<VideoResponse>(context, listen: false).data != null)?Provider.of<VideoResponse>(context, listen: false).data['data']: null;
-
+    var phonesuperherosLength = (Provider.of<PhoneinterviewResponse>(context, listen: false).data != null)?Provider.of<PhoneinterviewResponse>(context, listen: false).data['data']: null;
     return SafeArea(
       child: Stack(
         children: [
@@ -113,7 +116,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                         margin: EdgeInsets.symmetric(horizontal: 5.0),
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
-                                            image: NetworkImage(superherosLength['free_content'][i]['featured_img']),
+                                            image: NetworkImage(superherosLength['free_content'][i]['feature_img']),
                                             fit: BoxFit.fill,
 
                                           ),
@@ -130,7 +133,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       InterviewNewPlayer(
-                                                          superherosLength['free_content'][i]['free_video_url'],superherosLength['free_content'][i]['post_title'])));
+                                                          superherosLength['free_content'][i]['video_url'],superherosLength['free_content'][i]['post_title'])));
 
                                         },
                                         child: Row(
@@ -281,7 +284,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                             child: SingleChildScrollView(  scrollDirection: Axis.horizontal,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  for (int i = 0; i < 10; i++)
+                                  for (int i = 0; i < superherosLength['premium_content'].length; i++)
                                     Row(
                                       children: [
 
@@ -300,7 +303,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                 child: Opacity(opacity: 0.7,
                                                   child: ClipRRect(borderRadius: BorderRadius.circular(15),
                                                     child: CachedNetworkImage(
-                                                      imageUrl: superherosLength['premium_content'][i]['featured_img'],fit: BoxFit.cover,
+                                                      imageUrl: superherosLength['premium_content'][i]['feature_img'],fit: BoxFit.cover,
                                                       placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                                                       errorWidget: (context, url, error) => Icon(Icons.error),
                                                     ),
@@ -323,7 +326,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
 
 
                                           onTap: (){
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():Primiumvideo(superherosLength['premium_content'][i]['premium_video_url'],superherosLength['premium_content'][i]['post_title'])));
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():Primiumvideo(superherosLength['premium_content'][i]['video_url'],superherosLength['premium_content'][i]['post_title'])));
                                            // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                                           },
 
@@ -375,7 +378,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                             child: SingleChildScrollView(  scrollDirection: Axis.horizontal,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  for (int i = 0; i < 10; i++)
+                                  for (int i = 0; i < superherosLength['yellow_content'].length; i++)
                                     Row(
                                       children: [
 
@@ -393,7 +396,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                 child: Opacity(opacity: 0.7,
                                                   child: ClipRRect(borderRadius: BorderRadius.circular(15) ,
                                                     child: CachedNetworkImage(
-                                                      imageUrl:superherosLength['category'][0]['The big yellow tent'][i]['details']['featured_img'],fit: BoxFit.cover,
+                                                      imageUrl:superherosLength['yellow_content'][i]['feature_img'],fit: BoxFit.cover,
                                                       placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                                                       errorWidget: (context, url, error) => Icon(Icons.error),
                                                     ),
@@ -410,7 +413,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                     blurRadius: 15.0,
                                                   ),
                                                 ]),
-                                                child: SizedBox(height: 30,child: Text(superherosLength['category'][0]['The big yellow tent'][i]['details']['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
+                                                child: SizedBox(height: 30,child: Text(superherosLength['yellow_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
                                           ],
                                         ),
 
@@ -427,7 +430,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           InterviewPlay(
-                                                              superherosLength['category'][0]['The big yellow tent'][i]['details']['free_video_url'], superherosLength['category'][0]['The big yellow tent'][i]['details']['post_title'])));
+                                                              superherosLength['yellow_content'][i]['video_url'], superherosLength['yellow_content'][i]['post_title'])));
                                             });
 
 
@@ -481,7 +484,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                             child: SingleChildScrollView(  scrollDirection: Axis.horizontal,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  for (int i = 0; i < 10; i++)
+                                  for (int i = 0; i < superherosLength['free_content'].length; i++)
                                     Row(
                                       children: [
                                         SizedBox(width: width*0.3094,height:height*0.1977,child: GestureDetector(child:
@@ -498,7 +501,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                 child: Opacity(opacity: 0.7,
                                                   child: ClipRRect(borderRadius: BorderRadius.circular(15),
                                                     child: CachedNetworkImage(
-                                                      imageUrl: superherosLength['free_content'][i]['featured_img'],fit: BoxFit.cover,
+                                                      imageUrl: superherosLength['free_content'][i]['feature_img'],fit: BoxFit.cover,
 
                                                       placeholder: (context, url) => Center(child: CircularProgressIndicator()),
                                                       errorWidget: (context, url, error) => Icon(Icons.error),
@@ -532,7 +535,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           InterviewNewPlayer(
-                                                              superherosLength['free_content'][i]['free_video_url'],superherosLength['free_content'][i]['post_title'])));
+                                                              superherosLength['free_content'][i]['video_url'],superherosLength['free_content'][i]['post_title'])));
                                             });
                                           },
 
@@ -548,8 +551,6 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                             ),
                           ),
                         ),
-
-                        /* no data api
                         Container( height: height*0.0512,width: width,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
@@ -565,9 +566,16 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                             padding: const EdgeInsets.only(top: 5,left: 10),
                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("SOUNDCHAT TVINTERVIEWS",textAlign: TextAlign.start,style: TextStyle( color: Colors.white, fontSize: 15,fontFamily: 'Montserrat')),
+                                Text("PHONE INTERVIEWS",textAlign: TextAlign.start,style: TextStyle( color: Colors.white, fontSize: 15,fontFamily: 'Montserrat')),
                                 GestureDetector(
-                                  child: Icon(Icons.add,color: Colors.red,),)
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => PhonevideoScreen()));
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text("View More",style: TextStyle(color: Colors.red),),
+                                  ),)
                               ],
                             ),
                           ),
@@ -578,24 +586,45 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                             child: SingleChildScrollView(  scrollDirection: Axis.horizontal,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  for (int i = 0; i <10; i++)
-                                  //for (int i = 0; i < superherosLength['category'][0]['Premium Sound Chat Interviews'].length; i++)
+                                  for (int i = 0; i < phonesuperherosLength.length; i++)
                                     Row(
                                       children: [
+                                        SizedBox(width: width*0.3094,height:height*0.1977,child: GestureDetector(child:
+                                        Stack(
+                                          children: [
+                                            SizedBox.expand(
+                                              child: Container(
+                                                child: Opacity(opacity: 0.7,
+                                                  child: ClipRRect(borderRadius: BorderRadius.circular(15),
+                                                    child: CachedNetworkImage(
+                                                      imageUrl: phonesuperherosLength[i]['feature_img'],fit: BoxFit.cover,
 
-                                        //SizedBox(width: 80,height:60,child: GestureDetector(child: Image.network(jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,),
-                                        SizedBox(width: width*0.1944,height:height*0.0877,child: GestureDetector(child:
-                                        CachedNetworkImage(
-                                          imageUrl:superherosLength['category'][0]['Premium Sound Chat Interviews'][i]['details']['featured_img'],
-                                          placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                          errorWidget: (context, url, error) => Icon(Icons.error),
+                                                      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                                                      errorWidget: (context, url, error) => Icon(Icons.error),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(offset: Offset(0.0,5.0),
+                                                    color: Colors.black,
+                                                    blurRadius: 15.0,
+                                                  ),
+                                                ]),
+                                                child: SizedBox(height: 30,child: Text(phonesuperherosLength[i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
+                                          ],
                                         ),
-
-
                                           onTap: (){
-                                            Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                                            setState(() {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PhoneinteviewPlayer(
+                                                              phonesuperherosLength[i]['video_url'],phonesuperherosLength[i]['post_title'])));
+                                            });
                                           },
-
                                         )),
                                         SizedBox(width: 10,),
                                       ],
@@ -607,7 +636,8 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                               ),
                             ),
                           ),
-                        ),*/
+                        ),
+
 
                       ],
                     ),

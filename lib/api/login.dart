@@ -1,4 +1,4 @@
-import 'package:sound_chat/api/subcribtion_lable.dart';
+/*import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/shared_preferences.dart';
@@ -67,6 +67,63 @@ class LoginResponse with ChangeNotifier {
     message = json['message'];
     id = message['ID'];
     data = message['data'];
+    notifyListeners();
+  }
+}
+*/
+import 'package:sound_chat/api/subcribtion_lable.dart';
+import 'package:sound_chat/common/index.dart';
+import 'package:http/http.dart' as http;
+import 'package:sound_chat/common/shared_preferences.dart';
+
+Future<LoginResponse> createLoginState(
+    String name, String password, context) async {
+  final http.Response response =
+  await http.post(Uri.parse('http://3.23.210.57:3000/api/v1/auth/signin'),
+      headers: <String, String>{"content-type": "application/json"},
+      body: jsonEncode({
+        'mobileno': name,
+        'password': password,
+      }));
+  if (response.statusCode == 200) {
+    print(response.body);
+    dynamic data = json.decode(response.body);
+    //Sharefrifrance
+    String email=data['email'];
+    String name=data['fname'];
+    String phone=data['mobileno'];
+    String image=data['image'];
+    String country=data['country'];
+    int id = data['id'];
+    String userlogin=data['username'];
+    Sharedpreferences().saveData(email,name,phone,image,country,id,userlogin);
+    print(id);
+    createSubcriptionlevalState(id,context);
+
+    Provider.of<LoginResponse>(context, listen: false).data = data;
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+    Toast.show("Logged in Successfully", context,
+        duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+    return LoginResponse.fromJson(json.decode(response.body));
+
+  } else {
+    Toast.show("server error", context,
+        duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+    throw Exception(response.body);
+  }
+
+}
+
+class LoginResponse with ChangeNotifier {
+  dynamic data;
+
+  LoginResponse({
+    this.data,
+  });
+
+  LoginResponse.fromJson(Map<dynamic, dynamic> json) {
+    data = json;
     notifyListeners();
   }
 }

@@ -5,20 +5,23 @@ import 'package:sound_chat/screens/DesignProfile.dart';
 import 'package:sound_chat/screens/Myaccountprofile.dart';
 import 'package:sound_chat/screens/NewLogin.dart';
 import 'package:sound_chat/screens/ProfilePage.dart';
+
+import 'navinext.dart';
 class Appbar extends PreferredSize {
   final email,name;
   Appbar(this.email,this.name);
   @override
   Widget build(BuildContext context) {
-    return AppBar(flexibleSpace: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.red, Colors.orange],
-        ),
-      ),
-    ),
+    return AppBar(
+    //   flexibleSpace: Container(
+    //   decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //       colors: [Colors.red, Colors.orange],
+    //     ),
+    //   ),
+    // ),
       automaticallyImplyLeading: false,
-     // backgroundColor: Color(0xFFE18D13),
+      backgroundColor: Color(0xFFE18D13),
       leading: Builder(
           builder: (BuildContext context){
             return IconButton(
@@ -31,7 +34,9 @@ class Appbar extends PreferredSize {
               ),
               onPressed: () {
 
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Searchbar()));
+                Navigator.push(context,
+                    PageTransition(type:
+                    PageTransitionType.rightToLeft, child: Searchbar()));
               },
             );
 //              Image.asset(
@@ -49,9 +54,11 @@ class Appbar extends PreferredSize {
             ),
           ),
           onPressed: () {
-            //Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?DesignLogin():DesignProfile(email,name)));
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
-          },
+           // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():MyAccount(email,name)));
+            Navigator.push(context,
+                PageTransition(type:
+                PageTransitionType.rightToLeft, child:(email==null)?NewLogin():MyAccount(email,name)));
+            },
         ),
       ],
     );

@@ -1,9 +1,13 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 
-Future<HomesliderResponse> createHomesliderState(context) async {
+Future<HomesliderResponse> createHomesliderState(int sliderid,context) async {
   final http.Response response =
-  await http.get(Uri.parse('https://mintok.com/soundchat/wp-json/homeslider/v2/?slider_id=12'));
+  await http.post(Uri.parse('http://3.23.210.57:3000/api/v1/auth/homeslider')
+     , body: {
+      "slider_id":"1",
+      }
+  );
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
     Provider.of<HomesliderResponse>(context, listen: false).data = data;

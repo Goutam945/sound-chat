@@ -47,5 +47,5 @@ export 'package:sound_chat/screens/DesignSignup.dart';
 export 'package:sound_chat/screens/DesignPodcastshowplay.dart';
 export 'package:audioplayers/audioplayers.dart';
 export 'package:sound_chat/common/bottumnavation.dart';
-
+export 'package:sound_chat/common/navinext.dart';
 

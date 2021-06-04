@@ -199,7 +199,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                     child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
                       controller: _name,
                       validator: Validators.required(
-                          'Name is required'),
+                          'MobileNumber is required'),
                       decoration: InputDecoration(
                           errorStyle: TextStyle(height: 0.5),
                           prefixIcon:  Image.asset(
@@ -210,7 +210,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'Username',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                          hintText: 'MobileNumber',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
                     ),
@@ -234,7 +234,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                           });
                         }
                       },
-                      child: Text('Change',style: TextStyle(fontSize: 20),),
+                      child: Text('Reset Password',style: TextStyle(fontSize: 20),),
                     ),
                   ),
                   SizedBox(height: 40,),

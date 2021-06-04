@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sound_chat/api/create_order.dart';
 import 'package:sound_chat/api/free_video.dart';
+import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/api/schedule.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/SpleshScreen.dart';
@@ -37,6 +38,7 @@ void main() async{
         ChangeNotifierProvider(create: (_) => AllorderResponse()),
         ChangeNotifierProvider(create: (_) => SubcriptionlevalResponse()),
         ChangeNotifierProvider(create: (_) => SearchResponse()),
+        ChangeNotifierProvider(create: (_) => PhoneinterviewResponse()),
         ChangeNotifierProvider(
           create: (_) => OverlayHandlerProvider(),
         ),

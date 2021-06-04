@@ -1,14 +1,15 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/screens/NewLogin.dart';
-Future<ChangepasswordResponse> createChangepasswrdState(int uid,String passwod,
+Future<ChangepasswordResponse> createChangepasswrdState(int uid,String passwod,String newpassword,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('https://mintok.com/soundchat/wp-json/change_password/v2/'),
+      Uri.parse('http://3.23.210.57:3000/api/v1/auth/changepassword'),
       // headers: <String, String>{"content-type": "application/json"},
       body: {
         'user_id': "$uid",
-        'password': passwod
+        'current_password': passwod,
+        'new_password': newpassword
       });
 
   if (response.statusCode == 200) {

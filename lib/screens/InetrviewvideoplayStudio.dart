@@ -187,7 +187,7 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
                                                   child: CachedNetworkImage(
                                                     imageUrl:
                                                         superherosLength[i]
-                                                            ['featured_img'],
+                                                            ['feature_img'],
                                                     fit: BoxFit.fill,
                                                     placeholder: (context,
                                                             url) =>
@@ -201,10 +201,10 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
                                                   onTap: () {
                                                     setState(() {
                                                       url = superherosLength[i]
-                                                          ['free_video_url'];
+                                                          ['video_url'];
                                                       imageUrl =
                                                           superherosLength[i]
-                                                              ['featured_img'];
+                                                              ['feature_img'];
                                                       titlepost =
                                                           superherosLength[i]
                                                               ['post_title'];
