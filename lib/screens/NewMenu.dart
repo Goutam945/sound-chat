@@ -179,8 +179,6 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                             PageTransitionType.rightToLeft, child: StepperDemo()))..whenComplete(() =>   Navigator.of(context).pop())
                       },
                     ),
-                    //for (int i = 0; i < data.length; i++)
-                    for(int i=0;i<((data!=null)?data.length:0);i++)
                     if(checklogin)
                     ListTile(
                       leading: Icon(Icons.subscriptions,color: Colors.white70),
@@ -189,7 +187,7 @@ class _NewMenuScreenState extends State<NewMenuScreen> {
                           setState(() {
                             loader=true;
                           }),
-                        createCancelsubcripState(id,data[i]["level_id"].toString(),context).whenComplete(() {
+                        createCancelsubcripState(id.toString(),context).whenComplete(() {
                             setState(() {
                               loader=false;
                             });

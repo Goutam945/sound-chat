@@ -9,6 +9,7 @@ class Subscription extends StatefulWidget {
 }
 
 class _SubscriptionState extends State<Subscription> {
+  int levelId;
   String user;
   String email, name;
 
@@ -75,7 +76,7 @@ class _SubscriptionState extends State<Subscription> {
               SizedBox(
                 height: 20,
               ),
-              for(int i=1;i<=data.length;i++)
+              for(int i=0;i<data.length;i++)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
@@ -88,11 +89,12 @@ class _SubscriptionState extends State<Subscription> {
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              user = data['$i']['label'];
+                              user = data[i]['plan_type'];
+                              levelId = data[i]['id'];
                             });
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Registrationship(data['$i'],i)));
-                            // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?Registrationship(user):MyAccount()));
+                                builder: (context) => Registrationship(data[i],levelId)));
+
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -100,7 +102,7 @@ class _SubscriptionState extends State<Subscription> {
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
                               child: Text(
-                                data['$i']['label'],
+                                data[i]['plan_type'],
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.black,
@@ -136,7 +138,7 @@ class _SubscriptionState extends State<Subscription> {
                                   borderRadius: BorderRadius.circular(50)),
                               child: Center(
                                   child: Text(
-                                    "1",
+                                    data[i]['id'].toString(),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 20, fontWeight: FontWeight.bold),

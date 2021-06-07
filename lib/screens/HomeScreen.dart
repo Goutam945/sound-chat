@@ -5,6 +5,8 @@ import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
 import 'package:sound_chat/api/phoneinterview.dart';
+import 'package:sound_chat/api/subcribtion_lable.dart';
+import 'package:sound_chat/api/subscription_approve_user.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/InetrviewvideoplayStudio.dart';
@@ -19,17 +21,16 @@ SharedPreferences localStorage;
 
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   int id;
-
-  _loadSavedData() async {
+  Future<int> _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      if (sharedPreferences.getString('email') != null &&
-          sharedPreferences.getString('email').isNotEmpty) {
-        id = sharedPreferences.getInt('id');
+      if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
       }
     });
+    return id;
   }
 
   _addVideoOverlay() {
@@ -58,7 +59,7 @@ int sliderid;
   @override
   void initState() {
     super.initState();
-    _loadSavedData();
+    _loadSavedData().then((value) => createSubcriptionlevalState(id,context));
     WidgetsBinding.instance.addObserver(this);
     if (Platform.isIOS) audioPlayer.setNotification(title: "Soundchat Radio");
     onPlayerErr();
@@ -87,7 +88,7 @@ int sliderid;
     createAllproductState(context);
     createtermsState(context);
     createCoupncodeState(context);
-    // createSubcriptionlevalState(id,context);
+
   }
 
   void state() {

@@ -3,6 +3,8 @@ import 'package:sound_chat/api/subscription_approve_user.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 
+import 'NewLogin.dart';
+
 class PaymentDetailsMember extends StatefulWidget {
   final subscription, uid, lid;
 
@@ -24,11 +26,13 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
   String _errorMessage = "";
   String clientSecret;
   PaymentResponse paymentResponse1;
-
+  String _status;
+  String paymentMethodId;
   final TextEditingController _coupon = TextEditingController();
 
   Future<void> addCard() async {
     var paymentResponse = await _stripePayment.addPaymentMethod();
+    _status=paymentResponse.status.toString();
     setState(() {
       if (paymentResponse.status == PaymentResponseStatus.succeeded) {
         _paymentMethodId = paymentResponse.paymentMethodId;
@@ -59,15 +63,15 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
   }
 
   Future<void> authPayment(amount) async {
-    dynamic paymentResponse = await _stripePayment.confirmPaymentIntent(
+    PaymentResponse paymentResponse = await _stripePayment.confirmPaymentIntent(
         clientSecret, _paymentMethodId, amount*100);
     setState(() {
       if (paymentResponse.status == PaymentResponseStatus.succeeded) {
         _paymentMethodId = paymentResponse.paymentMethodId;
-        createSubscriptionState(widget.uid,widget.lid,context);
-        setState(() {
-          paymentResponse1 = paymentResponse;
-        });
+        paymentMethodId = paymentResponse.paymentIntentId;
+        print(widget.uid.toString()+widget.lid.toString()+_status+paymentMethodId.toString());
+        createSubscriptionState(widget.uid,widget.lid,_status,paymentMethodId,context);
+        paymentResponse1 = paymentResponse;
         showDialog(
             context: context,
             builder: (context) => AlertDialog(
@@ -78,6 +82,20 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                   Text("paymentMethodId: "+paymentResponse.toString()),
                 ],
               ),
+              actions: <Widget>[
+                ElevatedButton(
+                  child: Text('Login page'),
+                  onPressed: () {
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute(builder: (BuildContext context) => NewLogin()),
+                    //     ModalRoute.withName('/')
+                    // );
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => NewLogin()));
+                  },
+                ),
+              ],
             ));
       } else {
         _errorMessage = paymentResponse.errorMessage;
@@ -96,7 +114,8 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
     setState(() {
       if (paymentResponse.status == PaymentResponseStatus.succeeded) {
         _paymentMethodId = paymentResponse.paymentMethodId;
-        createSubscriptionState(widget.uid,widget.lid,context);
+        paymentMethodId = paymentResponse.paymentMethodId;
+        createSubscriptionState(widget.uid,widget.lid,_status,paymentMethodId,context);
         setState(() {
           paymentResponse1 = paymentResponse;
         });
@@ -110,6 +129,15 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                   Text("paymentMethodId: "+paymentResponse.paymentMethodId.toString()),
                 ],
               ),
+              actions: <Widget>[
+                ElevatedButton(
+                  child: Text('Login page'),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => NewLogin()));
+                  },
+                ),
+              ],
             ));
       } else {
         _errorMessage = paymentResponse.errorMessage;
@@ -133,6 +161,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.lid.toString()+"       "+widget.uid.toString());
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -239,7 +268,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text("${widget.subscription['label']}:",
+                        Text("${widget.subscription['plan_type']}:",
                             style: TextStyle(
                               color: Color(0xFF535353),
                               fontSize: 15,
@@ -269,7 +298,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("\$${widget.subscription['price']} USD",
+                        Text("\$${widget.subscription['plan_fee']} USD",
                             style: TextStyle(
                               color: Color(0xFF535353),
                               fontSize: 15,
@@ -287,7 +316,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                               fontSize: 15,
                               fontFamily: 'Montserrat1',
                             )),
-                        Text("\$${widget.subscription['price']} USD",
+                        Text("\$${widget.subscription['plan_fee']} USD",
                             style: TextStyle(
                                 color: Color(0xFF535353),
                                 fontSize: 18,
@@ -311,15 +340,15 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                           borderRadius: new BorderRadius.circular(30.0),
                         )),
                     onPressed: () {
-                      addCard().whenComplete(() => createIntent(double.parse(widget.subscription['price'])).whenComplete(() =>
-                          authPayment(double.parse(widget.subscription['price'])) /*.whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(paymentResponse1.status == PaymentResponseStatus.succeeded)?SuccessScreen():FailedScreen())))*/));
+                      addCard().whenComplete(() => createIntent(double.parse(widget.subscription['plan_fee'])).whenComplete(() =>
+                          authPayment(double.parse(widget.subscription['plan_fee'])) /*.whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(paymentResponse1.status == PaymentResponseStatus.succeeded)?SuccessScreen():FailedScreen())))*/));
                       // Navigator.of(context).push(
                       //     MaterialPageRoute(
                       //         builder: (context) =>
                       //             PaymentDetailsMembernext()));
                     },
                     child: Text(
-                      'Pay \$${widget.subscription['price']}',
+                      'Pay \$${widget.subscription['plan_fee']}',
                       style: TextStyle(fontSize: 16),
                     ),
                   ),

@@ -29,7 +29,7 @@ String image;
 bool loader=false;
 dynamic data;
 int id;
-  _loadSavedData() async{
+  Future<int> _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
       if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
@@ -41,40 +41,20 @@ int id;
         id = sharedPreferences.getInt('id');
       }
     });
+    return id;
   }
 @override
 void initState() {
   super.initState();
-  _loadSavedData();
+  _loadSavedData().then((value) => print("USERID"+value.toString()));
   }
-
-  // File _image;
-  // final picker = ImagePicker();
-  //
-  // Future getImage() async {
-  //   // final pickedFile = await picker.getImage(source: ImageSource.gallery);
-  //   //
-  //   // setState(() {
-  //   //   if (pickedFile != null) {
-  //   //     _image = File(pickedFile.path);
-  //   //     print(_image);
-  //   //   } else {
-  //   //     print('No image selected.');
-  //   //   }
-  //   // });
-  //   var choosedimage = await ImagePicker.pickImage(source: ImageSource.gallery);
-  //   //set source: ImageSource.camera to get image from camera
-  //   setState(() {
-  //     _image = choosedimage;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     if(Provider.of<SubcriptionlevalResponse>(context, listen: false).data!=null)
-      data = Provider.of<SubcriptionlevalResponse>(context, listen: false).data['response'];
+      data = Provider.of<SubcriptionlevalResponse>(context, listen: false).data['data'];
     return SafeArea(
       child: Stack(
         children: [
@@ -130,12 +110,6 @@ void initState() {
                   Text(
                     name.toString(),
                     style: TextStyle(fontSize: 16,color: Colors.white),
-                  ),
-                  SizedBox(height: 5,),
-                  for(int i=0;i<((data!=null)?data.length:0);i++)
-                    //for (int i = 0; i < data.length; i++)
-                  Text( data[i]["label"].toString(),
-                    style: TextStyle(fontSize: 16,color: Colors.orange,fontStyle: FontStyle.italic),
                   ),
                   SizedBox(height: 5,),
                   Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -255,7 +229,7 @@ void initState() {
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Plan:',
+                            'Plan Level:',
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
@@ -267,38 +241,38 @@ void initState() {
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                           Text(
-                            'Cancel Subscription: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                          ),
-                          Text(
-                            'Update Profile: ',
+                            'Cancel Plan: ',
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
                         ],
                       ),
                       SizedBox(width: 30,),
-                      for(int i=0;i<((data!=null)?data.length:0);i++)
+                      //for(int i=0;i<((data!=null)?data.length:0);i++)
                      // for (int i = 0; i < data.length; i++)
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            data[i]["label"].toString(),
+                            data["plan_id"].toString(),
                             style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
                           ),
-                          Text(
-                            data[i]["expire_time"].toString(),
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                          SizedBox(height: 20,width: 90,
+                            child: Text(
+                              data["plan_expired"].toString(),
+                              style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            ),
                           ),
-                          Text(
-                            data[i]["start_time"].toString(),
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                          SizedBox(height: 20,width: 90,
+                            child: Text(
+                              data["plan_active"].toString(),
+                              style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            ),
                           ),
                           GestureDetector(
                               onTap: () => {
                                 setState(() {
                                   loader=true;
                                 }),
-                                createCancelsubcripState(id,data[i]["level_id"].toString(),context).whenComplete(() {
+                                createCancelsubcripState(id.toString(),context).whenComplete(() {
                                   setState(() {
                                     loader=false;
                                   });
@@ -308,18 +282,6 @@ void initState() {
                             "Cancel Subscription",
                             style: TextStyle(fontSize: 16,color: Colors.orange),
                           )),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => DesignUpdate()));
-                            },
-                            child: Text(
-                              "upgrade profile",
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                  color: Color(0xFF8E0E14), fontSize: 16),
-                            ),
-                          ),
                         ],
                       ),
                     ],

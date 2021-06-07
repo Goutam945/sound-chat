@@ -10,6 +10,8 @@ class Sharedpreferences {
    if(country!=null) sharedPreferences.setString("country", country);
    if(id!=null) sharedPreferences.setInt("id", id);
    if(userlogin!=null) sharedPreferences.setString("userlogin", userlogin);
+
+
   }
 //  saveDatalid(int levalid) async {
 //    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

@@ -57,11 +57,11 @@ Future<SignUpResponse> createSignUpState(
     var data = json.decode(response.body);
     int status = data['status'];
     if (status == 200) {
-      int uid = data['user_id'];
+      int uid = data['data']['id'];
       String message = data['message'];
       print(data);
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => (user['payment_type'] == 'payment')
+          builder: (context) => (user['id'] != 1)
               ? PaymentDetailsMember(user, uid, lid)
               : NewLogin()));
       Toast.show(message, context,

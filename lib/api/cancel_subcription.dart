@@ -1,21 +1,17 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-Future<CancelSubpResponse> createCancelsubcripState(int uid,String lid,
+Future<CancelSubpResponse> createCancelsubcripState(uid,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('https://mintok.com/soundchat/wp-json/cancel_membership/v2'),
+      Uri.parse('http://3.23.210.57:3000/api/v1/auth/updatesubscriberplan'),
       // headers: <String, String>{"content-type": "application/json"},
       body: {
-        'uid': "$uid",
-        'lid': "$lid"
+        'user_id': "$uid",
       });
 
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
-//    int status = data['status'];
-//    if(status==200)
         {
-//      String message = data['message'];
 
       print(data);
 //      Navigator.of(context)
