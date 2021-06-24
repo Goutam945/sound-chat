@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/CardScreen.dart';
@@ -25,20 +26,7 @@ class ShoppAppbar extends PreferredSize {
       //       );
       //     }),
       actions: <Widget>[
-        // IconButton(
-        //   icon: Icon(
-        //     Icons.shopping_cart_outlined,
-        //     color: Colors.white,
-        //     size: 30,
-        //   ),
-        //   onPressed: () {
-        //     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
-        //     // Navigator.of(context).push(
-        //     //     MaterialPageRoute(builder: (context) => DesignLogin()));
-        //   },
-        // ),
-     //   Text("Shop",style: TextStyle(fontSize: 25),textAlign: TextAlign.start,),
-      IconButton(
+      /*IconButton(
           icon: Stack(
             children: <Widget>[
              Icon(Icons.add_shopping_cart_sharp,size: 40,color: Colors.white,),
@@ -65,7 +53,17 @@ class ShoppAppbar extends PreferredSize {
         onPressed: (){
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
         },
-      ),
+      ),*/
+    Badge(
+    position: BadgePosition.topEnd(top: 0, end: 3),
+    animationDuration: Duration(milliseconds: 1500),
+    animationType: BadgeAnimationType.slide,
+    badgeContent: Text(cart.cart1.length.toString(),style: TextStyle(color: Colors.white),),
+    child: IconButton(icon: Icon(Icons.shopping_cart,size: 35,),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
+        }),
+    ),
       ],
     );
   }

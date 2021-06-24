@@ -514,7 +514,8 @@ class _ShopaddressState extends State<Shopaddress> {
               backgroundColor: Color(0xFFE18D13),
               //title: Text("Flutter Http Example"),
             ),
-            body: Form(
+            body:
+            /*Form(
               key: _formKey,
               child: SingleChildScrollView(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -752,6 +753,496 @@ class _ShopaddressState extends State<Shopaddress> {
                     ),
                   ],
                 ),
+              ),
+            ),*/
+
+            Form(
+              key: _formKey,
+              child: ListView(
+                children: [
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      "Billing details",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "First Name",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'First Name:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _firstname,
+                      validator: Validators.required('Name is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Last Name",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Last Name:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _lastname,
+                      validator: Validators.required('Last Name is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Address",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Address:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _address1,
+                      validator: Validators.required('Address is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Address1",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Address1:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _address2,
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "City",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'City:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _city,
+                      validator: Validators.required('City is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "State",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'State:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _state,
+                      validator: Validators.required('State is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Post code",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Post code:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _postcode,
+                      validator: Validators.required('Post code is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Country",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Country:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _country,
+                      validator: Validators.required('Country is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Email",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Email:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _email,
+                      validator: Validators.required('Email is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TextFormField(
+                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        disabledBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        labelText: "Phone number",
+                        labelStyle: TextStyle(
+                          color: Color(0xFFA79A9A),
+                        ),
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        hintText: 'Phone number:',
+                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                      ),
+                      controller: _phone,
+                      validator: Validators.required('phone number is required'),
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
+                    child: SizedBox(height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF8E0E14),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(10.0),
+                            )),
+                        onPressed: () {
+                          if (_formKey.currentState.validate())
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                                builder: (context) => ShopPay(
+                                  _firstname.text,
+                                  _lastname.text,
+                                  _address1.text,
+                                  _address2.text,
+                                  _city.text,
+                                  _state.text,
+                                  _postcode.text,
+                                  _country.text,
+                                  _email.text,
+                                  _phone.text,
+                                )));
+                        },
+                        child: Text(
+                          " Proceed to Pay",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
               ),
             ),
           ),

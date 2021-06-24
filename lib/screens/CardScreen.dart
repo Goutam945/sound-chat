@@ -187,6 +187,7 @@ class _CardScreenState extends State<CardScreen> {
     );
   }
 }*/
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/shoappbar.dart';
@@ -219,6 +220,7 @@ class _CardScreenState extends State<CardScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -228,6 +230,7 @@ class _CardScreenState extends State<CardScreen> {
       child: Stack(children: [
         cart.cart1.length == 0 ?
         Scaffold(
+          backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Color(0xFFE18D13),
               backwardsCompatibility: true,
@@ -238,7 +241,7 @@ class _CardScreenState extends State<CardScreen> {
                 children: [
                   Text(
                     'Cart is empty. ',
-                    style: (TextStyle(fontSize: width*0.05)),
+                    style: (TextStyle(fontSize: width*0.05,color: Colors.white)),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -254,56 +257,107 @@ class _CardScreenState extends State<CardScreen> {
               ),
             )):
         Scaffold(
-          // backgroundColor: Colors.black,
+           backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Color(0xFFE18D13),
               backwardsCompatibility: true,
             ),
-            bottomNavigationBar: Container(
-              height: height*0.0731,
-              color: Colors.white,
+            bottomNavigationBar:
+            // Container(
+            //   height: height*0.0731,
+            //   color: Colors.white,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: [
+            //       Row(
+            //         children: [
+            //           Text(
+            //             "Total: \$",
+            //             style: TextStyle(
+            //                 color: Colors.red,
+            //                 fontSize: 22,
+            //                 fontWeight: FontWeight.bold,
+            //                 fontStyle: FontStyle.italic),
+            //           ),
+            //           Text(
+            //             (cart.sum1).toString(),
+            //             style: TextStyle(
+            //                 color: Colors.red,
+            //                 fontSize: 22,
+            //                 fontWeight: FontWeight.bold,
+            //                 fontStyle: FontStyle.italic),
+            //           ),
+            //         ],
+            //       ),
+            //       ElevatedButton(
+            //         style: ElevatedButton.styleFrom(primary: Colors.red),
+            //         onPressed: () {
+            //           if(id!=null){
+            //             Navigator.of(context)
+            //                 .pushReplacement(
+            //                 MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+            //           } else {
+            //             Toast.show("Please Login before Shopping", context,
+            //                 duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+            //           }
+            //         },
+            //         child: Text(
+            //           "Pay",
+            //           style: TextStyle(
+            //               color: Colors.white,
+            //               fontSize: 25,
+            //               fontWeight: FontWeight.bold,
+            //               fontStyle: FontStyle.italic),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            Container(
+              height: 46,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Total: \$",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic),
-                      ),
-                      Text(
-                        (cart.sum1).toString(),
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic),
-                      ),
-                    ],
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      color: Color(0xFFE18D13),
+                      child: Text( "Total: \$"+ (cart.sum1).toString(), style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic)),
+                    ),
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.red),
-                    onPressed: () {
-                      if(id!=null){
-                        Navigator.of(context)
-                            .pushReplacement(
-                            MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
-                      } else {
-                        Toast.show("Please Login before Shopping", context,
-                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                      }
-                    },
-                    child: Text(
-                      "Pay",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF780001), Color(0xFF780001)],
+                          begin: FractionalOffset.centerLeft,
+                          end: FractionalOffset.centerRight,
+                        ),
+                      ),
+                      child:  TextButton(
+            onPressed: () {
+              if(id!=null){
+                Navigator.of(context)
+                    .pushReplacement(
+                    MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+              } else {
+                Toast.show("Please Login before Shopping", context,
+                    duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+              }
+            },
+            child: Text(
+              "Pay",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic),
+            ),
+          ),
                     ),
                   ),
                 ],
@@ -414,8 +468,25 @@ class _CardScreenState extends State<CardScreen> {
                       Positioned(bottom: 30,right: 50,
                         child: GestureDetector(
                             onTap: () {
-                              cart.remove1(
-                                  index, cart.cart1[index].price,  cart.cart1[index].quantity);//remove card
+                              AwesomeDialog(
+                                  context: context,
+                                dialogType: DialogType.NO_HEADER,
+                                  animType: AnimType.BOTTOMSLIDE,
+                                  btnOkColor: Colors.orange,
+                                  title: 'Remove Item',
+                                  desc: 'Do you want to remove the item from selection?',
+                                  btnCancelOnPress: () {
+                                    //Navigator.of(context).pop();
+                                  },btnOkText: "Confirm",
+                                  btnOkOnPress: () {
+                                    cart.remove1(
+                                        index, cart.cart1[index].price,  cart.cart1[index].quantity);//remove card
+
+                                  },
+                                )..show();
+
+
+
                             },
                             child: new Icon(
                               Icons.delete,

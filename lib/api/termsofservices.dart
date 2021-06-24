@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 Future<TermsResponse> createtermsState(context) async {
   final http.Response response =
-  await http.get(Uri.parse('https://mintok.com/soundchat/wp-json/terms/v2/?page_id=6433'));
+  await http.post(Uri.parse('http://3.23.210.57:3000/api/v1/termsconditions'));
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
     Provider.of<TermsResponse>(context, listen: false).data = data;

@@ -9,6 +9,7 @@ class Subscriptionplans extends StatefulWidget {
 }
 
 class _SubscriptionplansState extends State<Subscriptionplans> {
+  int levelId;
   String user;
   String email, name;
 
@@ -46,15 +47,31 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
           ),
           body: ListView(
             children: [
-//              Image.asset(
-//                "assets/soundpic.png",
-//                width: width * 0.316,
-//                height: height * 0.1902,
-//              ),
               SizedBox(
                 height: 40,
               ),
-              for(int i=1;i<=data.length;i++)
+              Center(
+                  child: Text(
+                    "Member Registration",
+                    style: TextStyle(
+                        fontSize: 19,
+                        fontFamily: 'Montserrat1',
+                        color: Color(0xFFE18D13),
+                        fontWeight: FontWeight.bold),
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              Center(
+                  child: Text(
+                    "Please choose a subscription plan to begin setting up your account.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16,fontFamily: 'Montserrat1', color: Color(0xFFA79A9A)),
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              for(int i=0;i<data.length;i++)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
@@ -67,11 +84,12 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
-                              user = data['$i']['label'];
+                              user = data[i]['plan_type'];
+                              levelId = data[i]['id'];
                             });
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Registrationship(data['$i'],i)));
-                            // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?Registrationship(user):MyAccount()));
+                                builder: (context) => Registrationship(data[i],levelId)));
+
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -79,11 +97,12 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
                               child: Text(
-                                data['$i']['label'],
+                                data[i]['plan_type'],
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
+                                    fontFamily: 'Montserrat1',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -114,7 +133,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                                   borderRadius: BorderRadius.circular(50)),
                               child: Center(
                                   child: Text(
-                                    "1",
+                                    data[i]['id'].toString(),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 20, fontWeight: FontWeight.bold),
@@ -128,7 +147,8 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                 ),
             ],
           ),
-        ), Positioned(
+        ),
+        Positioned(
           top: AppBar().preferredSize.height*0.1,
           left: width * 0.39865,
           child: SizedBox(

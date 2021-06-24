@@ -25,36 +25,67 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
       child: Stack(
         children: [
           Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.black,
             appBar: AppBar(
               backgroundColor: Color(0xFFE18D13),
               backwardsCompatibility: true,
             ),
-            bottomNavigationBar: Container(
-              height: height*0.0731,
-              color: Colors.white,
+            bottomNavigationBar:
+            // Container(
+            //   height: height*0.0731,
+            //   color: Colors.white,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: [
+            //       Container(width: width,padding: EdgeInsets.symmetric(horizontal: 15),
+            //         child: ElevatedButton(
+            //           style: ElevatedButton.styleFrom(primary: Colors.red),
+            //           onPressed: () {
+            //             Navigator.of(context)
+            //                 .pushReplacement(
+            //                 MaterialPageRoute(builder: (context) => Shopaddress()));
+            //           },
+            //           child: Text(
+            //             " Total Amount Pay:   \$"+cardvalue.sum1.toString(),
+            //             style: TextStyle(
+            //                 color: Colors.white,
+            //                 fontSize: 20,
+            //                 fontWeight: FontWeight.bold,
+            //                 fontStyle: FontStyle.italic),
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            Container(
+              height: 46,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(width: width,padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.red),
-                      onPressed: () {
-                        // Navigator.of(context)
-                        //     .pushReplacement(
-                        //     MaterialPageRoute(builder: (context) => ShopPay()));
-                        Navigator.of(context)
-                            .pushReplacement(
-                            MaterialPageRoute(builder: (context) => Shopaddress()));
-                      },
-                      child: Text(
-                        " Total Amount Pay:   \$"+cardvalue.sum1.toString(),
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic),
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF780001), Color(0xFF780001)],
+                          begin: FractionalOffset.centerLeft,
+                          end: FractionalOffset.centerRight,
+                        ),
                       ),
+                      child: TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushReplacement(
+                                        MaterialPageRoute(builder: (context) => Shopaddress()));
+                                  },
+                                  child: Text(
+                                    " Total Amount Pay:   \$"+cardvalue.sum1.toString(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic),
+                                  ),
+                                ),
                     ),
                   ),
                 ],
@@ -62,21 +93,6 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
             ),
             body: Column(
               children: [
-                // Container(width: width,padding: EdgeInsets.symmetric(horizontal: 15),
-                //   child: ElevatedButton(
-                //     style: ElevatedButton.styleFrom(primary: Colors.red,),
-                //     onPressed: () {
-                //     },
-                //     child: Text(
-                //       "Add Address",
-                //       style: TextStyle(
-                //           color: Colors.white,
-                //           fontSize: 18,
-                //           fontWeight: FontWeight.bold,
-                //           fontStyle: FontStyle.italic),
-                //     ),
-                //   ),
-                // ),
                 SizedBox(height: 10,),
                 Align(
                     alignment: Alignment.centerLeft,
@@ -85,7 +101,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                         Text("Your order",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xFF535353),
+                                color: Colors.white,
                                 fontSize: 20,
                                 fontFamily: 'Montserrat1',
                                 fontWeight: FontWeight.bold)),
@@ -225,7 +241,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                         Text("Product Details",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xFF535353),
+                                color: Color(0xFFA39597),
                                 fontSize: 20,
                                 fontFamily: 'Montserrat1',
                                 fontWeight: FontWeight.bold)),
@@ -236,27 +252,27 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                               Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Text("Total Quantity:",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Subtotal:",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Tax:",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Shipping Charge:",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Grand Total:",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
@@ -265,28 +281,28 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                               Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(cardvalue.cart1.length.toString(),style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("\$" + cardvalue.sum1.toString(),style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
 
                                   Text("\$0.00",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("\$0.00",style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("\$" + cardvalue.sum1.toString(),style: TextStyle(
-                                      color: Color(0xFF535353),
+                                      color: Color(0xFFA39597),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),

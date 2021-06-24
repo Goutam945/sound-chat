@@ -137,7 +137,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                         borderSide: const BorderSide(color: Colors.white, width: 2.0),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
-                        labelText: "Password Name",
+                        labelText: "Password",
                         labelStyle: TextStyle(
                           color:Color(0xFFA79A9A),
                         ),

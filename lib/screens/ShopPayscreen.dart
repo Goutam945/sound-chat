@@ -409,6 +409,7 @@ class _ShopPayState extends State<ShopPay> {
     }
   }
 }*/
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/api/create_order.dart';
@@ -586,56 +587,71 @@ class _ShopPayState extends State<ShopPay> {
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
 
   void showNonce() {
-    showDialog<void>(
+    // showDialog<void>(
+    //   context: context,
+    //   barrierDismissible: false, // user must tap button!
+    //   builder: (BuildContext context) {
+    //     return
+    //       AlertDialog(
+    //       title: Text('Success'),
+    //       content: SingleChildScrollView(
+    //         child: ListBody(
+    //           children: <Widget>[
+    //             Column(
+    //               children: [
+    //                 SizedBox(
+    //                   height: 90,
+    //                   width: 90,
+    //                   child: Image.network(
+    //                     'https://www.cntraveller.in/wp-content/themes/cntraveller/images/check-circle.gif',
+    //                     fit: BoxFit.fill,
+    //                   ),
+    //                 ),
+    //                 Text(
+    //                   "Thank you for Shopping",
+    //                   style: TextStyle(
+    //                       fontSize: 20,
+    //                       fontWeight: FontWeight.bold,
+    //                       fontStyle: FontStyle.italic),
+    //                 )
+    //               ],
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //       actions: <Widget>[
+    //         ElevatedButton(
+    //           child: Text('Continue Shopping'),
+    //           onPressed: () {
+    //             Provider.of<ProductModellist>(context, listen: false)
+    //                 .removeAll();
+    //             Navigator.of(context).pushReplacement(
+    //                 MaterialPageRoute(builder: (context) => Shopping()));
+    //             // Navigator.pushAndRemoveUntil(
+    //             //     context,
+    //             //     MaterialPageRoute(builder: (BuildContext context) => Shopping()),
+    //             //     ModalRoute.withName('/')
+    //             // );
+    //           },
+    //         ),
+    //       ],
+    //     );
+    //   },
+    // );
+    AwesomeDialog(
       context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Success'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 90,
-                      width: 90,
-                      child: Image.network(
-                        'https://www.cntraveller.in/wp-content/themes/cntraveller/images/check-circle.gif',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    Text(
-                      "Thank you for Shopping",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            ElevatedButton(
-              child: Text('Continue Shopping'),
-              onPressed: () {
-                Provider.of<ProductModellist>(context, listen: false)
-                    .removeAll();
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => Shopping()));
-                // Navigator.pushAndRemoveUntil(
-                //     context,
-                //     MaterialPageRoute(builder: (BuildContext context) => Shopping()),
-                //     ModalRoute.withName('/')
-                // );
-              },
-            ),
-          ],
-        );
+      dialogType: DialogType.SUCCES,
+      animType: AnimType.BOTTOMSLIDE,
+      btnOkColor: Colors.orange,
+      title: 'Success',
+      desc: 'Thank you for Shopping',
+      btnOkOnPress: () {
+        Provider.of<ProductModellist>(context, listen: false)
+                        .removeAll();
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Shopping()));
       },
-    );
+    )..show();
   }
 
   @override
@@ -669,33 +685,35 @@ class _ShopPayState extends State<ShopPay> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.red),
-                    onPressed: () {
-                      // setState(() {
-                      //   loader = false;
-                      // });
-                      if (id == null) {
-                        Toast.show("Please Login before Shopping", context,
-                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                      } else if (radioItem == 'paypal') {
-                        pay();
-                      } else if (radioItem == 'stripe') {
-                        stripePay(cart.sum1);
-                      } else if (radioItem == 'cod') {
-                        createOrder();
-                      } else {
-                        Toast.show("please select payment method", context,
-                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                      }
-                    },
-                    child: Text(
-                      " Total Amount Pay:   \$" + cart.sum1.toString(),
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic),
+                  Container( height: 46,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Color(0xFF780001)),
+                      onPressed: () {
+                        // setState(() {
+                        //   loader = false;
+                        // });
+                        if (id == null) {
+                          Toast.show("Please Login before Shopping", context,
+                              duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                        } else if (radioItem == 'paypal') {
+                          pay();
+                        } else if (radioItem == 'stripe') {
+                          stripePay(cart.sum1);
+                        } else if (radioItem == 'cod') {
+                          createOrder();
+                        } else {
+                          Toast.show("please select payment method", context,
+                              duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                        }
+                      },
+                      child: Text(
+                        " Total Amount Pay:   \$" + cart.sum1.toString(),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic),
+                      ),
                     ),
                   ),
                 ],

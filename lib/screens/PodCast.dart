@@ -92,7 +92,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Color(0xFFA79A9A),
-                                        fontSize: width * 0.0438,
+                                        fontSize: width * 0.0418,
                                       ))),
                             ),
                             Container(

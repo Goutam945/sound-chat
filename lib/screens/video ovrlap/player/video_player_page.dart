@@ -107,29 +107,26 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
           bottomNavigationBar: Offstage(
             offstage: !_visible,
             child: Container(
-              height: height * 0.085,
+              height: height * 0.075,
               color: Color(0xFF780001),
               child: Padding(
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GestureDetector(
                       child: Row(
                         children: [
                           Icon(
                             Icons.home,
-                            size: width * 0.1,
+                            size: width * 0.08,
                             color: Color(0xFFE18D13),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "HOME",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
+                          Text(
+                            "HOME",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         ],
                       ),
@@ -153,16 +150,13 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                         children: [
                           Icon(
                             Icons.radio,
-                            size: width * 0.1,
+                            size: width * 0.08,
                             color: Color(0xFFE18D13),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "LISTEN",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
+                          Text(
+                            "LISTEN",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         ],
                       ),
@@ -185,14 +179,11 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                       child: Row(
                         children: [
                           Icon(Icons.live_tv,
-                              size: width * 0.1, color: Color(0xFFE18D13)),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "WATCH",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
-                            ),
+                              size: width * 0.08, color: Color(0xFFE18D13)),
+                          Text(
+                            "WATCH",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         ],
                       ),
@@ -211,7 +202,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                     IconButton(
                       icon: Icon(
                         Icons.more_vert,
-                        size: width * 0.12,
+                        size: width * 0.10,
                         color: Colors.white,
                       ),
                       padding: EdgeInsets.only(bottom: 30),

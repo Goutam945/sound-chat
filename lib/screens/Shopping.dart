@@ -75,9 +75,9 @@ class _ShoppingState extends State<Shopping> {
                                     fontSize: 15,
                                   ),
                                 ),
-                                Container(color: Color(0xFFdd0e34),height: 30,width: 120,
-                                  child: Center(child: Text("Select Options",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
-                                )
+                                // Container(color: Color(0xFFdd0e34),height: 30,width: 120,
+                                //   child: Center(child: Text("Select Options",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                                // )
                               ],
                             ),
                           ),

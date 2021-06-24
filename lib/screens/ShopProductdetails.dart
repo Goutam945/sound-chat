@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/shoappbar.dart';
+import 'package:vibration/vibration.dart';
 class ShopProductdetails extends StatefulWidget {
   final product;
   ShopProductdetails(this.product);
@@ -34,6 +35,71 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
             backgroundColor: Colors.black,
             appBar: PreferredSize(
                 child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
+            bottomNavigationBar: Container(
+              height: 46,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFE18D13), Colors.orange],
+                          begin: FractionalOffset.centerLeft,
+                          end: FractionalOffset.centerRight,
+                        ),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          Vibration.vibrate();
+                          //comdition check on iteam dulicate
+                          for(int i=0;i<cart.cart1.length;i++)
+                            // if(widget.id==cart.cart1[i].id)
+                            if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownValue==cart.cart1[i].color )
+                              setState(() {
+                                itemFound=true;
+                                cart.cart1[i].quantity++;
+                                countprice=cart.cart1[i].price;
+                                countprice= cart.cart1[i].price+cart.cart1[i].price;//price coutnt in plus
+                                cart.sum1=cart.sum1+cart.cart1[i].price;
+                              });
+                            else{setState(() {
+                              itemFound=false;
+                            });}
+                          if(!itemFound)//endd*/
+                            Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['image'],context);
+                          print(cart.cart1.length.toString());
+                          Toast.show("Added to cart", context,
+                              duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                        },
+                        child: Text('Add to Cart',style: TextStyle(fontSize: 15,color: Colors.white),),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF780001), Color(0xFF780001)],
+                          begin: FractionalOffset.centerLeft,
+                          end: FractionalOffset.centerRight,
+                        ),
+                      ),
+                      child:  TextButton(
+                        onPressed: () {
+                          Vibration.vibrate();
+                          Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,
+                              widget.product['id'],
+                              widget.product['image'],context);
+                        },
+                        child: Text('Buy Now',style: TextStyle(fontSize: 15,color: Colors.white),),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             body: ListView(
               children: [
                 SizedBox(
@@ -53,6 +119,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ],
                   ),
                 ),
+                SizedBox(height: 10,),
                 Text(widget.product['title'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -235,51 +302,42 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 ),
 
                 SizedBox(height: height*0.0146,),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    // Container(color: Color(0xFFdd0e34),height: height*0.0512,
-                    //   child: Row(
-                    //     children: [
-                    //      new  IconButton(icon: new Icon(Icons.remove,color: Colors.white),onPressed: ()=>setState(()=>_itemCount == 1 ? 1 : _itemCount--),),
-                    //       new Text(_itemCount.toString(),style: TextStyle(color: Colors.white),),
-                    //       new IconButton(icon: new Icon(Icons.add,color: Colors.white,),onPressed: ()=>setState(()=>_itemCount++)),
-                    //     ],
-                    //   ),
-                    // ),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
-                      onPressed: () {
-                      //comdition check on iteam dulicate
-                      for(int i=0;i<cart.cart1.length;i++)
-                       // if(widget.id==cart.cart1[i].id)
-                        if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownValue==cart.cart1[i].color )
-                          setState(() {
-                            itemFound=true;
-                            cart.cart1[i].quantity++;
-                            countprice=cart.cart1[i].price;
-                            countprice= cart.cart1[i].price+cart.cart1[i].price;//price coutnt in plus
-                            cart.sum1=cart.sum1+cart.cart1[i].price;
-                          });
-                        else{setState(() {
-                            itemFound=false;
-                          });}
-                        if(!itemFound)//endd*/
-                          Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['image'],context);
-                        print(cart.cart1.length.toString());
-                        Toast.show("Added to cart", context,
-                            duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                      },
-                      child: Text('Add to Cart',style: TextStyle(fontSize: 13),),
-                    ),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
-                      onPressed: () {
-                        Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,
-                            widget.product['id'],
-                            widget.product['image'],context);
-                      },
-                      child: Text('Buy Now',style: TextStyle(fontSize: 13),),
-                    ),
-                  ],
-                )
+                // Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: <Widget>[
+                //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
+                //       onPressed: () {
+                //       //comdition check on iteam dulicate
+                //       for(int i=0;i<cart.cart1.length;i++)
+                //        // if(widget.id==cart.cart1[i].id)
+                //         if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownValue==cart.cart1[i].color )
+                //           setState(() {
+                //             itemFound=true;
+                //             cart.cart1[i].quantity++;
+                //             countprice=cart.cart1[i].price;
+                //             countprice= cart.cart1[i].price+cart.cart1[i].price;//price coutnt in plus
+                //             cart.sum1=cart.sum1+cart.cart1[i].price;
+                //           });
+                //         else{setState(() {
+                //             itemFound=false;
+                //           });}
+                //         if(!itemFound)//endd*/
+                //           Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['image'],context);
+                //         print(cart.cart1.length.toString());
+                //         Toast.show("Added to cart", context,
+                //             duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                //       },
+                //       child: Text('Add to Cart',style: TextStyle(fontSize: 13),),
+                //     ),
+                //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
+                //       onPressed: () {
+                //         Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,
+                //             widget.product['id'],
+                //             widget.product['image'],context);
+                //       },
+                //       child: Text('Buy Now',style: TextStyle(fontSize: 13),),
+                //     ),
+                //   ],
+                // )
 
               ],
             )),

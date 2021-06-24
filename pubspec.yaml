@@ -57,6 +57,11 @@ dependencies:
   socket_io_client: ^1.0.1
   google_sign_in:
   cupertino_icons: ^1.0.2
+  curved_navigation_bar: ^0.3.7
+  awesome_dialog: ^2.1.0
+  flutter_advanced_drawer: ^1.2.0
+  badges: ^2.0.1
+  vibration: ^1.7.3
 
 dev_dependencies:
   flutter_test:

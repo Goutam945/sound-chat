@@ -17,8 +17,10 @@ class _TermsConditionsState extends State<TermsConditions> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    if (Provider.of<TermsResponse>(context, listen: false).data != null)
-      Terms =Provider.of<TermsResponse>(context, listen: false).data;
+    // if (Provider.of<TermsResponse>(context, listen: false).data != null)
+    //   Terms =Provider.of<TermsResponse>(context, listen: false).data;
+    var data1 = context.watch<TermsResponse>().data;
+    Terms = (data1!=null)?data1['data']:[];
     return SafeArea(
       child: Stack(
           children:[ Scaffold(
@@ -30,12 +32,18 @@ class _TermsConditionsState extends State<TermsConditions> {
             body:ListView(
               children: [
                 SizedBox(height: 20,),
-                Html(data: Terms['data'],style: {
+                for(int i=0;i<Terms.length;i++)
+                /*Html(data: Terms[i]['description'],style: {
               "body": Style(
                 fontSize: FontSize(15.0),
                 color: Colors.white
               ),
-            },),
+            },),*/
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(Terms[i]['id'].toString() +"  "+Terms[i]['content_type'] +" \n " + Terms[i]['description'],style: TextStyle(fontSize: 15, color: Colors.white,),),
+                ),
                 //Text(Terms['data'].toString())
               ],
             )

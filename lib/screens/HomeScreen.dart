@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
@@ -56,6 +57,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   var homeslider;
   int imageNo = 0;
 int sliderid;
+  List<bool>butoncolor=[for(int i=0;i<7;i++)true];
+  bool isButtonPressed = false;
   @override
   void initState() {
     super.initState();
@@ -231,6 +234,21 @@ int sliderid;
               appBar: PreferredSize(
                   preferredSize: Size.fromHeight(55),
                   child: Appbar(email, name)),
+             /* bottomNavigationBar: CurvedNavigationBar(
+                backgroundColor: Color(0xFF222222),color: Color(0xFF780001),
+                buttonBackgroundColor:Color(0xFF780001),
+                animationCurve: Curves.easeInOut,
+                height: 60,
+                items: <Widget>[
+                  Icon(Icons.home, size: 30,color:Color(0xFFE18D13) ,),
+                  Icon(Icons.radio, size: 30,color:Color(0xFFE18D13)),
+                  Icon(Icons.live_tv, size: 30,color:Color(0xFFE18D13)),
+                  Icon(Icons.more_vert, size: 30,color:Color(0xFFE18D13)),
+                ],
+                onTap: (index) {
+                  //Handle button tap
+                },
+              ),*/
               body: SizedBox(
                 height: height,
                 child: Column(
@@ -636,8 +654,8 @@ int sliderid;
                                 children: [
                                   Container(
                                       child: SizedBox(
-                                          width: 90,
-                                          height: 80,
+                                          width: 100,
+                                          height: 90,
                                           child: ClipRRect(
                                               borderRadius:
                                               BorderRadius.circular(
@@ -694,7 +712,7 @@ int sliderid;
                       ),
                     ),
                     Container(
-                      height: height * 0.085,
+                      height: height * 0.075,
                       color: Color(0xFF780001),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 5, bottom: 5),
@@ -707,19 +725,24 @@ int sliderid;
                                 children: [
                                   Icon(
                                     Icons.home,
-                                    size: width * 0.1,
-                                    color: Color(0xFFE18D13),
+                                    size: width * 0.08,
+                                    //color: Color(0xFFE18D13),
+                                    color: butoncolor[0]? Color(0xFFE18D13):Colors.white,
                                   ),
                                   Text(
                                     "HOME",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
+                                        color: Colors.white, fontSize: 14
+
+                                    ),
                                   ),
                                 ],
                               ),
                               onTap: () {
                                 setState(() {
                                   listen = true;
+                                  isButtonPressed = !isButtonPressed;
+                                  butoncolor=butoncolor.asMap().entries.map((e) => e.key==0 ? false:true).toList();
                                 });
                               },
                             ),
@@ -732,13 +755,16 @@ int sliderid;
                                 children: [
                                   Icon(
                                     Icons.radio,
-                                    size: width * 0.1,
-                                    color: Color(0xFFE18D13),
+                                    size: width * 0.08,
+                                   // color: Color(0xFFE18D13),
+                                    color: butoncolor[1]? Color(0xFFE18D13):Colors.white,
                                   ),
                                   Text(
-                                    "LISTEN",
+                                    " LISTEN",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
+                                        color: Colors.white, fontSize: 14
+
+                                    ),
                                   ),
                                 ],
                               ),
@@ -748,6 +774,8 @@ int sliderid;
                                 setState(() {
                                   listen = false;
                                   play = false;
+                                  isButtonPressed = !isButtonPressed;
+                                  butoncolor=butoncolor.asMap().entries.map((e) => e.key==1 ? false:true).toList();
                                 });
                                 callAudio("start");
                               },
@@ -760,12 +788,14 @@ int sliderid;
                               child: Row(
                                 children: [
                                   Icon(Icons.live_tv,
-                                      size: width * 0.1,
-                                      color: Color(0xFFE18D13)),
+                                      size: width * 0.08,
+                                     // color: Color(0xFFE18D13)
+                                    color: butoncolor[2]? Color(0xFFE18D13):Colors.white,
+                                  ),
                                   Text(
-                                    "WATCH",
+                                    " WATCH",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 16),
+                                        color: Colors.white, fontSize: 14),
                                   ),
                                 ],
                               ),
@@ -773,6 +803,8 @@ int sliderid;
                                 _addVideoOverlay();
                                 setState(() {
                                   play = true;
+                                  isButtonPressed = !isButtonPressed;
+                                  butoncolor=butoncolor.asMap().entries.map((e) => e.key==2 ? false:true).toList();
                                 });
                                 callAudio("pause");
                               },
@@ -780,7 +812,7 @@ int sliderid;
                             GestureDetector(
                                 child: Icon(
                                   Icons.more_vert,
-                                  size: width * 0.12,
+                                  size: width * 0.10,
                                   color: Colors.white,
                                 ),
                                 // padding: EdgeInsets.only(bottom: 30),

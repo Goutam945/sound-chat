@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 Future<CancelSubpResponse> createCancelsubcripState(uid,
@@ -16,8 +17,17 @@ Future<CancelSubpResponse> createCancelsubcripState(uid,
       print(data);
 //      Navigator.of(context)
 //          .pushReplacement(MaterialPageRoute(builder: (context) => AllOrderlist()));
-      Toast.show(data.toString(), context,
-          duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+//       Toast.show(data.toString(), context,
+//           duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+          AwesomeDialog(
+            context: context,
+            dialogType: DialogType.SUCCES,
+            showCloseIcon: true,
+            animType: AnimType.BOTTOMSLIDE,btnOkColor: Colors.orange,
+            title: 'Succes',
+            btnOkOnPress: () {Navigator.of(context).pop();
+            },
+          )..show();
       return CancelSubpResponse.fromJson(json.decode(response.body));
     }
   } else {
