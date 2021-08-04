@@ -649,7 +649,7 @@ class _ShopPayState extends State<ShopPay> {
         Provider.of<ProductModellist>(context, listen: false)
                         .removeAll();
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Shopping()));
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
       },
     )..show();
   }

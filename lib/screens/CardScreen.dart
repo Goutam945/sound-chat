@@ -192,6 +192,7 @@ import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/shoappbar.dart';
 
+import 'NewLogin.dart';
 import 'Shopping.dart';
 import 'ShoppingCheckoutscreen.dart';
 
@@ -341,13 +342,35 @@ class _CardScreenState extends State<CardScreen> {
                       child:  TextButton(
             onPressed: () {
               if(id!=null){
-                Navigator.of(context)
-                    .pushReplacement(
-                    MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+                // Navigator.of(context)
+                //     .pushReplacement(
+                //     MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+                Navigator.push(context,
+                    PageTransition(type:
+                    PageTransitionType.rightToLeft, child:ShopCheckoutscreen()));
+
               } else {
-                Toast.show("Please Login before Shopping", context,
-                    duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                // Toast.show("Please Login before Shopping", context,
+                //     duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.NO_HEADER,
+                  animType: AnimType.BOTTOMSLIDE,
+                  btnOkColor: Colors.orange,
+                  title: 'Please Login',
+                  desc: 'Please Login before Shopping',
+                  btnCancelOnPress: () {
+                    //Navigator.of(context).pop();
+                  },btnOkText: "Yes",
+                  btnOkOnPress: () {
+                    Navigator.push(context,
+                        PageTransition(type:
+                        PageTransitionType.rightToLeft, child:NewLogin()));
+
+                  },
+                )..show();
               }
+
             },
             child: Text(
               "Pay",
@@ -373,7 +396,7 @@ class _CardScreenState extends State<CardScreen> {
                         // width: width * 0.7737,
                         height: height * 0.2201,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFF222222),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15),
@@ -383,26 +406,33 @@ class _CardScreenState extends State<CardScreen> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0, 3), // changes position of shadow
+                              spreadRadius: 1,
+                              blurRadius: 2,
+                              offset: Offset(0, 2), // changes position of shadow
                             ),
-                          ],),
+                          ],
+                        ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(height: height*0.1270,margin: EdgeInsets.only(left: 20),
                               width: width*0.2194,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Colors.black38, width: 2)),
-                              child: CachedNetworkImage(
-                                imageUrl:cart.cart1[index].image,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => Center(
-                                    child: CircularProgressIndicator()),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
+                              // decoration: BoxDecoration(
+                              //     border: Border.all(
+                              //         color: Colors.black, width: 2),
+                              // ),
+                              child: ClipRRect(
+                                borderRadius:
+                                BorderRadius.circular(
+                                    10),
+                                child: CachedNetworkImage(
+                                  imageUrl:cart.cart1[index].image,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => Center(
+                                      child: CircularProgressIndicator()),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                ),
                               ),
                             ),
                             SizedBox(width: 15,),
@@ -411,23 +441,23 @@ class _CardScreenState extends State<CardScreen> {
                                 SizedBox(width: width*0.5,
                                   child: Text(
                                     cart.cart1[index].productname,
-                                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Color(0xFFA79A9A)),
                                   ),
                                 ),
                                 Text("Size:" + cart.cart1[index].size,
-                                    style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15)),
+                                    style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15,color: Color(0xFFA79A9A))),
                                 Text("Color:" + cart.cart1[index].color,
-                                    style: TextStyle(fontWeight: FontWeight.w500)),
+                                    style: TextStyle(fontWeight: FontWeight.w500,color: Color(0xFFA79A9A))),
                                 Text("Price: \$" + (cart.cart1[index].price *cart.cart1[index].quantity).toString(),
-                                    style: TextStyle(fontWeight: FontWeight.w500)),
+                                    style: TextStyle(fontWeight: FontWeight.w500,color: Color(0xFFA79A9A))),
                                 Row(
                                   children: [
                                     Text("Quantity:",
                                         style:
-                                        TextStyle(fontWeight: FontWeight.w500)),
+                                        TextStyle(fontWeight: FontWeight.w500,color: Color(0xFFA79A9A))),
                                     GestureDetector(
-                                        child: new Icon(Icons.remove,
-                                            color: Colors.black),
+                                        child: new Icon(Icons.arrow_left,size: 30,
+                                            color: Color(0xFFA79A9A)),
                                         onTap: () {
                                           if(cart.cart1[index].quantity> 1)
                                             setState(() {
@@ -440,12 +470,12 @@ class _CardScreenState extends State<CardScreen> {
                                     ),
                                     Text(
                                       cart.cart1[index].quantity.toString(),
-                                      style: TextStyle(color: Colors.black),
+                                      style: TextStyle(color: Color(0xFFA79A9A)),
                                     ),
                                     GestureDetector(
                                       child: new Icon(
-                                        Icons.add,
-                                        color: Colors.black,
+                                        Icons.arrow_right,
+                                        color: Color(0xFFA79A9A),size: 30,
                                       ),
                                       onTap: (){
                                         setState(() {
@@ -490,7 +520,7 @@ class _CardScreenState extends State<CardScreen> {
                             },
                             child: new Icon(
                               Icons.delete,
-                              color: Colors.black,
+                                color: Color(0xFFA79A9A),
                             )),
                       )
                     ],

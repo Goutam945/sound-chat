@@ -61,7 +61,13 @@ class ShoppAppbar extends PreferredSize {
     badgeContent: Text(cart.cart1.length.toString(),style: TextStyle(color: Colors.white),),
     child: IconButton(icon: Icon(Icons.shopping_cart,size: 35,),
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
+         // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
+          Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType
+                      .rightToLeft,
+                  child: CardScreen()));
         }),
     ),
       ],

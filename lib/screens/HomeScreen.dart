@@ -532,9 +532,6 @@ int sliderid;
                                       style:
                                       TextStyle(color: Colors.white),
                                     ),
-                                    onPressed: () {
-                                      callAudio("stop");
-                                    },
                                     style: ButtonStyle(
                                       backgroundColor:
                                       MaterialStateProperty
@@ -637,7 +634,7 @@ int sliderid;
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(8.0),
                       width: width * 1.01998,
                       color: Color(0xFF222222),
                       child: (superherosLength != null)
@@ -652,10 +649,11 @@ int sliderid;
                             i++)
                               Row(
                                 children: [
-                                  Container(
-                                      child: SizedBox(
-                                          width: 100,
-                                          height: 90,
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                          width: 120,
+                                          height: 115,
                                           child: ClipRRect(
                                               borderRadius:
                                               BorderRadius.circular(
@@ -679,19 +677,22 @@ int sliderid;
                                                   Navigator.of(context).push(MaterialPageRoute(
                                                       builder: (context) => InterviewNewPlayer(
                                                           superherosLength[
-                                                          'free_content'][i]
-                                                          [
-                                                          'video_url'],
-                                                          superherosLength[
-                                                          'free_content'][i]
-                                                          [
-                                                          'post_title'])));
+                                                          'free_content'][i]['video_url'],
+                                                          superherosLength['free_content'][i]['post_title'])));
                                                   setState(() {
                                                     play = true;
                                                   });
                                                   callAudio("pause");
                                                 },
-                                              )))),
+                                              ))),
+                                      Opacity(opacity: 0.7,
+                                        child: Container(height: 20,width: 120,
+                                            color: Colors.black,
+                                            child: Text(superherosLength['free_content'][i]
+                                            ['post_title'],textAlign: TextAlign.center,style: TextStyle(color:Colors.white,),)),
+                                      )
+                                    ],
+                                  ),
                                   SizedBox(
                                     width: 10,
                                   ),

@@ -1213,20 +1213,34 @@ class _ShopaddressState extends State<Shopaddress> {
                             )),
                         onPressed: () {
                           if (_formKey.currentState.validate())
-                            Navigator.of(context)
-                                .pushReplacement(MaterialPageRoute(
-                                builder: (context) => ShopPay(
-                                  _firstname.text,
-                                  _lastname.text,
-                                  _address1.text,
-                                  _address2.text,
-                                  _city.text,
-                                  _state.text,
-                                  _postcode.text,
-                                  _country.text,
-                                  _email.text,
-                                  _phone.text,
-                                )));
+                            // Navigator.of(context)
+                            //     .pushReplacement(MaterialPageRoute(
+                            //     builder: (context) => ShopPay(
+                            //       _firstname.text,
+                            //       _lastname.text,
+                            //       _address1.text,
+                            //       _address2.text,
+                            //       _city.text,
+                            //       _state.text,
+                            //       _postcode.text,
+                            //       _country.text,
+                            //       _email.text,
+                            //       _phone.text,
+                            //     )));
+                          Navigator.push(context,
+                              PageTransition(type:
+                              PageTransitionType.rightToLeft, child:ShopPay(
+                                _firstname.text,
+                                _lastname.text,
+                                _address1.text,
+                                _address2.text,
+                                _city.text,
+                                _state.text,
+                                _postcode.text,
+                                _country.text,
+                                _email.text,
+                                _phone.text,
+                              )));
                         },
                         child: Text(
                           " Proceed to Pay",

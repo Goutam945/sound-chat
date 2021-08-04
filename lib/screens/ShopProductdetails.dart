@@ -107,14 +107,24 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                   child: PageView(
                     children: [
                      //for (int j = 0; j < widget.product['images'].length; j++)
-                        CachedNetworkImage(
-                          //imageUrl:widget.product[j]['images'],
-                          imageUrl:widget.product['image'],
-                          fit: BoxFit.fill,
-                          placeholder: (context, url) => Center(
-                              child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                        GestureDetector(
+                          child: CachedNetworkImage(
+                            //imageUrl:widget.product[j]['images'],
+                            imageUrl:widget.product['image'],
+                            fit: BoxFit.fill,
+                            placeholder: (context, url) => Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType
+                                        .scale,
+                                    child: FullImage(widget.product['image'])));
+                          },
                         ),
                     ],
                   ),

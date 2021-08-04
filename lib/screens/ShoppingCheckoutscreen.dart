@@ -73,9 +73,12 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                       ),
                       child: TextButton(
                                   onPressed: () {
-                                    Navigator.of(context)
-                                        .pushReplacement(
-                                        MaterialPageRoute(builder: (context) => Shopaddress()));
+                                    // Navigator.of(context)
+                                    //     .pushReplacement(
+                                    //     MaterialPageRoute(builder: (context) => Shopaddress()));
+                                    Navigator.push(context,
+                                        PageTransition(type:
+                                        PageTransitionType.rightToLeft, child:Shopaddress()));
                                   },
                                   child: Text(
                                     " Total Amount Pay:   \$"+cardvalue.sum1.toString(),
@@ -117,36 +120,42 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                   //height: height * 0.2201,
                   height: height * 0.1621,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Color(0xFF222222),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15),
                         bottomLeft: Radius.circular(15),
                         bottomRight: Radius.circular(15)
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],),
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.grey.withOpacity(0.5),
+                    //     spreadRadius: 5,
+                    //     blurRadius: 7,
+                    //     offset: Offset(0, 3), // changes position of shadow
+                    //   ),
+                    // ],
+                  ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(height: height*0.1070,margin: EdgeInsets.only(left: 20),
                         width: width*0.2194,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Colors.black38, width: 2)),
-                        child: CachedNetworkImage(
-                          imageUrl:cardvalue.cart1[index].image,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Center(
-                              child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                        // decoration: BoxDecoration(
+                        //     border: Border.all(
+                        //         color: Colors.black38, width: 2)),
+                        child: ClipRRect(
+                          borderRadius:
+                          BorderRadius.circular(
+                              10),
+                          child: CachedNetworkImage(
+                            imageUrl:cardvalue.cart1[index].image,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
                         ),
                       ),
                       SizedBox(width: 15,),
@@ -156,7 +165,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                           SizedBox(width: width*0.5,
                             child: Text(
                               cardvalue.cart1[index].productname,
-                              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),
+                              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Color(0xFFA79A9A)),
                             ),
                           ),
                           // Text(" Size:-" + cardvalue.cart1[index].size,
@@ -165,10 +174,10 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                           //     style: TextStyle(fontWeight: FontWeight.bold)),
                           Text(
                             "Quantity: " + cardvalue.cart1[index].quantity.toString(),
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                            style: TextStyle(fontWeight: FontWeight.w500,color: Color(0xFFA79A9A)),
                           ),
                           Text("Price: \$" + (cardvalue.cart1[index].price *cardvalue.cart1[index].quantity).toString(),
-                              style: TextStyle(fontWeight: FontWeight.w500)),
+                              style: TextStyle(fontWeight: FontWeight.w500,color: Color(0xFFA79A9A))),
                           // Row(
                           //   children: [
                           //     Text("Quantity:",

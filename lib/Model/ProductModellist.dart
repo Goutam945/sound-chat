@@ -35,7 +35,13 @@ class ProductModellist with ChangeNotifier {
     this.cart1.add(ProductModellist(productname, color, price, size, quantity, id, image));
     this.sum1 = (this.sum1 + price*quantity);
     notifyListeners();
-    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
+   // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType
+                .rightToLeft,
+            child: CardScreen()));
   }
 
   void remove1(i,price,quantity) {

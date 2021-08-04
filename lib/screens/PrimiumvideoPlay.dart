@@ -45,7 +45,7 @@ String email,name;
       child: Stack(
         children: [
           Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF222222),
             appBar: roated?PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)):null,
             bottomNavigationBar:   Offstage(offstage:!roated,
               child: Bottumnavation(),
@@ -161,36 +161,46 @@ String email,name;
                             Row(
                               children: [
                                 //SizedBox(width: 80,height:60,child: GestureDetector(child: Image.network(jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,),
-                                SizedBox(
-                                    width: 120,
-                                    height: 120,
-                                    child: ClipRRect(borderRadius: BorderRadius.circular(10),
-                                    child: GestureDetector(
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            superherosLength['premium_content'][i]
-                                                ['feature_img'],
-                                        fit: BoxFit.fill,
-                                        placeholder: (context, url) => Center(
-                                            child: CircularProgressIndicator()),
-                                        errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          url =
-                                              superherosLength['premium_content']
-                                                  [i]['video_url'];
-                                          imageUrl =
-                                              superherosLength['premium_content']
-                                                  [i]['feature_img'];
-                                          titlepost =
-                                              superherosLength['premium_content']
-                                                  [i]['post_title'];
-                                          isTrue = false;
-                                        });
-                                      },
-                                    ))),
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                        width: 120,
+                                        height: 120,
+                                        child: ClipRRect(borderRadius: BorderRadius.circular(10),
+                                        child: GestureDetector(
+                                          child: CachedNetworkImage(
+                                            imageUrl:
+                                                superherosLength['premium_content'][i]
+                                                    ['feature_img'],
+                                            fit: BoxFit.fill,
+                                            placeholder: (context, url) => Center(
+                                                child: CircularProgressIndicator()),
+                                            errorWidget: (context, url, error) =>
+                                                Icon(Icons.error),
+                                          ),
+                                          onTap: () {
+                                            setState(() {
+                                              url =
+                                                  superherosLength['premium_content']
+                                                      [i]['video_url'];
+                                              imageUrl =
+                                                  superherosLength['premium_content']
+                                                      [i]['feature_img'];
+                                              titlepost =
+                                                  superherosLength['premium_content']
+                                                      [i]['post_title'];
+                                              isTrue = false;
+                                            });
+                                          },
+                                        ))),
+                                    Opacity(opacity: 0.7,
+                                      child: Container(height: 20,width: 120,
+                                          color: Colors.black,
+                                          child: Text(superherosLength['premium_content'][i]
+                                          ['post_title'],textAlign: TextAlign.center,style: TextStyle(color:Colors.white,),)),
+                                    )
+                                  ],
+                                ),
                                 SizedBox(
                                   width: 10,
                                 ),

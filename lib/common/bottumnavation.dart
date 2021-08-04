@@ -37,6 +37,7 @@ class Bottumnavation extends StatelessWidget {
                     MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
                     ModalRoute.withName('/')
                 );
+
               },
             ),
             VerticalDivider(

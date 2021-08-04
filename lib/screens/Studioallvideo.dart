@@ -22,7 +22,7 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
       child: Stack(
         children: [
           Scaffold(
-            backgroundColor: Colors.black,
+            backgroundColor: Color(0xFF222222),
             appBar: AppBar(
               backgroundColor: Color(0xFFE18D13),
             ),
@@ -52,7 +52,7 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                         GestureDetector(child:
                         Stack(
                           children: [
-                            SizedBox.expand(
+                            SizedBox(width: width*0.3094,height:height*0.1577,
                               child: Container(
                                 child: Opacity(opacity: 0.8,
                                   child: CachedNetworkImage(
@@ -64,16 +64,17 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                                 ),
                               ),
                             ),
-                            Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
-                                // BoxShape.circle or BoxShape.retangle
-                                //color: const Color(0xFF66BB6A),
-                                boxShadow: [
-                                  BoxShadow(offset: Offset(0.0,5.0),
-                                    color: Colors.black,
-                                    blurRadius: 15.0,
-                                  ),
-                                ]),
-                                child: SizedBox(height: 30,child: Text(superherosLength['free_content'][i]['post_title'],textAlign:TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
+                            Positioned(bottom: 5,left: 0,right: 0,child: Container(
+                                // decoration: BoxDecoration(
+                                // boxShadow: [
+                                //   BoxShadow(offset: Offset(0.0,5.0),
+                                //     color: Colors.black,
+                                //     blurRadius: 15.0,
+                                //   ),
+                                // ]),
+                                height: 18,width: width*0.3094,
+                                color: Colors.black,
+                                child: SizedBox(child: Text(superherosLength['free_content'][i]['post_title'],textAlign:TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal),))))
                           ],
                         ),
                           onTap: (){

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sound_chat/api/cancel_subcription.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
+import 'package:sound_chat/common/navinext.dart';
 
 import 'ChnagePassword.dart';
 import 'DesignForgotpass.dart';
@@ -183,8 +184,11 @@ void initState() {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ChangePassword()));
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: ChangePassword()));
                             },
                             child: Text(
                               "Change Password",
@@ -195,8 +199,11 @@ void initState() {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => DesignUpdate()));
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: DesignUpdate()));
                             },
                             child: Text(
                               "upgrade profile",
