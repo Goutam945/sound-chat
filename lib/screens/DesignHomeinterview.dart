@@ -61,10 +61,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
         children: [
           Scaffold(
             backgroundColor: Colors.black,
-            appBar: roated?PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)):null,
+            /*  appBar: roated?PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)):null,
             bottomNavigationBar:   Offstage(offstage:!roated,
               child:  Bottumnavation(),
-            ),
+            ),*/
 
             body: (superherosLength != null)? Column(
               children: [
@@ -588,7 +588,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
             ),
 
           ),
-          if(roated)
+         /* if(roated)
           Positioned(
             top: AppBar().preferredSize.height*0.2,
             left: width * 0.39865,
@@ -599,7 +599,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                 'assets/soundpic.png',
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     );

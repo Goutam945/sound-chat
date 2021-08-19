@@ -53,7 +53,7 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Color(0xFF222222),
-          appBar: roated
+         /* appBar: roated
               ? PreferredSize(
                   preferredSize: Size.fromHeight(55),
                   child: Appbar(email, name))
@@ -61,7 +61,9 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
           bottomNavigationBar: Offstage(
             offstage: !roated,
             child:  Bottumnavation(),
-          ),
+          ),*/
+          appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+              child: Backappbar()),
           body: (superherosLength != null)
               ? Column(
                   children: [
@@ -277,6 +279,14 @@ class _VideoState extends State<youtubeplayer> {
         initialVideoId: YoutubePlayer.convertUrlToId(widget.videoURL),
         flags: YoutubePlayerFlags());
     super.initState();
+  }
+  @override
+  void dispose() {
+    _controller.pause();
+    // _controller.dispose();
+    print("dispose");
+    super.dispose();
+    _controller.dispose();
   }
 
   @override

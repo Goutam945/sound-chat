@@ -104,7 +104,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                   preferredSize: Size.fromHeight(55),
                   child: Appbar(email, name))
               : null,*/
-          bottomNavigationBar: Offstage(
+         /* bottomNavigationBar: Offstage(
             offstage: !_visible,
             child: Container(
               height: height * 0.075,
@@ -221,7 +221,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                 ),
               ),
             ),
-          ),
+          ),*/
           body: SizedBox(
             height: height,
             child: Column(

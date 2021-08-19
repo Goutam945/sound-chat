@@ -1,3 +1,4 @@
+import 'package:sound_chat/common/backappbar.dart';
 import 'package:sound_chat/common/index.dart';
 class Primiumvideo extends StatefulWidget {
   final playvideo, title;
@@ -46,10 +47,12 @@ String email,name;
         children: [
           Scaffold(
           backgroundColor: Color(0xFF222222),
-            appBar: roated?PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)):null,
+           /* appBar: roated?PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)):null,
             bottomNavigationBar:   Offstage(offstage:!roated,
               child: Bottumnavation(),
-            ),
+            ),*/
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
           body: (superherosLength != null)
               ? Column(
                   children: [

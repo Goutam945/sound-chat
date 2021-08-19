@@ -9,18 +9,19 @@ import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/subscription_approve_user.dart';
 import 'package:sound_chat/api/termsofservices.dart';
+import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/InetrviewvideoplayStudio.dart';
 import 'package:shimmer/shimmer.dart';
 
-class HomeScreen extends StatefulWidget {
+class ListenRadio extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ListenRadioState createState() => _ListenRadioState();
 }
 
 SharedPreferences localStorage;
 
-class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+class _ListenRadioState extends State<ListenRadio> with WidgetsBindingObserver {
   int id;
   Future<int> _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   String name;
   String data;
   bool listen = true;
-  bool play = true;
+ // bool play = true;
   bool stop = true;
   String status = 'hidden';
   var superherosLength;
@@ -56,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   String show = '22:00-23:59';
   var homeslider;
   int imageNo = 0;
-int sliderid;
+  int sliderid;
   List<bool>butoncolor=[for(int i=0;i<7;i++)true];
   bool isButtonPressed = false;
   @override
@@ -92,16 +93,25 @@ int sliderid;
     createtermsState(context);
     createCoupncodeState(context);
 
+
+   /* MediaNotification.showNotification(
+        title: 'Soundchat Radio');
+    setState(() {
+      listen = false;
+      play = false;
+      isButtonPressed = !isButtonPressed;
+    });
+    callAudio("start");*/
+
+
   }
 
   void state() {
     setState(() {
       weekday =7-
           DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
-     //if (weekday == -1) weekday = 6;
       day =7-
           DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
-      //if (day == -1) day = 6;
     });
   }
 
@@ -116,6 +126,9 @@ int sliderid;
       default:
         break;
     }
+    // if (state == AppLifecycleState.paused) {
+    //   audioPlayer.pause();
+    // }
   }
 
   // AudioStream stream = new AudioStream('https://s2.voscast.com:9059/stream');
@@ -143,11 +156,6 @@ int sliderid;
   onPlayerErr() {
     audioPlayer.onPlayerError.listen((msg) async {
       print('audioPlayer error : $msg');
-      //   Fluttertoast.showToast(
-      //     msg: "Server error, trying to play...",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.SNACKBAR,
-      //   );
       await audioPlayer.pause();
       if (mounted) {
         setState(() => play = true);
@@ -156,6 +164,7 @@ int sliderid;
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -214,71 +223,9 @@ int sliderid;
           children: [
             Scaffold(
               backgroundColor: Color(0xFF222222),
-              appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(55),
-                  child: Appbar(email, name)),
-             /* bottomNavigationBar: CurvedNavigationBar(
-                backgroundColor: Color(0xFF222222),color: Color(0xFF780001),
-                buttonBackgroundColor:Color(0xFF780001),
-                animationCurve: Curves.easeInOut,
-                height: 60,
-                items: <Widget>[
-                  Icon(Icons.home, size: 30,color:Color(0xFFE18D13) ,),
-                  Icon(Icons.radio, size: 30,color:Color(0xFFE18D13)),
-                  Icon(Icons.live_tv, size: 30,color:Color(0xFFE18D13)),
-                  Icon(Icons.menu, size: 30,color:Color(0xFFE18D13)),
-                ],
-                onTap: (index) {
-                  switch(index) {
-                    case 0: {
-                      setState(() {
-                        listen = true;
-                        isButtonPressed = !isButtonPressed;
-                      });
-                    }
-                    break;
-
-                    case 1: {
-                      MediaNotification.showNotification(
-                          title: 'Soundchat Radio');
-                      setState(() {
-                        listen = false;
-                        play = false;
-                        isButtonPressed = !isButtonPressed;
-                        butoncolor=butoncolor.asMap().entries.map((e) => e.key==1 ? false:true).toList();
-                      });
-                      callAudio("start");
-
-                    }
-                    break;
-                    case 2:{
-                      _addVideoOverlay();
-                      setState(() {
-                        play = true;
-                        isButtonPressed = !isButtonPressed;
-                        butoncolor=butoncolor.asMap().entries.map((e) => e.key==2 ? false:true).toList();
-                      });
-                      callAudio("pause");
-
-                    }
-                    break;
-                    case 3:{
-                      Navigator.push(context,
-                          PageTransition(type:
-                          PageTransitionType.rightToLeft, child: NewMenuScreen()));
-
-                    }
-                    break;
-                    default: {
-                      //statements;
-                    }
-                    break;
-                  }
-
-
-                  //Handle button tap
-                },
-              ),*/
+              // appBar: PreferredSize(
+              //     preferredSize: Size.fromHeight(55),
+              //     child: Appbar(email, name)),
               body: SizedBox(
                 height: height,
                 child: Column(
@@ -366,21 +313,7 @@ int sliderid;
                             ),
                           )),
                     ),
-                    listen
-                        ? Container(
-                      margin: EdgeInsets.only(right: width * 0.2),
-                      color: Colors.black,
-                      height: height * 0.04389,
-                      child: Center(
-                        child: Text("NOW STREAMING",
-                            style: TextStyle(
-                                color: Color(0xFF780001),
-                                fontSize: 16,
-                                // fontStyle: FontStyle.italic,
-                                letterSpacing: 5)),
-                      ),
-                    )
-                        : Container(
+                   Container(
                       margin: EdgeInsets.only(right: width * 0.2),
                       color: Colors.black,
                       height: height * 0.04389,
@@ -395,113 +328,7 @@ int sliderid;
                         ),
                       ),
                     ),
-                    listen
-                        ? Container(
-                      color: Color(0xFF780001),
-                      constraints:
-                      BoxConstraints.expand(height: height * 0.1842),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            top: height * 0.0192,
-                            child: Container(
-                              height: height * 0.142,
-                              color: Color(0xFF111111),
-                              width: width * 0.5347,
-                            ),
-                          ),
-                          Positioned(
-                            top: height * 0.036,
-                            left: width * 0.070,
-                            child: Text(
-                              "THIS AND EVERY",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                // fontStyle: FontStyle.italic,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: width * 0.5347,
-                            child: Container(
-                              height: height * 0.1843,
-                              width: width * 0.4583,
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: <Color>[
-                                        Color(0xFFC65706),
-                                        Color(0xFFC5C701)
-                                      ])),
-                            ),
-                          ),
-                          Positioned(
-                            left: width * 0.5551,
-                            top: height * 0.0105,
-                            child: Container(
-                              height: height * 0.1646,
-                              width: width * 0.4201,
-                              color: Color(0xFF374B6E),
-                            ),
-                          ),
-                          Positioned(
-                            left: width * 0.6493,
-                            top: height * 0.0268,
-                            child: Container(
-                              width: width * 0.2337,
-                              height: height * 0.1353,
-                              child: CircleAvatar(
-                                backgroundImage:
-                                AssetImage("assets/imgpodcast.png"),
-                              ),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF374B6E)),
-                            ),
-                          ),
-                          Positioned(
-                            top: height * 0.073,
-                            left: width * 0.070,
-                            child: (timeAndDate != null)
-                                ? Container(
-                              child: Text(
-                                  timeAndDate[weekday]['post_title']
-                                      .toString(),
-                                  style: TextStyle(
-                                    color: Color(0xFFFFFEFF),
-                                    fontSize: 23,
-                                  )),
-                            )
-                                : Shimmer.fromColors(
-                              baseColor: Colors.black12,
-                              highlightColor: Colors.grey[600],
-                              child: Container(
-                                  width: width * 0.35,
-                                  height: height * 0.06,
-                                  color: Colors.black),
-                            ),
-                          ),
-                          //for (int j = 0; j < timeAndDate[weekday]['shows'].length; j++)
-                          if (timeAndDate != null)
-                            Positioned(
-                              top: height * 0.1143,
-                              left: width * 0.070,
-                              child: Container(
-                                child: Text(show.toString(),
-                                    style: TextStyle(
-                                        color: Color(0xFFFFFEFF),
-                                        fontSize: 15,
-                                        fontStyle: FontStyle.italic)),
-                              ),
-                            )
-                          // : Center(
-                          //     child: CircularProgressIndicator()),
-                        ],
-                      ),
-                    )
-                        : Container(
+                    Container(
                       color: Color(0xFF780001),
                       constraints:
                       BoxConstraints.expand(height: height * 0.1842),
@@ -556,21 +383,11 @@ int sliderid;
                                 ),
                                 SizedBox(
                                   width: width * 0.3,
-                                  child: ElevatedButton(
+                                  child: Container( margin: const EdgeInsets.only(left: 20.0),
                                     child: Text(
                                       !play ? "PLAYING" : "STOP",
                                       style:
-                                      TextStyle(color: Colors.white),
-                                    ),
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                      MaterialStateProperty
-                                          .resolveWith<Color>(
-                                              (Set<MaterialState>
-                                          states) {
-                                            return Color(
-                                                0xff780001); // Use the component's default.
-                                          }),
+                                      TextStyle(color: Colors.white,fontSize: 15),
                                     ),
                                   ),
                                 )
@@ -742,128 +559,12 @@ int sliderid;
                         ),
                       ),
                     ),
-                  /*  Container(
-                      height: height * 0.075,
-                      color: Color(0xFF780001),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 5, bottom: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.home,
-                                    size: width * 0.08,
-                                    //color: Color(0xFFE18D13),
-                                    color: butoncolor[0]? Color(0xFFE18D13):Colors.white,
-                                  ),
-                                  Text(
-                                    "HOME",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 14
 
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                                setState(() {
-                                  listen = true;
-                                  isButtonPressed = !isButtonPressed;
-                                  butoncolor=butoncolor.asMap().entries.map((e) => e.key==0 ? false:true).toList();
-                                });
-                              },
-                            ),
-                            VerticalDivider(
-                              thickness: 1,
-                              color: Color(0xFFB71613),
-                            ),
-                            GestureDetector(
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.radio,
-                                    size: width * 0.08,
-                                   // color: Color(0xFFE18D13),
-                                    color: butoncolor[1]? Color(0xFFE18D13):Colors.white,
-                                  ),
-                                  Text(
-                                    " LISTEN",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 14
-
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                                MediaNotification.showNotification(
-                                    title: 'Soundchat Radio');
-                                setState(() {
-                                  listen = false;
-                                  play = false;
-                                  isButtonPressed = !isButtonPressed;
-                                  butoncolor=butoncolor.asMap().entries.map((e) => e.key==1 ? false:true).toList();
-                                });
-                                callAudio("start");
-                              },
-                            ),
-                            VerticalDivider(
-                              thickness: 1,
-                              color: Color(0xFFB71613),
-                            ),
-                            GestureDetector(
-                              child: Row(
-                                children: [
-                                  Icon(Icons.live_tv,
-                                      size: width * 0.08,
-                                     // color: Color(0xFFE18D13)
-                                    color: butoncolor[2]? Color(0xFFE18D13):Colors.white,
-                                  ),
-                                  Text(
-                                    " WATCH",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                                _addVideoOverlay();
-                                setState(() {
-                                  play = true;
-                                  isButtonPressed = !isButtonPressed;
-                                  butoncolor=butoncolor.asMap().entries.map((e) => e.key==2 ? false:true).toList();
-                                });
-                                callAudio("pause");
-                              },
-                            ),
-                            GestureDetector(
-                                child: Icon(
-                                  Icons.more_vert,
-                                  size: width * 0.10,
-                                  color: Colors.white,
-                                ),
-                                // padding: EdgeInsets.only(bottom: 30),
-                                onTap: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => NewMenuScreen()));
-
-                                  Navigator.push(context,
-                                      PageTransition(type:
-                                      PageTransitionType.rightToLeft, child: NewMenuScreen()));
-                                }),
-                          ],
-                        ),
-                      ),
-                    ),*/
                   ],
                 ),
               ),
             ),
-            Positioned(
+           /* Positioned(
               top: AppBar().preferredSize.height * 0.2,
               left: width*0.4,
               // right: 0,
@@ -874,7 +575,7 @@ int sliderid;
                   'assets/soundpic.png',
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),

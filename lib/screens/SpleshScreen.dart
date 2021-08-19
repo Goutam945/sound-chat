@@ -7,6 +7,8 @@ import 'package:sound_chat/api/search_api.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
+
+import 'TestingHome.dart';
 class SpleshScreen extends StatefulWidget {
   @override
   SplashScreenState createState() => SplashScreenState();
@@ -47,7 +49,8 @@ class SplashScreenState extends State<SpleshScreen> {
             () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => HomeScreen())));
+                //builder: (context) => HomeScreen())));
+    builder: (context) => MyBottomBarDemo())));
 
   }
 

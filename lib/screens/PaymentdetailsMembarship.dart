@@ -339,8 +339,9 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0),
                         )),
-                    onPressed: () {
-                      addCard().whenComplete(() => createIntent(double.parse(widget.subscription['plan_fee'])).whenComplete(() =>
+                    onPressed: () async {
+                      await addCard()
+                          .whenComplete(() => createIntent(double.parse(widget.subscription['plan_fee'])).whenComplete(() =>
                           authPayment(double.parse(widget.subscription['plan_fee'])) /*.whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>(paymentResponse1.status == PaymentResponseStatus.succeeded)?SuccessScreen():FailedScreen())))*/));
                       // Navigator.of(context).push(
                       //     MaterialPageRoute(

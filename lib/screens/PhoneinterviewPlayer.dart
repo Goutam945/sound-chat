@@ -53,7 +53,7 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Color(0xFF222222),
-          appBar: roated
+          /*appBar: roated
               ? PreferredSize(
               preferredSize: Size.fromHeight(55),
               child: Appbar(email, name))
@@ -61,7 +61,9 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
           bottomNavigationBar: Offstage(
             offstage: !roated,
             child:  Bottumnavation(),
-          ),
+          ),*/
+          appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+              child: Backappbar()),
           body: (superherosLength != null)
               ? Column(
             children: [

@@ -54,8 +54,8 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
         children: [
           Scaffold(extendBody: false,
             backgroundColor: Colors.black,
-            appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-            bottomNavigationBar:   Bottumnavation(),
+            /*appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
+            bottomNavigationBar:   Bottumnavation(),*/
             body: (superherosLength != null)
                 ? SizedBox(height: height,
                   child: Column(
@@ -260,7 +260,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                 )
                 : Center(child: CircularProgressIndicator()),
           ),
-          Positioned(
+         /* Positioned(
             top: AppBar().preferredSize.height*0.2,
             left: width * 0.39865,
             child: SizedBox(
@@ -270,7 +270,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                 'assets/soundpic.png',
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     );

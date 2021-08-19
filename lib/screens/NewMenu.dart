@@ -398,7 +398,7 @@ class _HomeScreenState extends State<NewMenuScreen> {
                       ),
                     ],
                   ),
-                  Padding(
+                /*  Padding(
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -412,7 +412,7 @@ class _HomeScreenState extends State<NewMenuScreen> {
                         ),
                       ],
                     ),
-                  ),
+                  ),*/
                 ],
               ),
             ),

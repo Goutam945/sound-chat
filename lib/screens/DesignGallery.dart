@@ -14,7 +14,8 @@ String email,name;
   @override
   void initState() {
     super.initState();
-    _loadSavedData();
+   // _loadSavedData();
+    getdata();
   }
   _loadSavedData() async{
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -25,34 +26,29 @@ String email,name;
       }
     });
   }
+  getdata(){
+    setState(() {
+      if(Provider.of<GalleryResponse>(context, listen: false).data!=null)
+      superherosLength = Provider.of<GalleryResponse>(context, listen: false).data['data'];
+    });
+   // if(Provider.of<GalleryResponse>(context, listen: false).data!=null)
+     // superherosLength = Provider.of<GalleryResponse>(context, listen: false).data['data'];
+  }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    if(Provider.of<GalleryResponse>(context, listen: false).data!=null)
-    superherosLength = Provider.of<GalleryResponse>(context, listen: false).data['data'];
+
     return SafeArea(
       child: Stack(
         children:[ Scaffold(
           backgroundColor: Colors.black,
-          appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-          bottomNavigationBar:   Bottumnavation(),
+          /*appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
+          bottomNavigationBar:   Bottumnavation(),*/
           body: (superherosLength != null)
               ? Column(
                   children: [
-//                    Column(
-//                      children: [
-//                        SizedBox(
-//                          child: Image.asset(
-//                            'assets/soundbk.png',
-//                            fit: BoxFit.fitWidth,
-//                          ),
-//                          height: height * 0.2002,
-//                          width: width * 1.018,
-//                        ),
-//                      ],
-//                    ),
                     SizedBox(
                       height: height * 0.02634,
                     ),
@@ -140,146 +136,6 @@ String email,name;
                     SizedBox(
                       height: 20,
                     ),
-//                    for (int j = 0; j < superherosLength[imgcount]
-//                    ['img_gallery_pic'].length; j = j + 4)
-//                      SizedBox(
-//                        height: 400,
-//                        child: Row(
-//                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                          children: [
-//                            Column(
-//                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                              children: [
-//                                if(superherosLength[imgcount]
-//                                ['img_gallery_pic'].length>j+0)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 0])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.3023,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 0],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                                if(superherosLength[imgcount]
-//                                ['img_gallery_pic'].length>j+1)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 1])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.1393,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 1],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                              ],
-//                            ),
-//                            Column(
-//                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                              children: [
-//                                if(superherosLength[imgcount]
-//                            ['img_gallery_pic'].length>j+2)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 2])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.1393,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 2],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                                if(superherosLength[imgcount]
-//                                ['img_gallery_pic'].length>j+3)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 3])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.3023,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 3],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                              ],
-//                            ),
-//                          ],
-//                        ),
-//                      ),
 
                       Container(height: height*0.5,
                     child:SingleChildScrollView(
@@ -433,7 +289,7 @@ String email,name;
                 )
               : Center(child: CircularProgressIndicator()),
         ),
-          Positioned(
+         /* Positioned(
             top: AppBar().preferredSize.height*0.2,
             left: width * 0.39865,
             child: SizedBox(
@@ -443,7 +299,7 @@ String email,name;
                 'assets/soundpic.png',
               ),
             ),
-          ),
+          ),*/
       ]
       ),
     );

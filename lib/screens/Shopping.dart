@@ -24,8 +24,8 @@ class _ShoppingState extends State<Shopping> {
       child: Stack(children: [
         Scaffold(
             backgroundColor: Colors.black,
-            appBar: PreferredSize(child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
-          bottomNavigationBar:   Bottumnavation(),
+           /* appBar: PreferredSize(child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
+          bottomNavigationBar:   Bottumnavation(),*/
           body:(product != null)? Column(
               children: [
                 SizedBox(height: 10,),
@@ -103,7 +103,7 @@ class _ShoppingState extends State<Shopping> {
               ],
             ):Center(child: CircularProgressIndicator()),
         ),
-        Positioned(
+        /*Positioned(
           top: AppBar().preferredSize.height * 0.2,
           left: width * 0.39865,
           child: SizedBox(
@@ -113,7 +113,7 @@ class _ShoppingState extends State<Shopping> {
               'assets/soundpic.png',
             ),
           ),
-        ),
+        ),*/
       ]),
     );
   }

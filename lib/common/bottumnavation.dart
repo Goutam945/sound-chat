@@ -1,11 +1,79 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/TestingHome.dart';
 
-class Bottumnavation extends StatelessWidget {
+import 'appConfig.dart';
+
+class Bottumnavation extends StatefulWidget {
+  @override
+  _BottumnavationState createState() => _BottumnavationState();
+}
+
+
+class _BottumnavationState extends State<Bottumnavation> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Container(
+    return CurvedNavigationBar(
+      backgroundColor: Color(0xFF222222),color: Color(0xFF780001),
+      buttonBackgroundColor:Color(0xFF780001),
+      animationCurve: Curves.easeInOut,
+      height: 60,
+      items: <Widget>[
+        Icon(Icons.home, size: 30,color:Color(0xFFE18D13) ,),
+        Icon(Icons.radio, size: 30,color:Color(0xFFE18D13)),
+        Icon(Icons.live_tv, size: 30,color:Color(0xFFE18D13)),
+        Icon(Icons.menu, size: 30,color:Color(0xFFE18D13)),
+      ],
+      onTap: (index) {
+        switch(index) {
+          case 0: {
+            pageIndex=0;
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (BuildContext context) => MyBottomBarDemo()),
+                ModalRoute.withName('/')
+            );
+          }
+          break;
+
+          case 1: {
+            pageIndex=1;
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (BuildContext context) => MyBottomBarDemo()),
+                ModalRoute.withName('/')
+            );
+
+          }
+          break;
+          case 2:{
+            pageIndex=2;
+            OverlayService().addVideosOverlay(context, MyBottomBarDemo());
+
+          }
+          break;
+          case 3:{
+            pageIndex=3;
+            Navigator.push(context,
+                PageTransition(type:
+                PageTransitionType.rightToLeft, child: MyBottomBarDemo()));
+
+          }
+          break;
+          default: {
+            //statements;
+          }
+          break;
+        }
+
+
+        //Handle button tap
+      },
+    );
+
+    /* Container(
       height: height * 0.075,
       color: Color(0xFF780001),
       child: Padding(
@@ -110,7 +178,7 @@ class Bottumnavation extends StatelessWidget {
           ],
         ),
       ),
-    );
+    );*/
 
   }
 }
