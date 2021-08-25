@@ -26,7 +26,7 @@ class PageTransition<T> extends PageRouteBuilder<T> {
     @required this.type,
     this.curve = Curves.linear,
     this.alignment,
-    this.duration = const Duration(milliseconds: 800),
+    this.duration = const Duration(milliseconds: 400),
   }) : super(
       pageBuilder: (BuildContext context, Animation<double> animation,
           Animation<double> secondaryAnimation) {

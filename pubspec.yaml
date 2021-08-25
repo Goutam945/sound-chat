@@ -32,7 +32,7 @@ dependencies:
   animated_text_kit: ^3.1.2
   back_button_interceptor: ^4.4.2
   carousel_slider: ^3.0.0
-  flutter_braintree: ^1.1.0+1
+  flutter_braintree: ^2.0.0+1
   flutter_stripe_payment: ^0.0.12
   connectivity: ^3.0.2
   audioplayer: ^0.8.1

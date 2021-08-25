@@ -544,11 +544,11 @@ class _HomeScreenState extends State<NewMenuScreen> {
                       color: Colors.white, fontWeight: FontWeight.normal),
                 ),
                 onTap: () => {
-                  Navigator.push(
+                 /* Navigator.push(
                       context,
                       PageTransition(
                           type: PageTransitionType.rightToLeft,
-                          child: ChatPage()))
+                          child: ChatPage()))*/
                 },
               ),
               // if(checklogin)
