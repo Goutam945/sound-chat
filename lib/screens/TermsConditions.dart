@@ -1,5 +1,3 @@
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 class TermsConditions extends StatefulWidget {

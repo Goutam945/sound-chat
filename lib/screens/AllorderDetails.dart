@@ -38,10 +38,12 @@ class _AllOrderlistState extends State<AllOrderlist> {
         children: [
           Scaffold(extendBody: false,
             backgroundColor: Colors.black,
-              appBar: AppBar(
+             /* appBar: AppBar(
                 backgroundColor: Color(0xFFE18D13),
                 backwardsCompatibility: true,
-              ),
+              ),*/
+              appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                  child: Backappbar()),
             body: ListView.builder(itemCount: data.length,itemBuilder: (context, index){
               return Card(color: Color(0xFF252525),
                child: ListTile(onTap: (){

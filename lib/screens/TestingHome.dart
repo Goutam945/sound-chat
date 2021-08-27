@@ -85,12 +85,14 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
       title: 'Are You Sure',
       desc: 'Logout?',
       btnCancelOnPress: () {
-        Navigator.of(context).pop();
+       // Navigator.of(context).pop();
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => MyBottomBarDemo()));
       },
       btnOkOnPress: () {
         remove();
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => NewMenuScreen()));
+            MaterialPageRoute(builder: (context) => MyBottomBarDemo()));
         Toast.show("Successfully Logout", context,
             duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
         setState(() {
@@ -304,13 +306,13 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                   style: TextStyle(
                       color: Colors.white, fontSize: 14),
                 ),
-                onTap: () => {
+               /* onTap: () => {
                   Navigator.push(
                       context,
                       PageTransition(
                           type: PageTransitionType.rightToLeft,
                           child: ChatPage()))
-                },
+                },*/
               ),
               // if(checklogin)
               ListTile(

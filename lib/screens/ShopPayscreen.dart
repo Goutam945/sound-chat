@@ -418,6 +418,8 @@ import 'Shopping.dart';
 import 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
 import 'package:http/http.dart' as http;
 
+import 'TestingHome.dart';
+
 class ShopPay extends StatefulWidget {
   final firstname,
       lastname,
@@ -649,7 +651,7 @@ class _ShopPayState extends State<ShopPay> {
         Provider.of<ProductModellist>(context, listen: false)
                         .removeAll();
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => MyBottomBarDemo()));
       },
     )..show();
   }

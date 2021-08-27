@@ -12,10 +12,8 @@ export 'package:sound_chat/screens/video%20ovrlap/player/video_player_title_page
 export 'package:youtube_player_flutter/youtube_player_flutter.dart';
 export 'package:sound_chat/screens/DesignLogin.dart';
 export 'package:sound_chat/screens/NewMenu.dart';
-export 'package:meedu_player/meedu_player.dart';
 export 'package:sound_chat/screens/HomeScreen.dart';
 export 'package:sound_chat/api/login.dart';
-export 'package:sound_chat/screens/Videosplesh.dart';
 export 'package:toast/toast.dart';
 export 'package:sound_chat/screens/Subcribtions.dart';
 export 'package:sound_chat/screens/DesignHomeinterview.dart';

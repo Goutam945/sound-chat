@@ -52,9 +52,11 @@ class _ListenState extends State<PodcastPlayCloud> {
         children: [
           Scaffold(
             backgroundColor: Colors.black,
-            appBar: PreferredSize(
+           /* appBar: PreferredSize(
                 preferredSize: Size.fromHeight(55), child: Appbar(email, name)),
-            bottomNavigationBar: Bottumnavation(),
+            bottomNavigationBar: Bottumnavation(),*/
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
             body: (superheros_length != null)
                 ? Column(
                     children: [

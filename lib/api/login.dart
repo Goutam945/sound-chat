@@ -75,6 +75,7 @@ import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/shared_preferences.dart';
+import 'package:sound_chat/screens/TestingHome.dart';
 
 Future<LoginResponse> createLoginState(
     String name, String password, context) async {
@@ -102,7 +103,8 @@ Future<LoginResponse> createLoginState(
 
     Provider.of<LoginResponse>(context, listen: false).data = data;
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => MyBottomBarDemo()));
+
     Toast.show("Logged in Successfully", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     return LoginResponse.fromJson(json.decode(response.body));

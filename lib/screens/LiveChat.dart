@@ -39,6 +39,8 @@ class _LivechatRoomState extends State<LivechatRoom> {
             backgroundColor: Colors.white,
              /* appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
               bottomNavigationBar:    Bottumnavation(),*/
+              appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                  child: Backappbar()),
             body: Column(
               children: [
                 Container(height: height*0.0044,width:width,color: Color(0xFF780001),),
