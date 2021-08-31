@@ -210,7 +210,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'MobileNumber',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
+                          hintText: 'Mobile Number',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
                     ),
@@ -234,7 +234,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                           });
                         }
                       },
-                      child: Text('Reset Password',style: TextStyle(fontSize: 20),),
+                      child: Text('Reset Password',style: TextStyle(fontSize: 16),),
                     ),
                   ),
                   SizedBox(height: 40,),

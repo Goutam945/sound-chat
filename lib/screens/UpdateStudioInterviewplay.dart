@@ -1,18 +1,15 @@
-import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/common/index.dart';
 
-import 'PrimiumvideoPlay.dart';
-
-class PhoneinteviewPlayer extends StatefulWidget {
+class InterviewStudioPlayer extends StatefulWidget {
   final playvideo, title;
 
-  PhoneinteviewPlayer(this.playvideo, this.title);
+  InterviewStudioPlayer(this.playvideo, this.title);
 
   @override
   _InterviewNewPlayer createState() => _InterviewNewPlayer();
 }
 
-class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
+class _InterviewNewPlayer extends State<InterviewStudioPlayer> {
   String data;
   String email, name;
   int day = 6;
@@ -48,31 +45,22 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var superherosLength =
-    (Provider.of<PhoneinterviewResponse>(context, listen: false).data != null)
-        ? Provider.of<PhoneinterviewResponse>(context, listen: false).data['data']
+    (Provider.of<VideoResponse>(context, listen: false).data != null)
+        ? Provider.of<VideoResponse>(context, listen: false).data['data']
+    ['free_content']
         : null;
     return SafeArea(
       child: Stack(children: [
         Scaffold(
           backgroundColor: Color(0xFF222222),
-          /*appBar: roated
-              ? PreferredSize(
-              preferredSize: Size.fromHeight(55),
-              child: Appbar(email, name))
-              : null,
-          bottomNavigationBar: Offstage(
-            offstage: !roated,
-            child:  Bottumnavation(),
-          ),*/
           appBar: PreferredSize(preferredSize: Size.fromHeight(55),
               child: Backappbar()),
           body: (superherosLength != null)
-              ? Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
+              ? Container( decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
                 child: Column(
             children: [
                 Container(
@@ -108,6 +96,22 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                               Icon(Icons.error),
                         ),
                       ),
+                     /* Center(
+                        child: Container(
+                          decoration: BoxDecoration(shape: BoxShape.circle,border:Border.all(color: Colors.white,width: 2)),
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.play_arrow,
+                              size: 40,color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                isTrue = !isTrue;
+                              });
+                            },
+                          ),
+                        ),
+                      )*/
                       Center(
                         child: GestureDetector(
                           child: Container( padding: EdgeInsets.all(5),
@@ -138,12 +142,12 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                           backgroundImage:
                           AssetImage("assets/soundpic.png"),
                         ),
-                        decoration: BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [Colors.blue, Color(0xFF780001)])),
+                              gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [Colors.blue, Color(0xFF780001)])),
                       ),
                       Expanded(
                         child: ClipPath(clipper: Cc(),
@@ -166,9 +170,10 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                       ),
                     ],
                   ),
-              SizedBox(height: 10,),
+                SizedBox(height: 10,),
                 Expanded(
                   child: Container(
+
                     child: ListView(
                       children: [
                         Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -183,7 +188,7 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                               padding: EdgeInsets.only(bottom: 15,left: 5,right: 5,top: 5,),
                               child: Text(
                                   "Multiple Grammy award winning artist Multiple Grammy award winning artist Multiple Grammy award winning artist Multiple Grammy award winning artist ",
-                                  // textAlign: TextAlign.center,
+                                 // textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
@@ -303,6 +308,25 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
   }
 }
 
+class Cc  extends CustomClipper<Path>{
+  @override
+  getClip(Size size) {
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+    path.cubicTo(0, size.height, 30, size.height/2,0, 0,);
+    //path.quadraticBezierTo(0, size.height, 100, 100);
+
+    path.close();
+   return path;
+
+  }
+  @override
+  bool shouldReclip(CustomClipper old) => false;
+}
+
 class youtubeplayer extends StatefulWidget {
   String videoURL;
   final ontap;
@@ -322,6 +346,14 @@ class _VideoState extends State<youtubeplayer> {
         initialVideoId: YoutubePlayer.convertUrlToId(widget.videoURL),
         flags: YoutubePlayerFlags());
     super.initState();
+  }
+  @override
+  void dispose() {
+    _controller.pause();
+    // _controller.dispose();
+    print("dispose");
+    super.dispose();
+    _controller.dispose();
   }
 
   @override

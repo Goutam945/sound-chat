@@ -113,7 +113,7 @@ class _DesignLogin extends State<NewLogin> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'Username/Mobilenumber',
+                          hintText: 'Username/Mobile Number',
                           hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
@@ -154,7 +154,7 @@ class _DesignLogin extends State<NewLogin> {
                             "Reset Password",
                             textAlign: TextAlign.end,
                             style: TextStyle(
-                                color: Colors.red[400], fontSize: 18),
+                                color: Colors.red[400], fontSize: 16),
                           ),
                         ),
 
@@ -180,7 +180,7 @@ class _DesignLogin extends State<NewLogin> {
                           });
                         }
                       },
-                      child: Text('SIGNIN', style: TextStyle(fontSize: 20),),
+                      child: Text('SIGNIN', style: TextStyle(fontSize: 16),),
                     ),
                   ),
                   SizedBox(height: 10,),
@@ -205,11 +205,11 @@ class _DesignLogin extends State<NewLogin> {
                         children: [
                           IconButton(
                             icon: Icon(FontAwesomeIcons.google, color: Colors
-                                .white,),
+                                .red,),
                           ),
                           Text("Sign up with Google", textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold
 
@@ -229,7 +229,7 @@ class _DesignLogin extends State<NewLogin> {
                         "Dont's have an account? ",
                         style: TextStyle(
                             color: Color(0xFFA79A9A),
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w400),
                         textAlign: TextAlign.center,
                       ),
@@ -244,7 +244,7 @@ class _DesignLogin extends State<NewLogin> {
                             Text(
                               "Sign UP",
                               style: TextStyle(
-                                  color: Colors.white, fontSize: 18),
+                                  color: Colors.white, fontSize: 16),
                               textAlign: TextAlign.center,
                             ),
 //                          Container(
@@ -266,7 +266,7 @@ class _DesignLogin extends State<NewLogin> {
                       },
                       child: Text("CONTINUE AS GUEST",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 14,
                             color: Color(0xFF66BA5F),
                           ),
                           textAlign: TextAlign.center))

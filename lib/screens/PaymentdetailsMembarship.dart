@@ -17,10 +17,14 @@ class PaymentDetailsMember extends StatefulWidget {
 
 class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
   final _stripePayment = FlutterStripePayment();
-  final String publicationKey =
-      'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
+   /*final String publicationKey =
+       'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
   final String secretKey =
-      'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
+      'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';*/
+final String publicationKey =
+       'pk_test_51JJBMbSJ0AUE5zrJTcMlsBlZy8TKuVZjzSZTb2sDKfni7wUEJiVaz86jkrk92cB87MKSzGl7z5fDQyIZr4CIlCef00MTBTd9zU';
+  final String secretKey =
+      'sk_test_51JJBMbSJ0AUE5zrJoBKS8JoxZRwbwQP7NJmt54fP1BZ2udXt1qGDeBLSOtPZf1YiE89x2KaPvf79N8Gk5k2qYRgu005Eb0XOUg';
   PaymentResponse _paymentMethod;
   String _paymentMethodId;
   String _errorMessage = "";

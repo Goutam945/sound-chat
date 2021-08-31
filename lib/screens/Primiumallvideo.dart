@@ -78,7 +78,10 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                         Positioned(bottom: 5,left: 0,right: 0,child: Container(
                             height: 18,width: width*0.3094,
                             color: Colors.black,
-                            child: SizedBox(child: Text(superherosLength['premium_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,),))))
+                            child: SizedBox(child: Text(superherosLength['premium_content'][i]['post_title'],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900,
+                                fontFamily: 'Montserrat',),))))
                       ],
                     ),
 

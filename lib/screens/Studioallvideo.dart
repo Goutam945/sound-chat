@@ -74,7 +74,9 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                                 // ]),
                                 height: 18,width: width*0.3094,
                                 color: Colors.black,
-                                child: SizedBox(child: Text(superherosLength['free_content'][i]['post_title'],textAlign:TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal),))))
+                                child: SizedBox(child: Text(superherosLength['free_content'][i]['post_title'],textAlign:TextAlign.center,
+                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900,
+                                    fontFamily: 'Montserrat',),))))
                           ],
                         ),
                           onTap: (){

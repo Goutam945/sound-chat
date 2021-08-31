@@ -24,7 +24,7 @@ class _RequestLinesState extends State<RequestLines> {
   void whatsAppOpen() async {
     final link = WhatsAppUnilink(
       phoneNumber: '+1-(347)7579865',
-      text: "Hey! I'm inquiring about the apartment listing",
+      text: "Hey!",
     );
     // Convert the WhatsAppUnilink instance to a string.
     // Use either Dart's string interpolation or the toString() method.
@@ -46,78 +46,6 @@ class _RequestLinesState extends State<RequestLines> {
           ),
           body: ListView(
             children: [
-         /* Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-                children: [
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Text(
-                    "Request Lines",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Tune in to SoundChat Radio Live",
-                    style: TextStyle(fontSize: 16,color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      launchUrl("tel:+17185548598");
-                    },
-                    child: Image.asset(
-                      'assets/us.png',
-                      fit: BoxFit.fill,
-                      scale: 3,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      launchUrl("tel:+442080680507");
-                    },
-                    child: Image.asset(
-                      'assets/uk.png',
-                      fit: BoxFit.fill,
-                      scale: 3,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      launchUrl("tel:+16464847826");
-                    },
-                    child: Image.asset(
-                      'assets/cn.png',
-                      fit: BoxFit.fill,
-                      scale: 3,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      whatsAppOpen();
-                    },
-                    child: Image.asset(
-                      'assets/wa.png',
-                      fit: BoxFit.fill,
-                      scale: 2.9,
-                    ),
-                  ),
-                ],
-        )),*/
               SizedBox(
                 height: 40,
               ),
@@ -130,7 +58,7 @@ class _RequestLinesState extends State<RequestLines> {
               ),
               Text(
                 "Tune in to SoundChat Radio Live",textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),
+                style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA79A9A)),
               ),
               SizedBox(
                 height: 10,
@@ -158,7 +86,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),)
                           ),
@@ -199,7 +127,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),),
                           ),
@@ -239,7 +167,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),),
@@ -279,7 +207,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),),
                           ),

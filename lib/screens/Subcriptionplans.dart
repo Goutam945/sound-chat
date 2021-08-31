@@ -54,7 +54,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                   child: Text(
                     "Member Registration",
                     style: TextStyle(
-                        fontSize: 19,
+                        fontSize: 18,
                         fontFamily: 'Montserrat1',
                         color: Color(0xFFE18D13),
                         fontWeight: FontWeight.bold),
@@ -66,7 +66,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                   child: Text(
                     "Please choose a subscription plan to begin setting up your account.",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16,fontFamily: 'Montserrat1', color: Color(0xFFA79A9A)),
+                    style: TextStyle(fontSize: subtitlefontsize,fontFamily: 'Montserrat1', color: Color(0xFFA79A9A)),
                   )),
               SizedBox(
                 height: 20,
@@ -101,7 +101,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 20,
+                                    fontSize: 16,
                                     fontFamily: 'Montserrat1',
                                     fontWeight: FontWeight.bold),
                               ),
@@ -136,7 +136,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                                     data[i]['id'].toString(),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize: 20, fontWeight: FontWeight.bold),
+                                        fontSize: 18, fontWeight: FontWeight.bold),
                                   )),
                             ),
                           ),

@@ -22,7 +22,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
   _initVideo() {
     _videoPlayerController = VideoPlayerController.network(
       "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8",
-      //"https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4"
+     // "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     );
     _videoPlayerController.setLooping(true);
 
@@ -93,136 +93,6 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
       child: Stack(children: [
         Scaffold(
           backgroundColor: Colors.black,
-          // resizeToAvoidBottomInset: false,
-          // appBar: SlidingAppBar(
-          //   controller: _controller,
-          //   visible: _visible,
-          //   child: AppBar( backgroundColor: Color(0xFFE18D13),toolbarHeight: abheight,),
-          //
-          // ),
-          /*appBar: _visible
-              ? PreferredSize(
-                  preferredSize: Size.fromHeight(55),
-                  child: Appbar(email, name))
-              : null,*/
-         /* bottomNavigationBar: Offstage(
-            offstage: !_visible,
-            child: Container(
-              height: height * 0.075,
-              color: Color(0xFF780001),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 5, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.home,
-                            size: width * 0.08,
-                            color: Color(0xFFE18D13),
-                          ),
-                          Text(
-                            "HOME",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
-                        Provider.of<OverlayHandlerProvider>(context,
-                                listen: false)
-                            .enablePip(aspectRatio);
-                        setState(() {
-                          _visible = false;
-                        });
-                      },
-                    ),
-                    VerticalDivider(
-                      thickness: 1,
-                      color: Color(0xFFB71613),
-                    ),
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.radio,
-                            size: width * 0.08,
-                            color: Color(0xFFE18D13),
-                          ),
-                          Text(
-                            "LISTEN",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
-                        Provider.of<OverlayHandlerProvider>(context,
-                                listen: false)
-                            .enablePip(aspectRatio);
-                        setState(() {
-                          _visible = false;
-                        });
-                      },
-                    ),
-                    VerticalDivider(
-                      thickness: 1,
-                      color: Color(0xFFB71613),
-                    ),
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          Icon(Icons.live_tv,
-                              size: width * 0.08, color: Color(0xFFE18D13)),
-                          Text(
-                            "WATCH",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        // _addVideoOverlay();
-                        // setState(() {
-                        //   play = true;
-                        // });
-                        // callAudio("stop");
-                        // MediaNotification.showNotification(
-                        //     title: 'Title',
-                        //     author: 'Radio',
-                        //     isPlaying: false);
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.more_vert,
-                        size: width * 0.10,
-                        color: Colors.white,
-                      ),
-                      padding: EdgeInsets.only(bottom: 30),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => NewMenuScreen()));
-                        Provider.of<OverlayHandlerProvider>(context,
-                                listen: false)
-                            .enablePip(aspectRatio);
-                        setState(() {
-                          _visible = false;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),*/
           body: SizedBox(
             height: height,
             child: Column(
@@ -241,10 +111,6 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                           SizedBox(
                             width: 7,
                           ),
-                          // Text(
-                          //   "05812202450",
-                          //   style: TextStyle(color: Colors.white, fontSize: 15),
-                          // ),
                           Column(
                             children: [
                               FadeAnimatedTextKit(
@@ -325,7 +191,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                   margin: EdgeInsets.only(top: 3),
                 ),
                 _buildVideoPlayer(),
-                if (_visible)
+                /*if (_visible)
                   (email == null)
                       ? Expanded(
                           child: Container(
@@ -351,21 +217,12 @@ class _VideoPlayerPageState extends State<VideoPlayerPage>
                                   "http://3.23.210.57/chatapp/userview/loginapi/10",
                             ),
                           ),
-                        ),
+                        ),*/
+
               ],
             ),
           ),
         ),
-        /*if (_visible)
-          Positioned(
-              top: AppBar().preferredSize.height * 0.1,
-              left: width * 0.39865,
-              child: SizedBox(
-                  height: height * 0.11168,
-                  width: width * 0.21875,
-                  child: Image.asset(
-                    'assets/soundpic.png',
-                  ))),*/
       ]),
     );
   }

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sound_chat/api/cancel_subcription.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
+import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/navinext.dart';
 
 import 'ChnagePassword.dart';
@@ -71,16 +72,6 @@ void initState() {
                 children: [
                   SizedBox(height: 20,),
                   Center(
-//                      child: CachedNetworkImage(
-//                        imageUrl: image,
-//                        fit: BoxFit.cover,
-//                        placeholder: (context, url) => Center(
-//                            child:
-//                            CircularProgressIndicator()),
-//                        errorWidget:
-//                            (context, url, error) =>
-//                            Icon(Icons.error),
-//                      ),
                     child: GestureDetector(
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(
@@ -110,18 +101,18 @@ void initState() {
                   SizedBox(height: 10,),
                   Text(
                     name.toString(),
-                    style: TextStyle(fontSize: 16,color: Colors.white),
+                    style: TextStyle(fontSize: subtitlefontsize,color: Colors.white),
                   ),
                   SizedBox(height: 5,),
                   Row(mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         phone.toString()+"  (",
-                        style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),
+                        style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA79A9A)),
                       ),
                       Text(
                         country.toString()+")",
-                        style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),
+                        style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA79A9A)),
                       ),
                     ],
                   ),
@@ -130,7 +121,7 @@ void initState() {
                     child: Text(
                       'Account Details',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: subtitlefontsize,
                           fontWeight: FontWeight.bold,
                           color: Colors.white
                       ),
@@ -146,41 +137,41 @@ void initState() {
                         children: [
                           Text(
                             'Email: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'User name: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'Country: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'Password:',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'Update Profile:',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
 
                         ],
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(width: 20,),
                       Column(crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             email.toString(),
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             name.toString(),
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             country.toString(),
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           GestureDetector(
                             onTap: () {
@@ -194,7 +185,7 @@ void initState() {
                               "Change Password",
                               textAlign: TextAlign.end,
                               style: TextStyle(
-                                  color: Color(0xFF8E0E14), fontSize: 16),
+                                  color: Color(0xFF8E0E14), fontSize: subtitlefontsize),
                             ),
                           ),
                           GestureDetector(
@@ -209,7 +200,7 @@ void initState() {
                               "upgrade profile",
                               textAlign: TextAlign.end,
                               style: TextStyle(
-                                  color: Color(0xFF8E0E14), fontSize: 16),
+                                  color: Color(0xFF8E0E14), fontSize: subtitlefontsize),
                             ),
                           ),
                         ],
@@ -223,7 +214,7 @@ void initState() {
                     child: Text(
                       'Subscription Details',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: subtitlefontsize,
                           fontWeight: FontWeight.bold,
                           color: Colors.white
                       ),
@@ -237,19 +228,19 @@ void initState() {
                         children: [
                           Text(
                             'Plan Level:',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'Expiry Date: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'Data Purchased: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           Text(
                             'Cancel Plan: ',
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                         ],
                       ),
@@ -260,18 +251,18 @@ void initState() {
                         children: [
                           Text(
                             data["plan_id"].toString(),
-                            style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                           ),
                           SizedBox(height: 20,width: 90,
                             child: Text(
                               data["plan_expired"].toString(),
-                              style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                              style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                             ),
                           ),
                           SizedBox(height: 20,width: 90,
                             child: Text(
                               data["plan_active"].toString(),
-                              style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
+                              style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)),
                             ),
                           ),
                           GestureDetector(
@@ -287,7 +278,7 @@ void initState() {
                               },
                          child: Text(
                             "Cancel Subscription",
-                            style: TextStyle(fontSize: 16,color: Colors.orange),
+                            style: TextStyle(fontSize: subtitlefontsize,color: Colors.orange),
                           )),
                         ],
                       ):Text("FREE")
@@ -303,7 +294,7 @@ void initState() {
             top: AppBar().preferredSize.height*0.2,
             left: width * 0.39865,
             child: SizedBox(
-              height: height * 0.12168,
+              height: height * 0.12subtitlefontsize8,
               width: width * 0.21875,
               child: Image.asset(
                 'assets/soundpic.png',

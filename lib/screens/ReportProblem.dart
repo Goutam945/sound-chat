@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:sound_chat/api/sendmail.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/TestingHome.dart';
 class ReportProblem extends StatefulWidget {
   @override
   _ReportProblemState createState() => _ReportProblemState();
@@ -47,23 +48,23 @@ class _ReportProblemState extends State<ReportProblem> {
                 SizedBox(height: 40,),
                 Center(child: Text("Report A Problem",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
                 SizedBox(height: 20,),
-                Center(child: Text("What issue(s) are your experiencing?",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
+                Center(child: Text("What issue(s) are your experiencing?",textAlign: TextAlign.center,style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA79A9A)),)),
                 SizedBox(height: 20,),
                 SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
                     decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                       labelText: "Email",
@@ -89,16 +90,16 @@ class _ReportProblemState extends State<ReportProblem> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
                     decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                       labelText: "Subject",
@@ -125,16 +126,16 @@ class _ReportProblemState extends State<ReportProblem> {
                   child: TextFormField(
                     style: TextStyle(color: Color(0xFFA79A9A)),
                     decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                       labelText: "Message",
@@ -161,16 +162,16 @@ class _ReportProblemState extends State<ReportProblem> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
                     decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide: const BorderSide(color: Colors.white, width: 1.0),
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                       labelText: "Name",
@@ -202,7 +203,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     child: Center(child: Text("Attach files",style: TextStyle(color: Colors.white),)),
                   ),
                 ),
-                Center(child: Text(_file!=null?_file.path:'select file',style: TextStyle(color: Colors.blue),)),
+              //  Center(child: Text(_file!=null?_file.path:'select file',style: TextStyle(color: Colors.blue),)),
                 SizedBox(height: 20,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -210,11 +211,12 @@ class _ReportProblemState extends State<ReportProblem> {
                     child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0),) ),
                       onPressed: () {
+
                         createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
                           Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      NewMenuScreen()));
+                                      MyBottomBarDemo()));
                           setState(() {
                             loader=false;
                           });
@@ -227,106 +229,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     ),
                   ),
                 ),
-
-                /*Column(
-                  children: [
-                    SizedBox(height: 40,),
-                    Text("Report A Problem",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                    SizedBox(height: 10,),
-                    Text("What issue(s) are your experiencing?",style: TextStyle(fontSize: 16,color: Colors.white),),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: Center(
-                        child: TextFormField(style: TextStyle(color: Colors.white),
-                          controller: _email,
-                          validator: Validators.required(
-                              'email is required'),
-                          decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                              hintText: 'Email Id:',
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 0)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: Center(
-                        child: TextFormField(style: TextStyle(color: Colors.white),
-                          controller: _subject,
-                          validator: Validators.required(
-                              'Subject is required'),
-                          decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                              hintText: 'Subject:',
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 0)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 150,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: TextFormField(style: TextStyle(color: Colors.white),
-                        controller: _message,
-                        maxLines: null,
-                        expands: true,
-                        keyboardType: TextInputType.multiline,
-                        validator: Validators.required(
-                            'Message is required'),
-                        decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                            hintText: 'Message:',
-                            border: InputBorder.none,
-
-                            contentPadding: EdgeInsets.only(
-                                left: 20, top: 0)),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: Center(
-                        child: TextFormField(style: TextStyle(color: Colors.white),
-                          controller: _name,
-                          validator: Validators.required(
-                              'name is required'),
-                          decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                              hintText: 'Your Name:',
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 0)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    GestureDetector(
-                      onTap: (){
-                        getFile();
-                      },
-                      child: Container(height: 30,margin: EdgeInsets.only(left: 15,right: 15),
-                        decoration: BoxDecoration(
-                            color: Color(0xFF464646),
-                            border: Border.all(color: Color(0xFFE18D13))
-                        ),
-                        child: Center(child: Text("Attach files",style: TextStyle(color: Colors.white),)),
-                      ),
-                    ),
-                    Text(_file!=null?_file.path:'select file',style: TextStyle(color: Colors.blue),),
-                    SizedBox(height: 20,),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14) ),
-                      onPressed: () {
-                        createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      NewMenuScreen()));
-                          setState(() {
-                            loader=false;
-                          });
-                        });
-                        setState(() {
-                          loader=true;
-                        });
-                      },
-                      child: Text('Send Now',style: TextStyle(fontSize: 16),),
-                    ),
-                  ],
-                ),*/
+                SizedBox(height: 10,),
                 if(loader)Center(child: CircularProgressIndicator(),)
               ],
             ),

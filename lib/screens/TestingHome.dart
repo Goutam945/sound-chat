@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:sound_chat/api/all%20_orders.dart';
 import 'package:sound_chat/api/cancel_subcription.dart';
@@ -14,6 +15,7 @@ import 'OrderTracking.dart';
 import 'SocketExample.dart';
 import 'Subcriptionplans.dart';
 import 'TermsConditions.dart';
+import 'UpdateHome.dart';
 class MyBottomBarDemo extends StatefulWidget {
   @override
   _MyBottomBarDemoState createState() => new _MyBottomBarDemoState();
@@ -22,11 +24,13 @@ class MyBottomBarDemo extends StatefulWidget {
 class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingObserver {
 
   List<Widget> tabPages = [
-    ListenRadio(),
+   // ListenRadio(),
+    Updatehome(),
     AllHomeInterview(),
     PodcastSchedule(),
+   // Shopping(),
+    Container(),
     GalleryDesign(),
-    Shopping()
 
   ];
   @override
@@ -145,7 +149,7 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                   ),
                 ),
                 actions: [
-                  IconButton(
+                  /*IconButton(
                     icon: Padding(
                       padding: const EdgeInsets.only(right: 5),
                       child: Icon(Icons.chat, size: 30,color:Colors.white ,),
@@ -163,12 +167,12 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                                   ? NewLogin()
                                   : LivechatRoom()));
                     },
-                  ),
+                  ),*/
                 ],
               ),
 
             bottomNavigationBar:CurvedNavigationBar(
-              backgroundColor: Color(0xFF222222),
+              backgroundColor: Color(0xFF2F3F51),
               color: Color(0xFFE18D13),
               buttonBackgroundColor:Color(0xFFE18D13),
               animationCurve: Curves.easeInOut,
@@ -176,22 +180,26 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
               index:pageIndex ,
               items: <Widget>[
                 Icon(Icons.home, size: 25,color:Colors.white,),
-                Icon(Icons.live_tv_outlined, size: 25,color:Colors.white),
-                //Icon(Icons.mic, size: 30,color:Color(0xFFE18D13)),
+                Icon(Icons.tv_outlined, size: 25,color:Colors.white),
                 Image.asset(
                   'assets/micro.png',scale: 20,
                   color:Colors.white,
                 ),
-                Icon(Icons.photo_camera_rounded, size: 25,color:Colors.white),
-                Icon(Icons.shopping_cart_outlined, size: 25,color:Colors.white),
+                Icon(Icons.live_tv_outlined, size: 25,color:Colors.white),
+                Icon(CupertinoIcons.photo_fill_on_rectangle_fill, size: 25,color:Colors.white),
               ],
               onTap: (index) {
-                // switch(index){
-                //   case 2:
-                //     OverlayService().addVideosOverlay(context, VideoPlayerPage());
-                //     break;
-                // }
 
+                 switch(index){
+                  case 3:
+                     OverlayService().addVideosOverlay(context, VideoPlayerPage());
+                     setState(() {
+                       pageIndex=0;
+                       index=0;
+
+                     });
+                     break;
+                 }
                 setState(() {
                   pageIndex=index;
                 });
@@ -217,7 +225,7 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                       backgroundImage: NetworkImage('https://pixel.nymag.com/imgs/daily/vulture/2017/06/14/14-tom-cruise.w700.h700.jpg'),
                       radius: 40.0,
                     ),
-                    Text("Goutam Patil",style: TextStyle(color: Colors.white),),
+                    Text(name.toString(),style: TextStyle(color: Colors.white,fontSize: titlefontsize),),
                   ],
                 ),
                 decoration: BoxDecoration(
@@ -229,18 +237,8 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                   leading: Icon(Icons.account_circle, color: Colors.white70),
                   title: Text('MyAccount',
                       style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.normal,fontSize: 14)),
+                          color: Colors.white, fontWeight: FontWeight.normal,fontSize: subtitlefontsize)),
                   onTap: () => {
-                    /*setState(() {
-                                      loader=true;
-                                    }),
-                            createSubcriptionlevalState(id,context).whenComplete((){
-                          Navigator.of(context).push(MaterialPageRoute(
-                               builder: (context) => MyAccount(email,name))).whenComplete(() =>   Navigator.of(context).pop());
-                          setState(() {
-                                loader=false;
-                              });
-                          })*/
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => MyAccount(email, name))),
                   },
@@ -251,8 +249,8 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                   Icon(Icons.shopping_cart_outlined, color: Colors.white70),
                   title: Text('My Order',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14)),
-                  onTap: () => {
+                          color: Colors.white,fontSize: subtitlefontsize)),
+                 /* onTap: () => {
                     setState(() {
                       loader = true;
                     }),
@@ -261,28 +259,28 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                         loader = false;
                       });
                     }),
-                  },
+                  },*/
                 ),
               if (checklogin)
                 ListTile(
                   leading: Icon(Icons.location_on, color: Colors.white70),
                   title: Text('Order Tracking',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14)),
-                  onTap: () => {
+                          color: Colors.white,fontSize: subtitlefontsize)),
+                  /*onTap: () => {
                     Navigator.push(
                         context,
                         PageTransition(
                             type: PageTransitionType.rightToLeft,
                             child: StepperDemo())),
-                  },
+                  },*/
                 ),
               if (checklogin)
                 ListTile(
                   leading: Icon(Icons.subscriptions, color: Colors.white70),
                   title: Text('Cancel Subscription',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14)),
+                          color: Colors.white,fontSize: subtitlefontsize)),
                   onTap: () => {
                     setState(() {
                       loader = true;
@@ -304,7 +302,7 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                 title: Text(
                   'Notification',
                   style: TextStyle(
-                      color: Colors.white, fontSize: 14),
+                      color: Colors.white, fontSize: subtitlefontsize),
                 ),
                /* onTap: () => {
                   Navigator.push(
@@ -319,7 +317,7 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                   leading: Icon(Icons.inbox, color: Colors.white70),
                   title: Text('Terms & Condition',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14)),
+                          color: Colors.white,fontSize: subtitlefontsize)),
                   onTap: () => Navigator.push(
                       context,
                       PageTransition(
@@ -335,7 +333,7 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                     title: Text(
                       'Subscription Plans',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14),
+                          color: Colors.white,fontSize: subtitlefontsize),
                     ),
                     onTap: () => Navigator.push(
                         context,
@@ -347,7 +345,7 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                   leading: Icon(Icons.contact_phone, color: Colors.white70),
                   title: Text('Contact Page',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14)),
+                          color: Colors.white,fontSize: subtitlefontsize)),
                   onTap: () => Navigator.push(
                       context,
                       PageTransition(
@@ -360,14 +358,14 @@ class _MyBottomBarDemoState extends State<MyBottomBarDemo> with WidgetsBindingOb
                     title: Text('Logout',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 14)),
+                            fontSize: subtitlefontsize)),
                     onTap: showMyDialog),
               if (checksignbutton)
                 ListTile(
                   leading: Icon(Icons.login, color: Colors.white70),
                   title: Text('Login',
                       style: TextStyle(
-                          color: Colors.white,fontSize: 14)),
+                          color: Colors.white,fontSize: subtitlefontsize)),
                   onTap: () {
                     Navigator.push(
                         context,

@@ -62,7 +62,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                       child: Text(
                      "Shipping Details",
                         style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                        TextStyle(fontSize: subtitlefontsize, fontWeight: FontWeight.bold,color: Colors.white),
                       ),
                     ),
                     Align( alignment: Alignment.centerLeft,
@@ -114,7 +114,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                       child: Text(
                         "Product Details",
                         style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                        TextStyle(fontSize: subtitlefontsize, fontWeight: FontWeight.bold,color: Colors.white),
                       ),
                     ),
                 // Theme(
@@ -202,22 +202,22 @@ class _OrderdeatailState extends State<Orderdeatail> {
                               Text("Quantity",
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text("Color",
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text("Size",
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text("Price",
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text("Total price",
                                   style: TextStyle(
@@ -233,22 +233,22 @@ class _OrderdeatailState extends State<Orderdeatail> {
                               Text(items[index]['quantity'].toString(),
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text(items[index]['color'].toString(),
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text(items[index]['size'].toString(),
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text(items[index]['total_price'].toString(),
                                   style: TextStyle(
                                     color: Color(0xFFA39597),
-                                    fontSize: 16,
+                                    fontSize: subtitlefontsize,
                                   )),
                               Text(widget.order['total_amount'].toString(),
                                   style: TextStyle(
@@ -268,7 +268,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                       child: Text(
                         "Payment type:"+" "+widget.order['payment_method'].toString(),
                         style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                        TextStyle(fontSize: subtitlefontsize, fontWeight: FontWeight.bold,color: Colors.white),
                       ),
                     ),
                   ],
@@ -278,7 +278,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
            top: AppBar().preferredSize.height*0.1,
            left: width * 0.39865,
            child: SizedBox(
-             height: height * 0.11168,
+             height: height * 0.11subtitlefontsize8,
              width: width * 0.20875,
              child: Image.asset(
                'assets/soundpic.png',
@@ -290,6 +290,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
     );
   }
 }*/
+import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Orderdeatail extends StatefulWidget {
@@ -353,49 +354,49 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       "Shipping Details",
                       style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                      TextStyle(fontSize: subtitlefontsize, fontWeight: FontWeight.bold,color: Colors.white),
                     ),
                   ),
                   Align( alignment: Alignment.centerLeft,
                     child: Text(
                       widget.order['first_name'] +widget.order['last_name']+",",
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Color(0xFFA39597)),
+                      TextStyle(fontSize: titlefontsize, fontWeight: FontWeight.bold,color: Color(0xFFA39597)),
                     ),
                   ),
                   Align( alignment: Alignment.centerLeft,
                     child: Text(
                       widget.order['address_1']+",",
                       style:
-                      TextStyle(fontSize: 17,color: Color(0xFFA39597)),
+                      TextStyle(fontSize: titlefontsize,color: Color(0xFFA39597)),
                     ),
                   ),
                   Align( alignment: Alignment.centerLeft,
                     child: Text(
                       widget.order['city']+",",
                       style:
-                      TextStyle(fontSize: 17, color: Color(0xFFA39597)),
+                      TextStyle(fontSize: titlefontsize, color: Color(0xFFA39597)),
                     ),
                   ),
                   Align( alignment: Alignment.centerLeft,
                     child: Text(
                       widget.order['state']+",",
                       style:
-                      TextStyle(fontSize: 17, color: Color(0xFFA39597)),
+                      TextStyle(fontSize: titlefontsize, color: Color(0xFFA39597)),
                     ),
                   ),
                   Align( alignment: Alignment.centerLeft,
                     child: Text(
                       widget.order['postcode']+",",
                       style:
-                      TextStyle(fontSize: 17, fontWeight: FontWeight.bold,color: Color(0xFFA39597)),
+                      TextStyle(fontSize: titlefontsize, fontWeight: FontWeight.bold,color: Color(0xFFA39597)),
                     ),
                   ),
                   Align( alignment: Alignment.centerLeft,
                     child: Text(
                       widget.order['phone'],
                       style:
-                      TextStyle(fontSize: 17,color: Color(0xFFA39597)),
+                      TextStyle(fontSize: titlefontsize,color: Color(0xFFA39597)),
                     ),
                   ),
                   SizedBox(height: 10,),
@@ -403,7 +404,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       "Payment type:"+" "+widget.order['payment_method'].toString(),
                       style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                      TextStyle(fontSize: subtitlefontsize, fontWeight: FontWeight.bold,color: Colors.white),
                     ),
                   ),
                   SizedBox(height: 10,),
@@ -425,7 +426,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                             child: Text(
                               "Product Details",
                               style:
-                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.white),
+                              TextStyle(fontSize: subtitlefontsize, fontWeight: FontWeight.bold,color: Colors.white),
                             ),
                           ),
                           Padding(
@@ -440,22 +441,22 @@ class _OrderdeatailState extends State<Orderdeatail> {
                                     Text("Quantity",
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                     Text("Color",
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                     Text("Size",
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                     Text("Total price",
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                   ],
                                 ),
@@ -466,22 +467,22 @@ class _OrderdeatailState extends State<Orderdeatail> {
                                     Text(items[index]['quantity'].toString(),
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                     Text(items[index]['color'].toString(),
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                     Text(items[index]['size'].toString(),
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                     Text(items[index]['total_price'].toString(),
                                         style: TextStyle(
                                           color: Color(0xFFA39597),
-                                          fontSize: 16,
+                                          fontSize: subtitlefontsize,
                                         )),
                                   ],
                                 )
@@ -503,7 +504,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
             top: AppBar().preferredSize.height*0.1,
             left: width * 0.39865,
             child: SizedBox(
-              height: height * 0.11168,
+              height: height * 0.1116,
               width: width * 0.20875,
               child: Image.asset(
                 'assets/soundpic.png',

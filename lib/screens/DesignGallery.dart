@@ -14,6 +14,7 @@ String email,name;
   @override
   void initState() {
     super.initState();
+    createGalleryState(context);
    // _loadSavedData();
     getdata();
   }
@@ -33,6 +34,8 @@ String email,name;
     });
    // if(Provider.of<GalleryResponse>(context, listen: false).data!=null)
      // superherosLength = Provider.of<GalleryResponse>(context, listen: false).data['data'];
+    print(superherosLength[0]
+    ['feature_img']);
   }
 
   @override

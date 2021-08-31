@@ -12,6 +12,7 @@ class _ShoppingState extends State<Shopping> {
   @override
   void initState() {
     super.initState();
+    createAllproductState(context);
   }
 
   @override

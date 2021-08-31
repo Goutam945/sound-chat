@@ -32,7 +32,7 @@ class _FollowUsState extends State<FollowUs> {
                     SizedBox(height: 40,),
                     Text("FollowUs",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
                     SizedBox(height: 10,),
-                    Text("Follow us on Social Media",style: TextStyle(fontSize: 16,color: Colors.white),),
+                    Text("Follow us on Social Media",style: TextStyle(fontSize: subtitlefontsize,color: Colors.white),),
                     SizedBox(height: 20,),
                     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

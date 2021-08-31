@@ -47,4 +47,5 @@ export 'package:audioplayers/audioplayers.dart';
 export 'package:sound_chat/common/bottumnavation.dart';
 export 'package:sound_chat/common/navinext.dart';
 export 'package:sound_chat/common/backappbar.dart';
+export 'package:sound_chat/common/appConfig.dart';
 

@@ -37,7 +37,7 @@ class _ContactState extends State<Contact> {
                 SizedBox(height: 40,),
                 Center(child: Text("Contact Us",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
                 SizedBox(height: 20,),
-                Center(child: Text("How can we help you today?",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
+                Center(child: Text("How can we help you today?",textAlign: TextAlign.center,style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA79A9A)),)),
                 SizedBox(height: 20,),
                 GestureDetector(
                   onTap: (){
@@ -54,7 +54,7 @@ class _ContactState extends State<Contact> {
                         borderRadius: BorderRadius.circular(50),
                         border:Border.all(color: Colors.white)),
                     child: Center(
-                      child: Text("Studio Request Lines",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 18,),
+                      child: Text("Studio Request Lines",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: titlefontsize,),
                       ),
                     ),
                   ),
@@ -74,7 +74,7 @@ class _ContactState extends State<Contact> {
                         borderRadius: BorderRadius.circular(50),
                         border:Border.all(color: Colors.white)),
                     child: Center(
-                      child: Text("Office Contact Details",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 18,),
+                      child: Text("Office Contact Details",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: titlefontsize,),
                       ),
                     ),
                   ),
@@ -94,7 +94,7 @@ class _ContactState extends State<Contact> {
                         borderRadius: BorderRadius.circular(50),
                         border:Border.all(color: Colors.white)),
                     child: Center(
-                      child: Text("Follow us on Social Media",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 18,),
+                      child: Text("Follow us on Social Media",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: titlefontsize,),
                       ),
                     ),
                   ),
@@ -115,7 +115,7 @@ class _ContactState extends State<Contact> {
                         border:Border.all(color: Colors.white)
                     ),
                     child: Center(
-                      child: Text("Report A Problem",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 18,),
+                      child: Text("Report A Problem",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: titlefontsize,),
                       ),
                     ),
                   ),
@@ -136,94 +136,11 @@ class _ContactState extends State<Contact> {
                     ),
 
                     child: Center(
-                      child: Text("Send A Message",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 18,),
+                      child: Text("Send A Message",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: titlefontsize,),
                       ),
                     ),
                   ),
                 ),
-
-                /*Column(
-                  children: [
-                    SizedBox(height: 40,),
-                    Text("Contact Us",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                    SizedBox(height: 10,),
-                    Text("How can we help you today?",style: TextStyle(fontSize: 16,color: Colors.white),),
-                    SizedBox(height: 10,),
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    RequestLines()));
-                      },
-                      child: Container(color: Color(0xFFE18D13),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                        child: Center(
-                          child: Text("Studio Request Lines",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    GestureDetector(onTap: (){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  OfficeContact()));
-                    },
-                      child: Container(color: Color(0xFFE18D13),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                        child: Center(
-                          child: Text("Office Contact Details",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    GestureDetector(onTap: (){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  FollowUs()));
-                    },
-                      child: Container(color: Color(0xFFE18D13),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                        child: Center(
-                          child: Text("Follow us on Social Media",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    GestureDetector(onTap: (){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ReportProblem()));
-                    },
-                      child: Container(color: Color(0xFFE18D13),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                        child: Center(
-                          child: Text("Report A Problem",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    GestureDetector(onTap: (){
-                      Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  SendMessage()));
-                    },
-                      child: Container(color: Color(0xFFE18D13),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                        child: Center(
-                          child: Text("Send A Message",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20,),
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Divider(
-                    //   color: Colors.black,
-                    // ),
-                  ],
-                ),*/
 
               ],
             ),

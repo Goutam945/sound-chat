@@ -10,6 +10,7 @@ class _TermsConditionsState extends State<TermsConditions> {
   @override
   void initState() {
     super.initState();
+    createtermsState(context);
   }
   @override
   Widget build(BuildContext context) {
@@ -39,8 +40,8 @@ class _TermsConditionsState extends State<TermsConditions> {
             },),*/
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Text(Terms[i]['id'].toString() +"  "+Terms[i]['content_type'] +" \n " + Terms[i]['description'],style: TextStyle(fontSize: 15, color: Colors.white,),),
+                  padding: const EdgeInsets.only(top: 10,left: 10),
+                  child: Text(Terms[i]['id'].toString() +"  "+Terms[i]['content_type'] +" \n " + Terms[i]['description'],style: TextStyle(fontSize: subtitlefontsize, color: Colors.white,),),
                 ),
                 //Text(Terms['data'].toString())
               ],
