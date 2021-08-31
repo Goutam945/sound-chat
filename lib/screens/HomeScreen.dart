@@ -37,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   _addVideoOverlay() {
     OverlayService().addVideosOverlay(context, VideoPlayerPage());
   }
-
   String email;
   String name;
   String data;
