@@ -230,9 +230,9 @@ int sliderid;
           children: [
             Scaffold(
               backgroundColor: Color(0xFF222222),
-              appBar: PreferredSize(
+            /*  appBar: PreferredSize(
                   preferredSize: Size.fromHeight(55),
-                  child: Appbar(email, name)),
+                  child: Appbar(email, name)),*/
              /* bottomNavigationBar: CurvedNavigationBar(
                 backgroundColor: Color(0xFF222222),color: Color(0xFF780001),
                 buttonBackgroundColor:Color(0xFF780001),
@@ -711,7 +711,7 @@ int sliderid;
                         ),
                       ),
                     ),
-                    Container(
+                  /*  Container(
                       height: height * 0.075,
                       color: Color(0xFF780001),
                       child: Padding(
@@ -827,7 +827,7 @@ int sliderid;
                           ],
                         ),
                       ),
-                    ),
+                    ),*/
                   ],
                 ),
               ),

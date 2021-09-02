@@ -52,8 +52,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
       child: Stack(
         children:[ Scaffold(
           backgroundColor: Colors.black,
-          appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-          bottomNavigationBar:   Bottumnavation(),
+          appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+              child: Backappbar()),
           body: (superherosLength != null)
               ? ListView(
                   children: [

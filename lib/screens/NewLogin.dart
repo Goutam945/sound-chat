@@ -82,19 +82,6 @@ class _DesignLogin extends State<NewLogin> {
                     width: width * 0.316,
                     height: height * 0.1902,
                   ),
-                  /*Container(
-                    height: height * 0.0585,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "SOUNDCHAT RADIO",
-                          style: TextStyle(color: Colors.white, fontSize: 36),
-                          textAlign: TextAlign.center,
-                        )
-                      ],
-                    ),
-                  ),*/
                   SizedBox(height: 10,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -113,7 +100,7 @@ class _DesignLogin extends State<NewLogin> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          hintText: 'Username/Mobilenumber',
+                          hintText: 'Username/Mobile Number',
                           hintStyle: TextStyle(color: Color(0xFFA79A9A)),
                           contentPadding: EdgeInsets.only(
                               left: 20, top: 15)),
@@ -281,4 +268,5 @@ class _DesignLogin extends State<NewLogin> {
     );
   }
 }
+
 

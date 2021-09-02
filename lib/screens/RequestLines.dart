@@ -40,10 +40,8 @@ class _RequestLinesState extends State<RequestLines> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Colors.black,
-          appBar: AppBar(
-            backgroundColor: Color(0xFFE18D13),
-            //title: Text("Flutter Http Example"),
-          ),
+          appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+              child: Backappbar()),
           body: ListView(
             children: [
          /* Padding(
@@ -130,7 +128,7 @@ class _RequestLinesState extends State<RequestLines> {
               ),
               Text(
                 "Tune in to SoundChat Radio Live",textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),
+                style: TextStyle(fontSize: 12,color: Color(0xFFA79A9A)),
               ),
               SizedBox(
                 height: 10,
@@ -158,7 +156,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),)
                           ),
@@ -199,7 +197,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),),
                           ),
@@ -239,7 +237,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),),
@@ -279,7 +277,7 @@ class _RequestLinesState extends State<RequestLines> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: titlefontsize,
                                   fontWeight: FontWeight.bold),
                             ),),
                           ),

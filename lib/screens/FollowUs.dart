@@ -21,10 +21,8 @@ class _FollowUsState extends State<FollowUs> {
       child: Stack(
           children:[ Scaffold(
             backgroundColor: Colors.black,
-            appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
-              //title: Text("Flutter Http Example"),
-            ),
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
             body:ListView(
               children: [
                 Column(

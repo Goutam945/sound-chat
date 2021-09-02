@@ -25,7 +25,6 @@ class _ShoppingState extends State<Shopping> {
         Scaffold(
             backgroundColor: Colors.black,
             appBar: PreferredSize(child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
-          bottomNavigationBar:   Bottumnavation(),
           body:(product != null)? Column(
               children: [
                 SizedBox(height: 10,),

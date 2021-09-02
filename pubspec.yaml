@@ -54,6 +54,8 @@ dependencies:
   flutter_advanced_drawer: ^1.2.0
   badges: ^2.0.1
   vibration: ^1.7.3
+  chewie: ^0.12.2
+
 
 dev_dependencies:
   flutter_test:

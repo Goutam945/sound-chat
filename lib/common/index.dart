@@ -48,4 +48,6 @@ export 'package:sound_chat/screens/DesignPodcastshowplay.dart';
 export 'package:audioplayers/audioplayers.dart';
 export 'package:sound_chat/common/bottumnavation.dart';
 export 'package:sound_chat/common/navinext.dart';
-
+export 'package:sound_chat/common/appConfig.dart';
+export 'package:sound_chat/common/Backappbar.dart';
+export 'package:sound_chat/common/Carveshape.dart';

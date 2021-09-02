@@ -21,10 +21,8 @@ class _OfficeContactState extends State<OfficeContact> {
       child: Stack(
           children:[ Scaffold(
             backgroundColor: Colors.black,
-            appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
-              //title: Text("Flutter Http Example"),
-            ),
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
            /* body:ListView(
               children: [
                 SizedBox(height: 40,),
@@ -188,29 +186,28 @@ class _OfficeContactState extends State<OfficeContact> {
                                   SizedBox(height: 20,),
                                   Row(
                                     children: [
-                                      Icon(Icons.home_outlined,size: 42,color: Color(0xFFA39597),),
+                                      Icon(Icons.home_outlined,size: 30,color: Color(0xFFA39597),),
                                       SizedBox(width: 20,),
-                                      Text("139-20 C 109th Ave,\n Jamaica, NY, 11435", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                      Text("139-20 C 109th Ave,\n Jamaica, NY, 11435", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
                                     ],
                                   ),
                                   SizedBox(height: 10,),
                                   Row(
                                     children: [
-                                      Icon(Icons.phone,size: 40,color: Color(0xFFA39597),),
+                                      Icon(Icons.phone,size: 30,color: Color(0xFFA39597),),
                                       SizedBox(width: 20,),
-                                      Text("(347)-514-7520 ", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                      Text("(347)-514-7520 ", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
                                     ],
                                   ),
                                   SizedBox(height: 10,),
                                   Row(
                                     children: [
-                                      Icon(Icons.email_outlined,size: 40,color: Color(0xFFA39597),),
+                                      Icon(Icons.email_outlined,size: 30,color: Color(0xFFA39597),),
                                       SizedBox(width: 20,),
-                                      Text("info@soundchatradio.com,\n irishandchin@gmail.com", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                      Text("info@soundchatradio.com,\nirishandchin@gmail.com", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
                                     ],
                                   ),
                                 ]),),
-                          SizedBox(height: 20,),
                           Align(alignment: Alignment.centerLeft,
                             child: Text(
                               'Kingston, Jamaica',
@@ -230,25 +227,25 @@ class _OfficeContactState extends State<OfficeContact> {
                                   SizedBox(height: 20,),
                                   Row(
                                     children: [
-                                      Icon(Icons.home_outlined,size: 42,color: Color(0xFFA39597),),
+                                      Icon(Icons.home_outlined,size: 30,color: Color(0xFFA39597),),
                                       SizedBox(width: 20,),
-                                      Text("22 Westminster Rd,\n Kingston 10,Jamaica,11435", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                      Text("22 Westminster Rd,\nKingston 10,Jamaica,11435", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
                                     ],
                                   ),
                                   SizedBox(height: 10,),
                                   Row(
                                     children: [
-                                      Icon(Icons.phone,size: 40,color: Color(0xFFA39597)),
+                                      Icon(Icons.phone,size: 30,color: Color(0xFFA39597)),
                                       SizedBox(width: 20,),
-                                      Text("+1 (876)-000-0000,\n(347)-514-7520 ", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                      Text("+1 (876)-000-0000,\n(347)-514-7520 ", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
                                     ],
                                   ),
                                   SizedBox(height: 10,),
                                   Row(
                                     children: [
-                                      Icon(Icons.email_outlined,size: 40,color: Color(0xFFA39597),),
+                                      Icon(Icons.email_outlined,size: 30,color: Color(0xFFA39597),),
                                       SizedBox(width: 20,),
-                                      Text("jamaica@soundchatradio.com,\n irishandchin@gmail.com", style: TextStyle(fontSize: 18,color: Color(0xFFA39597)))
+                                      Text("jamaica@soundchatradio.com,\nirishandchin@gmail.com", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
                                     ],
                                   ),
                                 ]),),

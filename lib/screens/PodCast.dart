@@ -54,17 +54,12 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
         children: [
           Scaffold(extendBody: false,
             backgroundColor: Colors.black,
-            appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-            bottomNavigationBar:   Bottumnavation(),
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
             body: (superherosLength != null)
                 ? SizedBox(height: height,
                   child: Column(
                       children: [
-                        Container(
-                          height: height * 0.0044,
-                          width: width,
-                          color: Color(0xFF780001),
-                        ),
                         Container(
                           color: Color(0xFF252525),
                           height: height * 0.1224,

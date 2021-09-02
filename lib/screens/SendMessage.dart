@@ -39,10 +39,8 @@ class _SendMessageState extends State<SendMessage> {
       child: Stack(
           children:[ Scaffold(
             backgroundColor: Colors.black,
-            appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
-              //title: Text("Flutter Http Example"),
-            ),
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
             body:ListView(
               children: [
                 SizedBox(height: 40,),
