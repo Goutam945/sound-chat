@@ -63,7 +63,7 @@ int sliderid;
     super.initState();
     _loadSavedData().then((value) => createSubcriptionlevalState(id,context));
     WidgetsBinding.instance.addObserver(this);
-    if (Platform.isIOS) audioPlayer.setNotification(title: "Soundchat Radio");
+    if (Platform.isIOS) audioPlayer.notificationService.setNotification(title: "Soundchat Radio");
     onPlayerErr();
     MediaNotification.setListener('pause', () {
       callAudio("pause");
@@ -127,7 +127,7 @@ int sliderid;
       await audioPlayer.play("https://s2.voscast.com:9059/stream");
       MediaNotification.showNotification(
           title: 'Soundchat Radio', isPlaying: !play);
-      if (Platform.isIOS) audioPlayer.setNotification(title: "Soundchat Radio");
+      if (Platform.isIOS) audioPlayer.notificationService.setNotification(title: "Soundchat Radio");
     } else if (action == "pause") {
       // stream.pause();
       await audioPlayer.pause();

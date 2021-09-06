@@ -24,7 +24,7 @@ class _SendMessageState extends State<SendMessage> {
 
   File _file;
   Future getFile()async{
-    File file = await FilePicker.getFile();
+    File file = (await FilePicker.platform) as File;
 
     setState(() {
       _file = file;

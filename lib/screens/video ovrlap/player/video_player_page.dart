@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:video_player/video_player.dart';
 import 'package:wakelock/wakelock.dart';
 
 class VideoPlayerPage extends StatefulWidget {

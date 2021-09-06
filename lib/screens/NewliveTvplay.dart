@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/foundation.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:video_player/video_player.dart';
 import 'package:wakelock/wakelock.dart';
 
 class LiveTvshows extends StatefulWidget {
@@ -19,6 +21,8 @@ class _LiveTvshowsPageState extends State<LiveTvshows>
   ChewieController chewieController;
   double aspectRatio = 16 / 9;
   bool isLoading = true;
+  AudioPlayer audioPlayer = new AudioPlayer(
+      playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
 
   _initVideo() {
     _videoPlayerController = VideoPlayerController.network(
@@ -34,6 +38,7 @@ class _LiveTvshowsPageState extends State<LiveTvshows>
         deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
       deviceOrientationsOnEnterFullScreen: [DeviceOrientation.landscapeLeft],
       allowFullScreen: true,
+        isLive: true,
     );
 
 
@@ -46,10 +51,17 @@ class _LiveTvshowsPageState extends State<LiveTvshows>
   double abheight = 30;
   String email;
   String name;
+  stopaudio()async{
+    await audioPlayer.stop();
+    play=true;
+    MediaNotification.showNotification(
+        title: 'Soundchat Radio', isPlaying: !play);
+  }
 
   @override
   void initState() {
     super.initState();
+    stopaudio();
     _loadSavedData();
     _initVideo();
     Wakelock.enable();

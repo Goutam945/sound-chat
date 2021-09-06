@@ -12,7 +12,6 @@ export 'package:sound_chat/screens/video%20ovrlap/player/video_player_title_page
 export 'package:youtube_player_flutter/youtube_player_flutter.dart';
 export 'package:sound_chat/screens/DesignLogin.dart';
 export 'package:sound_chat/screens/NewMenu.dart';
-export 'package:meedu_player/meedu_player.dart';
 export 'package:sound_chat/screens/HomeScreen.dart';
 export 'package:sound_chat/api/login.dart';
 export 'package:sound_chat/screens/Videosplesh.dart';
@@ -45,9 +44,9 @@ export 'package:sound_chat/api/galley.dart';
 export 'package:sound_chat/screens/DesignForgotpass.dart';
 export 'package:sound_chat/screens/DesignSignup.dart';
 export 'package:sound_chat/screens/DesignPodcastshowplay.dart';
-export 'package:audioplayers/audioplayers.dart';
 export 'package:sound_chat/common/bottumnavation.dart';
 export 'package:sound_chat/common/navinext.dart';
 export 'package:sound_chat/common/appConfig.dart';
 export 'package:sound_chat/common/Backappbar.dart';
 export 'package:sound_chat/common/Carveshape.dart';
+// export 'package:audioplayer/audioplayer.dart';

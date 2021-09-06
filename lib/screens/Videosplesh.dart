@@ -2,6 +2,7 @@ import 'package:sound_chat/api/free_video.dart';
 import 'package:sound_chat/api/galley.dart';
 import 'package:sound_chat/api/schedule.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:video_player/video_player.dart';
 
 class VideoSplashScreen extends StatefulWidget {
   @override

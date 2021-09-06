@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/api/couponcode.dart';
@@ -70,7 +71,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
     super.initState();
     _loadSavedData().then((value) => createSubcriptionlevalState(id, context));
     // WidgetsBinding.instance.addObserver(this);
-    if (Platform.isIOS) audioPlayer.setNotification(title: "Soundchat Radio");
+    if (Platform.isIOS) audioPlayer.notificationService.setNotification(title: "Soundchat Radio");
     onPlayerErr();
     MediaNotification.setListener('pause', () {
       callAudio("pause");
@@ -133,7 +134,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
       await audioPlayer.play("https://s2.voscast.com:9059/stream");
       MediaNotification.showNotification(
           title: 'Soundchat Radio', isPlaying: !play);
-      if (Platform.isIOS) audioPlayer.setNotification(title: "Soundchat Radio");
+      if (Platform.isIOS) audioPlayer.notificationService.setNotification(title: "Soundchat Radio");
     } else if (action == "pause") {
       // stream.pause();
       await audioPlayer.pause();
@@ -184,7 +185,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
             child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SizedBox(height: 10,),
-                SizedBox(height: 250,
+                SizedBox(height: 230,width: 230,
                   child: (homeslider != null)
                       ? Container(
                     width: width*0.8,margin: EdgeInsets.all(10),
@@ -410,7 +411,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30,)
+                SizedBox(height: 15,)
               ],
             ),
           ),
