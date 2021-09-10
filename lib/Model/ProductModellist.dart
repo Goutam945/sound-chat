@@ -1,5 +1,5 @@
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/CardScreen.dart';
+import 'package:sound_chat/screens/cardscreen.dart';
 class ProductModellist with ChangeNotifier {
   List<ProductModellist> cart1 = [];
   double sum1 = 0;

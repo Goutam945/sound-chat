@@ -7,12 +7,13 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sound_chat/api/cancel_subcription.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
+import 'package:sound_chat/common/Backappbar.dart';
 import 'package:sound_chat/common/navinext.dart';
 
-import 'ChnagePassword.dart';
-import 'DesignForgotpass.dart';
-import 'DesignUpdate.dart';
-import 'Updateprofile.dart';
+import 'chnagepassword.dart';
+import 'designforgotpass.dart';
+import 'designupdate.dart';
+import 'updateprofile.dart';
 
 class MyAccount extends StatefulWidget {
   final email,name;
@@ -61,10 +62,8 @@ void initState() {
         children: [
           Scaffold(
             backgroundColor: Colors.black,
-            appBar: AppBar(leadingWidth: 25,
-              backgroundColor: Color(0xFFE18D13),
-              title: Text("My Account"),
-            ),
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(

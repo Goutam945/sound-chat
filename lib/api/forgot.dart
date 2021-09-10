@@ -1,6 +1,6 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:sound_chat/screens/NewLogin.dart';
+import 'package:sound_chat/screens/newlogin.dart';
 
 Future<ForgotResponse> createForgotResponse(String name,context) async {
   final http.Response response =

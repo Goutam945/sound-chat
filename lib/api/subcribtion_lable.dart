@@ -1,6 +1,6 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:sound_chat/screens/AllorderDetails.dart';
+import 'package:sound_chat/screens/allorderdetails.dart';
 
 Future<SubcriptionlevalResponse> createSubcriptionlevalState(
     int userid, context) async {

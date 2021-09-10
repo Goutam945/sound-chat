@@ -5,7 +5,7 @@ import 'package:sound_chat/api/free_video.dart';
 import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/api/schedule.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/SpleshScreen.dart';
+import 'package:sound_chat/screens/spleshscreen.dart';
 import 'Model/ProductModellist.dart';
 import 'api/all _orders.dart';
 import 'api/allproduct.dart';

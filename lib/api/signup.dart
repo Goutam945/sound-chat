@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:sound_chat/screens/NewLogin.dart';
-import 'package:sound_chat/screens/PaymentdetailsMembarship.dart';
+import 'package:sound_chat/screens/newlogin.dart';
+import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 
 Future<SignUpResponse> createSignUpState(
     user,
@@ -95,8 +95,8 @@ class SignUpResponse {
 import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:sound_chat/screens/NewLogin.dart';
-import 'package:sound_chat/screens/PaymentdetailsMembarship.dart';
+import 'package:sound_chat/screens/newlogin.dart';
+import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 
 Future<SignUpResponse> createSignUpState(
     user,

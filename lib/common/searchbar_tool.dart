@@ -1,6 +1,6 @@
 //import 'package:sound_chat/api/search_api.dart';
 //import 'package:sound_chat/common/index.dart';
-//import 'package:sound_chat/screens/ShopProductdetails.dart';
+//import 'package:sound_chat/screens/shopproductdetails.dart';
 //class Searchbar extends StatefulWidget {
 //  @override
 //  _SearchbarState createState() => _SearchbarState();
@@ -162,7 +162,7 @@
 import 'package:sound_chat/api/search_api.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/searchinterviewplay.dart';
-import 'package:sound_chat/screens/ShopProductdetails.dart';
+import 'package:sound_chat/screens/shopproductdetails.dart';
 
 class Searchbar extends StatefulWidget {
   @override

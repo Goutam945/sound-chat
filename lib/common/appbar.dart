@@ -1,10 +1,10 @@
 import 'package:sound_chat/api/search_api.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/searchbar_tool.dart';
-import 'package:sound_chat/screens/DesignProfile.dart';
+import 'package:sound_chat/screens/designprofile.dart';
 import 'package:sound_chat/screens/Myaccountprofile.dart';
-import 'package:sound_chat/screens/NewLogin.dart';
-import 'package:sound_chat/screens/ProfilePage.dart';
+import 'package:sound_chat/screens/newlogin.dart';
+import 'package:sound_chat/screens/profilepage.dart';
 
 import 'navinext.dart';
 class Appbar extends PreferredSize {

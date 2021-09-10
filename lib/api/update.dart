@@ -4,6 +4,7 @@ import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/shared_preferences.dart';
+import 'package:sound_chat/screens/homebottomBar.dart';
 
 Future<UpdateResponse> createUpdateState(
     int userid,
@@ -60,7 +61,7 @@ Future<UpdateResponse> createUpdateState(
       print(id);
       createSubcriptionlevalState(id,context);
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (context) => HomeBottomBar()));
       Toast.show("Update Successfully", context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     } else {

@@ -1,7 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/CardScreen.dart';
+import 'package:sound_chat/screens/cardscreen.dart';
 class ShoppAppbar extends PreferredSize {
   @override
   Widget build(BuildContext context) {

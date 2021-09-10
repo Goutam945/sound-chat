@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
+import 'package:sound_chat/screens/homebottomBar.dart';
 
 Future<SendmailResponse> createSendmailState(
     String email,String subject,String message,String name,File filepick, context) async {
@@ -18,7 +19,7 @@ Future<SendmailResponse> createSendmailState(
 
   if (response.statusCode == 200) {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => HomeBottomBar()));
     Toast.show("  Email Successfully", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     return SendmailResponse.fromJson(json.decode(response.body));

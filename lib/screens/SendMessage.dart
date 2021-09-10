@@ -24,13 +24,18 @@ class _SendMessageState extends State<SendMessage> {
 
   File _file;
   Future getFile()async{
-    File file = (await FilePicker.platform) as File;
+    FilePickerResult result = await FilePicker.platform.pickFiles();
 
-    setState(() {
-      _file = file;
-    });
+    if(result != null) {
+      File file = File(result.files.single.path);
+      setState(() {
+        _file = file;
+      });
+    } else {
+      // User canceled the picker
+    }
+
   }
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
