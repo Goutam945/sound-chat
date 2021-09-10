@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,11 +7,8 @@ import 'package:sound_chat/api/cancel_subcription.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/Backappbar.dart';
 import 'package:sound_chat/common/navinext.dart';
-
 import 'chnagepassword.dart';
-import 'designforgotpass.dart';
 import 'designupdate.dart';
-import 'updateprofile.dart';
 
 class MyAccount extends StatefulWidget {
   final email,name;

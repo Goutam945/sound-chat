@@ -275,7 +275,6 @@ class _DesignLogin extends State<NewLogin> {
 import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sound_chat/common/index.dart';
 
@@ -292,7 +291,6 @@ class _DesignLogin extends State<NewLogin> {
   }
 
   final formKey = GlobalKey<FormState>();
-  bool _isObscure = true;
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool loader = false;

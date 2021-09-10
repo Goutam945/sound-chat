@@ -1,7 +1,5 @@
 import 'package:sound_chat/common/index.dart';
 
-import 'primiumvideoplay.dart';
-
 class InterviewPlay extends StatefulWidget {
   final playvideo, title;
 
@@ -79,7 +77,7 @@ class _InterviewDesign extends State<InterviewPlay> {
                     // height: height * videoheight,
                       width: width * videowidth,
                       child:
-                      youtubeplayer(url ?? widget.playvideo, () {
+                      Youtubeplayer(url ?? widget.playvideo, () {
                         setState(() {
                           roated = !roated;
                         });
@@ -319,17 +317,17 @@ class _InterviewDesign extends State<InterviewPlay> {
   }
 }
 
-class youtubeplayer extends StatefulWidget {
-  String videoURL;
+class Youtubeplayer extends StatefulWidget {
+  final String videoURL;
   final ontap;
 
   @override
   _VideoState createState() => _VideoState();
 
-  youtubeplayer(this.videoURL, this.ontap);
+  Youtubeplayer(this.videoURL, this.ontap);
 }
 
-class _VideoState extends State<youtubeplayer> {
+class _VideoState extends State<Youtubeplayer> {
   YoutubePlayerController _controller;
 
   @override

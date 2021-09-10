@@ -1,4 +1,3 @@
-import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/index.dart';
 
 class PodcastPlayCloud extends StatefulWidget {
@@ -13,7 +12,7 @@ class PodcastPlayCloud extends StatefulWidget {
 class _ListenState extends State<PodcastPlayCloud> {
   bool play = true;
   String data;
-  var superheros_length;
+  var superheroslength;
   int day = 6;
   bool isLoading = true;
   String audiourl;
@@ -37,15 +36,12 @@ class _ListenState extends State<PodcastPlayCloud> {
     });
   }
 
-  final Completer<WebViewController> _controller =
-      Completer<WebViewController>();
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     int weekday = widget.weekday;
-    superheros_length =
+    superheroslength =
         Provider.of<ScheduleResponse>(context, listen: false).data['data'];
     return SafeArea(
       child: Stack(
@@ -54,7 +50,7 @@ class _ListenState extends State<PodcastPlayCloud> {
             backgroundColor: Colors.black,
             appBar: PreferredSize(preferredSize: Size.fromHeight(55),
                 child: Backappbar()),
-            body: (superheros_length != null)
+            body: (superheroslength != null)
                 ? Column(
                     children: [
                       Container(
@@ -84,7 +80,7 @@ class _ListenState extends State<PodcastPlayCloud> {
                               isLoading = false;
                             });
                           },
-                          initialUrl: superheros_length[weekday]['shows']
+                          initialUrl: superheroslength[weekday]['shows']
                               [widget.j]['show_audio_url'],
                         ),
                       ),

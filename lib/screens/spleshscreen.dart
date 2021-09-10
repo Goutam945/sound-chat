@@ -3,8 +3,6 @@ import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
 import 'package:sound_chat/api/membership.dart';
 import 'package:sound_chat/api/phoneinterview.dart';
-import 'package:sound_chat/api/search_api.dart';
-import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 
@@ -68,7 +66,6 @@ class SplashScreenState extends State<SpleshScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(extendBody: true,
       bottomNavigationBar: Text("© Copyright 2021 Irish & Chin Inc.",textAlign: TextAlign.center,
           style: TextStyle(height: 5,

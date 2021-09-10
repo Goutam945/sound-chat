@@ -414,7 +414,7 @@ import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/api/create_order.dart';
 import 'package:sound_chat/common/index.dart';
-import 'shopping.dart';
+import 'newhomepage.dart';
 import 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
 import 'package:http/http.dart' as http;
 
@@ -649,7 +649,7 @@ class _ShopPayState extends State<ShopPay> {
         Provider.of<ProductModellist>(context, listen: false)
                         .removeAll();
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => Updatehome()));
       },
     )..show();
   }

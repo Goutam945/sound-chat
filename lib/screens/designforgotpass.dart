@@ -1,5 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-import 'designupdate.dart';
 
 class DesignForgotpass extends StatefulWidget {
   @override
@@ -8,7 +7,6 @@ class DesignForgotpass extends StatefulWidget {
 class _DesignForgotpass extends State<DesignForgotpass> {
   final TextEditingController _name = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  bool _isObscure = true;
   bool loader=false;
   @override
   void initState() {

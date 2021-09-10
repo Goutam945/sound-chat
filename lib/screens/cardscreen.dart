@@ -190,7 +190,6 @@ class _CardScreenState extends State<CardScreen> {
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/common/shoappbar.dart';
 
 import 'newlogin.dart';
 import 'shopping.dart';
@@ -202,7 +201,6 @@ class CardScreen extends StatefulWidget {
 }
 
 class _CardScreenState extends State<CardScreen> {
-  int _itemCount = 0;
   int id;
   var countprice;
   @override

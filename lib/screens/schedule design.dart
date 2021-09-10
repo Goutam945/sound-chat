@@ -11,7 +11,6 @@ class _ScheduleDesign extends State<ScheduleDesign> {
   int day;
   int weekday;
   String dropdownValue = 'FEATURED SHOWS';
-  List<bool>_hasBeenPressed=[for(int i=0;i<7;i++)true];
   var superherosLength;
   String email;
   String name ;

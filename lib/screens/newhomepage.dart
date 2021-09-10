@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'dart:ui';
-
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/api/couponcode.dart';
@@ -37,9 +35,6 @@ class _UpdatehomeState extends State<Updatehome> {
     return id;
   }
 
-  _addVideoOverlay() {
-    OverlayService().addVideosOverlay(context, VideoPlayerPage());
-  }
 
   String email;
   String name;
@@ -79,7 +74,6 @@ class _UpdatehomeState extends State<Updatehome> {
     createCoupncodeState(context);
   }
 
-  @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Fluttertoast.showToast(msg: state.toString());
     print('AppLifeCycle State: ' + state.toString());

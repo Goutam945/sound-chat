@@ -1,4 +1,3 @@
-import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/index.dart';
 
 class LivechatRoom extends StatefulWidget {
@@ -38,7 +37,6 @@ class _LivechatRoomState extends State<LivechatRoom> {
           Scaffold(extendBodyBehindAppBar: true,
             backgroundColor: Colors.white,
               appBar: PreferredSize( preferredSize: Size.fromHeight(55),child: Appbar(email,name)),
-              bottomNavigationBar:    Bottumnavation(),
             body: Column(
               children: [
                 Container(height: height*0.0044,width:width,color: Color(0xFF780001),),

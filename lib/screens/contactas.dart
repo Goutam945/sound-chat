@@ -1,6 +1,4 @@
-import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/index.dart';
-
 import 'followus.dart';
 import 'officecontact.dart';
 import 'reportproblem.dart';

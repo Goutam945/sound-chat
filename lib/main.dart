@@ -14,7 +14,6 @@ import 'api/galley.dart';
 import 'api/homeslider.dart';
 import 'api/membership.dart';
 import 'api/search_api.dart';
-import 'api/sendmail.dart';
 import 'api/subcribtion_lable.dart';
 import 'api/termsofservices.dart';
 

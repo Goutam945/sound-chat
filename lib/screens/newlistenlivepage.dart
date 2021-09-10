@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:ui';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sound_chat/api/allproduct.dart';
@@ -11,9 +10,6 @@ import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/interviewvideoplayyellow.dart';
-
-import 'inetrviewvideoplaystudio.dart';
 import 'newlogin.dart';
 
 class Listenlivepage extends StatefulWidget {
@@ -38,11 +34,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
     });
     return id;
   }
-
-  _addVideoOverlay() {
-    OverlayService().addVideosOverlay(context, VideoPlayerPage());
-  }
-
+  
   String email;
   String name;
   String data;
@@ -64,7 +56,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
   int imageNo = 0;
   int sliderid;
   bool isButtonPressed = false;
-  var Upcomingshow;
+  var upcomingshow;
 
   @override
   void initState() {
@@ -110,7 +102,6 @@ class _ListenlivepageState extends State<Listenlivepage> {
     });
   }
 
-  @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Fluttertoast.showToast(msg: state.toString());
     print('AppLifeCycle State: ' + state.toString());
@@ -171,7 +162,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
       homeslider =
       Provider.of<HomesliderResponse>(context, listen: false).data['data'];
     if(Provider.of<ScheduleResponse>(context, listen: false).data!=null)
-      Upcomingshow = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+      upcomingshow = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
     return SafeArea(
         child: Scaffold(
           extendBody: true,
@@ -332,7 +323,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                           offset: Offset(0, 0), // changes position of shadow
                         ),
                       ]),
-                  child: (Upcomingshow != null)
+                  child: (upcomingshow != null)
                       ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -357,7 +348,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            for (int i = 0; i <  Upcomingshow[day]
+                            for (int i = 0; i <  upcomingshow[day]
                             ['shows'].length; i++)
                               Row(
                                 children: [

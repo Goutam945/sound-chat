@@ -1,9 +1,7 @@
 import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
-
 import 'shopaddress&billing.dart';
-import 'shoppayscreen.dart';
-import 'shoppingsccessful.dart';
+
 class ShopCheckoutscreen extends StatefulWidget {
   @override
   _ShopCheckoutscreenState createState() => _ShopCheckoutscreenState();

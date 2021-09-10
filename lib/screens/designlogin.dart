@@ -1,4 +1,6 @@
 import 'package:sound_chat/common/index.dart';
+
+import 'newhomepage.dart';
 class DesignLogin extends StatefulWidget {
   @override
   _DesignLogin createState() => _DesignLogin();
@@ -270,7 +272,8 @@ class _DesignLogin extends State<DesignLogin> {
                       right: width * 0.24305, left: width * 0.24305),
                   child: Row(
                     children: [
-                      IconButton(
+                      IconButton(onPressed: (){},
+
                         icon: Image.asset(
                           'assets/gp.gif',
                           color: Colors.white,
@@ -291,7 +294,7 @@ class _DesignLogin extends State<DesignLogin> {
                 GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => HomeScreen()));
+                          builder: (context) => Updatehome()));
                     },
                     child: Text("CONTINUE AS GUEST",
                         style: TextStyle(

@@ -1,5 +1,4 @@
 import 'package:sound_chat/api/phoneinterview.dart';
-import 'package:sound_chat/common/appbar.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/inetrviewvideoplaystudio.dart';
 import 'package:sound_chat/screens/interviewvideoplayyellow.dart';
@@ -996,17 +995,17 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
   }
 }
 
-class youtubeplayer extends StatefulWidget {
-  String videoURL;
+class Youtubeplayer extends StatefulWidget {
+  final String videoURL;
   final ontap;
 
   @override
   _VideoState createState() => _VideoState();
 
-  youtubeplayer(this.videoURL, this.ontap);
+  Youtubeplayer(this.videoURL, this.ontap);
 }
 
-class _VideoState extends State<youtubeplayer> {
+class _VideoState extends State<Youtubeplayer> {
   YoutubePlayerController _controller;
 
   @override

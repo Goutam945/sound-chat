@@ -1,5 +1,3 @@
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 class TermsConditions extends StatefulWidget {
@@ -8,7 +6,7 @@ class TermsConditions extends StatefulWidget {
 }
 
 class _TermsConditionsState extends State<TermsConditions> {
- var Terms;
+ var terms;
   @override
   void initState() {
     super.initState();
@@ -20,7 +18,7 @@ class _TermsConditionsState extends State<TermsConditions> {
     // if (Provider.of<TermsResponse>(context, listen: false).data != null)
     //   Terms =Provider.of<TermsResponse>(context, listen: false).data;
     var data1 = context.watch<TermsResponse>().data;
-    Terms = (data1!=null)?data1['data']:[];
+    terms = (data1!=null)?data1['data']:[];
     return SafeArea(
       child: Stack(
           children:[ Scaffold(
@@ -30,7 +28,7 @@ class _TermsConditionsState extends State<TermsConditions> {
             body:ListView(
               children: [
                 SizedBox(height: 20,),
-                for(int i=0;i<Terms.length;i++)
+                for(int i=0;i<terms.length;i++)
                 /*Html(data: Terms[i]['description'],style: {
               "body": Style(
                 fontSize: FontSize(15.0),
@@ -40,7 +38,7 @@ class _TermsConditionsState extends State<TermsConditions> {
 
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Text(Terms[i]['id'].toString() +"  "+Terms[i]['content_type'] +" \n " + Terms[i]['description'],style: TextStyle(fontSize: 15, color: Colors.white,),),
+                  child: Text(terms[i]['id'].toString() +"  "+terms[i]['content_type'] +" \n " + terms[i]['description'],style: TextStyle(fontSize: 15, color: Colors.white,),),
                 ),
                 //Text(Terms['data'].toString())
               ],

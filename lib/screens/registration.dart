@@ -21,7 +21,6 @@ class _SignupPageState extends State<Registrationship> {
   }
 
   final formKey = GlobalKey<FormState>();
-  bool _isObscure = true;
   bool loader = false;
 
   //Future<SignUpResponse> _futureJwt;

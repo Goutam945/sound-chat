@@ -205,7 +205,6 @@ class _DesignUpdate extends State<DesignUpdate> {
     );*/
   //new design
   final formKey = GlobalKey<FormState>();
-  bool _isObscure = true;
   bool loader=false;
   int id;
   String phone,userlogin;
@@ -247,7 +246,6 @@ class _DesignUpdate extends State<DesignUpdate> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    var userResponse = context.watch<LoginResponse>();
     return SafeArea(
       child: Stack(
           children:[ Scaffold(
@@ -490,7 +488,6 @@ class _DesignUpdate extends State<DesignUpdate> {
                             setState(() {
                               loader = true;
                             });
-                            ;
                           }
 
                         },

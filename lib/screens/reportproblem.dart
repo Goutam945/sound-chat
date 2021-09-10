@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:sound_chat/api/sendmail.dart';
 import 'package:sound_chat/common/index.dart';
+
+import 'newmenupage.dart';
 class ReportProblem extends StatefulWidget {
   @override
   _ReportProblemState createState() => _ReportProblemState();
@@ -174,7 +176,7 @@ class _ReportProblemState extends State<ReportProblem> {
                           Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      NewMenuScreen()));
+                                      NewMenupage()));
                           setState(() {
                             loader=false;
                           });

@@ -56,105 +56,6 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(55),
               child: Appbar(email, name)),
-          bottomNavigationBar: Container(
-              height: height * 0.085,
-              color: Color(0xFF780001),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 5, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.home,
-                            size: width * 0.13,
-                            color: Color(0xFFE18D13),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "HOME",
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
-                      },
-                    ),
-                    VerticalDivider(
-                      thickness: 1,
-                      color: Color(0xFFB71613),
-                    ),
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.radio,
-                            size: width * 0.12,
-                            color: Color(0xFFE18D13),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "LISTEN",
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomeScreen()));
-                      },
-                    ),
-                    VerticalDivider(
-                      thickness: 1,
-                      color: Color(0xFFB71613),
-                    ),
-                    GestureDetector(
-                      child: Row(
-                        children: [
-                          Icon(Icons.live_tv,
-                              size: width * 0.12, color: Color(0xFFE18D13)),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "WATCH",
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        OverlayService()
-                            .addVideosOverlay(context, VideoPlayerPage());
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.more_vert,
-                        size: width * 0.13,
-                        color: Colors.white,
-                      ),
-                      padding: EdgeInsets.only(bottom: 30),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => NewMenuScreen()));
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
           body: (video != null)
               ? Column(
             children: [
@@ -169,7 +70,7 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
                   //  height: height * videoheight,
                     width: width * videowidth,
                     child:
-                    youtubeplayer(url ?? widget.playvideo, () {
+                    Youtubeplayer(url ?? widget.playvideo, () {
                       setState(() {
                         roated = !roated;
                       });
@@ -338,17 +239,17 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
   }
 }
 
-class youtubeplayer extends StatefulWidget {
-  String videoURL;
+class Youtubeplayer extends StatefulWidget {
+ final String videoURL;
   final ontap;
 
   @override
   _VideoState createState() => _VideoState();
 
-  youtubeplayer(this.videoURL, this.ontap);
+  Youtubeplayer(this.videoURL, this.ontap);
 }
 
-class _VideoState extends State<youtubeplayer> {
+class _VideoState extends State<Youtubeplayer> {
   YoutubePlayerController _controller;
 
   @override

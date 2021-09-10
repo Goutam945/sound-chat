@@ -22,9 +22,9 @@ Future<OrderResponse> createOrderState(
     String shipsate,
     String shippostcode,
     String shipcountry,
-    List line_items,
+    List lineitems,
     int id,
-    payment_method_title,
+    paymentmethod_title,
     setPaid,
     context) async {
   final http.Response response = await http.post(
@@ -33,8 +33,8 @@ Future<OrderResponse> createOrderState(
       body: jsonEncode(
           {
         "user_id": id,
-        "payment_method": "bacs",
-        "payment_method_title": payment_method_title,
+        "paymentmethod": "bacs",
+        "paymentmethod_title": paymentmethod_title,
         "set_paid": setPaid,
         "billing": {
           "first_name": firstname,
@@ -58,7 +58,7 @@ Future<OrderResponse> createOrderState(
           "postcode": shippostcode,
           "country": shipcountry
         },
-        "line_items": line_items,
+        "lineitems": lineitems,
         "shipping_lines": [
           {
             "method_id": "flat_rate",
@@ -109,12 +109,12 @@ Future<OrderResponse> createOrderState(
     String country,
     String email,
     String phone,
-    List line_items,
+    List lineitems,
     int id,
-    payment_method,
-    transaction_id,
-    transaction_status,
-    total_amount,
+    paymentmethod,
+    transactionid,
+    transactionstatus,
+    totalamount,
     context) async {
   final http.Response response = await http.post(
       Uri.parse('http://3.23.210.57:3000/api/v1/auth/addorder'),
@@ -132,14 +132,14 @@ Future<OrderResponse> createOrderState(
               "country": country,
               "email": email,
               "phone": phone,
-              "items": line_items,
+              "items": lineitems,
               "Discount":"20",
-              "total_amount":total_amount,
-              "payment_method":  payment_method,
-               "transaction_id":transaction_id,
-              "transaction_status":transaction_status
-            // "transaction_id":"5165dfdasdg",
-            // "transaction_status":"failed"
+              "totalamount":totalamount,
+              "paymentmethod":  paymentmethod,
+               "transactionid":transactionid,
+              "transactionstatus":transactionstatus
+            // "transactionid":"5165dfdasdg",
+            // "transactionstatus":"failed"
           }
           ));
 

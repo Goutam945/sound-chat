@@ -8,12 +8,12 @@ import 'package:sound_chat/common/navinext.dart';
 
 import 'Firebasecrud.dart';
 
-class otpmsg extends StatefulWidget {
+class Otpmsg extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<otpmsg> {
+class _LoginPageState extends State<Otpmsg> {
   String phoneNumber, verificationId;
   String otp, authStatus = "";
 
@@ -71,7 +71,7 @@ class _LoginPageState extends State<otpmsg> {
             ),
             contentPadding: EdgeInsets.all(10.0),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -145,17 +145,18 @@ class _LoginPageState extends State<otpmsg> {
               SizedBox(
                 height: 10.0,
               ),
-              RaisedButton(
-                shape: RoundedRectangleBorder(
+              ElevatedButton(
+                style:ButtonStyle(shape:MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
+                ),backgroundColor: MaterialStateProperty.all(Colors.orange)) ,
+
                 onPressed: () =>
                     phoneNumber == null ? null : verifyPhoneNumber(context),
                 child: Text(
                   "Generate OTP",
                   style: TextStyle(color: Colors.white),
                 ),
-                elevation: 7.0,
-                color: Colors.orange,
+
               ),
               SizedBox(
                 height: 20,

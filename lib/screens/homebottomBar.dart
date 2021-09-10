@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
@@ -50,7 +49,6 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
   final _advancedDrawerController = AdvancedDrawerController();
   AudioPlayer audioPlayer = new AudioPlayer(
       playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   String email;
   String name;
 
@@ -113,8 +111,6 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     if (Provider.of<SubcriptionlevalResponse>(context, listen: false).data != null)
       data = Provider.of<SubcriptionlevalResponse>(context, listen: false).data['response'];
     return AdvancedDrawer(

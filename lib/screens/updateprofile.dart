@@ -16,7 +16,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   @override
   Widget build(BuildContext context) {
-    var userResponse=context.watch<LoginResponse>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFE18D13),

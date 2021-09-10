@@ -472,7 +472,6 @@ class _ShopaddressState extends State<Shopaddress> {
     );
   }
 }*/
-import 'package:sound_chat/api/sendmail.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/shoppayscreen.dart';
 
