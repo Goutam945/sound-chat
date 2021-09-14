@@ -1,16 +1,14 @@
 import 'dart:io';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
+import 'livetv.dart';
 import 'newhomepage.dart';
 import 'newlistenlivepage.dart';
 import 'newmenupage.dart';
-import 'newlivetvplay.dart';
 class HomeBottomBar extends StatefulWidget {
   @override
   _HomeBottomBarState createState() => new _HomeBottomBarState();
@@ -21,7 +19,7 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
   List<Widget> tabPages = [
     Updatehome(),
     Listenlivepage(),
-    LiveTvshows(),
+    LiveVideo(),
     NewMenupage()
 
   ];
@@ -46,7 +44,6 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
         break;
     }
   }
-  final _advancedDrawerController = AdvancedDrawerController();
   AudioPlayer audioPlayer = new AudioPlayer(
       playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
   String email;
@@ -113,73 +110,63 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
   Widget build(BuildContext context) {
     if (Provider.of<SubcriptionlevalResponse>(context, listen: false).data != null)
       data = Provider.of<SubcriptionlevalResponse>(context, listen: false).data['response'];
-    return AdvancedDrawer(
-      backdropColor: Color(0xFF111111),
-      controller: _advancedDrawerController,
-      animationCurve: Curves.easeInOut,
-      animationDuration: const Duration(milliseconds: 700),
-      childDecoration: const BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-      ),
+    return WillPopScope(
+      onWillPop: () async {
+        if (Provider.of<OverlayHandlerProvider>(context, listen: false)
+            .overlayActive) {
+          Provider.of<OverlayHandlerProvider>(context, listen: false)
+              .enablePip(1.77);
+          return false;
+        }
+        return true;
+      },
+      child: SafeArea(
+        child: WillPopScope(
+          onWillPop: _onBackPressed,
+          child: Scaffold(
+            extendBody: true,
+              bottomNavigationBar:CurvedNavigationBar(
+                backgroundColor: Color(0xFF1C232D),
+                color: Color(0xFF111111),
+                buttonBackgroundColor:Color(0xFF1C232D),
+                animationCurve: Curves.easeInOut,
+                height: 65,
+                index:pageIndex ,
+                items: <Widget>[
+                  Image.asset(
+                    'assets/home.png',scale: 2,
+                  ),
+                  Image.asset(
+                    'assets/pastshows.png',scale: 2
+                  ),
+                  Image.asset(
+                    'assets/flashbacktv.png',scale: 2
+                  ),
+                  Image.asset(
+                    'assets/more.png',scale: 2
+                  ),
+                 // Icon(Icons.mic, size: 25,color:Colors.white),
+                 // Icon(Icons.live_tv_outlined, size: 25,color:Colors.white),
+                ],
+               onTap: (index) {
 
-      child: WillPopScope(
-        onWillPop: () async {
-          if (Provider.of<OverlayHandlerProvider>(context, listen: false)
-              .overlayActive) {
-            Provider.of<OverlayHandlerProvider>(context, listen: false)
-                .enablePip(1.77);
-            return false;
-          }
-          return true;
-        },
-        child: SafeArea(
-          child: WillPopScope(
-            onWillPop: _onBackPressed,
-            child: Scaffold(
-              extendBody: true,
-                bottomNavigationBar:CurvedNavigationBar(
-                  backgroundColor: Color(0xFF1C232D),
-                  color: Color(0xFF111111),
-                  buttonBackgroundColor:Color(0xFF1C232D),
-                  animationCurve: Curves.easeInOut,
-                  height: 65,
-                  index:pageIndex ,
-                  items: <Widget>[
-                    Image.asset(
-                      'assets/home.png',scale: 2,
-                    ),
-                    Image.asset(
-                      'assets/pastshows.png',scale: 2
-                    ),
-                    Image.asset(
-                      'assets/flashbacktv.png',scale: 2
-                    ),
-                    Image.asset(
-                      'assets/more.png',scale: 2
-                    ),
-                   // Icon(Icons.mic, size: 25,color:Colors.white),
-                   // Icon(Icons.live_tv_outlined, size: 25,color:Colors.white),
-                  ],
-                 onTap: (index) {
+                  /*switch(index){
+                    case 2:
+                      OverlayService().addVideosOverlay(context, VideoPlayerPage());
+                      setState(() {
+                        pageIndex=0;
+                        index=0;
 
-                    /*switch(index){
-                      case 2:
-                        OverlayService().addVideosOverlay(context, VideoPlayerPage());
-                        setState(() {
-                          pageIndex=0;
-                          index=0;
+                      });
+                      break;
+                  }*/
+                  setState(() {
+                    pageIndex=index;
+                  });
+                },
+              ),
 
-                        });
-                        break;
-                    }*/
-                    setState(() {
-                      pageIndex=index;
-                    });
-                  },
-                ),
-
-                body:tabPages[pageIndex]
-            ),
+              body:tabPages[pageIndex]
           ),
         ),
       ),

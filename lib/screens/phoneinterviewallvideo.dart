@@ -1,6 +1,5 @@
 import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/common/index.dart';
-import 'inetrviewvideoplaystudio.dart';
 import 'phoneinterviewplayer.dart';
 class PhonevideoScreen extends StatefulWidget {
   PhonevideoScreen({Key key}) : super(key: key);

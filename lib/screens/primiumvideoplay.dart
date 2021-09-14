@@ -66,7 +66,7 @@ class _PrimiumvideoDesign extends State<Primiumvideo> {
                       child: Container(
                         //height: height * videoheight,
                           width: width * videowidth,
-                          child: youtubeplayer(url??widget.playvideo,(){setState(() {
+                          child: Youtubeplayer(url??widget.playvideo,(){setState(() {
                             roated=!roated;
                           });})),
                     )
@@ -304,14 +304,14 @@ class _PrimiumvideoDesign extends State<Primiumvideo> {
     );
   }
 }
-class youtubeplayer extends StatefulWidget {
-  String  videoURL;
+class Youtubeplayer extends StatefulWidget {
+   final String  videoURL;
   final ontap;
   @override
   _VideoState createState() => _VideoState();
-  youtubeplayer(this.videoURL,this.ontap);
+  Youtubeplayer(this.videoURL,this.ontap);
 }
-class _VideoState extends State<youtubeplayer> {
+class _VideoState extends State<Youtubeplayer> {
   YoutubePlayerController _controller;
   @override
   void initState() {

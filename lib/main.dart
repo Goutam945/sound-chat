@@ -9,6 +9,7 @@ import 'package:sound_chat/screens/spleshscreen.dart';
 import 'Model/ProductModellist.dart';
 import 'api/all _orders.dart';
 import 'api/allproduct.dart';
+import 'api/bannerads.dart';
 import 'api/couponcode.dart';
 import 'api/galley.dart';
 import 'api/homeslider.dart';
@@ -38,6 +39,7 @@ void main() async{
         ChangeNotifierProvider(create: (_) => SubcriptionlevalResponse()),
         ChangeNotifierProvider(create: (_) => SearchResponse()),
         ChangeNotifierProvider(create: (_) => PhoneinterviewResponse()),
+        ChangeNotifierProvider(create: (_) => BanneradsResponse()),
         ChangeNotifierProvider(
           create: (_) => OverlayHandlerProvider(),
         ),
@@ -81,10 +83,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     internetcheck();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.portraitUp,
-    ]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(debugShowCheckedModeBanner: false,  theme: ThemeData(fontFamily: 'Montserrat1'),
         home: checkinternet
             ? Container(color: Colors.white,

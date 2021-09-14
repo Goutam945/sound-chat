@@ -10,7 +10,7 @@ class StepperDemo extends StatefulWidget {
 }
 class StepperDemoState extends State<StepperDemo> {
   //
-  int current_step = 0;
+  int currentstep = 0;
   List<Step> steps = [
     Step(
       title: Text('Order',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
@@ -54,29 +54,29 @@ class StepperDemoState extends State<StepperDemo> {
             )
         ),
           child: Stepper(
-            currentStep: this.current_step,
+            currentStep: this.currentstep,
             steps: steps,
             type: StepperType.vertical,
             onStepTapped: (step) {
               setState(() {
-                current_step = step;
+                currentstep = step;
               });
             },
             onStepContinue: () {
               setState(() {
-                if (current_step < steps.length - 1) {
-                  current_step = current_step + 1;
+                if (currentstep < steps.length - 1) {
+                  currentstep = currentstep + 1;
                 } else {
-                  current_step = 0;
+                  currentstep = 0;
                 }
               });
             },
             onStepCancel: () {
               setState(() {
-                if (current_step > 0) {
-                  current_step = current_step - 1;
+                if (currentstep > 0) {
+                  currentstep = currentstep - 1;
                 } else {
-                  current_step = 0;
+                  currentstep = 0;
                 }
               });
             },

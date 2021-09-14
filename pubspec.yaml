@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  video_player:
   http: ^0.13.3
   url_launcher: ^6.0.0-nullsafety
   youtube_player_flutter: ^8.0.0
@@ -53,7 +52,7 @@ dependencies:
   flutter_advanced_drawer: ^1.2.3
   badges: ^2.0.1
   vibration: ^1.7.3
-  chewie: ^1.2.2
+  better_player: ^0.0.73
 
 
 dev_dependencies:
@@ -79,6 +78,4 @@ flutter:
 
   assets:
     - assets/
-    -  assets/soundbg.png
-    - assets/profile.png
-    - assets/soundchatbg.png
+

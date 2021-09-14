@@ -43,7 +43,7 @@ class SplashScreenState extends State<SpleshScreen> {
                 builder: (context) =>
                     (email == null) ? DesignLogin() : HomeScreen())));*/
     Timer(
-        Duration(seconds: 10),
+        Duration(seconds: 5),
             () => Navigator.pushReplacement(
             context,
             MaterialPageRoute(

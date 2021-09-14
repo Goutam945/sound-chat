@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:shimmer/shimmer.dart';
 import 'package:sound_chat/api/allproduct.dart';
+import 'package:sound_chat/api/bannerads.dart';
 import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/api/homeslider.dart';
 import 'package:sound_chat/api/phoneinterview.dart';
@@ -54,7 +55,9 @@ class _UpdatehomeState extends State<Updatehome> {
   var endTimeMin;
   String show = '22:00-23:59';
   var homeslider;
+  var bannerads;
   int imageNo = 0;
+  int bannerno=0;
   int sliderid;
   bool isButtonPressed = false;
 
@@ -72,6 +75,7 @@ class _UpdatehomeState extends State<Updatehome> {
     createAllproductState(context);
     createtermsState(context);
     createCoupncodeState(context);
+    createBanneradsState(context);
   }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -91,11 +95,13 @@ class _UpdatehomeState extends State<Updatehome> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     if (Provider.of<VideoResponse>(context, listen: false).data != null)
-      superherosLength =
-          Provider.of<VideoResponse>(context, listen: false).data['data'];
+      superherosLength = Provider.of<VideoResponse>(context, listen: false).data['data'];
+
     if (Provider.of<HomesliderResponse>(context, listen: false).data != null)
-      homeslider =
-          Provider.of<HomesliderResponse>(context, listen: false).data['data'];
+      homeslider = Provider.of<HomesliderResponse>(context, listen: false).data['data'];
+
+    if (Provider.of<BanneradsResponse>(context, listen: false).data != null)
+      bannerads = Provider.of<BanneradsResponse>(context, listen: false).data['data'];
     return SafeArea(
         child: Scaffold(
       extendBody: true,
@@ -108,9 +114,59 @@ class _UpdatehomeState extends State<Updatehome> {
                 colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
         child: Column(
           children: [
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.all(10),
               child: Image.network("https://cdn1.adplugg.io/apusers/serve/A48220592/file/67504/image002.gif"),
+            ),*/
+            SizedBox(height: 100,
+              child: Opacity(
+                  opacity: 0.7,
+                  child: (bannerads != null)
+                      ? CarouselSlider(
+                    options: CarouselOptions(
+                      onPageChanged: (value, image) {
+                        setState(() {
+                          bannerno = value;
+                        });
+                      },
+                      height: 100,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
+                      viewportFraction: 1,
+                      autoPlayInterval: Duration(seconds: 10),
+                      autoPlayAnimationDuration: Duration(seconds: 5),
+                    ),
+                    items: <Widget>[
+                      for (int i = 0; i < bannerads.length; i++)
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          child: CachedNetworkImage(
+                            imageUrl: bannerads[i]['mobilebanner'],
+                            fit: BoxFit.fill,
+                            placeholder: (context, url) => SizedBox(
+                              child: Shimmer.fromColors(
+                                  baseColor: Colors.red,
+                                  highlightColor: Colors.yellow,
+                                  child: Container(
+                                    color: Colors.black12,
+                                  )),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        ),
+                    ],
+                  )
+                      : Shimmer.fromColors(
+                    baseColor: Colors.black12,
+                    highlightColor: Colors.grey[600],
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      color: Colors.black,
+                      width: width * 0.95,
+                      height: height * 0.5,
+                    ),
+                  )),
             ),
             SizedBox(
               height: 10,

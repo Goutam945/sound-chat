@@ -214,14 +214,11 @@ class _DesignUpdate extends State<DesignUpdate> {
     _loadSavedData();
   }
   File _image; //variable for choosed file
-  final picker = ImagePicker();
+  final ImagePicker picker = ImagePicker();
   Future<void> getImage() async {
-    PickedFile imageFile = await picker.getImage(source: ImageSource.gallery);
-    //var choosedimage = await ImagePicker.pickImage(source: ImageSource.gallery);
-    //set source: ImageSource.camera to get image from camera
+    final XFile image = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
-      //_image = choosedimage;
-      _image = File(imageFile.path);
+      _image = File(image.path);
     });
   }
 
