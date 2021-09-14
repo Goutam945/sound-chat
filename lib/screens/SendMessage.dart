@@ -18,11 +18,16 @@ class _SendMessageState extends State<SendMessage> {
     super.initState();
   }
   bool loader=false;
+  final formKey = GlobalKey<FormState>();
   //Future<SignUpResponse> _futureJwt;
   final TextEditingController _email = TextEditingController();
   final TextEditingController _subject = TextEditingController();
   final TextEditingController _message = TextEditingController();
   final TextEditingController _name = TextEditingController();
+  InputBorder border = OutlineInputBorder(
+    borderSide: const BorderSide(color: Color(0xFFA6B3BC), width: 2.0),
+    borderRadius: BorderRadius.circular(30.0),
+  );
 
   File _file;
   Future getFile()async{
@@ -48,292 +53,198 @@ class _SendMessageState extends State<SendMessage> {
             backgroundColor: Colors.black,
             appBar: PreferredSize(preferredSize: Size.fromHeight(55),
                 child: Backappbar()),
-            body:ListView(
-              children: [
-                SizedBox(height: 40,),
-                Center(child: Text("Send Mesasage",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
-                SizedBox(height: 20,),
-                Center(child: Text("What issue(s) are your experiencing?",textAlign: TextAlign.center,style: TextStyle(fontSize: 16,color: Color(0xFFA79A9A)),)),
-                SizedBox(height: 20,),
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
-                    decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                      labelText: "Email",
-                      labelStyle: TextStyle(
-                        color:Color(0xFFA79A9A),
-                      ),
-                      fillColor: Colors.white,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      hintText: 'Email:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                     // suffixIcon: Icon(Icons.alternate_email_outlined,color: Color(0xFFA79A9A),),
+            body:Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF3F535E),
+                        Color(0xFF3A432E),
+                        //Color(0xFF0E0D13)
+                      ])),
 
-                    ),
-                    controller: _email,
-                    validator: Validators.required(
-                        'Email is required'),
-                  ),
-                ),
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
-                    decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                      labelText: "Subject",
-                      labelStyle: TextStyle(
-                        color:Color(0xFFA79A9A),
-                      ),
-                      fillColor: Colors.white,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      hintText: 'Suject:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                      //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
-
-                    ),
-                    controller: _subject,
-                    validator: Validators.required(
-                        'Subject is required'),
-                  ),
-                ),
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(maxLines: 5,
-                    style: TextStyle(color: Color(0xFFA79A9A)),
-                    decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                      labelText: "Message",
-                      labelStyle: TextStyle(
-                        color:Color(0xFFA79A9A),
-                      ),
-                      fillColor: Colors.white,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      hintText: 'Message:',hintStyle: TextStyle(color: Color(0xFFA79A9A),),
-                      //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
-
-                    ),
-                    controller: _message,
-                    validator: Validators.required(
-                        'message is required'),
-                  ),
-                ),
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
-                    decoration: InputDecoration(enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),errorBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ) ,disabledBorder:OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                      labelText: "Name",
-                      labelStyle: TextStyle(
-                        color:Color(0xFFA79A9A),
-                      ),
-                      fillColor: Colors.white,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      hintText: 'Name:',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                      //suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
-
-                    ),
-                    controller: _name,
-                    validator: Validators.required(
-                        'Name is required'),
-                  ),
-                ),
-                SizedBox(height: 20,),
-                GestureDetector(
-                  onTap: (){
-                    getFile();
-                  },
-                  child: Container(height: 30,margin: EdgeInsets.only(left: 15,right: 15),
-                    decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(50),
-                        border:Border.all(color: Colors.white)),
-                    child: Center(child: Text("Attach files",style: TextStyle(color: Colors.white),)),
-                  ),
-                ),
-                Center(child: Text(_file!=null?_file.path:'select file',style: TextStyle(color: Colors.blue),)),
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 60),
-                  child: SizedBox(height: 50,
-                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),) ),
-                      onPressed: () {
-                        createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      NewMenupage()));
-                          setState(() {
-                            loader=false;
-                          });
-                        });
-                        setState(() {
-                          loader=true;
-                        });
-                      },
-                      child: Text('Send Now',style: TextStyle(fontSize: 16),),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10,),
-                /*Column(
+              child:  Form(
+                key: formKey,
+                child: ListView(
                   children: [
                     SizedBox(height: 40,),
-                    Text("Report A Problem",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
-                    SizedBox(height: 10,),
-                    Text("What issue(s) are your experiencing?",style: TextStyle(fontSize: 16,color: Colors.white),),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: Center(
-                        child: TextFormField(style: TextStyle(color: Colors.white),
-                          controller: _email,
-                          validator: Validators.required(
-                              'email is required'),
-                          decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                              hintText: 'Email Id:',
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 0)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: Center(
-                        child: TextFormField(style: TextStyle(color: Colors.white),
-                          controller: _subject,
-                          validator: Validators.required(
-                              'Subject is required'),
-                          decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                              hintText: 'Subject:',
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 0)),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 150,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: TextFormField(style: TextStyle(color: Colors.white),
-                        controller: _message,
-                        maxLines: null,
-                        expands: true,
-                        keyboardType: TextInputType.multiline,
-                        validator: Validators.required(
-                            'Message is required'),
-                        decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                            hintText: 'Message:',
-                            border: InputBorder.none,
+                    Center(child: Text("Send Mesasage",style: TextStyle(fontSize: 18,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
+                    SizedBox(height: 20,),
+                    Center(child: Text("What issue(s) are your experiencing?",textAlign: TextAlign.center,style: TextStyle(fontSize: 12,color: Colors.white),)),
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextFormField(style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: border,
+                          enabledBorder: border,
+                          focusedBorder: border,
+                          labelText: "Email",
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          hintText: 'Email:',hintStyle: TextStyle(color: Colors.white),
+                          //suffixIcon: Icon(Icons.alternate_email_outlined,color: Color(0xFFA79A9A),),
 
-                            contentPadding: EdgeInsets.only(
-                                left: 20, top: 0)),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(color: Color(0xFF464646),height: 40,margin: EdgeInsets.only(left: 15,right: 15),
-                      child: Center(
-                        child: TextFormField(style: TextStyle(color: Colors.white),
-                          controller: _name,
-                          validator: Validators.required(
-                              'name is required'),
-                          decoration: InputDecoration(errorStyle: TextStyle(height: 0.5),
-                              hintText: 'Your Name:',
-                              contentPadding: EdgeInsets.only(
-                                  left: 20, top: 0)),
                         ),
+                        controller: _email,
+                        validator: Validators.required(
+                            'Email is required'),
                       ),
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextFormField(style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: border,
+                          enabledBorder: border,
+                          focusedBorder: border,
+                          labelText: "Subject",
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          hintText: 'Suject:',hintStyle: TextStyle(color: Colors.white),
+                          //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
+
+                        ),
+                        controller: _subject,
+                        validator: Validators.required(
+                            'Subject is required'),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextFormField(
+                        style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: border,
+                          enabledBorder: border,
+                          focusedBorder: border,
+                          labelText: "Message",
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          hintText: 'Message:',hintStyle: TextStyle(color: Colors.white),
+                          //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
+
+                        ),
+                        maxLines: 5,
+                        controller: _message,
+                        validator: Validators.required(
+                            'message is required'),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextFormField(style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: border,
+                          enabledBorder: border,
+                          focusedBorder: border,
+                          labelText: "Name",
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.white,
+                          hintText: 'Name:',hintStyle: TextStyle(color: Colors.white),
+                          //suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
+
+                        ),
+                        controller: _name,
+                        validator: Validators.required(
+                            'Name is required'),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
                     GestureDetector(
                       onTap: (){
                         getFile();
                       },
                       child: Container(height: 30,margin: EdgeInsets.only(left: 15,right: 15),
-                        decoration: BoxDecoration(
-                            color: Color(0xFF464646),
-                            border: Border.all(color: Color(0xFFE18D13))
-                        ),
+                        decoration: BoxDecoration(color: Colors.black12,borderRadius: BorderRadius.circular(50),
+                            border:Border.all(color: Colors.white)),
                         child: Center(child: Text("Attach files",style: TextStyle(color: Colors.white),)),
                       ),
                     ),
-                    Text(_file!=null?_file.path:'select file',style: TextStyle(color: Colors.blue),),
+                    Center(child: Text(_file!=null?_file.path:'select file',style: TextStyle(color: Colors.blue),)),
                     SizedBox(height: 20,),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14) ),
-                      onPressed: () {
-                        createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      NewMenuScreen()));
-                          setState(() {
-                            loader=false;
-                          });
-                        });
-                        setState(() {
-                          loader=true;
-                        });
-                      },
-                      child: Text('Send Now',style: TextStyle(fontSize: 16),),
+                    /* Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 60),
+                      child: SizedBox(height: 50,
+                        child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFF8E0E14),shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),) ),
+                          onPressed: () {
+                          if (formKey.currentState.validate()) {
+                            createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          NewMenupage()));
+                              setState(() {
+                                loader=false;
+                              });
+                            });
+                            setState(() {
+                              loader=true;
+                            });
+                          }
+                          },
+                          child: Text('Send Now',style: TextStyle(fontSize: 16),),
+                        ),
+                      ),
+                    ),*/
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (formKey.currentState.validate()) {
+                              createSendmailState(_email.text,_subject.text,_message.text,_name.text,_file,context).whenComplete(() {
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            NewMenupage()));
+                                setState(() {
+                                  loader=false;
+                                });
+                              });
+                              setState(() {
+                                loader=true;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius
+                                    .circular(
+                                    30),
+                                border: Border.all(
+                                    color: Colors
+                                        .white)),
+                            child: Center(child: Text('Send Now',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
+                          ),
+                        ),
+                      ],
                     ),
+                    SizedBox(height: 20,),
+
+                    if(loader)Center(child: CircularProgressIndicator(),)
                   ],
-                ),*/
-                if(loader)Center(child: CircularProgressIndicator(),)
-              ],
+                ),
+              ),
             ),
 
           ),

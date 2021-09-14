@@ -25,6 +25,10 @@ class _ChangePassword extends State<ChangePassword> {
       }
     });
   }
+  InputBorder border = OutlineInputBorder(
+    borderSide: const BorderSide(color: Color(0xFFA6B3BC), width: 2.0),
+    borderRadius: BorderRadius.circular(30.0),
+  );
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -32,109 +36,118 @@ class _ChangePassword extends State<ChangePassword> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body:Stack(
-          children: [
-            SingleChildScrollView(
-              child: SizedBox(
-                  height: height,
-                  width: width,
-                  child: Image.asset(
-                    "assets/soundchatbg.png",
-                    fit: BoxFit.fill,
-                  )),
-            ),
-            Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  SizedBox(height: 10,),
-                  Image.asset(
-                    "assets/soundpic.png",
-                    width: width * 0.316,
-                    height: height * 0.1902,
-                  ),
-                  SizedBox(height: 20,),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
-                      controller: _currentpassword,
-                      obscureText: _isObscure,
-                      validator: Validators.required(
-                          'currentpassword is required'),
-                      decoration: InputDecoration(
-                          errorStyle: TextStyle(height: 0.5),
-                          prefixIcon:  Icon(Icons.lock,size: 28,
-                            color: Color(0xFF6A6B6D),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          hintText: 'Enter current password',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                          contentPadding: EdgeInsets.only(
-                              left: 20, top: 15)),
+        body:Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Color(0xFF3F535E), Color(0xFF3A432E)])),
+          child: Stack(
+            children: [
+              Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    SizedBox(height: 10,),
+                    Image.asset(
+                      "assets/soundpic.png",
+                      width: width * 0.316,
+                      height: height * 0.1902,
                     ),
-                  ),
-                  SizedBox(height: 20,),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: TextFormField(style: TextStyle(color: Color(0xFFA79A9A)),
-                      controller: _newpassword,
-                      obscureText: _isObscure,
-                      validator: Validators.required(
-                          'newpassword is required'),
-                      decoration: InputDecoration(
-                          errorStyle: TextStyle(height: 0.5),
-                          prefixIcon:  Icon(Icons.lock,size: 28,
-                            color: Color(0xFF6A6B6D),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          hintText: 'Enter new password',hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                          contentPadding: EdgeInsets.only(
-                              left: 20, top: 15)),
-                    ),
-                  ),
-                  SizedBox(height: 30,),
-                  Container(height: 60,width: width,
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: ElevatedButton(style:ElevatedButton.styleFrom( primary: Colors.orange,
-//                      shape: new RoundedRectangleBorder(
-//                    borderRadius: new BorderRadius.circular(30.0),)
-                    ),
-                      onPressed: () {
-                        if (formKey.currentState.validate()) {
-                          createChangepasswrdState(id,_currentpassword.text,_newpassword.text, context).whenComplete(() {
-                            setState(() {
-                              loader=false;
-                            });
-                          });
-                          setState(() {
-                            loader=true;
-                          });
-                        }
-                      },
-                      child: Text('Change',style: TextStyle(fontSize: 20),),
-                    ),
-                  ),
-                  SizedBox(height: 40,),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: SizedBox(
-                          height: 60,
-                          width: 60,
-                          child: Image.asset(
-                            "assets/backbutton.png",color: Color(0xFF66BA5F),
-                            fit: BoxFit.fill,
-                          ))),
-                ],
-              ),
-            ),
-            if(loader)Center(child: CircularProgressIndicator(),)
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: TextFormField(style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                        controller: _currentpassword,
+                        obscureText: _isObscure,
+                        validator: Validators.required(
+                            'currentpassword is required'),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(10),
+                            border: border,
+                            enabledBorder: border,
+                            focusedBorder: border,
+                            errorStyle: TextStyle(height: 0.5),
+                            prefixIcon:  Icon(Icons.lock,size: 28,
+                              color: Color(0xFFA6B3BC),
+                            ),
+                            hintText: 'Enter current password',hintStyle: TextStyle(color: Colors.white),
 
-          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: TextFormField(style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                        controller: _newpassword,
+                        obscureText: _isObscure,
+                        validator: Validators.required(
+                            'newpassword is required'),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(10),
+                            border: border,
+                            enabledBorder: border,
+                            focusedBorder: border,
+                            errorStyle: TextStyle(height: 0.5),
+                            prefixIcon:  Icon(Icons.lock,size: 28,
+                              color: Color(0xFFA6B3BC),
+                            ),
+                            hintText: 'Enter new password',hintStyle: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (formKey.currentState.validate()) {
+                              createChangepasswrdState(id,_currentpassword.text,_newpassword.text, context).whenComplete(() {
+                                setState(() {
+                                  loader=false;
+                                });
+                              });
+                              setState(() {
+                                loader=true;
+                              });
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius
+                                    .circular(
+                                    30),
+                                border: Border.all(
+                                    color: Colors
+                                        .white)),
+                            child: Center(child: Text('Change',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 40,),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: SizedBox(
+                            height: 60,
+                            width: 60,
+                            child: Image.asset(
+                              "assets/backbutton.png",color: Color(0xFF66BA5F),
+                              fit: BoxFit.fill,
+                            ))),
+                  ],
+                ),
+              ),
+              if(loader)Center(child: CircularProgressIndicator(),)
+
+            ],
+          ),
         ),
       ),
     );

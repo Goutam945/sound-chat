@@ -43,6 +43,7 @@ class _LiveVideoState extends State<LiveVideo> {
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
         BetterPlayerDataSourceType.network, "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8",
         liveStream: true,
+        cacheConfiguration: BetterPlayerCacheConfiguration(useCache: false),
         videoExtension: "m3u8",
         notificationConfiguration: BetterPlayerNotificationConfiguration(
           title: "Sound chat",

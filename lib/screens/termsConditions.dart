@@ -21,27 +21,34 @@ class _TermsConditionsState extends State<TermsConditions> {
     terms = (data1!=null)?data1['data']:[];
     return SafeArea(
       child: Stack(
-          children:[ Scaffold(
+          children:[
+            Scaffold(
             backgroundColor: Colors.black,
               appBar: PreferredSize(preferredSize: Size.fromHeight(55),
                   child: Backappbar()),
-            body:ListView(
-              children: [
-                SizedBox(height: 20,),
-                for(int i=0;i<terms.length;i++)
-                /*Html(data: Terms[i]['description'],style: {
-              "body": Style(
-                fontSize: FontSize(15.0),
-                color: Colors.white
-              ),
-            },),*/
+            body:Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF3F535E),
+                        Color(0xFF3A432E),
+                        //Color(0xFF0E0D13)
+                      ])),
+              child: ListView(
+                children: [
+                  SizedBox(height: 20,),
+                  for(int i=0;i<terms.length;i++)
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Text(terms[i]['id'].toString() +"  "+terms[i]['content_type'] +" \n " + terms[i]['description'],style: TextStyle(fontSize: 15, color: Colors.white,),),
-                ),
-                //Text(Terms['data'].toString())
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,left: 10),
+                    child: Text(terms[i]['id'].toString() +"  "+terms[i]['content_type'] +" \n " + terms[i]['description'],
+                      style: TextStyle(fontSize: 12, color: Colors.white,),),
+                  ),
+                  //Text(Terms['data'].toString())
+                ],
+              ),
             )
 
           ),

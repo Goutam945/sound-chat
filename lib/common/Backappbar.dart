@@ -4,7 +4,7 @@ class Backappbar extends PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: true,
-      backgroundColor: Color(0xFF481621),
+      backgroundColor: Color(0xFF3F535E),
 
     );
   }

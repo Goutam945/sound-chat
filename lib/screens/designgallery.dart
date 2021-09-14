@@ -41,18 +41,6 @@ String email,name;
           body: (superherosLength != null)
               ? Column(
                   children: [
-//                    Column(
-//                      children: [
-//                        SizedBox(
-//                          child: Image.asset(
-//                            'assets/soundbk.png',
-//                            fit: BoxFit.fitWidth,
-//                          ),
-//                          height: height * 0.2002,
-//                          width: width * 1.018,
-//                        ),
-//                      ],
-//                    ),
                     SizedBox(
                       height: height * 0.02634,
                     ),
@@ -108,8 +96,8 @@ String email,name;
                                                   ['post_title'],
                                               style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
-                                                fontStyle: FontStyle.italic,
+                                                fontSize: 12,
+                                                fontFamily: fontfamily,
                                               ),
                                               textAlign: TextAlign.center,
                                             ))),
@@ -127,6 +115,8 @@ String email,name;
                                                 style: TextStyle(
                                                   color: butoncolor[i]? Color(0xFFC66E3A):Colors.yellow,
                                                   fontSize: 12,
+                                                  fontFamily: fontfamily,
+                                                  fontWeight: FontWeight.bold
                                                 ))),
                                       ),
                                     ],

@@ -8,7 +8,7 @@ class ShoppAppbar extends PreferredSize {
     var cart= context.watch<ProductModellist>();
     return AppBar(
       automaticallyImplyLeading: true,
-      backgroundColor: Color(0xFF481621),
+      backgroundColor: Color(0xFF3F535E),
 
     title: Column(
     mainAxisAlignment: MainAxisAlignment.center,

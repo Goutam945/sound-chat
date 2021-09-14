@@ -41,188 +41,198 @@ class _RequestLinesState extends State<RequestLines> {
           backgroundColor: Colors.black,
           appBar: PreferredSize(preferredSize: Size.fromHeight(55),
               child: Backappbar()),
-          body: ListView(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              Text(
-                "Request Lines",textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.orange),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Tune in to SoundChat Radio Live",textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12,color: Color(0xFFA79A9A)),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 10,
-                      top: 10,
-                      left: 20,
-                      right: 20,
-                      child: GestureDetector(
-                        onTap: () {
-                          launchUrl("tel:+17185548598");
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                            child:Padding(padding: EdgeInsets.only(left: 20),
-                            child: Text("+1(718)-554-8598",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: titlefontsize,
-                                  fontWeight: FontWeight.bold),
-                            ),)
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 80,
-                      height: 80,
-                      child: Image.asset(
-                        'assets/fl01.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ],
+          body: Container( decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF3F535E),
+                    Color(0xFF3A432E),
+                    //Color(0xFF0E0D13)
+                  ])),
+            child: ListView(
+              children: [
+                SizedBox(
+                  height: 40,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 10,
-                      top: 10,
-                      left: 20,
-                      right: 20,
-                      child: GestureDetector(
-                        onTap: () {
-                          launchUrl("tel:+442080680507");
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                            child:Padding(padding: EdgeInsets.only(left: 20),
-                            child: Text("+44 208-068-0507",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: titlefontsize,
-                                  fontWeight: FontWeight.bold),
-                            ),),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 80,
-                      height: 80,
-                      child: Image.asset(
-                        'assets/fl02.png',
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ],
+                Text(
+                  "Request Lines",textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.orange),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 10,
-                      top: 10,
-                      left: 20,
-                      right: 20,
-                      child: GestureDetector(
-                        onTap: () {
-                          launchUrl("tel:+16464847826");
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(child:Padding(padding: EdgeInsets.only(left: 20),
-                            child: Text("+1(646)-484-7826",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: titlefontsize,
-                                  fontWeight: FontWeight.bold),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Tune in to SoundChat Radio Live",textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12,color: Colors.white),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: 10,
+                        top: 10,
+                        left: 20,
+                        right: 20,
+                        child: GestureDetector(
+                          onTap: () {
+                            launchUrl("tel:+17185548598");
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child:Padding(padding: EdgeInsets.only(left: 20),
+                              child: Text("+1(718)-554-8598",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: titlefontsize,
+                                    fontWeight: FontWeight.bold),
+                              ),)
                             ),
-                          ),),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 80,
-                      height: 80,
-                      child: Image.asset(
-                        'assets/fl03.png',
-                        fit: BoxFit.fill,
+                      Container(
+                        width: 70,
+                        height: 70,
+                        child: Image.asset(
+                          'assets/fl01.png',
+                          fit: BoxFit.fill,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 10,
-                      top: 10,
-                      left: 20,
-                      right: 20,
-                      child: GestureDetector(
-                        onTap: () {
-                          whatsAppOpen();
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(child:Padding(padding: EdgeInsets.only(left: 20),
-                            child: Text("+1(347)-757-9865",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: titlefontsize,
-                                  fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: 10,
+                        top: 10,
+                        left: 20,
+                        right: 20,
+                        child: GestureDetector(
+                          onTap: () {
+                            launchUrl("tel:+442080680507");
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child:Padding(padding: EdgeInsets.only(left: 20),
+                              child: Text("+44 208-068-0507",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: titlefontsize,
+                                    fontWeight: FontWeight.bold),
+                              ),),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 70,
+                        height: 70,
+                        child: Image.asset(
+                          'assets/fl02.png',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: 10,
+                        top: 10,
+                        left: 20,
+                        right: 20,
+                        child: GestureDetector(
+                          onTap: () {
+                            launchUrl("tel:+16464847826");
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(child:Padding(padding: EdgeInsets.only(left: 20),
+                              child: Text("+1(646)-484-7826",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: titlefontsize,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 80,
-                      height: 80,
-                      child: Image.asset(
-                        'assets/fl04.png',
-                        fit: BoxFit.fill,
+                      Container(
+                        width: 70,
+                        height: 70,
+                        child: Image.asset(
+                          'assets/fl03.png',
+                          fit: BoxFit.fill,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: 10,
+                        top: 10,
+                        left: 20,
+                        right: 20,
+                        child: GestureDetector(
+                          onTap: () {
+                            whatsAppOpen();
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(child:Padding(padding: EdgeInsets.only(left: 20),
+                              child: Text("+1(347)-757-9865",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: titlefontsize,
+                                    fontWeight: FontWeight.bold),
+                              ),),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 70,
+                        height: 70,
+                        child: Image.asset(
+                          'assets/fl04.png',
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         Positioned(

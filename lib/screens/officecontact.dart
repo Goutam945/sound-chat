@@ -22,238 +22,132 @@ class _OfficeContactState extends State<OfficeContact> {
             backgroundColor: Colors.black,
             appBar: PreferredSize(preferredSize: Size.fromHeight(55),
                 child: Backappbar()),
-           /* body:ListView(
-              children: [
-                SizedBox(height: 40,),
-                Center(child: Text("Office Contact Details",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
-                SizedBox(height: 20,),
-                Align(alignment: Alignment.centerLeft,
-                  child: Text(
-                    'New York Office',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                    ),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-            SizedBox(height: 10,),
-            Container(height: 0.5,color: Colors.orange,),
-            SizedBox(height: 20,),
-            Column(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Address: Studio Address: Studio \n139-20 C 109th Ave, Jamaica, NY,\n 11435.',
-                  style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                ),
-                SizedBox(height: 10,),
-                Text(
-                  'Phone: (347)-514-7520 (Office)',
-                  style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                ),
-                SizedBox(height: 10,),
-                Text(
-                  ' Email: info@soundchatradio.com,\n            irishandchin@gmail.com',
-                  style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                ),
-              ],
-            ),
-                SizedBox(height: 20,),
-                Align(alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Kingston, Jamaica',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                    ),
-                    textAlign: TextAlign.start,
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Container(height: 0.5,color: Colors.orange,),
-                SizedBox(height: 20,),
-                Column(crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Address: 22 Westminster Rd, Kingston 10,\nJamaica,11435.',
-                      style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                    ),
-                    SizedBox(height: 10,),
-                    Text(
-                      'Phone: +1 (876)-000-0000,(347)-514-7520',
-                      style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                    ),
-                    SizedBox(height: 10,),
-                    Text(
-                      ' Email: jamaica@soundchatradio.com,\n             irishandchin@gmail.com',
-                      style: TextStyle(fontSize: 16,color: Color(0xFFA39597)),
-                    ),
-                  ],
-                ),
-
-
-                // Column(
-                //   children: [
-                //     SizedBox(height: 5,),
-                //     Text("Office Contact Details",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                //     SizedBox(height: 30,),
-                //     Container(color: Colors.white, margin:EdgeInsets.only(right: 50),
-                //       child: Padding(
-                //         padding: const EdgeInsets.only(left: 20),
-                //         child: Text("New York Office / \nStudio Address: Studio \n139-20 C 109th Ave, Jamaica, NY,\n 11435 Phone: (347)-514-7520 (Office) Email: info@soundchatradio.com,\nirishandchin@gmail.com",
-                //         style: TextStyle(fontSize: 16,fontStyle: FontStyle.italic),),
-                //       ),
-                //     ),
-                //     SizedBox(height: 20,),
-                //     Container(color: Colors.white, margin:EdgeInsets.only(left: 50,),
-                //       child: Text("Kingston, Jamaica / \nStudio Address: 22 Westminster Rd, Kingston 10,Jamaica,\n 11435 Phone: +1 (876)-000-0000,(347)-514-7520 ex.500 (Office)\n Email: jamaica@soundchatradio.com,\nirishandchin@gmail.com",
-                //         style: TextStyle(fontSize: 16,fontStyle: FontStyle.italic),),
-                //     )
-                //     // Divider(
-                //     //   color: Colors.black,
-                //     // ),
-                //   ],
-                // ),
-
-
-              ],
-            ),*/
-            body:ListView(
-              children: [
-//                Image.asset(
-//                  'assets/contact-detail.png',
-//                  fit: BoxFit.fill,
-//                  scale: 2.9,
-//                ),
-                SizedBox(height: 40,),
-                Center(child: Text("Office Contact Details",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
-                SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Stack(
-                    children: [
-                      Column(
-                        children: [
-                          /*Container(
-                            width: 70,
-                            height: 70,
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                                color: Colors.orange,
-                                borderRadius: BorderRadius.circular(50)),
-                            child: Container(
-                              padding: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(50)),
-                              child: Container(
-                                padding: EdgeInsets.all(5),
-                                child: Container(
-                                  padding: EdgeInsets.all(0),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(50)),
-                                  child: Center(
-                                      child: Text(
-                                        "1",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 20, fontWeight: FontWeight.bold),
-                                      )),
+            body:Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF3F535E),
+                      Color(0xFF3A432E),
+                      //Color(0xFF0E0D13)
+                    ])),
+              child: ListView(
+                children: [
+                  SizedBox(height: 40,),
+                  Center(child: Text("Office Contact Details",style: TextStyle(fontSize: 19,color: Color(0xFFE18D13),fontWeight: FontWeight.bold),)),
+                  SizedBox(height: 20,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    child: Stack(
+                      children: [
+                        Column(
+                          children: [
+                            Align(alignment: Alignment.centerLeft,
+                              child: Text(
+                                "New York Office",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white
                                 ),
+                                textAlign: TextAlign.start,
                               ),
                             ),
-                          ),*/
-                          Align(alignment: Alignment.centerLeft,
-                            child: Text(
-                              "New York Office",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white
+                            SizedBox(height: 10,),
+                            Container(height: 0.5,color: Colors.orangeAccent,),
+                            Container(height: 200,width: 410,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              child: Column(
+                                  children: [
+                                    SizedBox(height: 20,),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.home_outlined,size: 30,color: Colors.white,),
+                                        SizedBox(width: 20,),
+                                        Text("139-20 C 109th Ave,\n Jamaica, NY, 11435",
+                                            style: TextStyle(fontSize: subtitlefontsize,
+                                                color: Colors.white,fontFamily: fontfamily))
+                                      ],
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.phone,size: 30,color: Colors.white,),
+                                        SizedBox(width: 20,),
+                                        Text("(347)-514-7520 ", style: TextStyle(
+                                            fontSize: subtitlefontsize,
+                                            fontFamily: fontfamily,
+                                            color: Colors.white))
+                                      ],
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.email_outlined,size: 30,color: Colors.white,),
+                                        SizedBox(width: 20,),
+                                        Text("info@soundchatradio.com,\nirishandchin@gmail.com",
+                                            style: TextStyle(fontSize: subtitlefontsize,
+                                                fontFamily: fontfamily,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                  ]),),
+                            Align(alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Kingston, Jamaica',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white
+                                ),
+                                textAlign: TextAlign.start,
                               ),
-                              textAlign: TextAlign.start,
                             ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(height: 0.5,color: Colors.orangeAccent,),
-                          Container(height: 200,width: 410,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                            child: Column(
-                                children: [
-                                  SizedBox(height: 20,),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.home_outlined,size: 30,color: Color(0xFFA39597),),
-                                      SizedBox(width: 20,),
-                                      Text("139-20 C 109th Ave,\n Jamaica, NY, 11435", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
-                                    ],
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.phone,size: 30,color: Color(0xFFA39597),),
-                                      SizedBox(width: 20,),
-                                      Text("(347)-514-7520 ", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
-                                    ],
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.email_outlined,size: 30,color: Color(0xFFA39597),),
-                                      SizedBox(width: 20,),
-                                      Text("info@soundchatradio.com,\nirishandchin@gmail.com", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
-                                    ],
-                                  ),
-                                ]),),
-                          Align(alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Kingston, Jamaica',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white
-                              ),
-                              textAlign: TextAlign.start,
-                            ),
-                          ),
-                          SizedBox(height: 10,),
-                          Container(height: 0.5,color: Colors.orangeAccent,),
-                          Container(height: 200,width: 400,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                            child: Column(
-                                children: [
-                                  SizedBox(height: 20,),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.home_outlined,size: 30,color: Color(0xFFA39597),),
-                                      SizedBox(width: 20,),
-                                      Text("22 Westminster Rd,\nKingston 10,Jamaica,11435", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
-                                    ],
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.phone,size: 30,color: Color(0xFFA39597)),
-                                      SizedBox(width: 20,),
-                                      Text("+1 (876)-000-0000,\n(347)-514-7520 ", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
-                                    ],
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Row(
-                                    children: [
-                                      Icon(Icons.email_outlined,size: 30,color: Color(0xFFA39597),),
-                                      SizedBox(width: 20,),
-                                      Text("jamaica@soundchatradio.com,\nirishandchin@gmail.com", style: TextStyle(fontSize: subtitlefontsize,color: Color(0xFFA39597)))
-                                    ],
-                                  ),
-                                ]),),
+                            SizedBox(height: 10,),
+                            Container(height: 0.5,color: Colors.orangeAccent,),
+                            Container(height: 200,width: 400,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                              child: Column(
+                                  children: [
+                                    SizedBox(height: 20,),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.home_outlined,size: 30,color: Colors.white,),
+                                        SizedBox(width: 20,),
+                                        Text("22 Westminster Rd,\nKingston 10,Jamaica,11435",
+                                            style: TextStyle(fontSize: subtitlefontsize,
+                                                fontFamily: fontfamily,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.phone,size: 30,color: Colors.white),
+                                        SizedBox(width: 20,),
+                                        Text("+1 (876)-000-0000,\n(347)-514-7520 ",
+                                            style: TextStyle(fontSize: subtitlefontsize,
+                                                fontFamily: fontfamily,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.email_outlined,size: 30,color: Colors.white,),
+                                        SizedBox(width: 20,),
+                                        Text("jamaica@soundchatradio.com,\nirishandchin@gmail.com",
+                                            style: TextStyle(fontSize: subtitlefontsize,
+                                                fontFamily: fontfamily,
+                                                color: Colors.white))
+                                      ],
+                                    ),
+                                  ]),),
 
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
 //                   Stack(
 //                    children: [
 //                        Container(height: 400,width: 400,color:Colors.black ,padding: EdgeInsets.symmetric(horizontal: 10,vertical: 80),
@@ -296,7 +190,8 @@ class _OfficeContactState extends State<OfficeContact> {
 //                    ],
 //                  ),
 
-              ],
+                ],
+              ),
             ),
 
           ),

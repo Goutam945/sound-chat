@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     internetcheck();
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(debugShowCheckedModeBanner: false,  theme: ThemeData(fontFamily: 'Montserrat1'),
         home: checkinternet
             ? Container(color: Colors.white,
