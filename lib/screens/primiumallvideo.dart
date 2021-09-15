@@ -1,5 +1,5 @@
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/newlogin.dart';
+import 'package:sound_chat/screens/login.dart';
 import 'primiumvideoplay.dart';
 class PrimiumvideoScreen extends StatefulWidget {
   PrimiumvideoScreen({Key key}) : super(key: key);

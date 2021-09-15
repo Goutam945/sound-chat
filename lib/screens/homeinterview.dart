@@ -8,7 +8,7 @@ import 'package:sound_chat/screens/studioallvideo.dart';
 import 'package:sound_chat/screens/yellowallvideo.dart';
 import "dart:math";
 
-import 'newlogin.dart';
+import 'login.dart';
 import 'phoneinterviewplayer.dart';
 import 'phoneinterviewallvideo.dart';
 

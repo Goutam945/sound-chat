@@ -10,7 +10,7 @@ import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/navinext.dart';
 import 'chnagepassword.dart';
-import 'designupdate.dart';
+import 'updateprofile.dart';
 import 'homebottomBar.dart';
 
 class MyAccount extends StatefulWidget {
@@ -46,7 +46,8 @@ int id;
 @override
 void initState() {
   super.initState();
-  _loadSavedData().then((value) => print("USERID"+value.toString()));
+ // _loadSavedData().then((value) => print("USERID"+value.toString()));
+  _loadSavedData().then((value) => createSubcriptionlevalState(id, context));
   }
 void remove() async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -155,7 +156,8 @@ Future<void> showMyDialog() async {
                     style: TextStyle(fontSize: 16,color: Colors.white, fontFamily: fontfamily),
                   ),
                   SizedBox(height: 5,),
-                  Row(mainAxisAlignment: MainAxisAlignment.center,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         phone.toString()+"  (",

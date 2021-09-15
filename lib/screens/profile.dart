@@ -1,5 +1,5 @@
 import 'package:sound_chat/common/index.dart';
-import 'designupdate.dart';
+import 'updateprofile.dart';
 class DesignProfile extends StatefulWidget {
   final email,name;
   DesignProfile(this.email,this.name);

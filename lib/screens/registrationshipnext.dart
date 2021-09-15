@@ -248,7 +248,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                                 loader=true;
                               });
                               createSignUpState(widget.user,widget.lid,
-                                  _username.text, widget.email,widget.firtname,widget.lastname,_password.text,widget.phone,widget.country,_coupon.text,_image, context).whenComplete(() {
+                                  _username.text, widget.email,widget.firtname,widget.lastname,_password.text,widget.phone,widget.country,_coupon.text,base64Encode(File(_image.path).readAsBytesSync()), context).whenComplete(() {
                                 setState(() {
                                   loader=false;
                                 });

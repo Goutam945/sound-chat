@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:sound_chat/screens/newlogin.dart';
+import 'package:sound_chat/screens/login.dart';
 import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 
 Future<SignUpResponse> createSignUpState(
@@ -15,7 +15,7 @@ Future<SignUpResponse> createSignUpState(
     String phoneNumber,
     String country,
     String coupon,
-    File _image,
+    String _image,
     context) async {
   final http.Response response = await http.post(
       Uri.parse('http://3.23.210.57:3000/api/v1/auth/signup'),
@@ -95,7 +95,7 @@ class SignUpResponse {
 import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-import 'package:sound_chat/screens/newlogin.dart';
+import 'package:sound_chat/screens/login.dart';
 import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 
 Future<SignUpResponse> createSignUpState(

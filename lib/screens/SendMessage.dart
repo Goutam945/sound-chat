@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:sound_chat/api/sendmail.dart';
 import 'package:sound_chat/common/index.dart';
 
-import 'newmenupage.dart';
+import 'menupage.dart';
 class SendMessage extends StatefulWidget {
   @override
   _SendMessageState createState() => _SendMessageState();

@@ -3,8 +3,8 @@ import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/schedule%20design.dart';
 
 import 'followus.dart';
-import 'Myaccountprofile.dart';
-import 'newlogin.dart';
+import 'myaccountprofile.dart';
+import 'login.dart';
 import 'officecontact.dart';
 import 'reportproblem.dart';
 import 'requestLines.dart';

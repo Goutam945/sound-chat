@@ -6,9 +6,9 @@ import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
 import 'livetv.dart';
-import 'newhomepage.dart';
-import 'newlistenlivepage.dart';
-import 'newmenupage.dart';
+import 'homepage.dart';
+import 'listenlivepage.dart';
+import 'menupage.dart';
 class HomeBottomBar extends StatefulWidget {
   @override
   _HomeBottomBarState createState() => new _HomeBottomBarState();

@@ -453,22 +453,8 @@ class _FullImageState extends State<FullImage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text("Gallery"),
-          backgroundColor: Color(0xFFE18D13),
-          leading: Builder(builder: (BuildContext context) {
-            return IconButton(
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-                size: 25,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            );
-          }),
-        ),
+        appBar:PreferredSize(preferredSize: Size.fromHeight(55),
+        child: Backappbar()),
         body: Center(
           child: Container(
             child: PhotoView(

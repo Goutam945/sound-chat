@@ -1,6 +1,6 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'newlogin.dart';
+import 'login.dart';
 class ScheduleDesign extends StatefulWidget {
   @override
   _ScheduleDesign createState() => _ScheduleDesign();
@@ -74,12 +74,12 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                           child: Padding(
                             padding: EdgeInsets.only(right: width * 0.3314),
                             child: Padding(
-                              padding: const EdgeInsets.only(top: 4, right: 90),
+                              padding: const EdgeInsets.only(top: 4, right: 60),
                               child: Text("UPCOMMING SHOWS",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 14,
-                                      fontStyle: FontStyle.italic)),
+                                      )),
                             ),
                           ),
                         ),
@@ -129,7 +129,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                     style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 14,
-                                                      fontStyle: FontStyle.italic,
+                                                     fontFamily: fontfamily
                                                     ),
                                                     textAlign: TextAlign.center,
                                                   ),
@@ -142,7 +142,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                           style: TextStyle(
                                             color: Colors.deepOrange,
                                             fontSize: 13,
-                                            fontStyle: FontStyle.italic,
+                                            fontFamily: fontfamily,
                                           ),
                                         ),
                                         Text(
@@ -151,7 +151,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                           style: TextStyle(
                                             color: Color(0xFFE18D13),
                                             fontSize: 12,
-                                            fontStyle: FontStyle.italic,
+                                              fontFamily: fontfamily
+
                                           ),
                                         ),
                                       ],
@@ -408,6 +409,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   style: TextStyle(
                                     color: Color(0xFFA79A9A),
                                     fontSize: width * 0.0428,
+                                      fontFamily: fontfamily,
+                                    fontWeight: FontWeight.bold
                                   ))),
                         ),
                         Container(

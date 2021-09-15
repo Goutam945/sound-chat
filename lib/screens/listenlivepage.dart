@@ -10,7 +10,7 @@ import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
-import 'newlogin.dart';
+import 'login.dart';
 
 class Listenlivepage extends StatefulWidget {
   const Listenlivepage({Key key}) : super(key: key);
