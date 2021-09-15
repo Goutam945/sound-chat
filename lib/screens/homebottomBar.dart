@@ -55,7 +55,6 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
   int id;
   int staticlibid = 2;
   dynamic data;
-
   _loadSavedData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
