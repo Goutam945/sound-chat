@@ -4,6 +4,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sound_chat/api/subcribtion_lable.dart';
 import 'package:sound_chat/common/appConfig.dart';
+import 'package:sound_chat/common/functions.dart';
 import 'package:sound_chat/common/index.dart';
 import 'livetv.dart';
 import 'homepage.dart';
@@ -162,6 +163,8 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
                   setState(() {
                     pageIndex=index;
                   });
+                  if(!Provider.of<OverlayHandlerProvider>(context,listen: false).inPipMode && !pipDisabled)
+                    addVideosOverlay(context);
                 },
               ),
 

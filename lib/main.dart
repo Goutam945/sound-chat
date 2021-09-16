@@ -40,9 +40,7 @@ void main() async{
         ChangeNotifierProvider(create: (_) => SearchResponse()),
         ChangeNotifierProvider(create: (_) => PhoneinterviewResponse()),
         ChangeNotifierProvider(create: (_) => BanneradsResponse()),
-        ChangeNotifierProvider(
-          create: (_) => OverlayHandlerProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => OverlayHandlerProvider(),),
       ],
       child: MyApp(),
     ),
