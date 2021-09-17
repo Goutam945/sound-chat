@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sound_chat/common/appConfig.dart';
 
 class OverlayHandlerProvider with ChangeNotifier {
 
@@ -14,6 +15,7 @@ class OverlayHandlerProvider with ChangeNotifier {
   }
 
   disablePip() {
+    pipDisabled=true;
     inPipMode = false;
     print("$inPipMode disablePip");
     notifyListeners();
