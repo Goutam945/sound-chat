@@ -1,7 +1,5 @@
-import 'package:sound_chat/api/allproduct.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/common/shoappbar.dart';
-import 'shopproductdetails.dart';
+
 class Shopping extends StatefulWidget {
   @override
   _ShoppingState createState() => _ShoppingState();

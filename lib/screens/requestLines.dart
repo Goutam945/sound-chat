@@ -1,7 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:whatsapp_unilink/whatsapp_unilink.dart';
-
 class RequestLines extends StatefulWidget {
   @override
   _RequestLinesState createState() => _RequestLinesState();

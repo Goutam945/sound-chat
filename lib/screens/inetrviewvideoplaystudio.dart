@@ -1,5 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-
 class InterviewNewPlayer extends StatefulWidget {
   final playvideo, title;
 
@@ -296,6 +295,7 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
   }
 }
 
+/*
 class Youtubeplayer extends StatefulWidget {
   final String videoURL;
   final ontap;
@@ -350,4 +350,4 @@ class _VideoState extends State<Youtubeplayer> {
           )),
     );
   }
-}
+}*/

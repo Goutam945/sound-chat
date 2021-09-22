@@ -4,8 +4,10 @@ import 'package:sound_chat/screens/login.dart';
 
 Future<ForgotResponse> createForgotResponse(String name,context) async {
   final http.Response response =
-  await http.post( Uri.parse('http://3.23.210.57:3000/api/v1/forgetpassword'), headers: <String,String> {"content-type": "application/json"
-  },body:jsonEncode({
+  await http.post( Uri.parse(baseUrl+'forgetpassword'),
+      headers: <String,String> {"content-type": "application/json"
+  },
+      body:jsonEncode({
     'mobile_no':name,
   }));
 

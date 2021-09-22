@@ -1,6 +1,4 @@
-import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
-import 'shopaddress&billing.dart';
 
 class ShopCheckoutscreen extends StatefulWidget {
   @override
@@ -25,37 +23,10 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
           Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
+              backgroundColor: Color(0xFF3F535E),
               backwardsCompatibility: true,
             ),
             bottomNavigationBar:
-            // Container(
-            //   height: height*0.0731,
-            //   color: Colors.white,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //     children: [
-            //       Container(width: width,padding: EdgeInsets.symmetric(horizontal: 15),
-            //         child: ElevatedButton(
-            //           style: ElevatedButton.styleFrom(primary: Colors.red),
-            //           onPressed: () {
-            //             Navigator.of(context)
-            //                 .pushReplacement(
-            //                 MaterialPageRoute(builder: (context) => Shopaddress()));
-            //           },
-            //           child: Text(
-            //             " Total Amount Pay:   \$"+cardvalue.sum1.toString(),
-            //             style: TextStyle(
-            //                 color: Colors.white,
-            //                 fontSize: 20,
-            //                 fontWeight: FontWeight.bold,
-            //                 fontStyle: FontStyle.italic),
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             Container(
               height: 46,
               child: Row(
@@ -64,7 +35,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0xFF780001), Color(0xFF780001)],
+                          colors: [Color(0xFF481621), Color(0xFF481621)],
                           begin: FractionalOffset.centerLeft,
                           end: FractionalOffset.centerRight,
                         ),
@@ -248,7 +219,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                         Text("Product Details",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xFFA39597),
+                                color: Color(0xFFFFFFFF),
                                 fontSize: 20,
                                 fontFamily: 'Montserrat1',
                                 fontWeight: FontWeight.bold)),
@@ -259,27 +230,27 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                               Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Text("Total Quantity:",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Subtotal:",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Tax:",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Shipping Charge:",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("Grand Total:",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
@@ -288,28 +259,28 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                               Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(cardvalue.cart1.length.toString(),style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("\$" + cardvalue.sum1.toString(),style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
 
                                   Text("\$0.00",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("\$0.00",style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),
                                   Text("\$" + cardvalue.sum1.toString(),style: TextStyle(
-                                      color: Color(0xFFA39597),
+                                      color: Color(0xFFFFFFFF),
                                       fontSize: 15,
                                       fontFamily: 'Montserrat1',
                                       fontWeight: FontWeight.bold)),

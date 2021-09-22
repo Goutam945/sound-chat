@@ -1,15 +1,6 @@
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:sound_chat/api/subcribtion_lable.dart';
-import 'package:sound_chat/common/appConfig.dart';
-import 'package:sound_chat/common/functions.dart';
 import 'package:sound_chat/common/index.dart';
-import 'livetv.dart';
-import 'homepage.dart';
-import 'listenlivepage.dart';
-import 'menupage.dart';
 class HomeBottomBar extends StatefulWidget {
   @override
   _HomeBottomBarState createState() => new _HomeBottomBarState();
@@ -132,7 +123,7 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
                 animationCurve: Curves.easeInOut,
                 height: 65,
                 index:pageIndex ,
-                items: <Widget>[
+               /* items: <Widget>[
                   Image.asset(
                     'assets/home.png',scale: 2,
                   ),
@@ -147,19 +138,76 @@ class _HomeBottomBarState extends State<HomeBottomBar> with WidgetsBindingObserv
                   ),
                  // Icon(Icons.mic, size: 25,color:Colors.white),
                  // Icon(Icons.live_tv_outlined, size: 25,color:Colors.white),
+                ],*/
+                items: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/home.png",
+                        scale: 2.5,
+                      ),
+                      Text(
+                        'Home',
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/pastshows.png",
+                        scale: 2.5,
+                      ),
+                      Text(
+                        'Listen',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/flashbacktv.png",
+                        scale: 2.5,
+                      ),
+                      Text(
+                        'Watch',
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/more.png",
+                        scale: 2.5,
+                      ),
+                      Text(
+                        'More',
+                        style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
                 ],
+
                onTap: (index) {
-
-                  /*switch(index){
-                    case 2:
-                      OverlayService().addVideosOverlay(context, VideoPlayerPage());
-                      setState(() {
-                        pageIndex=0;
-                        index=0;
-
-                      });
-                      break;
-                  }*/
                   setState(() {
                     pageIndex=index;
                   });

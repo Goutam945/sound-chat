@@ -1,22 +1,4 @@
-import 'package:connectivity/connectivity.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:sound_chat/api/create_order.dart';
-import 'package:sound_chat/api/free_video.dart';
-import 'package:sound_chat/api/phoneinterview.dart';
-import 'package:sound_chat/api/schedule.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/spleshscreen.dart';
-import 'Model/ProductModellist.dart';
-import 'api/all _orders.dart';
-import 'api/allproduct.dart';
-import 'api/bannerads.dart';
-import 'api/couponcode.dart';
-import 'api/galley.dart';
-import 'api/homeslider.dart';
-import 'api/membership.dart';
-import 'api/search_api.dart';
-import 'api/subcribtion_lable.dart';
-import 'api/termsofservices.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

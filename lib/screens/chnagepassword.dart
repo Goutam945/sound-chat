@@ -1,4 +1,3 @@
-import 'package:sound_chat/api/change_passwod.dart';
 import 'package:sound_chat/common/index.dart';
 
 class ChangePassword extends StatefulWidget {

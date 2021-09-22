@@ -16,7 +16,7 @@ Future<UpdateResponse> createUpdateState(
     File profilepic,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/updateprofile'),
+      Uri.parse(baseUrl+'updateprofile'),
       headers: <String, String>{"content-type": "application/json"},
       body: jsonEncode({
         'user_id': userid,

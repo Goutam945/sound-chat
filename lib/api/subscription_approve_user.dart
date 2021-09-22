@@ -35,7 +35,7 @@ Future<SubscriptionResponse> createSubscriptionState(
     uid,lid,String status,transactionid,context) async {
   print(uid.toString()+" "+lid.toString()+" "+status.toString()+" "+transactionid.toString());
   final http.Response response = await http.post(
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/usersubscription'),
+      Uri.parse(baseUrl+'usersubscription'),
       body: {
         'user_id': "$uid",
         'plan_id': "$lid",

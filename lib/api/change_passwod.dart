@@ -4,7 +4,7 @@ import 'package:sound_chat/screens/login.dart';
 Future<ChangepasswordResponse> createChangepasswrdState(int uid,String passwod,String newpassword,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/changepassword'),
+      Uri.parse(baseUrl+'changepassword'),
       // headers: <String, String>{"content-type": "application/json"},
       body: {
         'user_id': "$uid",

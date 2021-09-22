@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 Future<CancelSubpResponse> createCancelsubcripState(uid,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/updatesubscriberplan'),
+      Uri.parse(baseUrl+'updatesubscriberplan'),
       // headers: <String, String>{"content-type": "application/json"},
       body: {
         'user_id': "$uid",

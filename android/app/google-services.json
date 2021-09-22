@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:720390631568:android:e7cf365fb25ed23703e815",
         "android_client_info": {
-          "package_name": "com.example.sound_chat"
+          "package_name": "com.soundchatradio.broadlink"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "720390631568-m0jijqe2iblkieg70q9clgjr8q3d1ddk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.sound_chat",
+            "package_name": "com.soundchatradio.broadlink",
             "certificate_hash": "421cd4d8b26cd6a3c4e46fdc00534e318670f589"
           }
         },

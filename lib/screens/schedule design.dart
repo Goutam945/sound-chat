@@ -1,6 +1,5 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'login.dart';
 class ScheduleDesign extends StatefulWidget {
   @override
   _ScheduleDesign createState() => _ScheduleDesign();

@@ -1,4 +1,3 @@
-import 'package:sound_chat/api/couponcode.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Couponcode extends StatefulWidget {

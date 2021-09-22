@@ -1,5 +1,4 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:better_player/better_player.dart';
 import 'package:sound_chat/common/index.dart';
 /*
 class LiveVideo extends StatefulWidget {

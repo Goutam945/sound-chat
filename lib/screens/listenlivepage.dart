@@ -1,16 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:sound_chat/api/allproduct.dart';
-import 'package:sound_chat/api/couponcode.dart';
-import 'package:sound_chat/api/homeslider.dart';
-import 'package:sound_chat/api/phoneinterview.dart';
-import 'package:sound_chat/api/subcribtion_lable.dart';
-import 'package:sound_chat/api/termsofservices.dart';
-import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
-import 'login.dart';
 
 class Listenlivepage extends StatefulWidget {
   const Listenlivepage({Key key}) : super(key: key);

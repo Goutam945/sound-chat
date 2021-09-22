@@ -97,6 +97,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:sound_chat/common/appConfig.dart';
 
 Future<OrderResponse> createOrderState(
     String firstname,
@@ -117,7 +118,7 @@ Future<OrderResponse> createOrderState(
     totalamount,
     context) async {
   final http.Response response = await http.post(
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/addorder'),
+      Uri.parse(baseUrl+'addorder'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(
           {

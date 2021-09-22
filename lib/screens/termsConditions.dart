@@ -1,4 +1,3 @@
-import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
 class TermsConditions extends StatefulWidget {
   @override

@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 Future<HomesliderResponse> createHomesliderState(int sliderid,context) async {
   final http.Response response =
-  await http.post(Uri.parse('http://3.23.210.57:3000/api/v1/auth/homeslider')
+  await http.post(Uri.parse(baseUrl+'homeslider')
      , body: {
       "slider_id":"1",
       }

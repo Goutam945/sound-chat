@@ -1,17 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
-import 'package:shimmer/shimmer.dart';
-import 'package:sound_chat/api/allproduct.dart';
-import 'package:sound_chat/api/bannerads.dart';
-import 'package:sound_chat/api/couponcode.dart';
-import 'package:sound_chat/api/homeslider.dart';
-import 'package:sound_chat/api/phoneinterview.dart';
-import 'package:sound_chat/api/subcribtion_lable.dart';
-import 'package:sound_chat/api/termsofservices.dart';
-import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
-
-import 'inetrviewvideoplaystudio.dart';
 
 class Updatehome extends StatefulWidget {
   const Updatehome({Key key}) : super(key: key);
@@ -114,10 +103,6 @@ class _UpdatehomeState extends State<Updatehome> {
                 colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
         child: Column(
           children: [
-            /*Padding(
-              padding: const EdgeInsets.all(10),
-              child: Image.network("https://cdn1.adplugg.io/apusers/serve/A48220592/file/67504/image002.gif"),
-            ),*/
             SizedBox(height: 100,
               child: Opacity(
                   opacity: 0.7,
@@ -141,7 +126,7 @@ class _UpdatehomeState extends State<Updatehome> {
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 5.0),
                           child: CachedNetworkImage(
-                            imageUrl: bannerads[i]['mobilebanner'],
+                            imageUrl: "http://3.23.210.57/soundradiobackend/images/"+bannerads[i]['mobilebanner'],
                             fit: BoxFit.fill,
                             placeholder: (context, url) => SizedBox(
                               child: Shimmer.fromColors(

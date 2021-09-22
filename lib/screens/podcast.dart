@@ -1,7 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
 
-import 'login.dart';
 class PodcastSchedule extends StatefulWidget {
   @override
   _PodcastScheduleState createState() => _PodcastScheduleState();

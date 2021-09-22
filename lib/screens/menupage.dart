@@ -1,15 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/schedule%20design.dart';
-
-import 'followus.dart';
-import 'myaccountprofile.dart';
-import 'login.dart';
-import 'officecontact.dart';
-import 'reportproblem.dart';
-import 'requestLines.dart';
-import 'SendMessage.dart';
-import 'termsConditions.dart';
 
 class NewMenupage extends StatefulWidget {
   const NewMenupage({Key key}) : super(key: key);

@@ -304,6 +304,7 @@ class _PrimiumvideoDesign extends State<Primiumvideo> {
     );
   }
 }
+/*
 class Youtubeplayer extends StatefulWidget {
    final String  videoURL;
   final ontap;
@@ -344,4 +345,4 @@ class _VideoState extends State<Youtubeplayer> {
           )),
     );
   }
-}
+}*/

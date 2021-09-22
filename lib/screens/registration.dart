@@ -1,5 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-import 'registrationshipnext.dart';
 
 class Registrationship extends StatefulWidget {
   final user;

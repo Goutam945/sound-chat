@@ -1,4 +1,4 @@
-package com.example.sound_chat
+package com.soundchatradio.broadlink
 
 import io.flutter.embedding.android.FlutterActivity
 

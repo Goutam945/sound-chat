@@ -1,8 +1,4 @@
-import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/common/index.dart';
-
-import 'primiumvideoplay.dart';
-
 class PhoneinteviewPlayer extends StatefulWidget {
   final playvideo, title;
 
@@ -298,6 +294,7 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
   }
 }
 
+/*
 class Youtubeplayer extends StatefulWidget {
   final String videoURL;
   final ontap;
@@ -344,4 +341,4 @@ class _VideoState extends State<Youtubeplayer> {
           )),
     );
   }
-}
+}*/

@@ -273,9 +273,6 @@ class _DesignLogin extends State<NewLogin> {
 
 */
 import 'dart:ui';
-
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sound_chat/common/index.dart';
 
 class NewLogin extends StatefulWidget {

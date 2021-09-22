@@ -18,3 +18,21 @@ class Sharedpreferences {
 //    if(levalid!=null) sharedPreferences.setInt("levalid", levalid);
 //  }
 }
+class SessionData{
+  String email;
+  String name;
+  String phone;
+  String country;
+  String image;
+  int id;
+
+  getData()async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+        email = sharedPreferences.getString('email');
+        name = sharedPreferences.getString('name');
+        phone = sharedPreferences.getString('phone');
+        country = sharedPreferences.getString('country');
+        image = sharedPreferences.getString('image');
+        id = sharedPreferences.getInt('id');
+  }
+}

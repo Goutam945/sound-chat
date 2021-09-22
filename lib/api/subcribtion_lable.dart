@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 Future<SubcriptionlevalResponse> createSubcriptionlevalState(
     int userid, context) async {
   final http.Response response = await http.post(
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/subscriberdetails'),
+      Uri.parse(baseUrl+'subscriberdetails'),
       // headers: <String, String>{"content-type": "application/json"},
       body: {
         'user_id': "$userid",

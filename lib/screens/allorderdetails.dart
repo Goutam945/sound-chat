@@ -1,7 +1,5 @@
-import 'package:sound_chat/api/all%20_orders.dart';
 import 'package:sound_chat/common/index.dart';
 
-import 'orderdeatail.dart';
 class AllOrderlist extends StatefulWidget {
   @override
   _AllOrderlistState createState() => _AllOrderlistState();

@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:image_picker/image_picker.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Registrationshipnext extends StatefulWidget {

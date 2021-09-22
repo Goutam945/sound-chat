@@ -1,4 +1,3 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:sound_chat/common/index.dart';
 
 final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;

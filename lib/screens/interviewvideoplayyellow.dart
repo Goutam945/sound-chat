@@ -317,6 +317,7 @@ class _InterviewDesign extends State<InterviewPlay> {
   }
 }
 
+/*
 class Youtubeplayer extends StatefulWidget {
   final String videoURL;
   final ontap;
@@ -363,4 +364,4 @@ class _VideoState extends State<Youtubeplayer> {
           )),
     );
   }
-}
+}*/

@@ -187,13 +187,8 @@ class _CardScreenState extends State<CardScreen> {
     );
   }
 }*/
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:sound_chat/Model/ProductModellist.dart';
-import 'package:sound_chat/common/index.dart';
 
-import 'login.dart';
-import 'shopping.dart';
-import 'shoppingcheckoutscreen.dart';
+import 'package:sound_chat/common/index.dart';
 
 class CardScreen extends StatefulWidget {
   @override
@@ -231,7 +226,7 @@ class _CardScreenState extends State<CardScreen> {
         Scaffold(
           backgroundColor: Colors.black,
             appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
+              backgroundColor: Color(0xFF3F535E),
               backwardsCompatibility: true,
             ),
             body: Center(
@@ -258,7 +253,7 @@ class _CardScreenState extends State<CardScreen> {
         Scaffold(
            backgroundColor: Colors.black,
             appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
+              backgroundColor: Color(0xFF3F535E),
               backwardsCompatibility: true,
             ),
             bottomNavigationBar:
@@ -332,7 +327,7 @@ class _CardScreenState extends State<CardScreen> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0xFF780001), Color(0xFF780001)],
+                          colors: [Color(0xFF481621), Color(0xFF481621)],
                           begin: FractionalOffset.centerLeft,
                           end: FractionalOffset.centerRight,
                         ),

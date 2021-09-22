@@ -1,12 +1,4 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:sound_chat/api/couponcode.dart';
-import 'package:sound_chat/api/homeslider.dart';
-import 'package:sound_chat/api/membership.dart';
-import 'package:sound_chat/api/phoneinterview.dart';
-import 'package:sound_chat/api/termsofservices.dart';
 import 'package:sound_chat/common/index.dart';
-
-import 'homebottomBar.dart';
 class SpleshScreen extends StatefulWidget {
   @override
   SplashScreenState createState() => SplashScreenState();

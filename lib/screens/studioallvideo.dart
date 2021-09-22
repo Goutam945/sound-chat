@@ -1,5 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-import 'inetrviewvideoplaystudio.dart';
 class StudiovideoScreen extends StatefulWidget {
   StudiovideoScreen({Key key}) : super(key: key);
 
@@ -23,9 +22,8 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
         children: [
           Scaffold(
             backgroundColor: Color(0xFF222222),
-            appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
-            ),
+            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
+                child: Backappbar()),
             body: Column(
               children: [
                 Container( height: height*0.0512,width: width,margin: EdgeInsets.only(top: 25),padding: EdgeInsets.only(left: 10),
@@ -74,7 +72,12 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                                 // ]),
                                 height: 18,width: width*0.3094,
                                 color: Colors.black,
-                                child: SizedBox(child: Text(superherosLength['free_content'][i]['post_title'],textAlign:TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal),))))
+                                child: SizedBox(child: Text(superherosLength['free_content'][i]['post_title'],
+                                  textAlign:TextAlign.center,
+                                  style: TextStyle(color: Colors.white,
+                                      fontWeight:FontWeight.normal,
+                                    fontFamily: fontfamily
+                                  ),))))
                           ],
                         ),
                           onTap: (){

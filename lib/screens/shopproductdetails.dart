@@ -1,7 +1,4 @@
-import 'package:sound_chat/Model/ProductModellist.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/common/shoappbar.dart';
-import 'package:vibration/vibration.dart';
 class ShopProductdetails extends StatefulWidget {
   final product;
   ShopProductdetails(this.product);

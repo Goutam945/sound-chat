@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'drag/drag_custom.dart' as dc;
-import 'Constants.dart';
-import 'OverlayHandlerProvider.dart';
+import 'package:sound_chat/common/functions.dart';
+import 'package:sound_chat/provider/providerHandler.dart';
+import 'package:sound_chat/provider/drag.dart' as dc;
 
 class VideoOverlayWidget extends StatefulWidget {
   final Function onClear;

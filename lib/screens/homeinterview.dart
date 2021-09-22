@@ -1,16 +1,5 @@
-import 'package:sound_chat/api/phoneinterview.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/inetrviewvideoplaystudio.dart';
-import 'package:sound_chat/screens/interviewvideoplayyellow.dart';
-import 'package:sound_chat/screens/primiumallvideo.dart';
-import 'package:sound_chat/screens/primiumvideoplay.dart';
-import 'package:sound_chat/screens/studioallvideo.dart';
-import 'package:sound_chat/screens/yellowallvideo.dart';
 import "dart:math";
-
-import 'login.dart';
-import 'phoneinterviewplayer.dart';
-import 'phoneinterviewallvideo.dart';
 
 class AllHomeInterview extends StatefulWidget {
   @override
@@ -995,51 +984,3 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
   }
 }
 
-class Youtubeplayer extends StatefulWidget {
-  final String videoURL;
-  final ontap;
-
-  @override
-  _VideoState createState() => _VideoState();
-
-  Youtubeplayer(this.videoURL, this.ontap);
-}
-
-class _VideoState extends State<Youtubeplayer> {
-  YoutubePlayerController _controller;
-
-  @override
-  void initState() {
-    _controller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(widget.videoURL),
-        flags: YoutubePlayerFlags());
-
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          backgroundColor: Colors.black,
-          body: Center(
-            child: YoutubePlayerBuilder(
-              onEnterFullScreen: widget.ontap,
-              onExitFullScreen: widget.ontap,
-              player: YoutubePlayer(
-                controller: _controller,
-                aspectRatio: 16 / 9,
-                showVideoProgressIndicator: true,
-              ),
-              builder: (context, player) {
-                return Column(
-                  children: <Widget>[
-                    player,
-                  ],
-                );
-              },
-            ),
-          )),
-    );
-  }
-}

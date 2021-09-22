@@ -1,9 +1,5 @@
-import 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
-import 'package:sound_chat/api/subscription_approve_user.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
-
-import 'login.dart';
 
 class PaymentDetailsMember extends StatefulWidget {
   final subscription, uid, lid;
