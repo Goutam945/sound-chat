@@ -31,7 +31,7 @@ dependencies:
   back_button_interceptor: ^5.0.1
   carousel_slider: ^4.0.0
   flutter_braintree: ^2.0.0+1
-  flutter_stripe_payment: ^0.0.17
+  #flutter_stripe_payment: ^0.0.17
   connectivity: ^3.0.6
   audioplayer: ^0.8.1
   image_picker: ^0.8.4
@@ -53,6 +53,7 @@ dependencies:
   badges: ^2.0.1
   vibration: ^1.7.3
   better_player: ^0.0.73
+  stripe_payment: ^1.1.4
 
 
 dev_dependencies:

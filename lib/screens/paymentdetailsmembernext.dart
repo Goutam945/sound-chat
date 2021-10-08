@@ -11,15 +11,13 @@ class _PaymentDetailsMembernextPageState extends State<PaymentDetailsMembernext>
   }
 
   //Future<SignUpResponse> _futureJwt;
-  final TextEditingController _name = TextEditingController();
+ /* final TextEditingController _name = TextEditingController();
   final TextEditingController _email = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+  final TextEditingController _password = TextEditingController();*/
 
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Stack(
           children:[ Scaffold(

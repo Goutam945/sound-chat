@@ -32,25 +32,26 @@ import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 
 Future<SubscriptionResponse> createSubscriptionState(
-    uid,lid,String status,transactionid,context) async {
-  print(uid.toString()+" "+lid.toString()+" "+status.toString()+" "+transactionid.toString());
-  final http.Response response = await http.post(
-      Uri.parse(baseUrl+'usersubscription'),
-      body: {
-        'user_id': "$uid",
-        'plan_id': "$lid",
-        'payment_status':status,
-        'transaction_id':transactionid
-      });
+    uid, lid, String status, transactionid, context) async {
+  print(uid.toString() +
+      " " +
+      lid.toString() +
+      " " +
+      status.toString() +
+      " " +
+      transactionid.toString());
+  final http.Response response =
+      await http.post(Uri.parse(baseUrl + 'usersubscription'), body: {
+    'user_id': "$uid",
+    'plan_id': "$lid",
+    'payment_status': status,
+    'transaction_id': transactionid
+  });
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
-        {
-          print(data);
+    {
+      print(data);
       Provider.of<SubscriptionResponse>(context, listen: false).data = data;
-//      Navigator.of(context)
-//          .pushReplacement(MaterialPageRoute(builder: (context) => AllOrderlist()));
-//      Toast.show(data.toString(), context,
-//          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       return SubscriptionResponse.fromJson(json.decode(response.body));
     }
   } else {

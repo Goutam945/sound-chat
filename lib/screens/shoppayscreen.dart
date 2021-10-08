@@ -426,35 +426,35 @@ class ShopPay extends StatefulWidget {
       phone;
 
   ShopPay(
-      this.firstname,
-      this.lastname,
-      this.address1,
-      this.address2,
-      this.city,
-      this.state,
-      this.postcode,
-      this.country,
-      this.email,
-      this.phone,
-      );
+    this.firstname,
+    this.lastname,
+    this.address1,
+    this.address2,
+    this.city,
+    this.state,
+    this.postcode,
+    this.country,
+    this.email,
+    this.phone,
+  );
 
   @override
   _ShopPayState createState() => _ShopPayState();
 }
 
 class _ShopPayState extends State<ShopPay> {
-  final _stripePayment = FlutterStripePayment();
+  //final _stripePayment = FlutterStripePayment();
   final String publicationKey =
       'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
   final String secretKey =
       'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
-  PaymentResponse _paymentMethod;
+  //PaymentResponse _paymentMethod;
   String _paymentMethodId;
   String paymentIntentId;
   String _status;
   String _errorMessage = "";
   String clientSecret;
-  PaymentResponse paymentResponse1;
+  //PaymentResponse paymentResponse1;
   String radioItem = '';
   var cart;
   bool loader = false;
@@ -465,19 +465,19 @@ class _ShopPayState extends State<ShopPay> {
   bool setPaid;
   double pricetotal;
 
-  Future<void> addCard() async {
+  /*Future<void> addCard() async {
     var paymentResponse = await _stripePayment.addPaymentMethod();
-    _status=paymentResponse.status.toString();
+    _status = paymentResponse.status.toString();
     setState(() {
       if (paymentResponse.status == PaymentResponseStatus.succeeded) {
         _paymentMethodId = paymentResponse.paymentMethodId;
-        print("paymentmethodidforpaymentstripe....."+_paymentMethodId);
+        print("paymentmethodidforpaymentstripe....." + _paymentMethodId);
         _paymentMethod = paymentResponse;
       } else {
         _errorMessage = paymentResponse.errorMessage;
       }
     });
-  }
+  }*/
 
   Future<void> createIntent(amount) async {
     var url = Uri.parse('https://api.stripe.com/v1/payment_intents');
@@ -498,7 +498,7 @@ class _ShopPayState extends State<ShopPay> {
     }
   }
 
-  Future<void> authPayment(amount) async {
+  /*Future<void> authPayment(amount) async {
     var paymentResponse = await _stripePayment.confirmPaymentIntent(
         clientSecret, _paymentMethodId, amount * 100);
     setState(() {
@@ -528,15 +528,15 @@ class _ShopPayState extends State<ShopPay> {
             ));
       }
     });
-  }
+  }*/
 
   @override
   void initState() {
     super.initState();
-    _stripePayment.setStripeSettings(publicationKey);
-    _stripePayment.onCancel = () {
-      print("the payment form was cancelled");
-    };
+    // _stripePayment.setStripeSettings(publicationKey);
+    // _stripePayment.onCancel = () {
+    //   print("the payment form was cancelled");
+    // };
     _loadSavedData();
   }
 
@@ -550,33 +550,33 @@ class _ShopPayState extends State<ShopPay> {
     });
   }
 
-  stripePay(amount) async {
-    addCard().whenComplete(
-            () => createIntent(amount).whenComplete(() => authPayment(amount)));
-  }
+  // stripePay(amount) async {
+  //   addCard().whenComplete(
+  //       () => createIntent(amount).whenComplete(() => authPayment(amount)));
+  // }
 
   createOrder() {
     createOrderState(
-        widget.firstname,
-        widget.lastname,
-        widget.address1,
-        widget.address2,
-        widget.city,
-        widget.state,
-        widget.postcode,
-        widget.country,
-        widget.email.trim(),
-        widget.phone,
-        lineItems,
-        id,
-        paymentMethodTitle,
-        paymentIntentId,
-        _status,
-        totalamount,
-        context)
+            widget.firstname,
+            widget.lastname,
+            widget.address1,
+            widget.address2,
+            widget.city,
+            widget.state,
+            widget.postcode,
+            widget.country,
+            widget.email.trim(),
+            widget.phone,
+            lineItems,
+            id,
+            paymentMethodTitle,
+            paymentIntentId,
+            _status,
+            totalamount,
+            context)
         .whenComplete(() => showNonce())
         .whenComplete(() =>
-        Provider.of<ProductModellist>(context, listen: false).removeAll());
+            Provider.of<ProductModellist>(context, listen: false).removeAll());
   }
 
   static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
@@ -641,10 +641,9 @@ class _ShopPayState extends State<ShopPay> {
       title: 'Success',
       desc: 'Thank you for Shopping',
       btnOkOnPress: () {
-        Provider.of<ProductModellist>(context, listen: false)
-                        .removeAll();
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Updatehome()));
+        Provider.of<ProductModellist>(context, listen: false).removeAll();
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => Updatehome()));
       },
     )..show();
   }
@@ -659,152 +658,157 @@ class _ShopPayState extends State<ShopPay> {
     //   pricetotal=cart.cart1[j].price* cart.cart1[j].quantity;
     lineItems = [
       for (int i = 0; i < cart.cart1.length; i++)
-        {"product_id": cart.cart1[i].id, "quantity": cart.cart1[i].quantity,
-          "size": cart.cart1[i].size, "color": cart.cart1[i].color,"total_price":(cart.cart1[i].price* cart.cart1[i].quantity).toString()
+        {
+          "product_id": cart.cart1[i].id,
+          "quantity": cart.cart1[i].quantity,
+          "size": cart.cart1[i].size,
+          "color": cart.cart1[i].color,
+          "total_price":
+              (cart.cart1[i].price * cart.cart1[i].quantity).toString()
         }
     ];
-    totalamount=cart.sum1.toString();
+    totalamount = cart.sum1.toString();
     print(lineItems);
     //end
     return SafeArea(
         child: Stack(children: [
-          Scaffold(
-            backgroundColor: Colors.white,
-            appBar: AppBar(
-              backgroundColor: Color(0xFFE18D13),
-              backwardsCompatibility: true,
-            ),
-            bottomNavigationBar: Container(
-              height: height * 0.0731,
-              color: Colors.white,
+      Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Color(0xFFE18D13),
+          backwardsCompatibility: true,
+        ),
+        bottomNavigationBar: Container(
+          height: height * 0.0731,
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 46,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Color(0xFF780001)),
+                  onPressed: () {
+                    // setState(() {
+                    //   loader = false;
+                    // });
+                    if (id == null) {
+                      Toast.show("Please Login before Shopping", context,
+                          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                    } else if (radioItem == 'paypal') {
+                      pay();
+                    } else if (radioItem == 'stripe') {
+                      //stripePay(cart.sum1);
+                    } else if (radioItem == 'cod') {
+                      createOrder();
+                    } else {
+                      Toast.show("please select payment method", context,
+                          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                    }
+                  },
+                  child: Text(
+                    " Total Amount Pay:   \$" + cart.sum1.toString(),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        body: Column(
+          children: [
+            SizedBox(
+              height: 50,
+              width: width,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container( height: 46,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Color(0xFF780001)),
-                      onPressed: () {
-                        // setState(() {
-                        //   loader = false;
-                        // });
-                        if (id == null) {
-                          Toast.show("Please Login before Shopping", context,
-                              duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                        } else if (radioItem == 'paypal') {
-                          pay();
-                        } else if (radioItem == 'stripe') {
-                          stripePay(cart.sum1);
-                        } else if (radioItem == 'cod') {
-                          createOrder();
-                        } else {
-                          Toast.show("please select payment method", context,
-                              duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                        }
-                      },
-                      child: Text(
-                        " Total Amount Pay:   \$" + cart.sum1.toString(),
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic),
-                      ),
-                    ),
+                  Image.asset(
+                    "assets/visa.png",
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    "assets/mastercard.png",
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    "assets/discover.png",
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    "assets/paypal.png",
                   ),
                 ],
               ),
             ),
-            body: Column(
-              children: [
-                SizedBox(
-                  height: 50,
-                  width: width,
-                  child: Row(
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        "assets/visa.png",
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text("Payment Method",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color(0xFF535353),
+                                fontSize: 20,
+                                fontFamily: 'Montserrat1',
+                                fontWeight: FontWeight.bold)),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Image.asset(
-                        "assets/mastercard.png",
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Image.asset(
-                        "assets/discover.png",
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Image.asset(
-                        "assets/paypal.png",
-                      ),
-                    ],
-                  ),
-                ),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text("Payment Method",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Color(0xFF535353),
-                                    fontSize: 20,
-                                    fontFamily: 'Montserrat1',
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          RadioListTile(
-                            groupValue: radioItem,
-                            title: Text('PayPal'),
-                            value: 'paypal',
-                            onChanged: (val) {
-                              setState(() {
-                                radioItem = val;
-                                setPaid = true;
-                                paymentMethodTitle =
+                      RadioListTile(
+                        groupValue: radioItem,
+                        title: Text('PayPal'),
+                        value: 'paypal',
+                        onChanged: (val) {
+                          setState(() {
+                            radioItem = val;
+                            setPaid = true;
+                            paymentMethodTitle =
                                 'Direct Bank Transfer (PayPal)';
-                                // pay();
-                              });
-                            },
-                          ),
-                          RadioListTile(
-                            groupValue: radioItem,
-                            title: Text('Credit Card (Stripe)'),
-                            value: 'stripe',
-                            onChanged: (val) {
-                              setState(() {
-                                radioItem = val;
-                                setPaid = true;
-                                paymentMethodTitle =
-                                'Online Payment (Stripe)';
-                                // Strippay();
-                              });
-                            },
-                          ),
-                          RadioListTile(
-                            groupValue: radioItem,
-                            title: Text('Cash On Delivery'),
-                            value: 'cod',
-                            onChanged: (val) {
-                              setState(() {
-                                radioItem = val;
-                                setPaid = false;
-                                paymentMethodTitle = 'COD';
-                              });
-                            },
-                          ),
-                        ]))
-              ],
-            ),
-          ),
-        ]));
+                            // pay();
+                          });
+                        },
+                      ),
+                      RadioListTile(
+                        groupValue: radioItem,
+                        title: Text('Credit Card (Stripe)'),
+                        value: 'stripe',
+                        onChanged: (val) {
+                          setState(() {
+                            radioItem = val;
+                            setPaid = true;
+                            paymentMethodTitle = 'Online Payment (Stripe)';
+                            // Strippay();
+                          });
+                        },
+                      ),
+                      RadioListTile(
+                        groupValue: radioItem,
+                        title: Text('Cash On Delivery'),
+                        value: 'cod',
+                        onChanged: (val) {
+                          setState(() {
+                            radioItem = val;
+                            setPaid = false;
+                            paymentMethodTitle = 'COD';
+                          });
+                        },
+                      ),
+                    ]))
+          ],
+        ),
+      ),
+    ]));
   }
 
   pay() async {
@@ -828,4 +832,3 @@ class _ShopPayState extends State<ShopPay> {
     }
   }
 }
-

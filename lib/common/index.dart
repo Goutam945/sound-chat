@@ -99,7 +99,7 @@ export 'package:sound_chat/screens/reportproblem.dart';
 export 'package:sound_chat/screens/requestLines.dart';
 export 'package:sound_chat/screens/schedule%20design.dart';
 export 'package:sound_chat/screens/termsConditions.dart';
-export 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
+//export 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
 export 'package:sound_chat/api/subscription_approve_user.dart';
 export 'package:sound_chat/screens/registrationshipnext.dart';
 export 'package:image_picker/image_picker.dart';
@@ -108,7 +108,7 @@ export 'package:sound_chat/api/sendmail.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:whatsapp_unilink/whatsapp_unilink.dart';
 export 'package:sound_chat/screens/shoppayscreen.dart';
-export 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
+//export 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
 export 'package:awesome_dialog/awesome_dialog.dart';
 export 'package:flutter_braintree/flutter_braintree.dart';
 export 'package:sound_chat/Model/ProductModellist.dart';
@@ -122,6 +122,3 @@ export 'package:connectivity/connectivity.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:sound_chat/api/search_api.dart';
 export 'package:sound_chat/screens/spleshscreen.dart';
-
-
-
