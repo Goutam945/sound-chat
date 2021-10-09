@@ -348,34 +348,69 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
 import 'dart:ffi';
 
 import 'package:sound_chat/api/subscription_approve_user.dart';
+import 'package:sound_chat/common/faileddialog.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
+import 'package:sound_chat/stripe_api/create_customer.dart';
+import 'package:sound_chat/stripe_api/create_subcription.dart';
+import 'package:sound_chat/stripe_api/get_invoiceurl.dart';
+import 'package:sound_chat/stripe_api/get_subcription_status.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentDetailsMember extends StatefulWidget {
-  final subscription, uid, lid;
+  final plan, uid, lid, firstname, lastname, email, phone;
 
-  PaymentDetailsMember(this.subscription, this.uid, this.lid);
+  PaymentDetailsMember(this.plan, this.uid, this.lid, this.firstname,
+      this.lastname, this.email, this.phone);
 
   @override
   _PaymentDetailsMemberPageState createState() =>
       _PaymentDetailsMemberPageState();
 }
 
-class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
-  // final String publicationKey =
-  //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
-  // final String secretKey =
-  //     'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
+class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
+    with WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // Fluttertoast.showToast(msg: state.toString());
+    print('AppLifeCycle State: ' + state.toString());
+    switch (state) {
+      case AppLifecycleState.resumed:
+        setState(() {
+          isloding = true;
+        });
+        createSubscriptionStatusState(context: context, subscriptionid: subid)
+            .then((value) {
+          String status = value.data['status'];
+
+          if (status == "active") {
+            showDailog();
+          } else if (status == 'incomplete') {
+            showpendingpaymentdialog();
+          }
+        }).whenComplete(() {
+          setState(() {
+            isloding = false;
+          });
+        });
+        break;
+      default:
+        break;
+    }
+  }
 
   String _paymentMethodId;
   String clientSecret;
   var paymentResponse1;
   String paymentMethodId;
+  String subid;
+  bool isloding = false;
+  String urlauthantication;
   final TextEditingController _coupon = TextEditingController();
 
-  Void showDailog() {
+  showDailog() {
     AwesomeDialog(
+      dismissOnTouchOutside: false,
       context: context,
       dialogType: DialogType.SUCCES,
       animType: AnimType.BOTTOMSLIDE,
@@ -389,21 +424,69 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
     )..show();
   }
 
+  showpendingpaymentdialog() {
+    AwesomeDialog(
+      dismissOnTouchOutside: false,
+      context: context,
+      dialogType: DialogType.WARNING,
+      animType: AnimType.BOTTOMSLIDE,
+      btnOkColor: Colors.orange,
+      btnOkText: "Authanticate",
+      title: 'Panding Payment',
+      desc: 'Click to authanticate payment',
+      btnOkOnPress: () {
+        launch(urlauthantication);
+      },
+    )..show();
+  }
+
   Future<void> addCard() async {
     PaymentMethod paymentResponse =
-        await StripePayment.paymentRequestWithCardForm(
-            CardFormPaymentRequest());
+        await StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest())
+            .onError((error, stackTrace) {
+      print(error);
+      return faileddialog(error, context);
+    });
     _paymentMethodId = paymentResponse.id;
     print("PAYMENTTTT" + paymentResponse.id.toString());
-    StripePayment.confirmSetupIntent(PaymentIntent(clientSecret: clientSecret));
-
-    // await StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest())
-    //     .then((value) {
-    //   print("PAYMENTTTT" + value.customerId.toString());
-    // }).catchError((e) {
-    //   print('Got error: $e');
-    //   return true;
-    // });
+    setState(() {
+      isloding = true;
+    });
+    createcustomerState(
+      context: context,
+      firstname: widget.firstname,
+      lastname: widget.lastname,
+      email: widget.email,
+      phone: widget.phone,
+      paymentMethod: _paymentMethodId,
+    ).then((value) {
+      String customerid = value.data['id'];
+      createSubscriptionstripeState(
+        context: context,
+        customer: customerid,
+        priceid: widget.lid,
+      ).then((value) {
+        String status = value.data['status'];
+        subid = value.data['id'];
+        if (status == 'incomplete') {
+          String invoiceid = value.data['latest_invoice'];
+          createInvoiceState(context: context, invoiceid: invoiceid)
+              .then((value) {
+            urlauthantication = value.data['hosted_invoice_url'];
+            setState(() {
+              isloding = false;
+            });
+            launch(urlauthantication);
+          });
+        } else if (status == 'active') {
+          showDailog();
+        }
+      });
+    }).whenComplete(() {
+      setState(() {
+        isloding = false;
+      });
+    });
   }
 
   Future<void> createIntent(amount) async {
@@ -450,17 +533,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
       }
     }).onError((error, stackTrace) {
       print("ERRORRR" + error.toString());
-      AwesomeDialog(
-        context: context,
-        dialogType: DialogType.ERROR,
-        animType: AnimType.BOTTOMSLIDE,
-        btnOkColor: Colors.orange,
-        title: 'Payment Faild',
-        desc: error.toString(),
-        btnOkOnPress: () {
-          Navigator.of(context).pop();
-        },
-      )..show();
+      faileddialog(error, context);
     }).catchError((e) {
       print('Got error: $e');
       return true;
@@ -470,10 +543,17 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     StripePayment.setOptions(StripeOptions(
         publishableKey: publicationKey,
         merchantId: "YOUR_MERCHANT_ID",
         androidPayMode: 'test'));
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   @override
@@ -592,7 +672,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("${widget.subscription['plan_type']}:",
+                          Text("${widget.plan['plan_type']}:",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -622,7 +702,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("\$${widget.subscription['plan_fee']} USD",
+                          Text("\$${widget.plan['amount']} USD",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -640,7 +720,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                                 fontSize: 15,
                                 fontFamily: fontfamily,
                               )),
-                          Text("\$${widget.subscription['plan_fee']} USD",
+                          Text("\$${widget.plan['amount']} USD",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
@@ -664,23 +744,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                             .whenComplete(() => authPayment(double.parse(
                                 widget.subscription['plan_fee']))));*/
 
-                        addCard().whenComplete(() => createIntent(
-                            double.parse(widget.subscription['plan_fee'])));
-
-                        // StripePayment.createSourceWithParams(SourceParams(
-                        //   type: 'ideal',
-                        //   amount: 1099,
-                        //   currency: 'inr',
-                        //   returnURL: 'example://stripe-redirect',
-                        // )).then((source) {
-                        //   print('Received ${source.sourceId}');
-                        //   setState(() {
-                        //     var _source = source;
-                        //   });
-                        // }).catchError((e) {
-                        //   print('Got error: $e');
-                        //   return true;
-                        // });
+                        addCard();
                       },
                       child: Container(
                         padding:
@@ -690,7 +754,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                             border: Border.all(color: Colors.white)),
                         child: Center(
                           child: Text(
-                            'Pay \$${widget.subscription['plan_fee']}',
+                            'Pay \$${widget.plan['amount']}',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -705,6 +769,10 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
             ),
           ),
         ),
+        if (isloding)
+          Center(
+            child: CircularProgressIndicator(),
+          )
       ]),
     );
   }

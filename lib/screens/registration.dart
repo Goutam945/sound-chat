@@ -1,10 +1,10 @@
 import 'package:sound_chat/common/index.dart';
 
 class Registrationship extends StatefulWidget {
-  final user;
+  final plan;
   final lid;
 
-  Registrationship(this.user, this.lid);
+  Registrationship(this.plan, this.lid);
 
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -57,10 +57,10 @@ class _SignupPageState extends State<Registrationship> {
                   ),
                   Center(
                       child: Text(
-                        "Complete all fields below to create your account",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      )),
+                    "Complete all fields below to create your account",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12, color: Colors.white),
+                  )),
                   SizedBox(
                     height: 20,
                   ),
@@ -77,7 +77,8 @@ class _SignupPageState extends State<Registrationship> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white, fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -105,7 +106,8 @@ class _SignupPageState extends State<Registrationship> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white, fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -133,13 +135,13 @@ class _SignupPageState extends State<Registrationship> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
                         enabledBorder: border,
                         focusedBorder: border,
-
                         labelText: "Email",
                         labelStyle: TextStyle(
                           color: Colors.white,
@@ -153,7 +155,8 @@ class _SignupPageState extends State<Registrationship> {
                         ),
                       ),
                       controller: _email,
-                      validator: Validators.required('Email Address is required'),
+                      validator:
+                          Validators.required('Email Address is required'),
                     ),
                   ),
                   SizedBox(
@@ -162,7 +165,8 @@ class _SignupPageState extends State<Registrationship> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -190,7 +194,8 @@ class _SignupPageState extends State<Registrationship> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -215,7 +220,7 @@ class _SignupPageState extends State<Registrationship> {
                   SizedBox(
                     height: 30,
                   ),
-                 /* Padding(
+                  /* Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 95),
                     child: SizedBox(height: 50,
                       child: ElevatedButton(
@@ -252,7 +257,7 @@ class _SignupPageState extends State<Registrationship> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => Registrationshipnext(
                                     widget.lid,
-                                    widget.user,
+                                    widget.plan,
                                     _firstname.text,
                                     _lastname.text,
                                     _email.text,
@@ -260,16 +265,20 @@ class _SignupPageState extends State<Registrationship> {
                                     _country.text)));
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 10),
                           decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius
-                                  .circular(
-                                  30),
-                              border: Border.all(
-                                  color: Colors
-                                      .white)),
-                          child: Center(child: Text('Continue',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: Colors.white)),
+                          child: Center(
+                              child: Text(
+                            'Continue',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )),
                         ),
                       ),
                     ],
@@ -283,7 +292,7 @@ class _SignupPageState extends State<Registrationship> {
           ),
         ),
         Positioned(
-          top: AppBar().preferredSize.height*0.1,
+          top: AppBar().preferredSize.height * 0.1,
           left: width * 0.39865,
           child: SizedBox(
             height: height * 0.13168,

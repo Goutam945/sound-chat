@@ -4,7 +4,7 @@ import 'package:sound_chat/screens/login.dart';
 import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 
 Future<SignUpResponse> createSignUpState(
-    user,
+    plan,
     lid,
     String username,
     String email,
@@ -16,8 +16,7 @@ Future<SignUpResponse> createSignUpState(
     String coupon,
     String _image,
     context) async {
-  final http.Response response = await http.post(
-      Uri.parse(baseUrl+'signup'),
+  final http.Response response = await http.post(Uri.parse(baseUrl + 'signup'),
       headers: <String, String>{"content-type": "application/json"},
       body: jsonEncode({
         'username': username,
@@ -28,7 +27,7 @@ Future<SignUpResponse> createSignUpState(
         'mobileno': phoneNumber,
         'country': country,
         'coupon': coupon,
-        'profilepic':'nbnbnbn',
+        'profilepic': 'nbnbnbn',
         'roles': ["Freemium"],
       }));
 
@@ -60,8 +59,9 @@ Future<SignUpResponse> createSignUpState(
       String message = data['message'];
       print(data);
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => (user['id'] != 1)
-              ? PaymentDetailsMember(user, uid, lid)
+          builder: (context) => (plan['amount'] != 0)
+              ? PaymentDetailsMember(
+                  plan, uid, lid, firstName, lastName, email, phoneNumber)
               : NewLogin()));
       Toast.show(message, context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);

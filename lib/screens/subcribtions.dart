@@ -178,7 +178,7 @@ class Subscription extends StatefulWidget {
 
 class _SubscriptionState extends State<Subscription> {
   String levelId;
-  String user;
+  //String user;
   String email, name;
   List productname = [];
 
@@ -262,96 +262,101 @@ class _SubscriptionState extends State<Subscription> {
                   height: 20,
                 ),
                 //for (int i = 0; i < data.length; i++)
-                Expanded(
-                  child: ListView.builder(
-                      itemCount: data.length,
-                      itemBuilder: (context, i) {
-                        // productname = getproductname(data[i]['product']);
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                bottom: 10,
-                                top: 10,
-                                left: 20,
-                                right: 20,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      user = data[i]['amount'].toString();
-                                      levelId = data[i]['id'];
-                                    });
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                Registrationship(
-                                                    data[i], levelId)));
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Color(0xFF3F535E),
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
-                                    child: Center(
-                                      child: Text(
-                                        // getproductname(
-                                        //     data[i]['product'].toString()),
-                                        // data[i]['amount'].toString(),
-                                        productname[i]['name'],
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontFamily: 'Montserrat1',
-                                            fontWeight: FontWeight.bold),
+                productname.length > 0
+                    ? Expanded(
+                        child: ListView.builder(
+                            itemCount: data.length,
+                            itemBuilder: (context, i) {
+                              // productname = getproductname(data[i]['product']);
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 10),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      bottom: 10,
+                                      top: 10,
+                                      left: 20,
+                                      right: 20,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            // user = data[i]['amount'].toString();
+                                            levelId = data[i]['id'];
+                                          });
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Registrationship(
+                                                          data[i], levelId)));
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Color(0xFF3F535E),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: Center(
+                                            child: Text(
+                                              // getproductname(
+                                              //     data[i]['product'].toString()),
+                                              // data[i]['amount'].toString(),
+                                              productname[i]['name'],
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontFamily: 'Montserrat1',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 70,
-                                height: 70,
-                                padding: EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFA6B3BC),
-                                    borderRadius: BorderRadius.circular(50)),
-                                child: Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(50)),
-                                  child: Container(
-                                    padding: EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        color: Color(0xFFA6B3BC),
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
-                                    child: Container(
-                                      padding: EdgeInsets.all(0),
+                                    Container(
+                                      width: 70,
+                                      height: 70,
+                                      padding: EdgeInsets.all(8),
                                       decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: Color(0xFFA6B3BC),
                                           borderRadius:
                                               BorderRadius.circular(50)),
-                                      child: Center(
-                                          child: Text(
-                                        "${i + 1}",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      )),
+                                      child: Container(
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(50)),
+                                        child: Container(
+                                          padding: EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xFFA6B3BC),
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: Container(
+                                            padding: EdgeInsets.all(0),
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(50)),
+                                            child: Center(
+                                                child: Text(
+                                              "${i + 1}",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            )),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
-                ),
+                              );
+                            }),
+                      )
+                    : Expanded(
+                        child: Center(child: CircularProgressIndicator())),
               ],
             ),
           ),

@@ -1,4 +1,6 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/stripe_api/create_customer.dart';
+import 'package:sound_chat/stripe_api/create_subcription.dart';
 import 'package:sound_chat/stripe_api/get_plans.dart';
 
 void main() async {
@@ -27,6 +29,8 @@ void main() async {
           create: (_) => OverlayHandlerProvider(),
         ),
         ChangeNotifierProvider(create: (_) => Plans()),
+        ChangeNotifierProvider(create: (_) => Crteatecustomer()),
+        ChangeNotifierProvider(create: (_) => CreateSubscription()),
       ],
       child: MyApp(),
     ),
