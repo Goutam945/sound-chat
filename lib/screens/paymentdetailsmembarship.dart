@@ -363,10 +363,10 @@ class PaymentDetailsMember extends StatefulWidget {
 }
 
 class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
-  final String publicationKey =
-      'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
-  final String secretKey =
-      'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
+  // final String publicationKey =
+  //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
+  // final String secretKey =
+  //     'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
 
   String _paymentMethodId;
   String clientSecret;
@@ -395,6 +395,15 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
             CardFormPaymentRequest());
     _paymentMethodId = paymentResponse.id;
     print("PAYMENTTTT" + paymentResponse.id.toString());
+    StripePayment.confirmSetupIntent(PaymentIntent(clientSecret: clientSecret));
+
+    // await StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest())
+    //     .then((value) {
+    //   print("PAYMENTTTT" + value.customerId.toString());
+    // }).catchError((e) {
+    //   print('Got error: $e');
+    //   return true;
+    // });
   }
 
   Future<void> createIntent(amount) async {
@@ -437,28 +446,6 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
             _paymentMethodId.toString(), context);
         paymentResponse1 = paymentIntent;
         showDailog();
-        /*showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  content: Column(
-                    children: [
-                      Text("Status: " + paymentIntent.status.toString()),
-                      Text("paymentIntentId: " +
-                          paymentIntent.paymentIntentId.toString()),
-                      // Text("paymentMethodId: " +
-                      //     paymentIntent.paymentMethodId.toString()),
-                    ],
-                  ),
-                  actions: <Widget>[
-                    ElevatedButton(
-                      child: Text('Login page'),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => NewLogin()));
-                      },
-                    ),
-                  ],
-                ));*/
         print("SUCESSSFUL");
       }
     }).onError((error, stackTrace) {
@@ -489,207 +476,6 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
         androidPayMode: 'test'));
   }
 
-  /* @override
-  Widget build(BuildContext context) {
-    print(widget.lid.toString() + "       " + widget.uid.toString());
-    return SafeArea(
-      child: Stack(children: [
-        Scaffold(
-          backgroundColor: Colors.black,
-          body: ListView(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              Center(
-                  child: Text(
-                "Member Registration",
-                style: TextStyle(
-                    fontSize: 19,
-                    color: Color(0xFFE18D13),
-                    fontWeight: FontWeight.bold),
-              )),
-              SizedBox(
-                height: 10,
-              ),
-              Center(
-                  child: Text(
-                "Subscription Summary",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, color: Color(0xFFA79A9A)),
-              )),
-              SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextFormField(
-                  controller: _coupon,
-                  style: TextStyle(color: Color(0xFFA79A9A)),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    labelText: "Coupon Code",
-                    labelStyle: TextStyle(
-                      color: Color(0xFFA79A9A),
-                    ),
-                    fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.white, width: 2.0),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                    hintText: 'Coupon Code:',
-                    hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                    suffixIcon: Icon(
-                      Icons.card_giftcard,
-                      color: Color(0xFFA79A9A),
-                    ),
-                  ),
-                  // controller: _coupon,
-                ),
-              ),
-              SizedBox(
-                height: 60,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  "Payment Details",
-                  style: TextStyle(fontSize: 19, color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                  height: 2,
-                  color: Color(0xFF8E0E14),
-                  margin: EdgeInsets.only(left: 15, right: 15)),
-              SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text("${widget.subscription['plan_type']}:",
-                            style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 15,
-                              fontFamily: 'Montserrat1',
-                            )),
-                        Text("me:",
-                            style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 15,
-                              fontFamily: 'Montserrat1',
-                            )),
-                        Text("Discount:",
-                            style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 15,
-                              fontFamily: 'Montserrat1',
-                            )),
-                        Text("Final Price:",
-                            style: TextStyle(
-                                color: Color(0xFF535353),
-                                fontSize: 18,
-                                fontFamily: 'Montserrat1',
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("\$${widget.subscription['plan_fee']} USD",
-                            style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 15,
-                              fontFamily: 'Montserrat1',
-                            )),
-                        Text("\$0.00 USD",
-                            style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 15,
-                              fontFamily: 'Montserrat1',
-                            )),
-                        Text("",
-                            style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 15,
-                              fontFamily: 'Montserrat1',
-                            )),
-                        Text("\$${widget.subscription['plan_fee']} USD",
-                            style: TextStyle(
-                                color: Color(0xFF535353),
-                                fontSize: 18,
-                                fontFamily: 'Montserrat1',
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 80,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 80),
-                child: SizedBox(
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF8E0E14),
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        )),
-                    onPressed: () {
-                      addCard().whenComplete(() => createIntent(
-                              double.parse(widget.subscription['plan_fee']))
-                          .whenComplete(() => authPayment(double.parse(widget
-                                  .subscription[
-                              'plan_fee']))
-                              ));
-              
-                    },
-                    child: Text(
-                      'Pay \$${widget.subscription['plan_fee']}',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ]),
-    );
-  }*/
   @override
   Widget build(BuildContext context) {
     print(widget.lid.toString() + "       " + widget.uid.toString());
@@ -873,12 +659,13 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        addCard().whenComplete(() => createIntent(
+                        /* addCard().whenComplete(() => createIntent(
                                 double.parse(widget.subscription['plan_fee']))
                             .whenComplete(() => authPayment(double.parse(
-                                widget.subscription['plan_fee']))));
+                                widget.subscription['plan_fee']))));*/
 
-                        //addCard();
+                        addCard().whenComplete(() => createIntent(
+                            double.parse(widget.subscription['plan_fee'])));
 
                         // StripePayment.createSourceWithParams(SourceParams(
                         //   type: 'ideal',

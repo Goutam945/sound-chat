@@ -1,6 +1,7 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/stripe_api/get_plans.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -22,13 +23,15 @@ void main() async{
         ChangeNotifierProvider(create: (_) => SearchResponse()),
         ChangeNotifierProvider(create: (_) => PhoneinterviewResponse()),
         ChangeNotifierProvider(create: (_) => BanneradsResponse()),
-        ChangeNotifierProvider(create: (_) => OverlayHandlerProvider(),),
+        ChangeNotifierProvider(
+          create: (_) => OverlayHandlerProvider(),
+        ),
+        ChangeNotifierProvider(create: (_) => Plans()),
       ],
       child: MyApp(),
     ),
   );
 }
-
 
 class MyApp extends StatefulWidget {
   @override
@@ -53,7 +56,7 @@ class _MyAppState extends State<MyApp> {
         checkinternet = false;
       });
     } else {
-     // print("connection" + connectivityResult.toString());
+      // print("connection" + connectivityResult.toString());
       setState(() {
         checkinternet = true;
       });
@@ -64,16 +67,28 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     internetcheck();
     //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    return MaterialApp(debugShowCheckedModeBanner: false,  theme: ThemeData(fontFamily: 'Montserrat1'),
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: 'Montserrat1'),
         home: checkinternet
-            ? Container(color: Colors.white,
-              child: Column(crossAxisAlignment: CrossAxisAlignment.center,mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.network_check,size: 60,),
-                   Text('No Internet Connection!!', style: TextStyle(fontSize: 18,decoration: TextDecoration.none),),
-                ],
-              ),
-            )
+            ? Container(
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.network_check,
+                      size: 60,
+                    ),
+                    Text(
+                      'No Internet Connection!!',
+                      style: TextStyle(
+                          fontSize: 18, decoration: TextDecoration.none),
+                    ),
+                  ],
+                ),
+              )
             : SpleshScreen());
 
     // return MaterialApp(
