@@ -110,7 +110,6 @@ export 'package:whatsapp_unilink/whatsapp_unilink.dart';
 export 'package:sound_chat/screens/shoppayscreen.dart';
 //export 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
 export 'package:awesome_dialog/awesome_dialog.dart';
-export 'package:flutter_braintree/flutter_braintree.dart';
 export 'package:sound_chat/Model/ProductModellist.dart';
 export 'package:sound_chat/api/create_order.dart';
 export 'package:sound_chat/common/shoappbar.dart';

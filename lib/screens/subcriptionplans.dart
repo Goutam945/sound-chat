@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+
 class Subscriptionplans extends StatefulWidget {
   @override
   _SubscriptionplansState createState() => _SubscriptionplansState();
@@ -33,7 +34,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var data1 = context.watch<MembershipResponse>().data;
-    var data = (data1!=null)?data1['data']:[];
+    var data = (data1 != null) ? data1['data'] : [];
     return SafeArea(
       child: Stack(children: [
         Scaffold(
@@ -48,28 +49,32 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
               ),
               Center(
                   child: Text(
-                    "Member Registration",
-                    style: TextStyle(
-                        fontSize: 19,
-                        fontFamily: 'Montserrat1',
-                        color: Color(0xFFE18D13),
-                        fontWeight: FontWeight.bold),
-                  )),
+                "Member Registration",
+                style: TextStyle(
+                    fontSize: 19,
+                    fontFamily: 'Montserrat1',
+                    color: Color(0xFFE18D13),
+                    fontWeight: FontWeight.bold),
+              )),
               SizedBox(
                 height: 20,
               ),
               Center(
                   child: Text(
-                    "Please choose a subscription plan to begin setting up your account.",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16,fontFamily: 'Montserrat1', color: Color(0xFFA79A9A)),
-                  )),
+                "Please choose a subscription plan to begin setting up your account.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Montserrat1',
+                    color: Color(0xFFA79A9A)),
+              )),
               SizedBox(
                 height: 20,
               ),
-              for(int i=0;i<data.length;i++)
+              for (int i = 0; i < data.length; i++)
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
                     children: [
                       Positioned(
@@ -83,9 +88,9 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                               user = data[i]['plan_type'];
                               levelId = data[i]['id'];
                             });
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Registrationship(data[i],levelId)));
-
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         Registrationship(data[i], levelId)));
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -129,11 +134,11 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
                                   borderRadius: BorderRadius.circular(50)),
                               child: Center(
                                   child: Text(
-                                    data[i]['id'].toString(),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 20, fontWeight: FontWeight.bold),
-                                  )),
+                                data[i]['id'].toString(),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              )),
                             ),
                           ),
                         ),
@@ -145,7 +150,7 @@ class _SubscriptionplansState extends State<Subscriptionplans> {
           ),
         ),
         Positioned(
-          top: AppBar().preferredSize.height*0.1,
+          top: AppBar().preferredSize.height * 0.1,
           left: width * 0.39865,
           child: SizedBox(
             height: height * 0.13168,

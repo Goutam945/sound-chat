@@ -696,7 +696,6 @@ class _ShopPayState extends State<ShopPay> {
                       Toast.show("Please Login before Shopping", context,
                           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
                     } else if (radioItem == 'paypal') {
-                      pay();
                     } else if (radioItem == 'stripe') {
                       //stripePay(cart.sum1);
                     } else if (radioItem == 'cod') {
@@ -809,26 +808,5 @@ class _ShopPayState extends State<ShopPay> {
         ),
       ),
     ]));
-  }
-
-  pay() async {
-    var request = BraintreeDropInRequest(
-      tokenizationKey: tokenizationKey,
-      collectDeviceData: true,
-      // googlePaymentRequest: BraintreeGooglePaymentRequest(
-      //   totalPrice: '4.20',
-      //   currencyCode: 'USD',
-      //   billingAddressRequired: false,
-      // ),
-      paypalRequest: BraintreePayPalRequest(
-        amount: cart.sum1.toString(),
-        displayName: 'Example company',
-      ),
-      cardEnabled: true,
-    );
-    BraintreeDropInResult result = await BraintreeDropIn.start(request);
-    if (result != null) {
-      showNonce();
-    }
   }
 }

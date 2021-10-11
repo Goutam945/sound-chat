@@ -6,6 +6,7 @@ import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 Future<SignUpResponse> createSignUpState(
     plan,
     lid,
+    productname,
     String username,
     String email,
     String firstName,
@@ -60,8 +61,8 @@ Future<SignUpResponse> createSignUpState(
       print(data);
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => (plan['amount'] != 0)
-              ? PaymentDetailsMember(
-                  plan, uid, lid, firstName, lastName, email, phoneNumber)
+              ? PaymentDetailsMember(plan, uid, lid, productname, firstName,
+                  lastName, email, phoneNumber)
               : NewLogin()));
       Toast.show(message, context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);

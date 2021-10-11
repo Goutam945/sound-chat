@@ -3,8 +3,9 @@ import 'package:sound_chat/common/index.dart';
 class Registrationship extends StatefulWidget {
   final plan;
   final lid;
+  final productname;
 
-  Registrationship(this.plan, this.lid);
+  Registrationship(this.plan, this.lid, this.productname);
 
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -258,6 +259,7 @@ class _SignupPageState extends State<Registrationship> {
                                 builder: (context) => Registrationshipnext(
                                     widget.lid,
                                     widget.plan,
+                                    widget.productname,
                                     _firstname.text,
                                     _lastname.text,
                                     _email.text,

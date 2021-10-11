@@ -45,7 +45,7 @@
             android:value="2" />
 
 
-       <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+       <!-- <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
            android:launchMode="singleTask">
            <intent-filter>
                <action android:name="android.intent.action.VIEW" />
@@ -55,7 +55,7 @@
                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
            </intent-filter>
        </activity>
-       <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/>
+       <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true"/> -->
 
 
    </application>

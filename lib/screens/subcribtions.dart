@@ -288,7 +288,9 @@ class _SubscriptionState extends State<Subscription> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       Registrationship(
-                                                          data[i], levelId)));
+                                                          data[i],
+                                                          levelId,
+                                                          productname[i])));
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(

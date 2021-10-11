@@ -358,10 +358,10 @@ import 'package:sound_chat/stripe_api/get_subcription_status.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentDetailsMember extends StatefulWidget {
-  final plan, uid, lid, firstname, lastname, email, phone;
+  final plan, uid, lid, productname, firstname, lastname, email, phone;
 
-  PaymentDetailsMember(this.plan, this.uid, this.lid, this.firstname,
-      this.lastname, this.email, this.phone);
+  PaymentDetailsMember(this.plan, this.uid, this.lid, this.productname,
+      this.firstname, this.lastname, this.email, this.phone);
 
   @override
   _PaymentDetailsMemberPageState createState() =>
@@ -672,7 +672,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("${widget.plan['plan_type']}:",
+                          Text("${widget.productname['name']}:",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -702,7 +702,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("\$${widget.plan['amount']} USD",
+                          Text("\$${widget.plan['amount'] / 100} USD",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -720,7 +720,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                                 fontSize: 15,
                                 fontFamily: fontfamily,
                               )),
-                          Text("\$${widget.plan['amount']} USD",
+                          Text("\$${widget.plan['amount'] / 100} USD",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
@@ -754,7 +754,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                             border: Border.all(color: Colors.white)),
                         child: Center(
                           child: Text(
-                            'Pay \$${widget.plan['amount']}',
+                            'Pay \$${widget.plan['amount'] / 100}',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,

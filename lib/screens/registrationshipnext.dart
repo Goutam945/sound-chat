@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:sound_chat/common/index.dart';
 
 class Registrationshipnext extends StatefulWidget {
-  final lid, plan, firtname, lastname, email, phone, country;
-  Registrationshipnext(this.lid, this.plan, this.firtname, this.lastname,
-      this.email, this.phone, this.country);
+  final lid, plan, productname, firtname, lastname, email, phone, country;
+  Registrationshipnext(this.lid, this.plan, this.productname, this.firtname,
+      this.lastname, this.email, this.phone, this.country);
   @override
   _SignupnextPageState createState() => _SignupnextPageState();
 }
@@ -310,6 +310,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                             createSignUpState(
                                     widget.plan,
                                     widget.lid,
+                                    widget.productname,
                                     _username.text,
                                     widget.email,
                                     widget.firtname,
