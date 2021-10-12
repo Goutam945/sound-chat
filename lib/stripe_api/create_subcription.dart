@@ -2,7 +2,7 @@ import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 
 Future<CreateSubscription> createSubscriptionstripeState(
-    {context, customer, priceid}) async {
+    {context, customer, priceid, coupon}) async {
   final http.Response response =
       await http.post(Uri.parse('$stripebaseurl/v1/subscriptions'), headers: {
     'Authorization': 'Bearer $secretKey'
@@ -10,6 +10,7 @@ Future<CreateSubscription> createSubscriptionstripeState(
     'customer': customer,
     'items[0][plan]': priceid,
     'trial_from_plan': 'true',
+    'coupon': coupon,
   });
 
   if (response.statusCode == 200) {

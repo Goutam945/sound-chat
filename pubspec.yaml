@@ -54,6 +54,7 @@ dependencies:
   vibration: ^1.7.3
   better_player: ^0.0.76
   stripe_payment: ^1.1.4
+  youtube_player_iframe: ^2.2.2
 
 
 dev_dependencies:

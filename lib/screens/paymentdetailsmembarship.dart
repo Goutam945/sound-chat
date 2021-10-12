@@ -345,14 +345,13 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember> {
   }
 }*/
 // import 'package:flutter_stripe_payment/flutter_stripe_payment.dart';
-import 'dart:ffi';
 
 import 'package:sound_chat/api/subscription_approve_user.dart';
 import 'package:sound_chat/common/faileddialog.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:http/http.dart' as http;
 import 'package:sound_chat/stripe_api/create_customer.dart';
 import 'package:sound_chat/stripe_api/create_subcription.dart';
+import 'package:sound_chat/stripe_api/get_coupon.dart';
 import 'package:sound_chat/stripe_api/get_invoiceurl.dart';
 import 'package:sound_chat/stripe_api/get_subcription_status.dart';
 import 'package:stripe_payment/stripe_payment.dart';
@@ -385,6 +384,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
 
           if (status == "active") {
             showDailog();
+            createSubscriptionState(widget.uid, "2", "Sucess", subid, context);
           } else if (status == 'incomplete') {
             showpendingpaymentdialog();
           }
@@ -407,6 +407,9 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
   bool isloding = false;
   String urlauthantication;
   final TextEditingController _coupon = TextEditingController();
+  double discount = 0;
+  String couponcode = "";
+  bool islogin = false;
 
   showDailog() {
     AwesomeDialog(
@@ -418,8 +421,8 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
       title: 'Succeeded Payment',
       desc: 'Thank you',
       btnOkOnPress: () {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => NewLogin()));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => islogin ? MyAccount() : NewLogin()));
       },
     )..show();
   }
@@ -465,6 +468,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
         context: context,
         customer: customerid,
         priceid: widget.lid,
+        coupon: couponcode,
       ).then((value) {
         String status = value.data['status'];
         subid = value.data['id'];
@@ -479,6 +483,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
             launch(urlauthantication);
           });
         } else if (status == 'active') {
+          createSubscriptionState(widget.uid, "2", "Sucess", subid, context);
           showDailog();
         }
       });
@@ -486,57 +491,6 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
       setState(() {
         isloding = false;
       });
-    });
-  }
-
-  Future<void> createIntent(amount) async {
-    var url = Uri.parse('https://api.stripe.com/v1/payment_intents');
-    var response = await http.post(url,
-        headers: {'Authorization': 'Bearer $secretKey'},
-        encoding: Encoding.getByName('x-www-form-urlencoded'),
-        body: {'amount': '${(amount * 100).round()}', 'currency': 'INR'});
-    print('Response status: ${response.statusCode}');
-    if (response.statusCode == 200) {
-      print('Response body: ${response.body}');
-      dynamic data = json.decode(response.body);
-      setState(() {
-        clientSecret = data['client_secret'];
-        print(clientSecret);
-      });
-    } else {
-      throw Exception(response.body);
-    }
-  }
-
-  Future<void> authPayment(amount) async {
-    StripePayment.confirmPaymentIntent(
-      PaymentIntent(
-        clientSecret: clientSecret,
-        paymentMethodId: _paymentMethodId,
-      ),
-    ).then((paymentIntent) {
-      print("GOUTAM1" + paymentIntent.status);
-      print("GOUTAM2" + paymentIntent.paymentIntentId.toString());
-      print("GOUTAM3" + _paymentMethodId.toString());
-
-      if (paymentIntent.status == "succeeded") {
-        print("PRINT" +
-            widget.uid.toString() +
-            widget.lid.toString() +
-            paymentIntent.status +
-            _paymentMethodId.toString());
-        createSubscriptionState(widget.uid, widget.lid, paymentIntent.status,
-            _paymentMethodId.toString(), context);
-        paymentResponse1 = paymentIntent;
-        showDailog();
-        print("SUCESSSFUL");
-      }
-    }).onError((error, stackTrace) {
-      print("ERRORRR" + error.toString());
-      faileddialog(error, context);
-    }).catchError((e) {
-      print('Got error: $e');
-      return true;
     });
   }
 
@@ -548,6 +502,12 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
         publishableKey: publicationKey,
         merchantId: "YOUR_MERCHANT_ID",
         androidPayMode: 'test'));
+    checklogin();
+  }
+
+  checklogin() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    islogin = sharedPreferences.getBool("islogin");
   }
 
   @override
@@ -598,6 +558,19 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: TextFormField(
                     controller: _coupon,
+                    onChanged: (value) {
+                      createCouponState(context: context, couponid: value)
+                          .then((data) {
+                        setState(() {
+                          couponcode = value;
+                          discount = data.data['percent_off'];
+                        });
+                      }).onError((error, stackTrace) {
+                        setState(() {
+                          discount = 0;
+                        });
+                      });
+                    },
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -714,13 +687,15 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                                 fontSize: 15,
                                 fontFamily: fontfamily,
                               )),
-                          Text("",
+                          Text(
+                              "${(widget.plan['amount'] / 100) * discount / 100}",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
                                 fontFamily: fontfamily,
                               )),
-                          Text("\$${widget.plan['amount'] / 100} USD",
+                          Text(
+                              "\$${widget.plan['amount'] / 100 - (widget.plan['amount'] / 100) * discount / 100} USD",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 18,
@@ -754,7 +729,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                             border: Border.all(color: Colors.white)),
                         child: Center(
                           child: Text(
-                            'Pay \$${widget.plan['amount'] / 100}',
+                            'Pay \$${widget.plan['amount'] / 100 - (widget.plan['amount'] / 100) * discount / 100}',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,

@@ -15,19 +15,18 @@ Future<UpdateResponse> createUpdateState(
     String country,
     File profilepic,
     context) async {
-  final http.Response response = await http.post(
-      Uri.parse(baseUrl+'updateprofile'),
-      headers: <String, String>{"content-type": "application/json"},
-      body: jsonEncode({
-        'user_id': userid,
-        'username': username,
-        'email': email,
-        'mobileno': phone,
-        'fname': name,
-        'country': country,
-        'profilepic': 'profilepic',
-
-      }));
+  final http.Response response =
+      await http.post(Uri.parse(baseUrl + 'updateprofile'),
+          headers: <String, String>{"content-type": "application/json"},
+          body: jsonEncode({
+            'user_id': userid,
+            'username': username,
+            'email': email,
+            'mobileno': phone,
+            'fname': name,
+            'country': country,
+            'profilepic': 'profilepic',
+          }));
   /*var request = http.MultipartRequest('POST',
       Uri.parse('http://3.23.210.57:3000/api/v1/auth/updateprofile'));
   request.fields['user_id'] = "$userid";
@@ -43,25 +42,25 @@ Future<UpdateResponse> createUpdateState(
   var streamResponse = await request.send();
   var response = await http.Response.fromStream(streamResponse);*/
 
-
   if (response.statusCode == 200) {
     print(response.body);
     dynamic updateResponse = json.decode(response.body);
     print(response.body);
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       dynamic data = updateResponse['data'];
-      String email=data['email'];
-      String name=data['fname'];
-      String phone=data['mobileno'];
-      String image=data['profilepic'];
-      String country=data['country'];
+      String email = data['email'];
+      String name = data['fname'];
+      String phone = data['mobileno'];
+      String image = data['profilepic'];
+      String country = data['country'];
       int id = data['id'];
-      String userlogin=data['username'];
-      Sharedpreferences().saveData(email,name,phone,image,country,id,userlogin);
+      String userlogin = data['username'];
+      Sharedpreferences()
+          .saveData(email, name, phone, image, country, id, userlogin, true);
       print(id);
-      createSubcriptionlevalState(id,context);
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => HomeBottomBar()));
+      createSubcriptionlevalState(id, context);
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => HomeBottomBar()));
       Toast.show("Update Successfully", context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     } else {

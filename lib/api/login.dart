@@ -79,8 +79,7 @@ import 'package:sound_chat/screens/homebottomBar.dart';
 
 Future<LoginResponse> createLoginState(
     String name, String password, context) async {
-  final http.Response response =
-  await http.post(Uri.parse(baseUrl+'signin'),
+  final http.Response response = await http.post(Uri.parse(baseUrl + 'signin'),
       headers: <String, String>{"content-type": "application/json"},
       body: jsonEncode({
         'mobileno': name,
@@ -90,30 +89,29 @@ Future<LoginResponse> createLoginState(
     print(response.body);
     dynamic data = json.decode(response.body);
     //Sharefrifrance
-    String email=data['email'];
-    String name=data['fname'];
-    String phone=data['mobileno'];
-    String image=data['image'];
-    String country=data['country'];
+    String email = data['email'];
+    String name = data['fname'];
+    String phone = data['mobileno'];
+    String image = data['image'];
+    String country = data['country'];
     int id = data['id'];
-    String userlogin=data['username'];
-    Sharedpreferences().saveData(email,name,phone,image,country,id,userlogin);
+    String userlogin = data['username'];
+    Sharedpreferences()
+        .saveData(email, name, phone, image, country, id, userlogin, true);
     print(id);
-    createSubcriptionlevalState(id,context);
+    createSubcriptionlevalState(id, context);
 
     Provider.of<LoginResponse>(context, listen: false).data = data;
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => HomeBottomBar()));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => HomeBottomBar()));
     Toast.show("Logged in Successfully", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     return LoginResponse.fromJson(json.decode(response.body));
-
   } else {
     Toast.show("server error", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     throw Exception(response.body);
   }
-
 }
 
 class LoginResponse with ChangeNotifier {

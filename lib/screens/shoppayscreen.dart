@@ -410,8 +410,10 @@ class _ShopPayState extends State<ShopPay> {
   }
 }*/
 
+import 'package:sound_chat/common/faileddialog.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
+import 'package:stripe_payment/stripe_payment.dart';
 
 class ShopPay extends StatefulWidget {
   final firstname,
@@ -443,18 +445,14 @@ class ShopPay extends StatefulWidget {
 }
 
 class _ShopPayState extends State<ShopPay> {
-  //final _stripePayment = FlutterStripePayment();
   final String publicationKey =
       'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
   final String secretKey =
       'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
-  //PaymentResponse _paymentMethod;
   String _paymentMethodId;
   String paymentIntentId;
   String _status;
-  String _errorMessage = "";
   String clientSecret;
-  //PaymentResponse paymentResponse1;
   String radioItem = '';
   var cart;
   bool loader = false;
@@ -465,19 +463,13 @@ class _ShopPayState extends State<ShopPay> {
   bool setPaid;
   double pricetotal;
 
-  /*Future<void> addCard() async {
-    var paymentResponse = await _stripePayment.addPaymentMethod();
-    _status = paymentResponse.status.toString();
-    setState(() {
-      if (paymentResponse.status == PaymentResponseStatus.succeeded) {
-        _paymentMethodId = paymentResponse.paymentMethodId;
-        print("paymentmethodidforpaymentstripe....." + _paymentMethodId);
-        _paymentMethod = paymentResponse;
-      } else {
-        _errorMessage = paymentResponse.errorMessage;
-      }
-    });
-  }*/
+  Future<void> addCard() async {
+    PaymentMethod paymentResponse =
+        await StripePayment.paymentRequestWithCardForm(
+            CardFormPaymentRequest());
+    _paymentMethodId = paymentResponse.id;
+    print("PAYMENTTTT" + paymentResponse.id.toString());
+  }
 
   Future<void> createIntent(amount) async {
     var url = Uri.parse('https://api.stripe.com/v1/payment_intents');
@@ -498,45 +490,37 @@ class _ShopPayState extends State<ShopPay> {
     }
   }
 
-  /*Future<void> authPayment(amount) async {
-    var paymentResponse = await _stripePayment.confirmPaymentIntent(
-        clientSecret, _paymentMethodId, amount * 100);
-    setState(() {
-      if (paymentResponse.status == PaymentResponseStatus.succeeded) {
-        _paymentMethodId = paymentResponse.paymentMethodId;
-        paymentResponse1 = paymentResponse;
-        paymentIntentId = paymentResponse.paymentIntentId;
+  Future<void> authPayment(amount) async {
+    StripePayment.confirmPaymentIntent(
+      PaymentIntent(
+        clientSecret: clientSecret,
+        paymentMethodId: _paymentMethodId,
+      ),
+    ).then((paymentIntent) {
+      print("GOUTAM1" + paymentIntent.status);
+      print("GOUTAM2" + paymentIntent.paymentIntentId.toString());
+      print("GOUTAM3" + _paymentMethodId.toString());
+
+      if (paymentIntent.status == "succeeded") {
         createOrder();
-        // showDialog(
-        //     context: context,
-        //     builder: (context) => AlertDialog(
-        //           content: Column(
-        //             children: [
-        //               Text("Status: " + paymentResponse.status.toString()),
-        //               Text("paymentIntentId: " +
-        //                   paymentResponse.paymentIntentId.toString()),
-        //               Text("paymentMethodId: " + paymentResponse.toString()),
-        //             ],
-        //           ),
-        //         ));
-      } else {
-        _errorMessage = paymentResponse.errorMessage;
-        showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              content: Text(_errorMessage.toString()),
-            ));
+        print("SUCESSSFUL");
       }
+    }).onError((error, stackTrace) {
+      print("ERRORRR" + error.toString());
+      faileddialog(error, context);
+    }).catchError((e) {
+      print('Got error: $e');
+      return true;
     });
-  }*/
+  }
 
   @override
   void initState() {
     super.initState();
-    // _stripePayment.setStripeSettings(publicationKey);
-    // _stripePayment.onCancel = () {
-    //   print("the payment form was cancelled");
-    // };
+    StripePayment.setOptions(StripeOptions(
+        publishableKey: publicationKey,
+        merchantId: "YOUR_MERCHANT_ID",
+        androidPayMode: 'test'));
     _loadSavedData();
   }
 
@@ -550,10 +534,10 @@ class _ShopPayState extends State<ShopPay> {
     });
   }
 
-  // stripePay(amount) async {
-  //   addCard().whenComplete(
-  //       () => createIntent(amount).whenComplete(() => authPayment(amount)));
-  // }
+  stripePay(amount) async {
+    addCard().whenComplete(
+        () => createIntent(amount).whenComplete(() => authPayment(amount)));
+  }
 
   createOrder() {
     createOrderState(
@@ -695,9 +679,8 @@ class _ShopPayState extends State<ShopPay> {
                     if (id == null) {
                       Toast.show("Please Login before Shopping", context,
                           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                    } else if (radioItem == 'paypal') {
                     } else if (radioItem == 'stripe') {
-                      //stripePay(cart.sum1);
+                      stripePay(cart.sum1);
                     } else if (radioItem == 'cod') {
                       createOrder();
                     } else {
@@ -763,20 +746,6 @@ class _ShopPayState extends State<ShopPay> {
                                 fontSize: 20,
                                 fontFamily: 'Montserrat1',
                                 fontWeight: FontWeight.bold)),
-                      ),
-                      RadioListTile(
-                        groupValue: radioItem,
-                        title: Text('PayPal'),
-                        value: 'paypal',
-                        onChanged: (val) {
-                          setState(() {
-                            radioItem = val;
-                            setPaid = true;
-                            paymentMethodTitle =
-                                'Direct Bank Transfer (PayPal)';
-                            // pay();
-                          });
-                        },
                       ),
                       RadioListTile(
                         groupValue: radioItem,

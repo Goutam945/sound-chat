@@ -175,7 +175,7 @@ class _SearchbarState extends State<Searchbar> {
   List post = [];
   List video = [];
   dynamic gallery;
-  bool loader=false;
+  bool loader = false;
 
   @override
   Widget build(BuildContext context) {
@@ -201,12 +201,13 @@ class _SearchbarState extends State<Searchbar> {
                       onPressed: () {
                         //createSearchState(_search.text, context);
                         setState(() {
-                          loader=true;
+                          loader = true;
                         });
-                        createSearchState(_search.text, context).whenComplete(() {
-                        setState(() {
-                        loader=false;
-                        });
+                        createSearchState(_search.text, context)
+                            .whenComplete(() {
+                          setState(() {
+                            loader = false;
+                          });
                         });
                       }),
                   hintText: 'Search something ...',
@@ -218,9 +219,13 @@ class _SearchbarState extends State<Searchbar> {
         ),
         body: (data != null)
             ? ListView(
-          children: [if(loader)Center(child: CircularProgressIndicator(),),
-            if (product != null)
-              if (product.length != 0)
+                children: [
+                  if (loader)
+                    Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  if (product != null)
+                    if (product.length != 0)
 //                Container(
 //                  margin: const EdgeInsets.symmetric(vertical: 20),
 //                  padding: EdgeInsets.all(10),
@@ -231,90 +236,94 @@ class _SearchbarState extends State<Searchbar> {
 //                        fontWeight: FontWeight.bold, color: Colors.white),
 //                  ),
 //                ),
-                SizedBox(height: 10,),
-            if (product != null)
-              if (product.length != 0)
-                GridView.count(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  primary: false,
-                  childAspectRatio: 300 / 500,
-                  // padding: const EdgeInsets.all(16),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  children: <Widget>[
-                    for (int i = 0; i < product.length; i++)
-//                        for (int j = 0; j <product[i]['images'].length; j++)
-                      GestureDetector(
-                        child: Container(
-                          color: Colors.white,
-                          padding: EdgeInsets.only(bottom: 5),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  child: Opacity(
-                                    opacity: 1,
-                                    child: CachedNetworkImage(
-                                      imageUrl: product[i]['images'][0]
-                                      ['src'],
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) => Center(
-                                          child:
-                                          CircularProgressIndicator()),
-                                      errorWidget:
-                                          (context, url, error) =>
-                                          Icon(Icons.error),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                                child: Text(
-                                  product[i]['name'],
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "\$" + product[i]['price'],
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 15,
-                                ),
-                              ),
-                              Container(
-                                color: Color(0xFFdd0e34),
-                                height: 30,
-                                width: 120,
-                                child: Center(
-                                    child: Text(
-                                      "Select Options",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                              )
-                            ],
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  ShopProductdetails(product[i])));
-                        },
+                      SizedBox(
+                        height: 10,
                       ),
-                  ],
-                ),
-            if (post != null)
-              if (post.length != 0)
-                SizedBox(height: 10,),
+                  if (product != null)
+                    if (product.length != 0)
+                      GridView.count(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        primary: false,
+                        childAspectRatio: 300 / 500,
+                        // padding: const EdgeInsets.all(16),
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        children: <Widget>[
+                          for (int i = 0; i < product.length; i++)
+//                        for (int j = 0; j <product[i]['images'].length; j++)
+                            GestureDetector(
+                              child: Container(
+                                color: Colors.white,
+                                padding: EdgeInsets.only(bottom: 5),
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        child: Opacity(
+                                          opacity: 1,
+                                          child: CachedNetworkImage(
+                                            imageUrl: product[i]['images'][0]
+                                                ['src'],
+                                            fit: BoxFit.cover,
+                                            placeholder: (context, url) => Center(
+                                                child:
+                                                    CircularProgressIndicator()),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    Icon(Icons.error),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                      child: Text(
+                                        product[i]['name'],
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      "\$" + product[i]['price'],
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    Container(
+                                      color: Color(0xFFdd0e34),
+                                      height: 30,
+                                      width: 120,
+                                      child: Center(
+                                          child: Text(
+                                        "Select Options",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        ShopProductdetails(product[i])));
+                              },
+                            ),
+                        ],
+                      ),
+                  if (post != null)
+                    if (post.length != 0)
+                      SizedBox(
+                        height: 10,
+                      ),
 //                Container(
 //                  margin: const EdgeInsets.symmetric(vertical: 20),
 //                  padding: EdgeInsets.all(10),
@@ -325,7 +334,7 @@ class _SearchbarState extends State<Searchbar> {
 //                        fontWeight: FontWeight.bold, color: Colors.white),
 //                  ),
 //                ),
-            /*if (post != null)
+                  /*if (post != null)
               if (post.length != 0)
                 GridView.count(
                   physics: NeverScrollableScrollPhysics(),
@@ -396,8 +405,8 @@ class _SearchbarState extends State<Searchbar> {
                       ),
                   ],
                 ),*/
-            if (gallery != null)
-              if (gallery.length != 0)
+                  if (gallery != null)
+                    if (gallery.length != 0)
 //                Container(
 //                  margin: const EdgeInsets.symmetric(vertical: 20),
 //                  padding: EdgeInsets.all(10),
@@ -408,39 +417,41 @@ class _SearchbarState extends State<Searchbar> {
 //                        fontWeight: FontWeight.bold, color: Colors.white),
 //                  ),
 //                ),
-            if (gallery != null)
-              if (gallery.length != 0)
-                GridView.count(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  primary: false,
-                  childAspectRatio: 1,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  children: <Widget>[
-                    for (int i = 0;
-                    i < gallery['img_gallery_pic'].length;
-                    i++)
-                      GestureDetector(
-                        child: CachedNetworkImage(
-                          imageUrl: gallery['img_gallery_pic'][i],
-                          fit: BoxFit.fill,
-                          placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => GallerySlider(
-                                  gallery['img_gallery_pic'], i)));
-                        },
-                      ),
-                  ],
-                ),
-            if (video != null)
-              if (video.length != 0)
+                      if (gallery != null)
+                        if (gallery.length != 0)
+                          GridView.count(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            crossAxisCount: 3,
+                            primary: false,
+                            childAspectRatio: 1,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            children: <Widget>[
+                              for (int i = 0;
+                                  i < gallery['img_gallery_pic'].length;
+                                  i++)
+                                GestureDetector(
+                                  child: CachedNetworkImage(
+                                    imageUrl: gallery['img_gallery_pic'][i],
+                                    fit: BoxFit.fill,
+                                    placeholder: (context, url) => Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) => GallerySlider(
+                                                gallery['img_gallery_pic'],
+                                                i)));
+                                  },
+                                ),
+                            ],
+                          ),
+                  if (video != null)
+                    if (video.length != 0)
 //                Container(
 //                  margin: const EdgeInsets.symmetric(vertical: 20),
 //                  padding: EdgeInsets.all(10),
@@ -451,82 +462,105 @@ class _SearchbarState extends State<Searchbar> {
 //                        fontWeight: FontWeight.bold, color: Colors.white),
 //                  ),
 //                ),
-            if (video != null)
-              if (video.length != 0)
-                GridView.count(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  crossAxisCount: 3,
-                  primary: false,
-                  childAspectRatio: 1,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  children: <Widget>[
-                    for (int i = 0; i < video.length; i++)
-                      GestureDetector(
-                        child: (post[i]['post_type'] == 'qtvideo')
-                            ? Stack(
-                          children: [
-                            Positioned(
-                              top: 0,
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
-                              child: Opacity(
-                                opacity: 0.8,
-                                child: CachedNetworkImage(
-                                  imageUrl: video[i]['featured_img'],
-                                  fit: BoxFit.fill,
-                                  placeholder: (context, url) => Center(
-                                      child:
-                                      CircularProgressIndicator()),
-                                  errorWidget:
-                                      (context, url, error) =>
-                                      Icon(Icons.error),
+                      if (video != null)
+                        if (video.length != 0)
+                          GridView.count(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            crossAxisCount: 3,
+                            primary: false,
+                            childAspectRatio: 1,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            children: <Widget>[
+                              for (int i = 0; i < video.length; i++)
+                                GestureDetector(
+                                  child: (post[i]['post_type'] == 'qtvideo')
+                                      ? Stack(
+                                          children: [
+                                            Positioned(
+                                              top: 0,
+                                              bottom: 0,
+                                              left: 0,
+                                              right: 0,
+                                              child: Opacity(
+                                                opacity: 0.8,
+                                                child: CachedNetworkImage(
+                                                  imageUrl: video[i]
+                                                      ['featured_img'],
+                                                  fit: BoxFit.fill,
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
+                                            ),
+                                            Center(
+                                              child: Icon(
+                                                Icons.play_arrow_sharp,
+                                                size: 40,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            Positioned(
+                                                bottom: 5,
+                                                left: 20,
+                                                right: 20,
+                                                child: Container(
+                                                    decoration: BoxDecoration(
+                                                        // BoxShape.circle or BoxShape.retangle
+                                                        //color: const Color(0xFF66BB6A),
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            offset: Offset(
+                                                                0.0, 5.0),
+                                                            color: Colors.black,
+                                                            blurRadius: 15.0,
+                                                          ),
+                                                        ]),
+                                                    child: SizedBox(
+                                                        height: 30,
+                                                        child: Text(
+                                                          video[i]['post_name'],
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                              fontSize: 12),
+                                                        ))))
+                                          ],
+                                        )
+                                      : Container(
+                                          color: Colors.white,
+                                          padding: EdgeInsets.only(bottom: 5),
+                                          child: Center(
+                                            child: Text(video[i]['post_title']),
+                                          )),
+                                  onTap: () {
+                                    if (video[i]['post_type'] == 'qtvideo')
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  SearchinterviewNewPlayer(
+                                                      video[i]
+                                                          ['free_video_url'],
+                                                      video[i]['post_title'])));
+                                  },
                                 ),
-                              ),
-                            ),
-                            Center(
-                              child: Icon(
-                                Icons.play_arrow_sharp,
-                                size: 40,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Positioned(bottom: 5,left: 20,right: 20,child: Container(decoration: BoxDecoration(
-                              // BoxShape.circle or BoxShape.retangle
-                              //color: const Color(0xFF66BB6A),
-                                boxShadow: [
-                                  BoxShadow(offset: Offset(0.0,5.0),
-                                    color: Colors.black,
-                                    blurRadius: 15.0,
-                                  ),
-                                ]),
-                                child: SizedBox(height:30,child: Text( video[i]['post_name'],
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))
-                          ],
-                        )
-                            : Container(
-                            color: Colors.white,
-                            padding: EdgeInsets.only(bottom: 5),
-                            child: Center(
-                              child: Text(video[i]['post_title']),
-                            )),
-                        onTap: () {
-                          if (video[i]['post_type'] == 'qtvideo')
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SearchinterviewNewPlayer(
-                                    video[i]['free_video_url'],video[i]['post_title'])));
-                        },
-                      ),
-                  ],
-                ),
-          ],
-        )
+                            ],
+                          ),
+                ],
+              )
             : Center(child: Text("")),
       ),
-
     );
   }
 }
