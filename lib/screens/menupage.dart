@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/allorderdetails.dart';
 
 class NewMenupage extends StatefulWidget {
   const NewMenupage({Key key}) : super(key: key);
@@ -274,6 +275,10 @@ class _NewMenupageState extends State<NewMenupage> {
                       SizedBox(
                         height: 10,
                       ),
+                      if (loader)
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
                       SizedBox(
                         width: width,
                         height: 200,
@@ -290,13 +295,26 @@ class _NewMenupageState extends State<NewMenupage> {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Text(
-                                      "My Orders",
-                                      style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          loader = true;
+                                        });
+                                        createAllOrderState(id, context)
+                                            .whenComplete(() {
+                                          setState(() {
+                                            loader = false;
+                                          });
+                                        });
+                                      },
+                                      child: Text(
+                                        "My Orders",
+                                        style: TextStyle(
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: fontfamily,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ],
                                 ),

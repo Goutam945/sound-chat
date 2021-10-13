@@ -1,5 +1,6 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:audioplayers/audioplayers.dart';
+
 class ScheduleDesign extends StatefulWidget {
   @override
   _ScheduleDesign createState() => _ScheduleDesign();
@@ -12,11 +13,16 @@ class _ScheduleDesign extends State<ScheduleDesign> {
   String dropdownValue = 'FEATURED SHOWS';
   var superherosLength;
   String email;
-  String name ;
+  String name;
+  var membership;
+  int id;
   @override
   void initState() {
     super.initState();
-    _loadSavedData();
+    _loadSavedData()
+        .then((value) => createSubcriptionlevalState(id, context).then((value) {
+              membership = value.data['data'];
+            }));
     setState(() {
       // weekday = DateTime.now().weekday - 1;
       // if (weekday == -1) weekday = 6;
@@ -24,34 +30,39 @@ class _ScheduleDesign extends State<ScheduleDesign> {
       // day=DateTime.now().weekday-1;
       // if(day==-1)
       //   day=6;
-      weekday = 7- DateTime.now().weekday;
-      day= 7- DateTime.now().weekday;
+      weekday = 7 - DateTime.now().weekday;
+      day = 7 - DateTime.now().weekday;
     });
   }
-  _loadSavedData() async{
+
+  _loadSavedData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
+      if (sharedPreferences.getString('email') != null &&
+          sharedPreferences.getString('email').isNotEmpty) {
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
       }
     });
   }
-  AudioPlayer audioPlayer =
-  new AudioPlayer(playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
+
+  AudioPlayer audioPlayer = new AudioPlayer(
+      playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    if(Provider.of<ScheduleResponse>(context, listen: false).data!=null)
-   superherosLength = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+    if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
+      superherosLength =
+          Provider.of<ScheduleResponse>(context, listen: false).data['data'];
     return SafeArea(
-      child: Stack(
-        children:[ Scaffold(
+      child: Stack(children: [
+        Scaffold(
           backgroundColor: Colors.black,
-          appBar: PreferredSize(preferredSize: Size.fromHeight(55),
-              child: Backappbar()),
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(55), child: Backappbar()),
           body: (superherosLength != null)
               ? ListView(
                   children: [
@@ -76,9 +87,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                               padding: const EdgeInsets.only(top: 4, right: 60),
                               child: Text("UPCOMMING SHOWS",
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      )),
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                  )),
                             ),
                           ),
                         ),
@@ -97,8 +108,10 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   SizedBox(
                                     height: height * 0.2341,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
@@ -107,8 +120,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                             width: width * 0.2037,
                                             height: height * 0.1053,
                                             child: CircleAvatar(
-                                              backgroundImage:
-                                                  AssetImage("assets/circle.png"),
+                                              backgroundImage: AssetImage(
+                                                  "assets/circle.png"),
                                             ),
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
@@ -116,20 +129,22 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding:
+                                              const EdgeInsets.only(top: 10),
                                           child: SizedBox(
                                               width: 120,
                                               child: Center(
-                                                child: SizedBox(height: 20,
+                                                child: SizedBox(
+                                                  height: 20,
                                                   child: Text(
                                                     superherosLength[weekday]
-                                                            ['shows'][j]['show_name']
+                                                                ['shows'][j]
+                                                            ['show_name']
                                                         .toString(),
                                                     style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 14,
-                                                     fontFamily: fontfamily
-                                                    ),
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                        fontFamily: fontfamily),
                                                     textAlign: TextAlign.center,
                                                   ),
                                                 ),
@@ -145,14 +160,12 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                           ),
                                         ),
                                         Text(
-                                          superherosLength[weekday]['shows']
-                                              [j]['show_start_date'],
+                                          superherosLength[weekday]['shows'][j]
+                                              ['show_start_date'],
                                           style: TextStyle(
-                                            color: Color(0xFFE18D13),
-                                            fontSize: 12,
-                                              fontFamily: fontfamily
-
-                                          ),
+                                              color: Color(0xFFE18D13),
+                                              fontSize: 12,
+                                              fontFamily: fontfamily),
                                         ),
                                       ],
                                     ),
@@ -163,7 +176,6 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                               child: CircularProgressIndicator(),
                             ),
                     ),
-
                     Row(
                       children: [
                         Container(
@@ -174,11 +186,10 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                               child: Text("WEEKLY SHEDULE:",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Color(0xFFA79A9A),
-                                    fontSize: width * 0.0428,
+                                      color: Color(0xFFA79A9A),
+                                      fontSize: width * 0.0428,
                                       fontFamily: fontfamily,
-                                    fontWeight: FontWeight.bold
-                                  ))),
+                                      fontWeight: FontWeight.bold))),
                         ),
                         Container(
                           color: Color(0xFF464646),
@@ -199,7 +210,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                 setState(() {
                                   dropdownValue = newValue;
 
-                                 /* if (dropdownValue == 'Sunday') day = 6;
+                                  /* if (dropdownValue == 'Sunday') day = 6;
                                   if (dropdownValue == 'Monday') day = 0;
                                   if (dropdownValue == 'Tuesday') day = 1;
                                   if (dropdownValue == 'Wednesday') day = 2;
@@ -242,116 +253,120 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                       //height: height * 0.7056,
                       child: SingleChildScrollView(
                         child: (superherosLength.length != null)
-                            ?
-                        Column(
-                          children: [
-                            for (int j = 0;
-                            j <
-                                superherosLength[day]
-                                ['shows']
-                                    .length;
-                            j++)
-                              GestureDetector(
-                                onTap: () {
-                                  audioPlayer.pause();
-                                  //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
+                            ? Column(
+                                children: [
+                                  for (int j = 0;
+                                      j < superherosLength[day]['shows'].length;
+                                      j++)
+                                    GestureDetector(
+                                      onTap: () {
+                                        audioPlayer.pause();
+                                        //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
 
-                                  Navigator.push(context,
-                                      PageTransition(type:
-                                      PageTransitionType.rightToLeft, child: (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
-                                  },
-                                child: Container(
-                                  // padding: const EdgeInsets.only(top: 5),
-                                  margin: const EdgeInsets.only(top: 5),
-                                  color: Colors.white10,
-                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                          width: width * 0.3037,
-                                          child: Image.asset(
-                                            'assets/imgpodcast.png',
-                                            fit: BoxFit.fill,
-                                          )),
-                                      Column(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            width: width * 0.65,
-                                            child: Text(
-                                              superherosLength
-                                              [day]
-                                              ['shows'][j]
-                                              ['show_name']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  color:
-                                                  Color(0xFFA39597),
-                                                  fontSize: 17,
-                                                  fontWeight:
-                                                  FontWeight.bold,
-                                                  fontFamily:
-                                                  'Montserrat'),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: width * 0.65,
-                                            child: Text(
-                                              superherosLength
-                                              [day]['post_title'],
-                                              style: TextStyle(
-                                                  color:
-                                                  Color(0xFFA19895),
-                                                  fontSize: 14,
-                                                  fontFamily:
-                                                  'Montserrat'),
-                                            ),
-                                          ),
-                                          Text(superherosLength
-                                          [day]
-                                          ['shows'][j]
-                                          ['show_start_date']+ "  - " +
-                                                superherosLength
-                                                [day]
-                                                ['shows'][j]
-                                                ['show_end_date'],
-                                            style: TextStyle(
-                                                color: Color(0xFFA19895),
-                                                fontSize: 16,
-                                                fontFamily: 'Montserrat'),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                          ],
-                        )
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType
+                                                    .rightToLeft,
+                                                child: (email == null)
+                                                    ? NewLogin()
+                                                    : (membership != null)
+                                                        ? PodcastPlayCloud(
+                                                            j, weekday)
+                                                        : UpgradeSubscription()));
+                                      },
+                                      child: Container(
+                                        // padding: const EdgeInsets.only(top: 5),
+                                        margin: const EdgeInsets.only(top: 5),
+                                        color: Colors.white10,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SizedBox(
+                                                width: width * 0.3037,
+                                                child: Image.asset(
+                                                  'assets/imgpodcast.png',
+                                                  fit: BoxFit.fill,
+                                                )),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  width: width * 0.65,
+                                                  child: Text(
+                                                    superherosLength[day]
+                                                                ['shows'][j]
+                                                            ['show_name']
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xFFA39597),
+                                                        fontSize: 17,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontFamily:
+                                                            'Montserrat'),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: width * 0.65,
+                                                  child: Text(
+                                                    superherosLength[day]
+                                                        ['post_title'],
+                                                    style: TextStyle(
+                                                        color:
+                                                            Color(0xFFA19895),
+                                                        fontSize: 14,
+                                                        fontFamily:
+                                                            'Montserrat'),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  superherosLength[day]['shows']
+                                                              [j]
+                                                          ['show_start_date'] +
+                                                      "  - " +
+                                                      superherosLength[day]
+                                                              ['shows'][j]
+                                                          ['show_end_date'],
+                                                  style: TextStyle(
+                                                      color: Color(0xFFA19895),
+                                                      fontSize: 16,
+                                                      fontFamily: 'Montserrat'),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              )
                             : Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                                child: CircularProgressIndicator(),
+                              ),
                       ),
                     ),
                   ],
                 )
               : Center(child: CircularProgressIndicator()),
         ),
-          Positioned(
-            top: AppBar().preferredSize.height*0.2,
-            left: width * 0.39865,
-            child: SizedBox(
-              height: height * 0.12168,
-              width: width * 0.21875,
-              child: Image.asset(
-                'assets/soundpic.png',
-              ),
+        Positioned(
+          top: AppBar().preferredSize.height * 0.2,
+          left: width * 0.39865,
+          child: SizedBox(
+            height: height * 0.12168,
+            width: width * 0.21875,
+            child: Image.asset(
+              'assets/soundpic.png',
             ),
           ),
-      ]
-      ),
+        ),
+      ]),
     );
   }
 }

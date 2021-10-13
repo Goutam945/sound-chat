@@ -106,349 +106,355 @@ class _MyAccountState extends State<MyAccount> {
                     Color(0xFF3A432E),
                     //Color(0xFF0E0D13)
                   ])),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-//                      child: CachedNetworkImage(
-//                        imageUrl: image,
-//                        fit: BoxFit.cover,
-//                        placeholder: (context, url) => Center(
-//                            child:
-//                            CircularProgressIndicator()),
-//                        errorWidget:
-//                            (context, url, error) =>
-//                            Icon(Icons.error),
-//                      ),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Fullview(image)));
-                      },
-                      child: Container(
-                        width: width * 0.2537,
-                        height: height * 0.1553,
-                        child: CachedNetworkImage(
-                          imageUrl: image,
-                          fit: BoxFit.fill,
-                          imageBuilder: (context, imageProvider) =>
-                              CircleAvatar(
-                            radius: 50,
-                            backgroundImage: imageProvider,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      //                      child: CachedNetworkImage(
+                      //                        imageUrl: image,
+                      //                        fit: BoxFit.cover,
+                      //                        placeholder: (context, url) => Center(
+                      //                            child:
+                      //                            CircularProgressIndicator()),
+                      //                        errorWidget:
+                      //                            (context, url, error) =>
+                      //                            Icon(Icons.error),
+                      //                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Fullview(image)));
+                        },
+                        child: Container(
+                          width: width * 0.2537,
+                          height: height * 0.1553,
+                          child: CachedNetworkImage(
+                            imageUrl: image,
+                            fit: BoxFit.fill,
+                            imageBuilder: (context, imageProvider) =>
+                                CircleAvatar(
+                              radius: 50,
+                              backgroundImage: imageProvider,
+                            ),
+                            placeholder: (context, url) =>
+                                Center(child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
-                          placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
                         ),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    name.toString(),
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontFamily: fontfamily),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        phone.toString() + "  (",
-                        style: TextStyle(
-                            color: Colors.white, fontFamily: fontfamily),
-                      ),
-                      Text(
-                        country.toString() + ")",
-                        style: TextStyle(
-                            color: Colors.white, fontFamily: fontfamily),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Account Details',
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      name.toString(),
                       style: TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                      textAlign: TextAlign.start,
+                          color: Colors.white,
+                          fontFamily: fontfamily),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 0.5,
-                    color: Colors.orange,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    height: 120,
-                    child: Row(
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Email: ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'User name: ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'Country: ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'Password:',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'Update Profile:',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                          ],
+                        Text(
+                          phone.toString() + "  (",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: fontfamily),
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              email.toString(),
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              name.toString(),
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              country.toString(),
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        child: ChangePassword()));
-                              },
-                              child: Text(
-                                "Change Password",
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                    color: Colors.green, fontSize: 16),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        child: DesignUpdate()));
-                              },
-                              child: Text(
-                                "Upgrade Profile",
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                    color: Colors.green, fontSize: 16),
-                              ),
-                            ),
-                          ],
+                        Text(
+                          country.toString() + ")",
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: fontfamily),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: 2,
-                    color: Colors.orange,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Subscription Details',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                      textAlign: TextAlign.start,
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 100,
-                    child: Row(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Plan Level:',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'Expiry Date: ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'Data Purchased: ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                            Text(
-                              'Cancel Plan: ',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  fontFamily: fontfamily),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 30,
-                        ),
-                        data != null
-                            ? Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    data["plan_id"].toString(),
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontFamily: fontfamily),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                    width: 90,
-                                    child: Text(
-                                      data["plan_expired"].toString(),
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontFamily: fontfamily),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                    width: 90,
-                                    child: Text(
-                                      data["plan_active"].toString(),
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontFamily: fontfamily),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                      onTap: () => {
-                                            setState(() {
-                                              loader = true;
-                                            }),
-                                            cancelSubscriptionState(
-                                                context: context,
-                                                subscriptionid:
-                                                    "sub_1JiZnxSGgp78HSWoD5HeAW6x"),
-                                            createCancelsubcripState(
-                                                    id.toString(), context)
-                                                .whenComplete(() {
-                                              setState(() {
-                                                loader = false;
-                                              });
-                                            }),
-                                          },
-                                      child: Text(
-                                        "Cancel Subscription",
-                                        style: TextStyle(
-                                            fontSize: 16, color: Colors.orange),
-                                      )),
-                                ],
-                              )
-                            : Text(
-                                "FREE",
-                                style: TextStyle(color: Colors.white),
-                              )
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UpgradeSubscription()));
-                      },
+                    Align(
+                      alignment: Alignment.centerLeft,
                       child: Text(
-                        "Upgrade membership",
-                        style: TextStyle(color: Colors.white),
-                      )),
-                ],
+                        'Account Details',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 0.5,
+                      color: Colors.orange,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: 120,
+                      child: Row(
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Email: ',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'User name: ',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'Country: ',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'Password:',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'Update Profile:',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                email.toString(),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                name.toString(),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                country.toString(),
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.rightToLeft,
+                                          child: ChangePassword()));
+                                },
+                                child: Text(
+                                  "Change Password",
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                      color: Colors.green, fontSize: 16),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.rightToLeft,
+                                          child: DesignUpdate()));
+                                },
+                                child: Text(
+                                  "Upgrade Profile",
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                      color: Colors.green, fontSize: 16),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 2,
+                      color: Colors.orange,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Subscription Details',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 100,
+                      child: Row(
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Plan Level:',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'Expiry Date: ',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'Data Purchased: ',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                              Text(
+                                'Cancel Plan: ',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.white,
+                                    fontFamily: fontfamily),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          data != null
+                              ? Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data["plan_id"].toString(),
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontFamily: fontfamily),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                      width: 90,
+                                      child: Text(
+                                        data["plan_expired"].toString(),
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontFamily: fontfamily),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                      width: 90,
+                                      child: Text(
+                                        data["plan_active"].toString(),
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white,
+                                            fontFamily: fontfamily),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                        onTap: () => {
+                                              setState(() {
+                                                loader = true;
+                                              }),
+                                              cancelSubscriptionState(
+                                                  context: context,
+                                                  subscriptionid:
+                                                      "sub_1JiZnxSGgp78HSWoD5HeAW6x"),
+                                              createCancelsubcripState(
+                                                      id.toString(), context)
+                                                  .whenComplete(() {
+                                                setState(() {
+                                                  loader = false;
+                                                });
+                                              }),
+                                            },
+                                        child: Text(
+                                          "Cancel Subscription",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.orange),
+                                        )),
+                                  ],
+                                )
+                              : Text(
+                                  "FREE",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => UpgradeSubscription()));
+                        },
+                        child: Text(
+                          "Upgrade membership",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ],
+                ),
               ),
             ),
           ),

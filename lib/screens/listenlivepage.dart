@@ -45,7 +45,6 @@ class _ListenlivepageState extends State<Listenlivepage> {
   String show = '22:00-23:59';
   var homeslider;
   int imageNo = 0;
-  int sliderid;
   bool isButtonPressed = false;
   var upcomingshow;
 
@@ -77,7 +76,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
     createPhoneinterviewState(context);
     createScheduleState(context);
     createGalleryState(context);
-    createHomesliderState(sliderid, context);
+    createHomesliderState(context);
     createAllproductState(context);
     createtermsState(context);
     createCoupncodeState(context);

@@ -1,13 +1,14 @@
 import 'package:sound_chat/common/index.dart';
+
 class SpleshScreen extends StatefulWidget {
   @override
   SplashScreenState createState() => SplashScreenState();
 }
+
 class SplashScreenState extends State<SpleshScreen> {
   String email;
   String name;
   int id;
-  int sliderid;
 
   @override
   void initState() {
@@ -20,7 +21,7 @@ class SplashScreenState extends State<SpleshScreen> {
     createPhoneinterviewState(context);
     createScheduleState(context);
     createGalleryState(context);
-    createHomesliderState(sliderid,context);
+    createHomesliderState(context);
     createtermsState(context);
     createMembershipState(context);
     createCoupncodeState(context);
@@ -36,11 +37,8 @@ class SplashScreenState extends State<SpleshScreen> {
                     (email == null) ? DesignLogin() : HomeScreen())));*/
     Timer(
         Duration(seconds: 5),
-            () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => HomeBottomBar())));
-
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomeBottomBar())));
   }
 
   _loadSavedData() async {
@@ -58,9 +56,12 @@ class SplashScreenState extends State<SpleshScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(extendBody: true,
-      bottomNavigationBar: Text("© Copyright 2021 Irish & Chin Inc.",textAlign: TextAlign.center,
-          style: TextStyle(height: 5,
+    return Scaffold(
+      extendBody: true,
+      bottomNavigationBar: Text("© Copyright 2021 Irish & Chin Inc.",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            height: 5,
             fontSize: 15,
             fontWeight: FontWeight.normal,
             color: Colors.black87,

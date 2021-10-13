@@ -14,51 +14,57 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
   int weekday;
   var superherosLength;
   String email;
-  String name ;
+  String name;
+  var membership;
+  int id;
   @override
   void initState() {
     super.initState();
     setState(() {
       // weekday = DateTime.now().weekday - 1;
       // if (weekday == -1) weekday = 6;
-      weekday =7- DateTime.now().weekday;
+      weekday = 7 - DateTime.now().weekday;
     });
-    _loadSavedData();
+    _loadSavedData()
+        .then((value) => createSubcriptionlevalState(id, context).then((value) {
+              membership = value.data['data'];
+            }));
   }
-  _loadSavedData() async{
+
+  _loadSavedData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
-      if(sharedPreferences.getString('email') != null && sharedPreferences.getString('email').isNotEmpty){
+      if (sharedPreferences.getString('email') != null &&
+          sharedPreferences.getString('email').isNotEmpty) {
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
       }
-      // else{
-      //   email = "Empty";
-      //   name = "Empty";
-      // }
     });
   }
-  AudioPlayer audioPlayer =
-  new AudioPlayer(playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
 
-
+  AudioPlayer audioPlayer = new AudioPlayer(
+      playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    if(Provider.of<ScheduleResponse>(context, listen: false).data!=null)
-   superherosLength = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+    if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
+      superherosLength =
+          Provider.of<ScheduleResponse>(context, listen: false).data['data'];
     return SafeArea(
       child: Stack(
         children: [
-          Scaffold(extendBody: false,
+          Scaffold(
+            extendBody: false,
             backgroundColor: Colors.black,
-            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
-                child: Backappbar()),
+            appBar: PreferredSize(
+                preferredSize: Size.fromHeight(55), child: Backappbar()),
             body: (superherosLength != null)
-                ? SizedBox(height: height,
-                  child: Column(
+                ? SizedBox(
+                    height: height,
+                    child: Column(
                       children: [
                         Container(
                           color: Color(0xFF252525),
@@ -109,13 +115,20 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                     setState(() {
                                       dropdownValue = newValue;
 
-                                      if (dropdownValue == 'Sunday') weekday = 0;
-                                      if (dropdownValue == 'Monday') weekday = 6;
-                                      if (dropdownValue == 'Tuesday') weekday = 5;
-                                      if (dropdownValue == 'Wednesday') weekday = 4;
-                                      if (dropdownValue == 'Thursday') weekday = 3;
-                                      if (dropdownValue == 'Friday') weekday = 2;
-                                      if (dropdownValue == 'Saturday') weekday = 1;
+                                      if (dropdownValue == 'Sunday')
+                                        weekday = 0;
+                                      if (dropdownValue == 'Monday')
+                                        weekday = 6;
+                                      if (dropdownValue == 'Tuesday')
+                                        weekday = 5;
+                                      if (dropdownValue == 'Wednesday')
+                                        weekday = 4;
+                                      if (dropdownValue == 'Thursday')
+                                        weekday = 3;
+                                      if (dropdownValue == 'Friday')
+                                        weekday = 2;
+                                      if (dropdownValue == 'Saturday')
+                                        weekday = 1;
                                     });
                                   },
                                   items: <String>[
@@ -127,12 +140,14 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                     'Thursday',
                                     'Friday',
                                     'Saturday'
-                                  ].map<DropdownMenuItem<String>>((String value) {
+                                  ].map<DropdownMenuItem<String>>(
+                                      (String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Text(
                                         value,
-                                        style: TextStyle(fontSize: width * 0.0438),
+                                        style:
+                                            TextStyle(fontSize: width * 0.0438),
                                       ),
                                     );
                                   }).toList(),
@@ -157,16 +172,27 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                           GestureDetector(
                                             onTap: () {
                                               audioPlayer.pause();
-                                              Navigator.push(context,
-                                                  PageTransition(type:
-                                                  PageTransitionType.rightToLeft, child:(email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
-                                              // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> (email==null)?NewLogin():PodcastPlayCloud(j, weekday)));
+                                              Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                      type: PageTransitionType
+                                                          .rightToLeft,
+                                                      child: (email == null)
+                                                          ? NewLogin()
+                                                          : (membership != null)
+                                                              ? PodcastPlayCloud(
+                                                                  j, weekday)
+                                                              : UpgradeSubscription()));
                                             },
                                             child: Container(
-                                             // padding: const EdgeInsets.only(top: 5),
-                                              margin: const EdgeInsets.only(top: 5),
+                                              // padding: const EdgeInsets.only(top: 5),
+                                              margin:
+                                                  const EdgeInsets.only(top: 5),
                                               color: Colors.white10,
-                                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   SizedBox(
                                                       width: width * 0.3037,
@@ -190,24 +216,27 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                   // ),
                                                   Column(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.spaceEvenly,
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       SizedBox(
                                                         width: width * 0.65,
                                                         child: Text(
-                                                          superherosLength
-                                                                          [weekday]
-                                                                      ['shows'][j]
-                                                                  ['show_name']
+                                                          superherosLength[
+                                                                          weekday]
+                                                                      ['shows'][
+                                                                  j]['show_name']
                                                               .toString(),
                                                           style: TextStyle(
-                                                              color:
-                                                                  Color(0xFFA39597),
+                                                              color: Color(
+                                                                  0xFFA39597),
                                                               fontSize: 17,
                                                               fontWeight:
-                                                                  FontWeight.bold,
+                                                                  FontWeight
+                                                                      .bold,
                                                               fontFamily:
                                                                   'Montserrat'),
                                                         ),
@@ -215,11 +244,12 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                       SizedBox(
                                                         width: width * 0.65,
                                                         child: Text(
-                                                          superherosLength
-                                                              [weekday]['post_title'],
+                                                          superherosLength[
+                                                                  weekday]
+                                                              ['post_title'],
                                                           style: TextStyle(
-                                                              color:
-                                                                  Color(0xFFA19895),
+                                                              color: Color(
+                                                                  0xFFA19895),
                                                               fontSize: 14,
                                                               fontFamily:
                                                                   'Montserrat'),
@@ -227,14 +257,17 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                       ),
                                                       Text(
                                                         "LIVE ON:    " +
-                                                            superherosLength
-                                                                        [weekday]
+                                                            superherosLength[
+                                                                        weekday]
                                                                     ['shows'][j]
-                                                                ['show_start_date'],
+                                                                [
+                                                                'show_start_date'],
                                                         style: TextStyle(
-                                                            color: Color(0xFFA19895),
+                                                            color: Color(
+                                                                0xFFA19895),
                                                             fontSize: 16,
-                                                            fontFamily: 'Montserrat'),
+                                                            fontFamily:
+                                                                'Montserrat'),
                                                       )
                                                     ],
                                                   )
@@ -252,11 +285,11 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                         ),
                       ],
                     ),
-                )
+                  )
                 : Center(child: CircularProgressIndicator()),
           ),
           Positioned(
-            top: AppBar().preferredSize.height*0.2,
+            top: AppBar().preferredSize.height * 0.2,
             left: width * 0.39865,
             child: SizedBox(
               height: height * 0.13168,

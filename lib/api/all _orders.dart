@@ -1,12 +1,12 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/screens/allorderdetails.dart';
-Future<AllorderResponse> createAllOrderState(int userid,
-    context) async {
-  final http.Response response = await http.post(
-      Uri.parse(baseUrl+'listorder'),
-     // headers: <String, String>{"content-type": "application/json"},
-      body: {
+
+Future<AllorderResponse> createAllOrderState(int userid, context) async {
+  final http.Response response =
+      await http.post(Uri.parse(baseUrl + 'listorder'),
+          // headers: <String, String>{"content-type": "application/json"},
+          body: {
         'user_id': "$userid",
 //        "user_id": "691"
       });
@@ -22,7 +22,7 @@ Future<AllorderResponse> createAllOrderState(int userid,
       print(data);
       Provider.of<AllorderResponse>(context, listen: false).data = data;
       Navigator.of(context)
-         .pushReplacement(MaterialPageRoute(builder: (context) => AllOrderlist()));
+          .push(MaterialPageRoute(builder: (context) => AllOrderlist()));
 //      Toast.show(data.toString(), context,
 //          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       return AllorderResponse.fromJson(json.decode(response.body));
@@ -33,6 +33,7 @@ Future<AllorderResponse> createAllOrderState(int userid,
     throw Exception(response.body);
   }
 }
+
 class AllorderResponse with ChangeNotifier {
   dynamic data;
 

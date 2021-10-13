@@ -1,13 +1,11 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 
-Future<HomesliderResponse> createHomesliderState(int sliderid,context) async {
+Future<HomesliderResponse> createHomesliderState(context) async {
   final http.Response response =
-  await http.post(Uri.parse(baseUrl+'homeslider')
-     , body: {
-      "slider_id":"1",
-      }
-  );
+      await http.post(Uri.parse(baseUrl + 'homeslider'), body: {
+    "slider_id": "1",
+  });
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
     Provider.of<HomesliderResponse>(context, listen: false).data = data;
@@ -21,6 +19,7 @@ Future<HomesliderResponse> createHomesliderState(int sliderid,context) async {
 
 class HomesliderResponse with ChangeNotifier {
   dynamic data;
+  int imageIndex = 0;
 
   HomesliderResponse({
     this.data,
@@ -28,6 +27,14 @@ class HomesliderResponse with ChangeNotifier {
 
   HomesliderResponse.fromJson(Map<dynamic, dynamic> json) {
     data = json;
+    notifyListeners();
+  }
+  imgIndex() {
+    if (imageIndex < data.length - 1) {
+      imageIndex++;
+    } else {
+      imageIndex = 0;
+    }
     notifyListeners();
   }
 }
