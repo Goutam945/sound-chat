@@ -157,6 +157,9 @@ class VideoState extends State<Youtubeplayer> {
       print('Entered Fullscreen');
     };
     _ytbPlayerController.onExitFullscreen = () {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+      ]);
       print('Exited Fullscreen');
     };
     load();
