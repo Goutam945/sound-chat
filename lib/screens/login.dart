@@ -380,17 +380,16 @@ class _DesignLogin extends State<NewLogin> {
                       ),
                     ],
                   ),
-
                   SizedBox(
                     height: 30,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white, fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       controller: _name,
-                      validator: Validators.required(
-                          'Username is required'),
+                      validator: Validators.required('Username is required'),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -404,7 +403,8 @@ class _DesignLogin extends State<NewLogin> {
                           ),
                         ),
                         hintText: 'Username',
-                        hintStyle: TextStyle(color: Colors.white, fontFamily: fontfamily),
+                        hintStyle: TextStyle(
+                            color: Colors.white, fontFamily: fontfamily),
                       ),
                     ),
                   ),
@@ -413,11 +413,12 @@ class _DesignLogin extends State<NewLogin> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(obscureText: true,
-                      style: TextStyle(color: Colors.white, fontFamily: fontfamily),
+                    child: TextFormField(
+                      obscureText: true,
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       controller: _password,
-                      validator: Validators.required(
-                          'Password is required'),
+                      validator: Validators.required('Password is required'),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -431,7 +432,8 @@ class _DesignLogin extends State<NewLogin> {
                           ),
                         ),
                         hintText: 'Password',
-                        hintStyle: TextStyle(color: Colors.white, fontFamily: fontfamily),
+                        hintStyle: TextStyle(
+                            color: Colors.white, fontFamily: fontfamily),
                       ),
                     ),
                   ),
@@ -448,24 +450,26 @@ class _DesignLogin extends State<NewLogin> {
                             Image.asset(
                               'assets/check50.png',
                             ),
-                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text(
                               "Remember me",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: fontfamily
-                              ),
+                                  fontFamily: fontfamily),
                             ),
                           ],
                         ),
-
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(context,
-                                PageTransition(type:
-                                PageTransitionType.rightToLeft, child: DesignForgotpass()));
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeft,
+                                    child: DesignForgotpass()));
                           },
                           child: Text(
                             "Forgot password?",
@@ -473,8 +477,7 @@ class _DesignLogin extends State<NewLogin> {
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                fontFamily: fontfamily
-                            ),
+                                fontFamily: fontfamily),
                           ),
                         ),
                       ],
@@ -489,7 +492,8 @@ class _DesignLogin extends State<NewLogin> {
                       GestureDetector(
                         onTap: () {
                           if (formKey.currentState.validate()) {
-                            createLoginState(_name.text, _password.text, context)
+                            createLoginState(
+                                    _name.text, _password.text, context)
                                 .whenComplete(() {
                               setState(() {
                                 loader = false;
@@ -501,16 +505,20 @@ class _DesignLogin extends State<NewLogin> {
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 10),
                           decoration: BoxDecoration(
-                              borderRadius:
-                              BorderRadius
-                                  .circular(
-                                  30),
-                              border: Border.all(
-                                  color: Colors
-                                      .white)),
-                         child: Center(child: Text('LOGIN',textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(color: Colors.white)),
+                          child: Center(
+                              child: Text(
+                            'LOGIN',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )),
                         ),
                       ),
                     ],
@@ -518,7 +526,8 @@ class _DesignLogin extends State<NewLogin> {
                   SizedBox(
                     height: 30,
                   ),
-                  Container(margin: EdgeInsets.symmetric(horizontal: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20),
                     height: 2,
                     width: width,
                     color: Colors.white,
@@ -528,30 +537,37 @@ class _DesignLogin extends State<NewLogin> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          PageTransition(type:
-                          PageTransitionType.rightToLeft, child: Subscription()));
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              child: Subscription()));
                     },
                     child: Text(
-                      "Create Account", textAlign: TextAlign.center,
+                      "Create Account",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          fontFamily: fontfamily
-                      ),
+                          fontFamily: fontfamily),
                     ),
                   ),
-
-
-
                 ],
               ),
             ),
             if (loader)
               Center(
                 child: CircularProgressIndicator(),
-              )
+              ),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                )),
           ],
         ),
       ),

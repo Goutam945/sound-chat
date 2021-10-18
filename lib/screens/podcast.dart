@@ -67,7 +67,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                     child: Column(
                       children: [
                         Container(
-                          color: Color(0xFF252525),
+                          color: Colors.black,
                           height: height * 0.1224,
                           width: width,
                           child: Padding(
@@ -76,8 +76,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                               "ALL YOUR FAVOURITE SHOW IN ONE PLACE",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Color(0xFF606060),
-                                  fontSize: width * 0.0438,
+                                  color: Colors.white,
+                                  fontSize: width * 0.0418,
+                                  fontFamily: fontfamily,
                                   fontStyle: FontStyle.italic),
                             ),
                           ),
@@ -92,9 +93,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                   child: Text("PODCAST FOR:",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        color: Color(0xFFA79A9A),
-                                        fontSize: width * 0.0418,
-                                      ))),
+                                          color: Colors.white,
+                                          fontSize: width * 0.0418,
+                                          fontFamily: fontfamily))),
                             ),
                             Container(
                               color: Color(0xFF464646),
@@ -102,12 +103,12 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                               height: height * 0.0702,
                               child: Center(
                                 child: DropdownButton<String>(
-                                  dropdownColor: Color(0xFF464646),
+                                  dropdownColor: Colors.black,
                                   value: dropdownValue,
                                   icon: Icon(Icons.arrow_drop_down_sharp),
                                   iconSize: 44,
                                   elevation: 16,
-                                  style: TextStyle(color: Color(0xFFA79A9A)),
+                                  style: TextStyle(color: Colors.white),
                                   underline: Container(
                                     height: 2,
                                   ),
@@ -146,8 +147,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                       value: value,
                                       child: Text(
                                         value,
-                                        style:
-                                            TextStyle(fontSize: width * 0.0438),
+                                        style: TextStyle(
+                                            fontSize: width * 0.0438,
+                                            fontFamily: fontfamily),
                                       ),
                                     );
                                   }).toList(),
@@ -231,14 +233,14 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   j]['show_name']
                                                               .toString(),
                                                           style: TextStyle(
-                                                              color: Color(
-                                                                  0xFFA39597),
+                                                              color:
+                                                                  Colors.white,
                                                               fontSize: 17,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
                                                               fontFamily:
-                                                                  'Montserrat'),
+                                                                  fontfamily),
                                                         ),
                                                       ),
                                                       SizedBox(
@@ -248,11 +250,11 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   weekday]
                                                               ['post_title'],
                                                           style: TextStyle(
-                                                              color: Color(
-                                                                  0xFFA19895),
+                                                              color:
+                                                                  Colors.white,
                                                               fontSize: 14,
                                                               fontFamily:
-                                                                  'Montserrat'),
+                                                                  fontfamily),
                                                         ),
                                                       ),
                                                       Text(
@@ -263,11 +265,10 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                 [
                                                                 'show_start_date'],
                                                         style: TextStyle(
-                                                            color: Color(
-                                                                0xFFA19895),
+                                                            color: Colors.white,
                                                             fontSize: 16,
                                                             fontFamily:
-                                                                'Montserrat'),
+                                                                fontfamily),
                                                       )
                                                     ],
                                                   )

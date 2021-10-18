@@ -117,32 +117,30 @@ Future<OrderResponse> createOrderState(
     transactionstatus,
     totalamount,
     context) async {
-  final http.Response response = await http.post(
-      Uri.parse(baseUrl+'addorder'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(
-          {
-               "user_id": id,
-              "first_name": firstname,
-              "last_name": lastname,
-              "address_1": address1,
-              "address_2": address2,
-              "city": city,
-              "state": state,
-              "postcode": postcode,
-              "country": country,
-              "email": email,
-              "phone": phone,
-              "items": lineitems,
-              "Discount":"20",
-              "totalamount":totalamount,
-              "paymentmethod":  paymentmethod,
-               "transactionid":transactionid,
-              "transactionstatus":transactionstatus
+  final http.Response response =
+      await http.post(Uri.parse(baseUrl + 'addorder'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            "user_id": id,
+            "first_name": firstname,
+            "last_name": lastname,
+            "address_1": address1,
+            "address_2": address2,
+            "city": city,
+            "state": state,
+            "postcode": postcode,
+            "country": country,
+            "email": email,
+            "phone": phone,
+            "items": lineitems,
+            "Discount": "20",
+            "total_amount": totalamount,
+            "payment_method": paymentmethod,
+            "transaction_id": transactionid,
+            "transaction_status": transactionstatus
             // "transactionid":"5165dfdasdg",
             // "transactionstatus":"failed"
-          }
-          ));
+          }));
 
   if (response.statusCode == 200) {
     dynamic orderResponse = json.decode(response.body);

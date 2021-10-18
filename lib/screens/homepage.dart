@@ -402,7 +402,7 @@ class _UpdatehomeState extends State<Updatehome> {
                     ),
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
           ],
         ),

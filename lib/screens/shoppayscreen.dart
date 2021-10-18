@@ -500,8 +500,10 @@ class _ShopPayState extends State<ShopPay> {
       print("GOUTAM1" + paymentIntent.status);
       print("GOUTAM2" + paymentIntent.paymentIntentId.toString());
       print("GOUTAM3" + _paymentMethodId.toString());
+      paymentIntentId = paymentIntent.paymentIntentId;
 
       if (paymentIntent.status == "succeeded") {
+        _status = paymentIntent.status;
         createOrder();
         print("SUCESSSFUL");
       }
@@ -563,60 +565,7 @@ class _ShopPayState extends State<ShopPay> {
             Provider.of<ProductModellist>(context, listen: false).removeAll());
   }
 
-  static final String tokenizationKey = 'sandbox_8hxpnkht_kzdtzv2btm4p7s5j';
-
   void showNonce() {
-    // showDialog<void>(
-    //   context: context,
-    //   barrierDismissible: false, // user must tap button!
-    //   builder: (BuildContext context) {
-    //     return
-    //       AlertDialog(
-    //       title: Text('Success'),
-    //       content: SingleChildScrollView(
-    //         child: ListBody(
-    //           children: <Widget>[
-    //             Column(
-    //               children: [
-    //                 SizedBox(
-    //                   height: 90,
-    //                   width: 90,
-    //                   child: Image.network(
-    //                     'https://www.cntraveller.in/wp-content/themes/cntraveller/images/check-circle.gif',
-    //                     fit: BoxFit.fill,
-    //                   ),
-    //                 ),
-    //                 Text(
-    //                   "Thank you for Shopping",
-    //                   style: TextStyle(
-    //                       fontSize: 20,
-    //                       fontWeight: FontWeight.bold,
-    //                       fontStyle: FontStyle.italic),
-    //                 )
-    //               ],
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //       actions: <Widget>[
-    //         ElevatedButton(
-    //           child: Text('Continue Shopping'),
-    //           onPressed: () {
-    //             Provider.of<ProductModellist>(context, listen: false)
-    //                 .removeAll();
-    //             Navigator.of(context).pushReplacement(
-    //                 MaterialPageRoute(builder: (context) => Shopping()));
-    //             // Navigator.pushAndRemoveUntil(
-    //             //     context,
-    //             //     MaterialPageRoute(builder: (BuildContext context) => Shopping()),
-    //             //     ModalRoute.withName('/')
-    //             // );
-    //           },
-    //         ),
-    //       ],
-    //     );
-    //   },
-    // );
     AwesomeDialog(
       context: context,
       dialogType: DialogType.SUCCES,
@@ -627,7 +576,7 @@ class _ShopPayState extends State<ShopPay> {
       btnOkOnPress: () {
         Provider.of<ProductModellist>(context, listen: false).removeAll();
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Updatehome()));
+            MaterialPageRoute(builder: (context) => HomeBottomBar()));
       },
     )..show();
   }

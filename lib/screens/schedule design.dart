@@ -186,7 +186,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                               child: Text("WEEKLY SHEDULE:",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Color(0xFFA79A9A),
+                                      color: Colors.white,
                                       fontSize: width * 0.0428,
                                       fontFamily: fontfamily,
                                       fontWeight: FontWeight.bold))),
@@ -197,12 +197,15 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                           height: height * 0.0702,
                           child: Center(
                             child: DropdownButton<String>(
-                              dropdownColor: Color(0xFF464646),
+                              dropdownColor: Colors.black,
                               value: dropdownValue,
-                              icon: Icon(Icons.arrow_drop_down_sharp),
+                              icon: Icon(
+                                Icons.arrow_drop_down_sharp,
+                                color: Colors.white,
+                              ),
                               iconSize: 44,
                               elevation: 16,
-                              style: TextStyle(color: Color(0xFFA79A9A)),
+                              style: TextStyle(color: Colors.white),
                               underline: Container(
                                 height: 2,
                               ),
@@ -240,7 +243,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   value: value,
                                   child: Text(
                                     value,
-                                    style: TextStyle(fontSize: width * 0.0438),
+                                    style: TextStyle(
+                                        fontSize: width * 0.0438,
+                                        fontFamily: fontfamily),
                                   ),
                                 );
                               }).toList(),
@@ -303,13 +308,11 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             ['show_name']
                                                         .toString(),
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFA39597),
+                                                        color: Colors.white,
                                                         fontSize: 17,
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontFamily:
-                                                            'Montserrat'),
+                                                        fontFamily: fontfamily),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -318,11 +321,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                     superherosLength[day]
                                                         ['post_title'],
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFA19895),
+                                                        color: Colors.white,
                                                         fontSize: 14,
-                                                        fontFamily:
-                                                            'Montserrat'),
+                                                        fontFamily: fontfamily),
                                                   ),
                                                 ),
                                                 Text(
@@ -334,9 +335,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                               ['shows'][j]
                                                           ['show_end_date'],
                                                   style: TextStyle(
-                                                      color: Color(0xFFA19895),
+                                                      color: Colors.white,
                                                       fontSize: 16,
-                                                      fontFamily: 'Montserrat'),
+                                                      fontFamily: fontfamily),
                                                 )
                                               ],
                                             )
