@@ -67,6 +67,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
               ? ListView(
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           children: [
@@ -82,15 +83,12 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                         ),
                         Container(
                           child: Padding(
-                            padding: EdgeInsets.only(right: width * 0.3314),
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 4, right: 60),
-                              child: Text("UPCOMMING SHOWS",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                  )),
-                            ),
+                            padding: const EdgeInsets.only(top: 4, left: 10),
+                            child: Text("UPCOMMING SHOWS",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                )),
                           ),
                         ),
                       ],

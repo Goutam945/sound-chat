@@ -138,6 +138,7 @@ class _UpdatehomeState extends State<Updatehome> {
                           items: <Widget>[
                             for (int i = 0; i < bannerads.length; i++)
                               Container(
+                                width: width * 0.9,
                                 margin: EdgeInsets.symmetric(horizontal: 5.0),
                                 child: CachedNetworkImage(
                                   imageUrl: baseurlimage +
