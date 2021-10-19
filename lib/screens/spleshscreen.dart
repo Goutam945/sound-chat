@@ -22,6 +22,7 @@ class SplashScreenState extends State<SpleshScreen> {
     createScheduleState(context);
     createGalleryState(context);
     createHomesliderState(context);
+    createBanneradsState(context);
     createtermsState(context);
     createMembershipState(context);
     createCoupncodeState(context);

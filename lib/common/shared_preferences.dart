@@ -17,6 +17,22 @@ class Sharedpreferences {
 //    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 //    if(levalid!=null) sharedPreferences.setInt("levalid", levalid);
 //  }
+
+  saveUsernamePassword({String username, String password}) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString('username', username);
+    sharedPreferences.setString('password', password);
+  }
+
+  Future<String> getUsername() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('username');
+  }
+
+  Future<String> getPassword() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('password');
+  }
 }
 
 class SessionData {

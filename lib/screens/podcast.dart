@@ -94,7 +94,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: width * 0.0418,
+                                          fontSize: 16,
                                           fontFamily: fontfamily))),
                             ),
                             Container(
@@ -148,7 +148,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                       child: Text(
                                         value,
                                         style: TextStyle(
-                                            fontSize: width * 0.0438,
+                                            fontSize: 16,
                                             fontFamily: fontfamily),
                                       ),
                                     );

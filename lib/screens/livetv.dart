@@ -1,5 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
+
 /*
 class LiveVideo extends StatefulWidget {
   @override
@@ -102,14 +104,14 @@ class _LiveVideoState extends State<LiveVideo> {
   AudioPlayer audioPlayer = new AudioPlayer(
       playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
 
-  stopaudio()async{
+  stopaudio() async {
     await audioPlayer.stop();
-    play=true;
+    play = true;
     MediaNotification.showNotification(
         title: 'Soundchat Radio', isPlaying: !play);
   }
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -120,13 +122,17 @@ class _LiveVideoState extends State<LiveVideo> {
     super.initState();
   }
 
-  handlePip(){
+  handlePip() {
     Future.delayed(Duration.zero, () async {
-      Provider.of<OverlayHandlerProvider>(context, listen: false).removeOverlay(context);
+      Provider.of<OverlayHandlerProvider>(context, listen: false)
+          .removeOverlay(context);
       Provider.of<OverlayHandlerProvider>(context, listen: false).disablePip();
       pipDisabled = false;
     });
   }
+
+  final TextStyle textStyle = TextStyle(
+      fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -145,9 +151,47 @@ class _LiveVideoState extends State<LiveVideo> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: height * 0.025,
+                height: height * 0.015,
+              ),
+              SizedBox(
+                height: 20,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/air.png',
+                      scale: 10.5,
+                    ),
+                    SizedBox(
+                      width: 7,
+                    ),
+                    AnimatedTextKit(
+                      animatedTexts: [
+                        FadeAnimatedText(
+                          'USA 718-554-8598',
+                          textStyle: textStyle,
+                          duration: const Duration(milliseconds: 2000),
+                        ),
+                        FadeAnimatedText(
+                          'UK 0-208-068-0507',
+                          textStyle: textStyle,
+                          duration: const Duration(milliseconds: 2000),
+                        ),
+                        FadeAnimatedText(
+                          'CANADA 647-484-7826',
+                          textStyle: textStyle,
+                          duration: const Duration(milliseconds: 2000),
+                        ),
+                      ],
+                      totalRepeatCount: 90000,
+                      pause: const Duration(milliseconds: 1000),
+                      displayFullTextOnTap: true,
+                      stopPauseOnTap: true,
+                    ),
+                  ],
+                ),
               ),
               // BetterPlayer(
               //   controller: _betterPlayerController,
@@ -162,7 +206,6 @@ class _LiveVideoState extends State<LiveVideo> {
   }
 }
 
-
 class VideoPlayer extends StatefulWidget {
   const VideoPlayer({Key key}) : super(key: key);
 
@@ -171,7 +214,8 @@ class VideoPlayer extends StatefulWidget {
 }
 
 class _VideoPlayerState extends State<VideoPlayer> {
-  String videoUrl = "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8";
+  String videoUrl =
+      "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8";
   BetterPlayerController _betterPlayerController;
   GlobalKey _betterPlayerKey = GlobalKey();
 
@@ -186,27 +230,30 @@ class _VideoPlayerState extends State<VideoPlayer> {
     });
     // videoPlayerConfig();
     BetterPlayerDataSource dataSource =
-    BetterPlayerDataSource(BetterPlayerDataSourceType.network, videoUrl,
-        liveStream: true,
-        cacheConfiguration: BetterPlayerCacheConfiguration(useCache: false,),
-        videoExtension: "m3u8",
-        notificationConfiguration: BetterPlayerNotificationConfiguration(
-          title: "Sound Chat Radio",
-          imageUrl:
-          "https://soundchatradio.com/wp-content/uploads/2018/10/cropped-logo-soundchat-radioSmall-300x300.png",
-          showNotification: true,
-        ));
+        BetterPlayerDataSource(BetterPlayerDataSourceType.network, videoUrl,
+            liveStream: true,
+            cacheConfiguration: BetterPlayerCacheConfiguration(
+              useCache: false,
+            ),
+            videoExtension: "m3u8",
+            notificationConfiguration: BetterPlayerNotificationConfiguration(
+              title: "Sound Chat Radio",
+              imageUrl:
+                  "https://soundchatradio.com/wp-content/uploads/2018/10/cropped-logo-soundchat-radioSmall-300x300.png",
+              showNotification: true,
+            ));
     _betterPlayerController.setupDataSource(dataSource);
   }
 
-  videoPlayerConfig(){
+  videoPlayerConfig() {
     BetterPlayerConfiguration betterPlayerConfiguration =
-    BetterPlayerConfiguration(
+        BetterPlayerConfiguration(
       // controlsConfiguration: BetterPlayerControlsConfiguration(enablePip: true,pipMenuIcon: IconData(20)),
       aspectRatio: 16 / 9,
       fit: BoxFit.contain,
       autoPlay: true,
-      controlsConfiguration:BetterPlayerControlsConfiguration(enableSkips: false) ,
+      controlsConfiguration:
+          BetterPlayerControlsConfiguration(enableSkips: false),
       eventListener: (event) {
         print(event.betterPlayerEventType);
         print(event.parameters);
@@ -235,7 +282,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
   @override
   void initState() {
     videoPlayerConfig();
-   // createAudioVideoListState(context).whenComplete(() => setUrl());
+    // createAudioVideoListState(context).whenComplete(() => setUrl());
     setUrl();
     super.initState();
   }
@@ -244,7 +291,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
   void dispose() {
     _betterPlayerController.isPictureInPictureSupported().then((value) {
       print(value);
-      if(value)
+      if (value)
         _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
     });
     super.dispose();
@@ -261,4 +308,3 @@ class _VideoPlayerState extends State<VideoPlayer> {
     );
   }
 }
-

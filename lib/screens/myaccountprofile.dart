@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/common/shared_preferences.dart';
 import 'package:sound_chat/stripe_api/cancel_subscription.dart';
 
 class MyAccount extends StatefulWidget {
@@ -42,7 +43,11 @@ class _MyAccountState extends State<MyAccount> {
 
   void remove() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
+    String username = await Sharedpreferences().getUsername();
+    String password = await Sharedpreferences().getPassword();
     await preferences.clear();
+    Sharedpreferences()
+        .saveUsernamePassword(username: username, password: password);
   }
 
   Future<void> showMyDialog() async {

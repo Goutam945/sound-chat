@@ -273,7 +273,9 @@ class _DesignLogin extends State<NewLogin> {
 
 */
 import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/common/shared_preferences.dart';
 
 class NewLogin extends StatefulWidget {
   @override
@@ -285,12 +287,14 @@ class _DesignLogin extends State<NewLogin> {
   @override
   void initState() {
     super.initState();
+    getuserpassword();
   }
 
   final formKey = GlobalKey<FormState>();
   final TextEditingController _name = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool loader = false;
+  bool isRemembered = false;
   InputBorder border = OutlineInputBorder(
     borderSide: const BorderSide(color: Color(0xFFA6B3BC), width: 2.0),
     borderRadius: BorderRadius.circular(30.0),
@@ -317,6 +321,15 @@ class _DesignLogin extends State<NewLogin> {
         code: "ERROR_ABORDER_BY_USER",
       );
     }
+  }
+
+  getuserpassword() {
+    Sharedpreferences().getUsername().then((value) {
+      _name.text = value;
+    });
+    Sharedpreferences().getPassword().then((value) {
+      _password.text = value;
+    });
   }
 
   @override
@@ -445,23 +458,37 @@ class _DesignLogin extends State<NewLogin> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/check50.png',
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Remember me",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: fontfamily),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isRemembered = !isRemembered;
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              // Image.asset(
+                              //   'assets/check50.png',
+                              // ),
+                              Icon(
+                                Icons.check_circle_rounded,
+                                size: 30,
+                                color: isRemembered
+                                    ? Colors.green
+                                    : Color(0xFFA6B3BC),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Remember me",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: fontfamily),
+                              ),
+                            ],
+                          ),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -492,8 +519,8 @@ class _DesignLogin extends State<NewLogin> {
                       GestureDetector(
                         onTap: () {
                           if (formKey.currentState.validate()) {
-                            createLoginState(
-                                    _name.text, _password.text, context)
+                            createLoginState(_name.text, _password.text,
+                                    isRemembered, context)
                                 .whenComplete(() {
                               setState(() {
                                 loader = false;

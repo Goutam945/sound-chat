@@ -43,6 +43,7 @@ class _UpdatehomeState extends State<Updatehome> {
   var endTime;
   var endTimeMin;
   String show = '22:00-23:59';
+  int showtime = 0;
   var homeslider;
   var bannerads;
   int imageNo = 0;
@@ -53,6 +54,9 @@ class _UpdatehomeState extends State<Updatehome> {
   void initState() {
     super.initState();
     _loadSavedData().then((value) => createSubcriptionlevalState(id, context));
+    setState(() {
+      weekday = 7 - DateTime.now().weekday;
+    });
 
     //apis calls
     createVideoState(context);
@@ -93,6 +97,13 @@ class _UpdatehomeState extends State<Updatehome> {
     if (Provider.of<BanneradsResponse>(context, listen: false).data != null)
       bannerads =
           Provider.of<BanneradsResponse>(context, listen: false).data['data'];
+
+    if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
+      timeAndDate =
+          Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+
+    showtime = getschedule(context: context);
+
     return SafeArea(
         child: Scaffold(
       extendBody: true,
@@ -228,7 +239,7 @@ class _UpdatehomeState extends State<Updatehome> {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
                                 height: 40,
@@ -255,7 +266,10 @@ class _UpdatehomeState extends State<Updatehome> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      "Wake Up Radio",
+                                      timeAndDate[weekday]['shows'][showtime]
+                                              ['show_name']
+                                          .toString(),
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,

@@ -46,7 +46,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
   var homeslider;
   int imageNo = 0;
   bool isButtonPressed = false;
-  var upcomingshow;
+  int showtime = 0;
 
   @override
   void initState() {
@@ -155,8 +155,11 @@ class _ListenlivepageState extends State<Listenlivepage> {
       homeslider =
           Provider.of<HomesliderResponse>(context, listen: false).data['data'];
     if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
-      upcomingshow =
+      timeAndDate =
           Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+
+    showtime = getschedule(context: context);
+
     return SafeArea(
         child: Scaffold(
       extendBody: true,
@@ -228,7 +231,8 @@ class _ListenlivepageState extends State<Listenlivepage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    "SoundChat Talk Show",
+                    timeAndDate[weekday]['shows'][showtime]['show_name']
+                        .toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -339,7 +343,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                       offset: Offset(0, 0), // changes position of shadow
                     ),
                   ]),
-              child: (upcomingshow != null)
+              child: (timeAndDate != null)
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -364,7 +368,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               for (int i = 0;
-                                  i < upcomingshow[day]['shows'].length;
+                                  i < timeAndDate[day]['shows'].length;
                                   i++)
                                 Row(
                                   children: [

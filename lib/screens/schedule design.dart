@@ -187,7 +187,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: width * 0.0428,
+                                      fontSize: 16,
                                       fontFamily: fontfamily,
                                       fontWeight: FontWeight.bold))),
                         ),
@@ -244,8 +244,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   child: Text(
                                     value,
                                     style: TextStyle(
-                                        fontSize: width * 0.0438,
-                                        fontFamily: fontfamily),
+                                        fontSize: 16, fontFamily: fontfamily),
                                   ),
                                 );
                               }).toList(),

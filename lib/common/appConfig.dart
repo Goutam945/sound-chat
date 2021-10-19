@@ -16,3 +16,5 @@ const String publicationKey =
 const String secretKey =
     'sk_test_51IcrCaSGgp78HSWonqKdKI1a4DBeu3sSN44Yb6kR2yg4XzAsll1AflVCP8fEbhf7dleQj2pjf89QKwZ9EtN9jvWn00h0a5NKH3';
 const String stripebaseurl = 'https://api.stripe.com';
+const String dummyvideourl =
+    'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
