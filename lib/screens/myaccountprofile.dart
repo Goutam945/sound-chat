@@ -101,6 +101,7 @@ class _MyAccountState extends State<MyAccount> {
               ],
             ),
             body: Container(
+              height: height,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
