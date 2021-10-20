@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
 
 class GalleryDesign extends StatefulWidget {
@@ -16,6 +17,7 @@ class _GalleryDesign extends State<GalleryDesign> {
   @override
   void initState() {
     super.initState();
+    createGalleryState(context);
     _loadSavedData();
   }
 
@@ -316,11 +318,14 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                   Navigator.of(context).push(
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              FullImage(superherosLength[
-                                                                          imgcount]
-                                                                      [
-                                                                      'img_gallery_pic']
-                                                                  [j + 0])));
+                                                              FullImage(
+                                                                images: superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'img_gallery_pic'],
+                                                                currentIndex:
+                                                                    j + 0,
+                                                              )));
                                                 },
                                                 child: Container(
                                                   width: width * 0.3997,
@@ -362,11 +367,14 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                   Navigator.of(context).push(
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              FullImage(superherosLength[
-                                                                          imgcount]
-                                                                      [
-                                                                      'img_gallery_pic']
-                                                                  [j + 1])));
+                                                              FullImage(
+                                                                images: superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'img_gallery_pic'],
+                                                                currentIndex:
+                                                                    j + 1,
+                                                              )));
                                                 },
                                                 child: Container(
                                                   width: width * 0.3997,
@@ -414,11 +422,14 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                   Navigator.of(context).push(
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                              FullImage(superherosLength[
-                                                                          imgcount]
-                                                                      [
-                                                                      'img_gallery_pic']
-                                                                  [j + 2])));
+                                                              FullImage(
+                                                                images: superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'img_gallery_pic'],
+                                                                currentIndex:
+                                                                    j + 2,
+                                                              )));
                                                 },
                                                 child: Container(
                                                   width: width * 0.3997,
@@ -457,14 +468,16 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                 j + 3)
                                               GestureDetector(
                                                 onTap: () {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              FullImage(superherosLength[
-                                                                          imgcount]
-                                                                      [
-                                                                      'img_gallery_pic']
-                                                                  [j + 3])));
+                                                  Navigator.of(context)
+                                                      .push(MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        FullImage(
+                                                      images: superherosLength[
+                                                              imgcount]
+                                                          ['img_gallery_pic'],
+                                                      currentIndex: j + 3,
+                                                    ),
+                                                  ));
                                                 },
                                                 child: Container(
                                                   width: width * 0.3997,
@@ -526,27 +539,90 @@ class _GalleryDesign extends State<GalleryDesign> {
   }
 }
 
-class FullImage extends StatefulWidget {
-  final image;
-  FullImage(this.image);
-  @override
-  _FullImageState createState() => _FullImageState();
-}
+// class FullImage extends StatefulWidget {
+//   final image;
+//   FullImage(this.image);
+//   @override
+//   _FullImageState createState() => _FullImageState();
+// }
 
-class _FullImageState extends State<FullImage> {
+// class _FullImageState extends State<FullImage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: Colors.black,
+//         appBar: PreferredSize(
+//             preferredSize: Size.fromHeight(55), child: Backappbar()),
+//         body: Center(
+//           child: Container(
+//             child: PhotoView(
+//               imageProvider: CachedNetworkImageProvider(widget.image),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+class FullImage extends StatelessWidget {
+  final List images;
+  final int currentIndex;
+  const FullImage({Key key, this.images, this.currentIndex}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        appBar: PreferredSize(
-            preferredSize: Size.fromHeight(55), child: Backappbar()),
-        body: Center(
-          child: Container(
-            child: PhotoView(
-              imageProvider: CachedNetworkImageProvider(widget.image),
+        body: Stack(
+          children: [
+            CarouselSlider(
+              options: CarouselOptions(
+                height: height,
+                initialPage: currentIndex,
+                autoPlay: false,
+                enlargeCenterPage: true,
+                viewportFraction: 1,
+                autoPlayInterval: Duration(seconds: 10),
+                autoPlayAnimationDuration: Duration(seconds: 5),
+              ),
+              items: <Widget>[
+                for (int i = 0; i < images.length; i++)
+                  Container(
+                    width: width,
+                    height: height,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    child: PhotoView(
+                      imageProvider: CachedNetworkImageProvider(images[i]),
+                    ),
+                    // child: CachedNetworkImage(
+                    //   imageUrl: images[i],
+                    //   fit: BoxFit.fitWidth,
+                    //   placeholder: (context, url) => SizedBox(
+                    //     child: Shimmer.fromColors(
+                    //         baseColor: Colors.red,
+                    //         highlightColor: Colors.yellow,
+                    //         child: Container(
+                    //           color: Colors.black12,
+                    //         )),
+                    //   ),
+                    //   errorWidget: (context, url, error) => Icon(Icons.error),
+                    // ),
+                  ),
+              ],
             ),
-          ),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ))
+          ],
         ),
       ),
     );

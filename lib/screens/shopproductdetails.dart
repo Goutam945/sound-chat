@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+
 class ShopProductdetails extends StatefulWidget {
   final product;
   ShopProductdetails(this.product);
@@ -11,12 +12,13 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   void initState() {
     super.initState();
   }
+
   var cart;
   int _itemCount = 1;
   String dropdownValue = 'Black';
   String dropdownSize = 'S';
   //String size='S';
-  List<bool>butoncolor=[for(int i=0;i<4;i++)true];
+  List<bool> butoncolor = [for (int i = 0; i < 4; i++) true];
   bool itemFound = false;
   var countprice;
   //int id=2; live id add and remove on final id
@@ -24,7 +26,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    cart= context.watch<ProductModellist>();
+    cart = context.watch<ProductModellist>();
     return SafeArea(
       child: Stack(children: [
         Scaffold(
@@ -49,26 +51,46 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         onPressed: () {
                           Vibration.vibrate();
                           //comdition check on iteam dulicate
-                          for(int i=0;i<cart.cart1.length;i++)
+                          for (int i = 0; i < cart.cart1.length; i++)
                             // if(widget.id==cart.cart1[i].id)
-                            if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownValue==cart.cart1[i].color )
+                            if (cart.cart1.length >= 1 &&
+                                widget.product == cart.cart1[i].id &&
+                                dropdownSize == cart.cart1[i].size &&
+                                dropdownValue == cart.cart1[i].color)
                               setState(() {
-                                itemFound=true;
+                                itemFound = true;
                                 cart.cart1[i].quantity++;
-                                countprice=cart.cart1[i].price;
-                                countprice= cart.cart1[i].price+cart.cart1[i].price;//price coutnt in plus
-                                cart.sum1=cart.sum1+cart.cart1[i].price;
+                                countprice = cart.cart1[i].price;
+                                countprice = cart.cart1[i].price +
+                                    cart.cart1[i].price; //price coutnt in plus
+                                cart.sum1 = cart.sum1 + cart.cart1[i].price;
                               });
-                            else{setState(() {
-                              itemFound=false;
-                            });}
-                          if(!itemFound)//endd*/
-                            Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['image'],context);
+                            else {
+                              setState(() {
+                                itemFound = false;
+                              });
+                            }
+                          if (!itemFound) //endd*/
+                            Provider.of<ProductModellist>(context,
+                                    listen: false)
+                                .add1(
+                                    widget.product['title'],
+                                    double.parse(widget.product['Price']),
+                                    dropdownSize,
+                                    dropdownValue,
+                                    _itemCount,
+                                    widget.product['id'],
+                                    widget.product['image'],
+                                    context);
                           print(cart.cart1.length.toString());
                           Toast.show("Added to cart", context,
-                              duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                              duration: Toast.LENGTH_SHORT,
+                              gravity: Toast.BOTTOM);
                         },
-                        child: Text('Add to Cart',style: TextStyle(fontSize: 15,color: Colors.white),),
+                        child: Text(
+                          'Add to Cart',
+                          style: TextStyle(fontSize: 15, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -82,14 +104,24 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           end: FractionalOffset.centerRight,
                         ),
                       ),
-                      child:  TextButton(
+                      child: TextButton(
                         onPressed: () {
                           Vibration.vibrate();
-                          Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,
-                              widget.product['id'],
-                              widget.product['image'],context);
+                          Provider.of<ProductModellist>(context, listen: false)
+                              .addbuynow(
+                                  widget.product['title'],
+                                  double.parse(widget.product['Price']),
+                                  dropdownSize,
+                                  dropdownValue,
+                                  _itemCount,
+                                  widget.product['id'],
+                                  widget.product['image'],
+                                  context);
                         },
-                        child: Text('Buy Now',style: TextStyle(fontSize: 15,color: Colors.white),),
+                        child: Text(
+                          'Buy Now',
+                          style: TextStyle(fontSize: 15, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -102,30 +134,34 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                   height: 300,
                   child: PageView(
                     children: [
-                     //for (int j = 0; j < widget.product['images'].length; j++)
-                        GestureDetector(
-                          child: CachedNetworkImage(
-                            //imageUrl:widget.product[j]['images'],
-                            imageUrl:widget.product['image'],
-                            fit: BoxFit.fill,
-                            placeholder: (context, url) => Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
-                          onTap: (){
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType
-                                        .scale,
-                                    child: FullImage(widget.product['image'])));
-                          },
+                      //for (int j = 0; j < widget.product['images'].length; j++)
+                      GestureDetector(
+                        child: CachedNetworkImage(
+                          //imageUrl:widget.product[j]['images'],
+                          imageUrl: widget.product['image'],
+                          fit: BoxFit.fill,
+                          placeholder: (context, url) =>
+                              Center(child: CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
                         ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.scale,
+                                  child: FullImage(
+                                    images: [widget.product['image']],
+                                    currentIndex: 0,
+                                  )));
+                        },
+                      ),
                     ],
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(widget.product['title'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -133,7 +169,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         fontSize: 20,
                         fontFamily: 'Montserrat1',
                         fontWeight: FontWeight.bold)),
-                Text("\$"+widget.product['Price'],
+                Text("\$" + widget.product['Price'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.red,
@@ -201,16 +237,24 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
 
                   ],
                 ),*/
-                SizedBox(height: height*0.0146,),
-                Row(mainAxisAlignment: MainAxisAlignment.start,
+                SizedBox(
+                  height: height * 0.0146,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(padding: EdgeInsets.only(left: width*0.0186,),
+                    Container(
+                      padding: EdgeInsets.only(
+                        left: width * 0.0186,
+                      ),
                       height: height * 0.0702,
                       child: Center(
-                        child: Text("Size:   ",style: TextStyle(
-                            color: Color(0xFF535353),
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),),
+                        child: Text("Size:   ",
+                            style: TextStyle(
+                                color: Color(0xFF535353),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ),
                     ),
                     Container(
                       color: Color(0xFF464646),
@@ -232,15 +276,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               dropdownSize = newValue;
                             });
                           },
-                          items: <String>[
-                            'S',
-                            'M',
-                            'L',
-                            'XL',
-                            '2XL',
-                            '3XL'
-
-                          ].map<DropdownMenuItem<String>>((String value) {
+                          items: <String>['S', 'M', 'L', 'XL', '2XL', '3XL']
+                              .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
@@ -255,16 +292,24 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                   ],
                 ),
 
-                SizedBox(height: height*0.0146,),
-                Row(mainAxisAlignment: MainAxisAlignment.start,
+                SizedBox(
+                  height: height * 0.0146,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(padding: EdgeInsets.only(left: width*0.0186,),
+                    Container(
+                      padding: EdgeInsets.only(
+                        left: width * 0.0186,
+                      ),
                       height: height * 0.0702,
                       child: Center(
-                          child: Text("Color: ",style: TextStyle(
-                              color: Color(0xFF535353),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold)),),
+                        child: Text("Color: ",
+                            style: TextStyle(
+                                color: Color(0xFF535353),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ),
                     ),
                     Container(
                       color: Color(0xFF464646),
@@ -286,13 +331,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               dropdownValue = newValue;
                             });
                           },
-                          items: <String>[
-                            'Black',
-                            'Blue',
-                            'Red',
-                            'Yellow'
-
-                          ].map<DropdownMenuItem<String>>((String value) {
+                          items: <String>['Black', 'Blue', 'Red', 'Yellow']
+                              .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
@@ -307,7 +347,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                   ],
                 ),
 
-                SizedBox(height: height*0.0146,),
+                SizedBox(
+                  height: height * 0.0146,
+                ),
                 // Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 //   children: <Widget>[
                 //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
@@ -344,7 +386,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 //     ),
                 //   ],
                 // )
-
               ],
             )),
         Positioned(

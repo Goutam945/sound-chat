@@ -62,7 +62,6 @@ class _UpdatehomeState extends State<Updatehome> {
     createVideoState(context);
     createPhoneinterviewState(context);
     createScheduleState(context);
-    createGalleryState(context);
     createHomesliderState(context);
     createAllproductState(context);
     createtermsState(context);
