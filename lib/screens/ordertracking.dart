@@ -8,28 +8,41 @@ class StepperDemo extends StatefulWidget {
   @override
   StepperDemoState createState() => StepperDemoState();
 }
+
 class StepperDemoState extends State<StepperDemo> {
   //
   int currentstep = 0;
   List<Step> steps = [
     Step(
-      title: Text('Order',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-      content: Text('Your Order has been placed',),
+      title: Text('Order',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+      content: Text(
+        'Your Order has been placed',
+      ),
       isActive: true,
     ),
     Step(
-      title: Text('Packed',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-      content: Text('Seller has Processed your order',),
+      title: Text('Packed',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+      content: Text(
+        'Seller has Processed your order',
+      ),
       isActive: true,
     ),
     Step(
-      title: Text('Shipped',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-      content: Text('COD EKart Express',),
+      title: Text('Shipped',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+      content: Text(
+        'COD EKart Express',
+      ),
       isActive: true,
     ),
     Step(
-      title: Text('Deliverd',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-      content: Text('Succesfully deliverd',),
+      title: Text('Deliverd',
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+      content: Text(
+        'Succesfully deliverd',
+      ),
       isActive: true,
       state: StepState.complete,
     ),
@@ -38,7 +51,7 @@ class StepperDemoState extends State<StepperDemo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(backwardsCompatibility: true,
+        appBar: AppBar(
           // Title
           backgroundColor: Color(0xFFE18D13),
           title: Text("Order Status"),
@@ -46,13 +59,9 @@ class StepperDemoState extends State<StepperDemo> {
         // Body
         body: Theme(
           data: ThemeData(
-            accentColor: Colors.red,
-            primarySwatch: Colors.red,
-            colorScheme: ColorScheme.light(
-                primary: Colors.red
-
-            )
-        ),
+              accentColor: Colors.red,
+              primarySwatch: Colors.red,
+              colorScheme: ColorScheme.light(primary: Colors.red)),
           child: Stepper(
             currentStep: this.currentstep,
             steps: steps,

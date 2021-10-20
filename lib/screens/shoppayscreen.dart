@@ -609,7 +609,6 @@ class _ShopPayState extends State<ShopPay> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Color(0xFFE18D13),
-          backwardsCompatibility: true,
         ),
         bottomNavigationBar: Container(
           height: height * 0.0731,

@@ -303,7 +303,8 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          if (formKey.currentState.validate()) {
+                          if (formKey.currentState.validate() &&
+                              value != false) {
                             setState(() {
                               loader = true;
                             });
@@ -319,8 +320,10 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                                     widget.phone,
                                     widget.country,
                                     _coupon.text,
-                                    base64Encode(
-                                        File(_image.path).readAsBytesSync()),
+                                    (_image != null)
+                                        ? base64Encode(
+                                            File(_image.path).readAsBytesSync())
+                                        : '',
                                     context)
                                 .whenComplete(() {
                               setState(() {
@@ -331,6 +334,11 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                               //         builder: (context) =>
                               //         (widget.user['payment_type']=='payment')?PaymentDetailsMember(widget.user,widget.lid):DesignLogin()));
                             });
+                          } else {
+                            Toast.show(
+                                "Please fill all mandatory fields", context,
+                                duration: Toast.LENGTH_SHORT,
+                                gravity: Toast.BOTTOM);
                           }
                         },
                         child: Container(
