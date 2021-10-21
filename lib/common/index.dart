@@ -5,7 +5,7 @@ export 'dart:convert';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_media_notification/flutter_media_notification.dart';
-export 'package:youtube_player_flutter/youtube_player_flutter.dart';
+//export 'package:youtube_player_flutter/youtube_player_flutter.dart';
 export 'package:sound_chat/api/login.dart';
 export 'package:toast/toast.dart';
 export 'package:sound_chat/screens/subcribtions.dart';

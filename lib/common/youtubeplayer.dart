@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sound_chat/common/index.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+
+import 'appConfig.dart';
 
 //import 'index.dart';
 
@@ -104,17 +107,20 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class Youtubeplayer extends StatefulWidget {
   final String videoURL;
-  final ontap;
 
   @override
   VideoState createState() => VideoState();
 
-  Youtubeplayer(Key key, this.videoURL, this.ontap) : super(key: key);
+  Youtubeplayer(
+    this.videoURL,
+  );
 }
 
 class VideoState extends State<Youtubeplayer> {
   //YoutubePlayerController _controller;
   YoutubePlayerController _ytbPlayerController;
+  Stream stream = streamController.stream;
+  StreamSubscription streamsub;
   String getVideoID(String url) {
     url = url.replaceAll("https://www.youtube.com/watch?v=", "");
     url = url.replaceAll("https://m.youtube.com/watch?v=", "");
@@ -123,7 +129,12 @@ class VideoState extends State<Youtubeplayer> {
   }
 
   load() {
-    _ytbPlayerController.load(getVideoID(widget.videoURL));
+    //_ytbPlayerController.load(getVideoID(widget.videoURL));
+
+    streamsub = stream.listen((event) {
+      _ytbPlayerController.load(getVideoID(event));
+      print("GOUTAM" + event);
+    });
   }
 
   @override
@@ -169,6 +180,7 @@ class VideoState extends State<Youtubeplayer> {
   @override
   void dispose() {
     _ytbPlayerController.close();
+    streamsub.cancel();
     super.dispose();
   }
 

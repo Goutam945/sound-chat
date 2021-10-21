@@ -67,6 +67,9 @@ Future<SignUpResponse> createSignUpState(
       Toast.show(message, context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       return SignUpResponse.fromJson(json.decode(response.body));
+    } else {
+      Toast.show(data['message'], context,
+          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     }
     return SignUpResponse.fromJson(json.decode(response.body));
   } else {

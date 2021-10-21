@@ -7,7 +7,6 @@ class AllHomeInterview extends StatefulWidget {
 }
 
 class _AllHomeInterviewState extends State<AllHomeInterview> {
-  YoutubePlayerController youtubeController;
   double videoheight = 1.356;
   double videowidth = 1.018;
   String url;
@@ -162,16 +161,15 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                         left: 20,
                                                         child: GestureDetector(
                                                           onTap: () {
-                                                            Navigator.of(context).push(MaterialPageRoute(
-                                                                builder: (context) => InterviewNewPlayer(
-                                                                    superherosLength[
-                                                                            'free_content'][i]
-                                                                        [
-                                                                        'video_url'],
-                                                                    superherosLength[
-                                                                            'free_content'][i]
-                                                                        [
-                                                                        'post_title'])));
+                                                            Navigator.of(context).push(
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            InterviewNewPlayer(
+                                                                              superherosLength['free_content'][i]['video_url'],
+                                                                              superherosLength['free_content'][i]['post_title'],
+                                                                              superherosLength['free_content'][i]['post_excerpt'],
+                                                                            )));
                                                           },
                                                           child: Container(
                                                             height: 35,
@@ -448,7 +446,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                   builder: (context) => (email == null)
                                                                       ? NewLogin()
                                                                       : (membership != null)
-                                                                          ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'])
+                                                                          ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'])
                                                                           : UpgradeSubscription()));
                                                               // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                                                             },
@@ -614,7 +612,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                             'video_url'],
                                                                         superherosLength['yellow_content'][i]
                                                                             [
-                                                                            'post_title'])));
+                                                                            'post_title'],
+                                                                        superherosLength['yellow_content'][i]
+                                                                            [
+                                                                            'post_excerpt'])));
                                                               });
                                                             },
                                                           )),
@@ -771,14 +772,14 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                             ),
                                                             onTap: () {
                                                               setState(() {
-                                                                Navigator.of(context).push(MaterialPageRoute(
-                                                                    builder: (context) => InterviewNewPlayer(
-                                                                        superherosLength['free_content'][i]
-                                                                            [
-                                                                            'video_url'],
-                                                                        superherosLength['free_content'][i]
-                                                                            [
-                                                                            'post_title'])));
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .push(MaterialPageRoute(
+                                                                        builder: (context) => InterviewNewPlayer(
+                                                                              superherosLength['free_content'][i]['video_url'],
+                                                                              superherosLength['free_content'][i]['post_title'],
+                                                                              superherosLength['free_content'][i]['post_excerpt'],
+                                                                            )));
                                                               });
                                                             },
                                                           )),
@@ -934,14 +935,14 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                             ),
                                                             onTap: () {
                                                               setState(() {
-                                                                Navigator.of(context).push(MaterialPageRoute(
-                                                                    builder: (context) => PhoneinteviewPlayer(
-                                                                        phonesuperherosLength[i]
-                                                                            [
-                                                                            'video_url'],
-                                                                        phonesuperherosLength[i]
-                                                                            [
-                                                                            'post_title'])));
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .push(MaterialPageRoute(
+                                                                        builder: (context) => PhoneinteviewPlayer(
+                                                                              phonesuperherosLength[i]['video_url'],
+                                                                              phonesuperherosLength[i]['post_title'],
+                                                                              phonesuperherosLength[i]['post_excerpt'],
+                                                                            )));
                                                               });
                                                             },
                                                           )),

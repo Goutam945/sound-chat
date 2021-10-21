@@ -9,6 +9,11 @@ Future<Crteatecustomer> createcustomerState(
     'Authorization': 'Bearer $secretKey'
   }, body: {
     'name': '$firstname $lastname',
+    'address[line1]': '510 Townsend St',
+    'address[postal_code]': '98140',
+    'address[city]': 'San Francisco',
+    'address[state]': 'CA',
+    'address[country]': 'US',
     'email': email,
     'phone': phone,
     'payment_method': paymentMethod,

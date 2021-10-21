@@ -19,7 +19,6 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
   bool isTrue = true;
   String imageUrl;
   String titlepost;
-  YoutubePlayerController youtubeController;
   double videoheight = 0.356;
   double videowidth = 1.018;
   bool roated = true;
@@ -28,6 +27,8 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
   void initState() {
     super.initState();
     _loadSavedData();
+    url = widget.playvideo;
+    titlepost = widget.title;
   }
 
   _loadSavedData() async {
@@ -63,51 +64,13 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
                       width: width,
                       color: Color(0xFF780001),
                     ),
-                    (isTrue)
-                        ? Expanded(
-                            child: Container(
-                                //  height: height * videoheight,
-                                width: width * videowidth,
-                                child: Youtubeplayer(
-                                    globalKey, url ?? widget.playvideo, () {
-                                  setState(() {
-                                    roated = !roated;
-                                  });
-                                })),
-                          )
-                        : Container(
-                            height: height * 0.346,
-                            child: Stack(
-                              children: [
-                                SizedBox(
-                                  height: height * 0.346,
-                                  width: width,
-                                  child: CachedNetworkImage(
-                                    imageUrl: imageUrl,
-                                    fit: BoxFit.fill,
-                                    placeholder: (context, url) => Center(
-                                        child: CircularProgressIndicator()),
-                                    errorWidget: (context, url, error) =>
-                                        Icon(Icons.error),
-                                  ),
-                                ),
-                                Center(
-                                  child: IconButton(
-                                    icon: Icon(
-                                      Icons.play_circle_fill,
-                                      color: Colors.red,
-                                      size: 45,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        isTrue = !isTrue;
-                                      });
-                                    },
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                    Expanded(
+                      child: SizedBox(
+                        child: Youtubeplayer(
+                          url,
+                        ),
+                      ),
+                    ),
                     Column(
                       children: [
                         Container(
@@ -115,7 +78,7 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Center(
-                              child: Text(titlepost ?? widget.title,
+                              child: Text(titlepost,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Color(0xFFF5F6F8),
@@ -199,9 +162,8 @@ class _SInterviewNewPlayer extends State<SearchinterviewNewPlayer> {
                                                           titlepost = video[i]
                                                               ['post_title'];
 
-                                                          //isTrue = false;
-                                                          globalKey.currentState
-                                                              .load();
+                                                          streamController
+                                                              .add(url);
                                                         });
                                                       },
                                                     ))),

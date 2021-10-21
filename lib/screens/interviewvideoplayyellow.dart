@@ -1,9 +1,9 @@
 import 'package:sound_chat/common/index.dart';
 
 class InterviewPlay extends StatefulWidget {
-  final playvideo, title;
+  final playvideo, title, content;
 
-  InterviewPlay(this.playvideo, this.title);
+  InterviewPlay(this.playvideo, this.title, this.content);
 
   @override
   _InterviewDesign createState() => _InterviewDesign();
@@ -17,7 +17,7 @@ class _InterviewDesign extends State<InterviewPlay> {
   bool isTrue = true;
   String imageUrl;
   String titlepost;
-  YoutubePlayerController youtubeController;
+  String content;
   double videoheight = 0.356;
   double videowidth = 1.018;
   String email, name;
@@ -27,6 +27,9 @@ class _InterviewDesign extends State<InterviewPlay> {
   void initState() {
     super.initState();
     _loadSavedData();
+    content = widget.content;
+    url = widget.playvideo;
+    titlepost = widget.title;
   }
 
   _loadSavedData() async {
@@ -72,75 +75,14 @@ class _InterviewDesign extends State<InterviewPlay> {
                           colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
                   child: Column(
                     children: [
-                      (isTrue)
-                          ? Expanded(
-                              child: Container(
-                                  // height: height * videoheight,
-                                  width: width * videowidth,
-                                  child: Youtubeplayer(
-                                      globalKey, url ?? widget.playvideo, () {
-                                    setState(() {
-                                      roated = !roated;
-                                    });
-                                  })),
-                            )
-                          : Container(
-                              height: height * 0.346,
-                              child: Stack(
-                                children: [
-                                  SizedBox(
-                                    height: height * 0.346,
-                                    width: width,
-                                    child: CachedNetworkImage(
-                                      imageUrl: imageUrl,
-                                      fit: BoxFit.fill,
-                                      placeholder: (context, url) => Center(
-                                          child: CircularProgressIndicator()),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: GestureDetector(
-                                      child: Container(
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                                color: Colors.white, width: 2)),
-                                        child: Icon(Icons.play_arrow,
-                                            size: 50, color: Colors.white),
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          isTrue = !isTrue;
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                      Expanded(
+                        child: SizedBox(
+                          child: Youtubeplayer(
+                            url,
+                          ),
+                        ),
+                      ),
                       if (roated)
-                        /*  Column(
-                          children: [
-                            Container(
-                              color: Color(0xFFB91F24),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 10),
-                                child: Center(
-                                  child: Text(titlepost ?? widget.title,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Montserrat')),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),*/
                         Row(
                           children: [
                             SizedBox(
@@ -174,7 +116,7 @@ class _InterviewDesign extends State<InterviewPlay> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Center(
-                                      child: Text(titlepost ?? widget.title,
+                                      child: Text(titlepost,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Color(0xFFF5F6F8),
@@ -215,8 +157,7 @@ class _InterviewDesign extends State<InterviewPlay> {
                                       top: 5,
                                     ),
                                     child: Text(
-                                        "Multiple Grammy award winning artist Multiple Grammy award winning artist Multiple Grammy award winning artist Multiple Grammy award winning artist ",
-                                        // textAlign: TextAlign.center,
+                                        content, // textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 14,
@@ -298,11 +239,13 @@ class _InterviewDesign extends State<InterviewPlay> {
                                                                     'yellow_content']
                                                                 [
                                                                 i]['post_title'];
+                                                            content = superherosLength[
+                                                                    'yellow_content'][i]
+                                                                [
+                                                                'post_excerpt'];
 
-                                                            //isTrue = false;
-                                                            globalKey
-                                                                .currentState
-                                                                .load();
+                                                            streamController
+                                                                .add(url);
                                                           });
                                                         },
                                                       ))),

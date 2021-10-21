@@ -603,51 +603,51 @@ class GallerySlider extends StatelessWidget {
   }
 }
 
-class YoutubePlayer1 extends StatefulWidget {
-  final videoURL;
-  final ontap;
+// class YoutubePlayer1 extends StatefulWidget {
+//   final videoURL;
+//   final ontap;
 
-  @override
-  _YoutubePlayer1State createState() => _YoutubePlayer1State();
+//   @override
+//   _YoutubePlayer1State createState() => _YoutubePlayer1State();
 
-  YoutubePlayer1(this.videoURL, this.ontap);
-}
+//   YoutubePlayer1(this.videoURL, this.ontap);
+// }
 
-class _YoutubePlayer1State extends State<YoutubePlayer1> {
-  YoutubePlayerController _controller;
+// class _YoutubePlayer1State extends State<YoutubePlayer1> {
+//   YoutubePlayerController _controller;
 
-  @override
-  void initState() {
-    _controller = YoutubePlayerController(
-        initialVideoId: YoutubePlayer.convertUrlToId(widget.videoURL),
-        flags: YoutubePlayerFlags());
-    super.initState();
-  }
+//   @override
+//   void initState() {
+//     _controller = YoutubePlayerController(
+//         initialVideoId: YoutubePlayer.convertUrlToId(widget.videoURL),
+//         flags: YoutubePlayerFlags());
+//     super.initState();
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(
-          child: YoutubePlayerBuilder(
-            onEnterFullScreen: widget.ontap,
-            onExitFullScreen: widget.ontap,
-            player: YoutubePlayer(
-              controller: _controller,
-              aspectRatio: 16 / 9,
-              showVideoProgressIndicator: true,
-            ),
-            builder: (context, player) {
-              return Column(
-                children: <Widget>[
-                  player,
-                ],
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         backgroundColor: Colors.black,
+//         body: Center(
+//           child: YoutubePlayerBuilder(
+//             onEnterFullScreen: widget.ontap,
+//             onExitFullScreen: widget.ontap,
+//             player: YoutubePlayer(
+//               controller: _controller,
+//               aspectRatio: 16 / 9,
+//               showVideoProgressIndicator: true,
+//             ),
+//             builder: (context, player) {
+//               return Column(
+//                 children: <Widget>[
+//                   player,
+//                 ],
+//               );
+//             },
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

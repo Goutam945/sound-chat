@@ -359,16 +359,15 @@ class _UpdatehomeState extends State<Updatehome> {
                                                               Icon(Icons.error),
                                                         ),
                                                         onTap: () {
-                                                          Navigator.of(context).push(MaterialPageRoute(
-                                                              builder: (context) => InterviewNewPlayer(
-                                                                  superherosLength[
-                                                                          'free_content'][i]
-                                                                      [
-                                                                      'video_url'],
-                                                                  superherosLength[
-                                                                          'free_content'][i]
-                                                                      [
-                                                                      'post_title'])));
+                                                          Navigator.of(context).push(
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          InterviewNewPlayer(
+                                                                            superherosLength['free_content'][i]['video_url'],
+                                                                            superherosLength['free_content'][i]['post_title'],
+                                                                            superherosLength['free_content'][i]['post_excerpt'],
+                                                                          )));
                                                         },
                                                       ))),
                                               /*  Opacity(
