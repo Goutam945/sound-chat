@@ -38,7 +38,12 @@ class _MyAccountState extends State<MyAccount> {
   void initState() {
     super.initState();
     // _loadSavedData().then((value) => print("USERID"+value.toString()));
-    _loadSavedData().then((value) => createSubcriptionlevalState(id, context));
+    _loadSavedData()
+        .then((value) => createSubcriptionlevalState(id, context).then((value) {
+              setState(() {
+                data = value.data['data'];
+              });
+            }));
   }
 
   void remove() async {
@@ -75,10 +80,10 @@ class _MyAccountState extends State<MyAccount> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    if (Provider.of<SubcriptionlevalResponse>(context, listen: false).data !=
-        null)
-      data = Provider.of<SubcriptionlevalResponse>(context, listen: false)
-          .data['data'];
+    // if (Provider.of<SubcriptionlevalResponse>(context, listen: false).data !=
+    //     null)
+    //   data = Provider.of<SubcriptionlevalResponse>(context, listen: false)
+    //       .data['data'];
     return SafeArea(
       child: Stack(
         children: [
@@ -380,14 +385,14 @@ class _MyAccountState extends State<MyAccount> {
                           SizedBox(
                             width: 30,
                           ),
-                          data != null
+                          (data != null && data['stripe_status'] != 'INACTIVE')
                               ? Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      data["plan_id"].toString(),
+                                      data["plan_level"].toString(),
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.white,
@@ -423,7 +428,7 @@ class _MyAccountState extends State<MyAccount> {
                                               cancelSubscriptionState(
                                                   context: context,
                                                   subscriptionid:
-                                                      "sub_1JiZnxSGgp78HSWoD5HeAW6x"),
+                                                      data["subscription_id"]),
                                               createCancelsubcripState(
                                                       id.toString(), context)
                                                   .whenComplete(() {
@@ -452,8 +457,14 @@ class _MyAccountState extends State<MyAccount> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => UpgradeSubscription()));
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                                  builder: (context) => UpgradeSubscription(
+                                      // customerid: data['customer_id'],
+                                      // userid: id.toString(),
+                                      // subid: data['subscription_id'],
+                                      // status: data['stripe_status']
+                                      )));
                         },
                         child: Text(
                           "Upgrade membership",

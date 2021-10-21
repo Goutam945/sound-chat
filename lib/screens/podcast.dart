@@ -181,7 +181,11 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                           .rightToLeft,
                                                       child: (email == null)
                                                           ? NewLogin()
-                                                          : (membership != null)
+                                                          : (membership !=
+                                                                      null &&
+                                                                  membership[
+                                                                          'stripe_status'] ==
+                                                                      'ACTIVE')
                                                               ? PodcastPlayCloud(
                                                                   j, weekday)
                                                               : UpgradeSubscription()));

@@ -381,10 +381,39 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
         createSubscriptionStatusState(context: context, subscriptionid: subid)
             .then((value) {
           String status = value.data['status'];
+          String customerid = value.data['customer'];
+          String planid = value.data['items']['data'][0]['plan']['id'];
+          String invoiceid = value.data['latest_invoice'];
+          String amount =
+              "${value.data['items']['data'][0]['plan']['amount'] / 100}";
+          String currency = value.data['items']['data'][0]['plan']['currency'];
+          String plantype = value.data['items']['data'][0]['plan']['interval'];
+          String subscriptionmethod = value.data['collection_method'];
+          String subscriptionid = value.data['id'];
+          String startdate = DateTime.fromMillisecondsSinceEpoch(
+                  value.data['current_period_start'] * 1000)
+              .toString();
+          String enddate = DateTime.fromMillisecondsSinceEpoch(
+                  value.data['current_period_end'] * 1000)
+              .toString();
 
           if (status == "active") {
             showDailog();
-            createSubscriptionState(widget.uid, "2", "Sucess", subid, context);
+            createSubscriptionState(
+                uid: widget.uid,
+                lid: planid,
+                subscriptionid: subscriptionid,
+                subscriptionmethod: subscriptionmethod,
+                customerid: customerid,
+                plantype: plantype,
+                amount: amount,
+                currencytype: currency,
+                invoiceid: invoiceid,
+                currentdate: startdate,
+                expireddate: enddate,
+                status: status,
+                level: widget.productname,
+                context: context);
           } else if (status == 'incomplete') {
             showpendingpaymentdialog();
           }
@@ -421,7 +450,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
       title: 'Succeeded Payment',
       desc: 'Thank you',
       btnOkOnPress: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
+        Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => islogin ? MyAccount() : NewLogin()));
       },
     )..show();
@@ -472,6 +501,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
       ).then((value) {
         String status = value.data['status'];
         subid = value.data['id'];
+
         if (status == 'incomplete') {
           String invoiceid = value.data['latest_invoice'];
           createInvoiceState(context: context, invoiceid: invoiceid)
@@ -483,7 +513,37 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
             launch(urlauthantication);
           });
         } else if (status == 'active') {
-          createSubscriptionState(widget.uid, "2", "Sucess", subid, context);
+          String status = value.data['status'];
+          String customerid = value.data['customer'];
+          String planid = value.data['items']['data'][0]['plan']['id'];
+          String invoiceid = value.data['latest_invoice'];
+          String amount =
+              "${value.data['items']['data'][0]['plan']['amount'] / 100}";
+          String currency = value.data['items']['data'][0]['plan']['currency'];
+          String plantype = value.data['items']['data'][0]['plan']['interval'];
+          String subscriptionmethod = value.data['collection_method'];
+          String subscriptionid = value.data['id'];
+          String startdate = DateTime.fromMillisecondsSinceEpoch(
+                  value.data['current_period_start'] * 1000)
+              .toString();
+          String enddate = DateTime.fromMillisecondsSinceEpoch(
+                  value.data['current_period_end'] * 1000)
+              .toString();
+          createSubscriptionState(
+              uid: widget.uid,
+              lid: planid,
+              subscriptionid: subscriptionid,
+              subscriptionmethod: subscriptionmethod,
+              customerid: customerid,
+              plantype: plantype,
+              amount: amount,
+              currencytype: currency,
+              invoiceid: invoiceid,
+              currentdate: startdate,
+              expireddate: enddate,
+              status: status,
+              level: widget.productname,
+              context: context);
           showDailog();
         }
       });

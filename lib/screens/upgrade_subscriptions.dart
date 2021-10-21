@@ -1,9 +1,16 @@
+import 'package:sound_chat/api/upgrade_subscription.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
+import 'package:sound_chat/stripe_api/cancel_subscription.dart';
+import 'package:sound_chat/stripe_api/create_subcription.dart';
+import 'package:sound_chat/stripe_api/get_invoiceurl.dart';
 import 'package:sound_chat/stripe_api/get_plans.dart';
 import 'package:sound_chat/stripe_api/get_product.dart';
 
 class UpgradeSubscription extends StatefulWidget {
+  // final customerid, subid, status, userid;
+  // const UpgradeSubscription(
+  //     {Key key, this.customerid, this.userid, this.subid, this.status})
+  //     : super(key: key);
   @override
   _UpgradeSubscriptionState createState() => _UpgradeSubscriptionState();
 }
@@ -13,8 +20,9 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
   //String user;
   String email, name, phone;
   int userid;
+  dynamic membership;
   List productname = [];
-
+  bool isloding = false;
   @override
   void initState() {
     super.initState();
@@ -28,6 +36,12 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
         print(data);
       });
     });
+    _loadSavedData().then(
+        (value) => createSubcriptionlevalState(userid, context).then((value) {
+              setState(() {
+                membership = value.data['data'];
+              });
+            }));
   }
 
   // String getproductname() {
@@ -46,6 +60,22 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
         userid = sharedPreferences.getInt('id');
       }
     });
+  }
+
+  showDailog() {
+    AwesomeDialog(
+      dismissOnTouchOutside: false,
+      context: context,
+      dialogType: DialogType.SUCCES,
+      animType: AnimType.BOTTOMSLIDE,
+      btnOkColor: Colors.orange,
+      title: 'Succeeded Payment',
+      desc: 'Thank you',
+      btnOkOnPress: () {
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => HomeBottomBar()));
+      },
+    )..show();
   }
 
   @override
@@ -96,13 +126,11 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
                 SizedBox(
                   height: 20,
                 ),
-                //for (int i = 0; i < data.length; i++)
                 productname.length > 0
                     ? Expanded(
                         child: ListView.builder(
                             itemCount: data.length,
                             itemBuilder: (context, i) {
-                              // productname = getproductname(data[i]['product']);
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 20, vertical: 10),
@@ -118,19 +146,117 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
                                           setState(() {
                                             // user = data[i]['amount'].toString();
                                             levelId = data[i]['id'];
+                                            isloding = true;
                                           });
-                                          Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      PaymentDetailsMember(
-                                                          data[i],
-                                                          userid,
-                                                          levelId,
-                                                          productname[i],
-                                                          name,
-                                                          "",
-                                                          email,
-                                                          phone)));
+                                          // Navigator.of(context).push(
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) =>
+                                          //             PaymentDetailsMember(
+                                          //                 data[i],
+                                          //                 userid,
+                                          //                 levelId,
+                                          //                 productname[i],
+                                          //                 name,
+                                          //                 "",
+                                          //                 email,
+                                          //                 phone)));
+
+                                          createSubscriptionstripeState(
+                                            context: context,
+                                            coupon: "",
+                                            customer: membership['customer_id'],
+                                            priceid: levelId,
+                                          ).then((value) {
+                                            String status =
+                                                value.data['status'];
+                                            //String subid = value.data['id'];
+
+                                            if (status == 'incomplete') {
+                                              String invoiceid =
+                                                  value.data['latest_invoice'];
+                                              createInvoiceState(
+                                                      context: context,
+                                                      invoiceid: invoiceid)
+                                                  .then((value) {
+                                                String urlauthantication = value
+                                                    .data['hosted_invoice_url'];
+                                                setState(() {
+                                                  isloding = false;
+                                                });
+                                                launch(urlauthantication);
+                                              });
+                                            } else if (status == 'active') {
+                                              String status =
+                                                  value.data['status'];
+                                              String customerid =
+                                                  value.data['customer'];
+                                              String planid =
+                                                  value.data['items']['data'][0]
+                                                      ['plan']['id'];
+                                              String invoiceid =
+                                                  value.data['latest_invoice'];
+                                              String amount =
+                                                  "${value.data['items']['data'][0]['plan']['amount'] / 100}";
+                                              String currency =
+                                                  value.data['items']['data'][0]
+                                                      ['plan']['currency'];
+                                              String plantype =
+                                                  value.data['items']['data'][0]
+                                                      ['plan']['interval'];
+                                              String subscriptionmethod = value
+                                                  .data['collection_method'];
+                                              String subscriptionid =
+                                                  value.data['id'];
+                                              String startdate = DateTime
+                                                      .fromMillisecondsSinceEpoch(
+                                                          value.data[
+                                                                  'current_period_start'] *
+                                                              1000)
+                                                  .toString();
+                                              String enddate = DateTime
+                                                      .fromMillisecondsSinceEpoch(
+                                                          value.data[
+                                                                  'current_period_end'] *
+                                                              1000)
+                                                  .toString();
+                                              createUpgradeSubscriptionState(
+                                                      uid: userid,
+                                                      lid: planid,
+                                                      subscriptionid:
+                                                          subscriptionid,
+                                                      subscriptionmethod:
+                                                          subscriptionmethod,
+                                                      customerid: customerid,
+                                                      plantype: plantype,
+                                                      amount: amount,
+                                                      currencytype: currency,
+                                                      invoiceid: invoiceid,
+                                                      currentdate: startdate,
+                                                      expireddate: enddate,
+                                                      status: status,
+                                                      level: productname[i]
+                                                          ['name'],
+                                                      context: context)
+                                                  .then((value) {
+                                                int status =
+                                                    value.data['status'];
+                                                if (status == 200 &&
+                                                    membership[
+                                                            'stripe_status'] ==
+                                                        'ACTIVE') {
+                                                  cancelSubscriptionState(
+                                                      context: context,
+                                                      subscriptionid: membership[
+                                                          'subscription_id']);
+                                                }
+                                              });
+                                              showDailog();
+                                            }
+                                          }).whenComplete(() {
+                                            setState(() {
+                                              isloding = false;
+                                            });
+                                          });
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -203,6 +329,10 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
             ),
           ),
         ),
+        if (isloding)
+          Center(
+            child: CircularProgressIndicator(),
+          ),
         Positioned(
           top: AppBar().preferredSize.height * 0.1,
           left: width * 0.39865,

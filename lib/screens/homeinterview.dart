@@ -430,22 +430,13 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                /* textnameimage sedow Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
-                                                      boxShadow: [
-                                                        BoxShadow(offset: Offset(0.0,5.0),
-                                                          color: Colors.black,
-                                                          blurRadius: 15.0,
-                                                        ),
-                                                      ]),
-                                                      child: SizedBox(height: 30,
-                                                      child: Text(superherosLength['premium_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
                                                               ],
                                                             ),
                                                             onTap: () {
                                                               Navigator.of(context).push(MaterialPageRoute(
                                                                   builder: (context) => (email == null)
                                                                       ? NewLogin()
-                                                                      : (membership != null)
+                                                                      : (membership != null && membership['stripe_status'] == 'ACTIVE')
                                                                           ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'])
                                                                           : UpgradeSubscription()));
                                                               // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);

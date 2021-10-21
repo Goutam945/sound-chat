@@ -10,10 +10,15 @@ class PrimiumvideoScreen extends StatefulWidget {
 class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
   String email;
   String name;
+  var membership;
+  int id;
   @override
   void initState() {
     super.initState();
-    _loadSavedData();
+    _loadSavedData()
+        .then((value) => createSubcriptionlevalState(id, context).then((value) {
+              membership = value.data['data'];
+            }));
   }
 
   _loadSavedData() async {
@@ -23,6 +28,7 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
           sharedPreferences.getString('email').isNotEmpty) {
         email = sharedPreferences.getString('email');
         name = sharedPreferences.getString('name');
+        id = sharedPreferences.getInt('id');
       }
     });
   }
@@ -122,14 +128,17 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => (email == null)
                                     ? NewLogin()
-                                    : Primiumvideo(
-                                        superherosLength['premium_content'][i]
-                                            ['video_url'],
-                                        superherosLength['premium_content'][i]
-                                            ['post_title'],
-                                        superherosLength['premium_content'][i]
-                                            ['post_excerpt'],
-                                      )));
+                                    : (membership != null &&
+                                            membership['stripe_status'] ==
+                                                'ACTIVE')
+                                        ? Primiumvideo(
+                                            superherosLength['premium_content']
+                                                [i]['video_url'],
+                                            superherosLength['premium_content']
+                                                [i]['post_title'],
+                                            superherosLength['premium_content']
+                                                [i]['post_excerpt'])
+                                        : UpgradeSubscription()));
                             // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                           },
                         ),

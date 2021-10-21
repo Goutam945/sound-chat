@@ -32,20 +32,35 @@ import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 
 Future<SubscriptionResponse> createSubscriptionState(
-    uid, lid, String status, transactionid, context) async {
-  print(uid.toString() +
-      " " +
-      lid.toString() +
-      " " +
-      status.toString() +
-      " " +
-      transactionid.toString());
+    {uid,
+    lid,
+    status,
+    invoiceid,
+    amount,
+    currencytype,
+    plantype,
+    customerid,
+    subscriptionid,
+    subscriptionmethod,
+    currentdate,
+    expireddate,
+    level,
+    context}) async {
   final http.Response response =
       await http.post(Uri.parse(baseUrl + 'usersubscription'), body: {
     'user_id': "$uid",
     'plan_id': "$lid",
     'payment_status': status,
-    'transaction_id': transactionid
+    'invoice_id': invoiceid,
+    'amount': amount,
+    'currency_type': currencytype,
+    'plan_type': plantype,
+    'customer_id': customerid,
+    'subscription_id': subscriptionid,
+    'subscription_method': subscriptionmethod,
+    'currentdate': currentdate,
+    'expireddate': expireddate,
+    'plan_level': level
   });
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
