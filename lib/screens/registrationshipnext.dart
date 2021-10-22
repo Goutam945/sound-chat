@@ -166,6 +166,14 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                       obscureText: _isObscure,
                       validator:
                           Validators.required('Confirm password is required'),
+                      // validator: (value) {
+                      //   if (value.trim().isEmpty) {
+                      //     return "Confirm password is required";
+                      //   }else if{
+                      //     if(value.trim().allMatches(_password.text))
+                      //   } else
+                      //     return null;
+                      // },
                     ),
                   ),
                   SizedBox(

@@ -156,8 +156,15 @@ class _SignupPageState extends State<Registrationship> {
                         ),
                       ),
                       controller: _email,
-                      validator:
-                          Validators.required('Email Address is required'),
+                      validator: (value) {
+                        if (value.trim().isEmpty) {
+                          return "Email is empty";
+                        }
+                        if (!validateEmail(value)) {
+                          return 'Please Enter a valid Email ID';
+                        } else
+                          return null;
+                      },
                     ),
                   ),
                   SizedBox(

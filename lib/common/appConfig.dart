@@ -31,3 +31,23 @@ const String publicationKey =
     'pk_test_51JJBMbSJ0AUE5zrJTcMlsBlZy8TKuVZjzSZTb2sDKfni7wUEJiVaz86jkrk92cB87MKSzGl7z5fDQyIZr4CIlCef00MTBTd9zU';
 const String secretKey =
     'sk_test_51JJBMbSJ0AUE5zrJoBKS8JoxZRwbwQP7NJmt54fP1BZ2udXt1qGDeBLSOtPZf1YiE89x2KaPvf79N8Gk5k2qYRgu005Eb0XOUg';
+
+final passwordPattern =
+    r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{5,}$';
+final emailPattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]";
+final phoneRegx = "([0-9]{10})";
+
+bool validatePhone(String value) {
+  RegExp regxPassword = new RegExp(phoneRegx);
+  return regxPassword.hasMatch(value);
+}
+
+bool validatePassword(String value) {
+  RegExp regxPassword = new RegExp(passwordPattern);
+  return regxPassword.hasMatch(value);
+}
+
+bool validateEmail(String value) {
+  RegExp regxPassword = new RegExp(emailPattern);
+  return regxPassword.hasMatch(value);
+}
