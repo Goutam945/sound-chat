@@ -1,5 +1,6 @@
 import 'package:sound_chat/api/upgrade_subscription.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/paymentdetailsmembarship.dart';
 import 'package:sound_chat/stripe_api/cancel_subscription.dart';
 import 'package:sound_chat/stripe_api/create_subcription.dart';
 import 'package:sound_chat/stripe_api/get_invoiceurl.dart';
@@ -148,115 +149,131 @@ class _UpgradeSubscriptionState extends State<UpgradeSubscription> {
                                             levelId = data[i]['id'];
                                             isloding = true;
                                           });
-                                          // Navigator.of(context).push(
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             PaymentDetailsMember(
-                                          //                 data[i],
-                                          //                 userid,
-                                          //                 levelId,
-                                          //                 productname[i],
-                                          //                 name,
-                                          //                 "",
-                                          //                 email,
-                                          //                 phone)));
 
-                                          createSubscriptionstripeState(
-                                            context: context,
-                                            coupon: "",
-                                            customer: membership['customer_id'],
-                                            priceid: levelId,
-                                          ).then((value) {
-                                            String status =
-                                                value.data['status'];
-                                            //String subid = value.data['id'];
+                                          (membership != null)
+                                              ? createSubscriptionstripeState(
+                                                  context: context,
+                                                  coupon: "",
+                                                  customer:
+                                                      membership['customer_id'],
+                                                  priceid: levelId,
+                                                ).then((value) {
+                                                  String status =
+                                                      value.data['status'];
+                                                  //String subid = value.data['id'];
 
-                                            if (status == 'incomplete') {
-                                              String invoiceid =
-                                                  value.data['latest_invoice'];
-                                              createInvoiceState(
-                                                      context: context,
-                                                      invoiceid: invoiceid)
-                                                  .then((value) {
-                                                String urlauthantication = value
-                                                    .data['hosted_invoice_url'];
-                                                setState(() {
-                                                  isloding = false;
-                                                });
-                                                launch(urlauthantication);
-                                              });
-                                            } else if (status == 'active') {
-                                              String status =
-                                                  value.data['status'];
-                                              String customerid =
-                                                  value.data['customer'];
-                                              String planid =
-                                                  value.data['items']['data'][0]
-                                                      ['plan']['id'];
-                                              String invoiceid =
-                                                  value.data['latest_invoice'];
-                                              String amount =
-                                                  "${value.data['items']['data'][0]['plan']['amount'] / 100}";
-                                              String currency =
-                                                  value.data['items']['data'][0]
-                                                      ['plan']['currency'];
-                                              String plantype =
-                                                  value.data['items']['data'][0]
-                                                      ['plan']['interval'];
-                                              String subscriptionmethod = value
-                                                  .data['collection_method'];
-                                              String subscriptionid =
-                                                  value.data['id'];
-                                              String startdate = DateTime
-                                                      .fromMillisecondsSinceEpoch(
+                                                  if (status == 'incomplete') {
+                                                    String invoiceid = value
+                                                        .data['latest_invoice'];
+                                                    createInvoiceState(
+                                                            context: context,
+                                                            invoiceid:
+                                                                invoiceid)
+                                                        .then((value) {
+                                                      String urlauthantication =
                                                           value.data[
-                                                                  'current_period_start'] *
-                                                              1000)
-                                                  .toString();
-                                              String enddate = DateTime
-                                                      .fromMillisecondsSinceEpoch(
-                                                          value.data[
-                                                                  'current_period_end'] *
-                                                              1000)
-                                                  .toString();
-                                              createUpgradeSubscriptionState(
-                                                      uid: userid,
-                                                      lid: planid,
-                                                      subscriptionid:
-                                                          subscriptionid,
-                                                      subscriptionmethod:
-                                                          subscriptionmethod,
-                                                      customerid: customerid,
-                                                      plantype: plantype,
-                                                      amount: amount,
-                                                      currencytype: currency,
-                                                      invoiceid: invoiceid,
-                                                      currentdate: startdate,
-                                                      expireddate: enddate,
-                                                      status: status,
-                                                      level: productname[i]
-                                                          ['name'],
-                                                      context: context)
-                                                  .then((value) {
-                                                int status =
-                                                    value.data['status'];
-                                                if (status == 200 &&
-                                                    membership[
-                                                            'stripe_status'] ==
-                                                        'ACTIVE') {
-                                                  cancelSubscriptionState(
-                                                      context: context,
-                                                      subscriptionid: membership[
-                                                          'subscription_id']);
-                                                }
-                                              });
-                                              showDailog();
-                                            }
-                                          }).whenComplete(() {
-                                            setState(() {
-                                              isloding = false;
-                                            });
-                                          });
+                                                              'hosted_invoice_url'];
+                                                      setState(() {
+                                                        isloding = false;
+                                                      });
+                                                      launch(urlauthantication);
+                                                    });
+                                                  } else if (status ==
+                                                      'active') {
+                                                    String status =
+                                                        value.data['status'];
+                                                    String customerid =
+                                                        value.data['customer'];
+                                                    String planid =
+                                                        value.data['items']
+                                                                ['data'][0]
+                                                            ['plan']['id'];
+                                                    String invoiceid = value
+                                                        .data['latest_invoice'];
+                                                    String amount =
+                                                        "${value.data['items']['data'][0]['plan']['amount'] / 100}";
+                                                    String currency = value
+                                                                .data['items']
+                                                            ['data'][0]['plan']
+                                                        ['currency'];
+                                                    String plantype = value
+                                                                .data['items']
+                                                            ['data'][0]['plan']
+                                                        ['interval'];
+                                                    String subscriptionmethod =
+                                                        value.data[
+                                                            'collection_method'];
+                                                    String subscriptionid =
+                                                        value.data['id'];
+                                                    String startdate = DateTime
+                                                            .fromMillisecondsSinceEpoch(
+                                                                value.data[
+                                                                        'current_period_start'] *
+                                                                    1000)
+                                                        .toString();
+                                                    String enddate = DateTime
+                                                            .fromMillisecondsSinceEpoch(
+                                                                value.data[
+                                                                        'current_period_end'] *
+                                                                    1000)
+                                                        .toString();
+                                                    createUpgradeSubscriptionState(
+                                                            uid: userid,
+                                                            lid: planid,
+                                                            subscriptionid:
+                                                                subscriptionid,
+                                                            subscriptionmethod:
+                                                                subscriptionmethod,
+                                                            customerid:
+                                                                customerid,
+                                                            plantype: plantype,
+                                                            amount: amount,
+                                                            currencytype:
+                                                                currency,
+                                                            invoiceid:
+                                                                invoiceid,
+                                                            currentdate:
+                                                                startdate,
+                                                            expireddate:
+                                                                enddate,
+                                                            status: status,
+                                                            level:
+                                                                productname[i]
+                                                                    ['name'],
+                                                            context: context)
+                                                        .then((value) {
+                                                      int status =
+                                                          value.data['status'];
+                                                      if (status == 200 &&
+                                                          membership[
+                                                                  'stripe_status'] ==
+                                                              'ACTIVE') {
+                                                        cancelSubscriptionState(
+                                                            context: context,
+                                                            subscriptionid:
+                                                                membership[
+                                                                    'subscription_id']);
+                                                      }
+                                                    });
+                                                    showDailog();
+                                                  }
+                                                }).whenComplete(() {
+                                                  setState(() {
+                                                    isloding = false;
+                                                  });
+                                                })
+                                              : Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          PaymentDetailsMember(
+                                                              data[i],
+                                                              userid,
+                                                              levelId,
+                                                              productname[i],
+                                                              name,
+                                                              "",
+                                                              email,
+                                                              phone)));
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(

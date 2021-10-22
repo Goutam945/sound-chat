@@ -412,7 +412,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
                 currentdate: startdate,
                 expireddate: enddate,
                 status: status,
-                level: widget.productname,
+                level: widget.productname['name'],
                 context: context);
           } else if (status == 'incomplete') {
             showpendingpaymentdialog();
@@ -450,7 +450,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
       title: 'Succeeded Payment',
       desc: 'Thank you',
       btnOkOnPress: () {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => islogin ? MyAccount() : NewLogin()));
       },
     )..show();
@@ -542,7 +542,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
               currentdate: startdate,
               expireddate: enddate,
               status: status,
-              level: widget.productname,
+              level: widget.productname['name'],
               context: context);
           showDailog();
         }
@@ -567,7 +567,10 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
 
   checklogin() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    islogin = sharedPreferences.getBool("islogin");
+
+    if (sharedPreferences.getBool('islogin') != null) {
+      islogin = sharedPreferences.getBool("islogin");
+    }
   }
 
   @override
