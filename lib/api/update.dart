@@ -15,32 +15,34 @@ Future<UpdateResponse> createUpdateState(
     String country,
     File profilepic,
     context) async {
-  final http.Response response =
-      await http.post(Uri.parse(baseUrl + 'updateprofile'),
-          headers: <String, String>{"content-type": "application/json"},
-          body: jsonEncode({
-            'user_id': userid,
-            'username': username,
-            'email': email,
-            'mobileno': phone,
-            'fname': name,
-            'country': country,
-            'profilepic': 'profilepic',
-          }));
-  /*var request = http.MultipartRequest('POST',
-      Uri.parse('http://3.23.210.57:3000/api/v1/auth/updateprofile'));
+  // final http.Response response =
+  //     await http.post(Uri.parse(baseUrl + 'updateprofile'),
+  //         headers: <String, String>{"content-type": "application/json"},
+  //         body: jsonEncode({
+  //           'user_id': userid,
+  //           'username': username,
+  //           'email': email,
+  //           'mobileno': phone,
+  //           'fname': name,
+  //           'country': country,
+  //           'profilepic': 'profilepic',
+  //         }));
+  var request =
+      http.MultipartRequest('POST', Uri.parse(baseUrl + 'updateprofile'));
   request.fields['user_id'] = "$userid";
   request.fields['username'] = username;
   request.fields['email'] = email;
-  request.fields['mobileno'] = phone;
   request.fields['fname'] = name;
+  request.fields['mobileno'] = phone;
   request.fields['country'] = country;
- request.files.add(await http.MultipartFile.fromPath(
-      'profilepic', profilepic.path,
-      filename: profilepic.path.split('/').last));
-
+  (profilepic != null)
+      ? request.files.add(await http.MultipartFile.fromPath(
+          'profilepic', (profilepic != null) ? profilepic.path : '',
+          filename:
+              (profilepic != null) ? profilepic.path.split('/').last : ''))
+      : request.fields['profilepic'] = '';
   var streamResponse = await request.send();
-  var response = await http.Response.fromStream(streamResponse);*/
+  var response = await http.Response.fromStream(streamResponse);
 
   if (response.statusCode == 200) {
     print(response.body);

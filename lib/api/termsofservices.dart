@@ -3,12 +3,11 @@ import 'package:http/http.dart' as http;
 
 Future<TermsResponse> createtermsState(context) async {
   final http.Response response =
-  await http.post(Uri.parse('http://3.23.210.57:3000/api/v1/termsconditions'));
+      await http.post(Uri.parse(baseUrl + 'termsconditions'));
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
     Provider.of<TermsResponse>(context, listen: false).data = data;
     return TermsResponse.fromJson(json.decode(response.body));
-
   } else {
     Toast.show("server error", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);

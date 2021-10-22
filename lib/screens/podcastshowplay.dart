@@ -20,7 +20,6 @@ class _ListenState extends State<PodcastPlayCloud> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadSavedData();
   }
@@ -48,8 +47,8 @@ class _ListenState extends State<PodcastPlayCloud> {
         children: [
           Scaffold(
             backgroundColor: Colors.black,
-            appBar: PreferredSize(preferredSize: Size.fromHeight(55),
-                child: Backappbar()),
+            appBar: PreferredSize(
+                preferredSize: Size.fromHeight(55), child: Backappbar()),
             body: (superheroslength != null)
                 ? Column(
                     children: [

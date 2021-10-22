@@ -320,10 +320,7 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                                     widget.phone,
                                     widget.country,
                                     _coupon.text,
-                                    (_image != null)
-                                        ? base64Encode(
-                                            File(_image.path).readAsBytesSync())
-                                        : '',
+                                    _image,
                                     context)
                                 .whenComplete(() {
                               setState(() {

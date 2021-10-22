@@ -51,10 +51,8 @@ class _ImageSliderState extends State<ImageSlider>
             animationController.forward();
             break;
           case AnimationStatus.forward:
-            // TODO: Handle this case.
             break;
           case AnimationStatus.reverse:
-            // TODO: Handle this case.
             break;
         }
       });

@@ -94,7 +94,7 @@ Future<LoginResponse> createLoginState(
       String email = data['email'];
       String name = data['fname'];
       String phone = data['mobileno'];
-      String image = data['image'];
+      String image = data['profilepic'];
       String country = data['country'];
       int id = data['id'];
       String userlogin = data['username'];
@@ -119,6 +119,7 @@ Future<LoginResponse> createLoginState(
       Toast.show(data['message'], context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     }
+    return LoginResponse.fromJson(json.decode(response.body));
   } else {
     Toast.show("server error", context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);

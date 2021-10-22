@@ -29,6 +29,7 @@ class _MyAccountState extends State<MyAccount> {
         country = sharedPreferences.getString('country');
         image = sharedPreferences.getString('image');
         id = sharedPreferences.getInt('id');
+        print("image" + image.toString());
       }
     });
     return id;
@@ -137,13 +138,14 @@ class _MyAccountState extends State<MyAccount> {
                       child: GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Fullview(image)));
+                              builder: (context) =>
+                                  Fullview(baseurlimage + image)));
                         },
                         child: Container(
                           width: width * 0.2537,
                           height: height * 0.1553,
                           child: CachedNetworkImage(
-                            imageUrl: image,
+                            imageUrl: baseurlimage + image,
                             fit: BoxFit.fill,
                             imageBuilder: (context, imageProvider) =>
                                 CircleAvatar(

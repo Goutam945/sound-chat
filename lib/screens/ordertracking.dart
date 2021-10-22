@@ -59,7 +59,6 @@ class StepperDemoState extends State<StepperDemo> {
         // Body
         body: Theme(
           data: ThemeData(
-              accentColor: Colors.red,
               primarySwatch: Colors.red,
               colorScheme: ColorScheme.light(primary: Colors.red)),
           child: Stepper(
