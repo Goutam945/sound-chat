@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -118,8 +119,25 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                             width: width * 0.2037,
                                             height: height * 0.1053,
                                             child: CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                  "assets/circle.png"),
+                                              backgroundColor: Colors.black,
+                                              backgroundImage:
+                                                  (superherosLength[day]
+                                                                  ['shows'][j]
+                                                              ['show_image'] !=
+                                                          null)
+                                                      ? NetworkImage(
+                                                          baseurlimagepodcast +
+                                                              superherosLength[
+                                                                              day]
+                                                                          [
+                                                                          'shows'][j]
+                                                                      [
+                                                                      'show_image']
+                                                                  .toString(),
+                                                        )
+                                                      : AssetImage(
+                                                          'assets/soundpic.png',
+                                                        ),
                                             ),
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
@@ -294,16 +312,31 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                               ['shows'][j]
                                                           ['show_image'] !=
                                                       null)
-                                                  ? Image.network(
-                                                      baseurlimagepodcast +
-                                                          superherosLength[day]
-                                                                  ['shows'][j]
-                                                              ['show_image'],
+                                                  ? CachedNetworkImage(
+                                                      imageUrl: baseurlimagepodcast +
+                                                          superherosLength[day][
+                                                                      'shows'][j]
+                                                                  ['show_image']
+                                                              .toString(),
                                                       fit: BoxFit.fill,
+                                                      placeholder: (context,
+                                                              url) =>
+                                                          Center(
+                                                              child:
+                                                                  CircularProgressIndicator()),
+                                                      errorWidget: (context,
+                                                              url, error) =>
+                                                          Icon(
+                                                        Icons.error,
+                                                        color: Colors.white,
+                                                      ),
                                                     )
-                                                  : Image.asset(
-                                                      'assets/imgpodcast.png',
-                                                      fit: BoxFit.fill,
+                                                  : Container(
+                                                      color: Color(0xff324a69),
+                                                      child: Image.asset(
+                                                        'assets/soundpic.png',
+                                                        fit: BoxFit.fill,
+                                                      ),
                                                     ),
                                             ),
                                             Column(

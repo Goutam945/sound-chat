@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Listenlivepage extends StatefulWidget {
@@ -36,13 +37,12 @@ class _ListenlivepageState extends State<Listenlivepage> {
   String status = 'hidden';
   var superherosLength;
   var timeAndDate;
-  int day;
+  //int day;
   int weekday;
   int time;
   var startTime;
   var endTime;
   var endTimeMin;
-  String show = '22:00-23:59';
   var homeslider;
   int imageNo = 0;
   bool isButtonPressed = false;
@@ -86,10 +86,9 @@ class _ListenlivepageState extends State<Listenlivepage> {
   void state() {
     setState(() {
       weekday =
-          7 - DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
+          7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
       //if (weekday == -1) weekday = 6;
-      day =
-          7 - DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
+      //day = 7 - DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
       //if (day == -1) day = 6;
     });
   }
@@ -194,23 +193,34 @@ class _ListenlivepageState extends State<Listenlivepage> {
                                   Offset(0, 0), // changes position of shadow
                             ),
                           ]),
-                      child: CachedNetworkImage(
-                        imageUrl: baseurlimagepodcast +
-                            timeAndDate[weekday]['shows'][showtime]
-                                ['show_image'],
-                        fit: BoxFit.fill,
-                        placeholder: (context, url) => SizedBox(
-                          width: width,
-                          height: double.infinity,
-                          child: Shimmer.fromColors(
-                              baseColor: Colors.red,
-                              highlightColor: Colors.yellow,
-                              child: Container(
-                                color: Colors.black12,
-                              )),
-                        ),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
+                      child: (timeAndDate[weekday]['shows'][showtime]
+                                  ['show_image'] !=
+                              null)
+                          ? CachedNetworkImage(
+                              imageUrl: baseurlimagepodcast +
+                                  timeAndDate[weekday]['shows'][showtime]
+                                          ['show_image']
+                                      .toString(),
+                              fit: BoxFit.fill,
+                              placeholder: (context, url) => SizedBox(
+                                width: width,
+                                height: double.infinity,
+                                child: Shimmer.fromColors(
+                                    baseColor: Colors.red,
+                                    highlightColor: Colors.yellow,
+                                    child: Container(
+                                      color: Colors.black12,
+                                    )),
+                              ),
+                              errorWidget: (context, url, error) => Icon(
+                                Icons.error,
+                                color: Colors.white,
+                              ),
+                            )
+                          : Image.asset(
+                              'assets/soundpic.png',
+                              fit: BoxFit.fill,
+                            ),
                     )
                   : Shimmer.fromColors(
                       baseColor: Colors.black12,
@@ -247,7 +257,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                     ),
                   ),
                   Text(
-                    "with Chin,Iron Voice & Sherry Morgon ",
+                    "Soundchat Radio",
                     style: TextStyle(
                       color: Colors.white54,
                       fontSize: 10,
@@ -369,7 +379,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               for (int j = 0;
-                                  j < timeAndDate[day]['shows'].length;
+                                  j < timeAndDate[weekday]['shows'].length;
                                   j++)
                                 Row(
                                   children: [
@@ -382,22 +392,39 @@ class _ListenlivepageState extends State<Listenlivepage> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 child: GestureDetector(
-                                                  child: CachedNetworkImage(
-                                                    imageUrl: baseurlimagepodcast +
-                                                        timeAndDate[day]
-                                                                    ['shows'][j]
-                                                                ['show_image']
-                                                            .toString(),
-                                                    fit: BoxFit.fill,
-                                                    placeholder: (context,
-                                                            url) =>
-                                                        Center(
-                                                            child:
-                                                                CircularProgressIndicator()),
-                                                    errorWidget:
-                                                        (context, url, error) =>
-                                                            Icon(Icons.error),
-                                                  ),
+                                                  child: (timeAndDate[weekday]
+                                                                  ['shows'][j]
+                                                              ['show_image'] !=
+                                                          null)
+                                                      ? CachedNetworkImage(
+                                                          imageUrl: baseurlimagepodcast +
+                                                              timeAndDate[weekday]
+                                                                          [
+                                                                          'shows'][j]
+                                                                      [
+                                                                      'show_image']
+                                                                  .toString(),
+                                                          fit: BoxFit.fill,
+                                                          placeholder: (context,
+                                                                  url) =>
+                                                              Center(
+                                                                  child:
+                                                                      CircularProgressIndicator()),
+                                                          errorWidget: (context,
+                                                                  url, error) =>
+                                                              Icon(
+                                                            Icons.error,
+                                                            color: Colors.white,
+                                                          ),
+                                                        )
+                                                      : Container(
+                                                          color:
+                                                              Color(0xff324a69),
+                                                          child: Image.asset(
+                                                            'assets/soundpic.png',
+                                                            fit: BoxFit.fill,
+                                                          ),
+                                                        ),
                                                   onTap: () {
                                                     Navigator.push(
                                                         context,

@@ -42,7 +42,6 @@ class _UpdatehomeState extends State<Updatehome> {
   var startTime;
   var endTime;
   var endTimeMin;
-  String show = '22:00-23:59';
   int showtime = 0;
   var homeslider;
   var bannerads;
@@ -55,7 +54,9 @@ class _UpdatehomeState extends State<Updatehome> {
     super.initState();
     _loadSavedData().then((value) => createSubcriptionlevalState(id, context));
     setState(() {
-      weekday = 7 - DateTime.now().weekday;
+      //  weekday = 7 - DateTime.now().weekday;
+      weekday =
+          7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
     });
 
     //apis calls
@@ -230,7 +231,7 @@ class _UpdatehomeState extends State<Updatehome> {
                                       color: Colors.white,
                                     ),
                                     Text(
-                                      "with Chin,Sherry Morgon ",
+                                      "Soundchat Radio",
                                       style: TextStyle(
                                         color: Colors.white54,
                                         fontSize: 10,

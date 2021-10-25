@@ -203,24 +203,41 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                   SizedBox(
                                                     width: width * 0.3037,
                                                     child: (superherosLength[
-                                                                        day]
+                                                                        weekday]
                                                                     ['shows'][j]
                                                                 [
                                                                 'show_image'] !=
                                                             null)
-                                                        ? Image.network(
-                                                            baseurlimagepodcast +
-                                                                superherosLength[
-                                                                            day]
+                                                        ? CachedNetworkImage(
+                                                            imageUrl: baseurlimagepodcast +
+                                                                superherosLength[weekday]
+                                                                            [
+                                                                            'shows'][j]
                                                                         [
-                                                                        'shows'][j]
-                                                                    [
-                                                                    'show_image'],
+                                                                        'show_image']
+                                                                    .toString(),
                                                             fit: BoxFit.fill,
+                                                            placeholder: (context,
+                                                                    url) =>
+                                                                Center(
+                                                                    child:
+                                                                        CircularProgressIndicator()),
+                                                            errorWidget:
+                                                                (context, url,
+                                                                        error) =>
+                                                                    Icon(
+                                                              Icons.error,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
                                                           )
-                                                        : Image.asset(
-                                                            'assets/imgpodcast.png',
-                                                            fit: BoxFit.fill,
+                                                        : Container(
+                                                            color: Color(
+                                                                0xff324a69),
+                                                            child: Image.asset(
+                                                              'assets/soundpic.png',
+                                                              fit: BoxFit.fill,
+                                                            ),
                                                           ),
                                                   ),
                                                   Column(
