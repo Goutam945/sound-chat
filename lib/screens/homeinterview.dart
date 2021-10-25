@@ -127,7 +127,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                           'free_content'][i]
                                                                       [
                                                                       'feature_img']),
-                                                              fit: BoxFit.fill,
+                                                              fit: BoxFit.cover,
                                                             ),
                                                             // border:
                                                             //     Border.all(color: Theme.of(context).accentColor),
@@ -259,18 +259,6 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                   ],
                                 ),
                               ),
-                        /* Container( height: height*0.0512,width: width,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.bottomRight,
-                            colors: <Color>[
-                              Color(0xFFA10B0F),
-                              Color(0xFF074516),
-                            ])
-                    ),
-                    child: Center(child: Text("CURRENTLY THREDING INTERVIEWS",textAlign: TextAlign.center,style: TextStyle( color: Colors.white, fontSize: 18,))),
-                  ),*/
                         Row(
                           children: [
                             SizedBox(

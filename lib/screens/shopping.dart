@@ -17,88 +17,101 @@ class _ShoppingState extends State<Shopping> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     if (Provider.of<AllproductResponse>(context, listen: false).data != null)
-      product =Provider.of<AllproductResponse>(context, listen: false).data['data'];
+      product =
+          Provider.of<AllproductResponse>(context, listen: false).data['data'];
     return SafeArea(
       child: Stack(children: [
         Scaffold(
-            backgroundColor: Colors.black,
-            appBar: PreferredSize(child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
-          body:(product != null)? Column(
-              children: [
-                SizedBox(height: 10,),
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    primary: false,
-                    childAspectRatio: 450 / 650,
-                    // padding: const EdgeInsets.all(16),
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    children: <Widget>[
-                      for (int i = 0; i < product.length; i++)
+          backgroundColor: Colors.black,
+          appBar: PreferredSize(
+              child: ShoppAppbar(), preferredSize: Size.fromHeight(55)),
+          body: (product != null)
+              ? Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Expanded(
+                      child: GridView.count(
+                        crossAxisCount: 2,
+                        primary: false,
+                        childAspectRatio: 450 / 650,
+                        // padding: const EdgeInsets.all(16),
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        children: <Widget>[
+                          for (int i = 0; i < product.length; i++)
 //                        for (int j = 0; j <product[i]['images'].length; j++)
-                        GestureDetector(
-                          child: ClipRRect(
-                            borderRadius:
-                            BorderRadius.circular(
-                                10),
-                            child: Container(color: Color(0xFF222222) ,padding: EdgeInsets.only(bottom: 5),
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      child: Opacity(
-                                        opacity: 1,
-                                        child: CachedNetworkImage(
-                                          imageUrl:product[i]['image'],
-                                          fit: BoxFit.cover,
-                                          placeholder: (context, url) => Center(
-                                              child: CircularProgressIndicator()),
-                                          errorWidget: (context, url, error) =>
-                                              Icon(Icons.error),
+                            GestureDetector(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                  color: Color(0xFF222222),
+                                  padding: EdgeInsets.only(bottom: 5),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          child: Opacity(
+                                            opacity: 1,
+                                            child: CachedNetworkImage(
+                                              imageUrl: product[i]['image'],
+                                              fit: BoxFit.cover,
+                                              placeholder: (context, url) => Center(
+                                                  child:
+                                                      CircularProgressIndicator()),
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Icon(Icons.error),
+                                            ),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    child: Text(product[i]['title'],textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xFFA79A9A),
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 16,
+                                      SizedBox(
+                                        child: Text(
+                                          product[i]['title'],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: fontfamily,
+                                            fontSize: 16,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      Text(
+                                        "\$" + product[i]['Price'],
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: fontfamily,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                      // Container(color: Color(0xFFdd0e34),height: 30,width: 120,
+                                      //   child: Center(child: Text("Select Options",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                                      // )
+                                    ],
                                   ),
-                                  Text("\$"+product[i]['Price'],
-                                    style: TextStyle(
-                                      color: Color(0xFFA79A9A),
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  // Container(color: Color(0xFFdd0e34),height: 30,width: 120,
-                                  //   child: Center(child: Text("Select Options",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
-                                  // )
-                                ],
+                                ),
                               ),
+                              onTap: () {
+                                //Navigator.of(context).push(
+                                //  MaterialPageRoute(builder: (context) => ShopProductdetails(product[i])));
+                                Navigator.push(
+                                    context,
+                                    PageTransition(
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        child: ShopProductdetails(product[i])));
+                              },
                             ),
-                          ),
-                          onTap: () {
-                            //Navigator.of(context).push(
-                              //  MaterialPageRoute(builder: (context) => ShopProductdetails(product[i])));
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType
-                                        .rightToLeftWithFade,
-                                    child: ShopProductdetails(product[i])));
-                          },
-                        ),
-                    ],
-                  ),
-                ),
-              ],
-            ):Center(child: CircularProgressIndicator()),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              : Center(child: CircularProgressIndicator()),
         ),
         Positioned(
           top: AppBar().preferredSize.height * 0.2,

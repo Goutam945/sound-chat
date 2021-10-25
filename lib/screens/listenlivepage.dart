@@ -163,7 +163,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
         child: Scaffold(
       extendBody: true,
       body: Container(
-        padding: EdgeInsets.only(bottom: 10),
+        //padding: EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topCenter,

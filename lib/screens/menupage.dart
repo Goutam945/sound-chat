@@ -55,7 +55,7 @@ class _NewMenupageState extends State<NewMenupage> {
       child: Scaffold(
           extendBody: true,
           body: Container(
-            padding: EdgeInsets.all(10),
+            // padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -288,6 +288,9 @@ class _NewMenupageState extends State<NewMenupage> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Row(
                                   children: [
                                     //Icon(Icons.circle,color: Colors.white,size: 5,),
@@ -326,36 +329,37 @@ class _NewMenupageState extends State<NewMenupage> {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Track Order",
-                                      style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "My Coupan",
-                                      style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     SizedBox(
+                                //       width: 5,
+                                //     ),
+                                //     Text(
+                                //       "Track Order",
+                                //       style: TextStyle(
+                                //           fontSize: fontSize,
+                                //           fontWeight: FontWeight.bold,
+                                //           fontFamily: fontfamily,
+                                //           color: Colors.white),
+                                //     ),
+                                //   ],
+                                // ),
+                                // Row(
+                                //   children: [
+                                //     SizedBox(
+                                //       width: 5,
+                                //     ),
+                                //     Text(
+                                //       "My Coupan",
+                                //       style: TextStyle(
+                                //           fontSize: fontSize,
+                                //           fontWeight: FontWeight.bold,
+                                //           fontFamily: fontfamily,
+                                //           color: Colors.white),
+                                //     ),
+                                //   ],
+                                // ),
+
                                 Row(
                                   children: [
                                     SizedBox(
@@ -565,21 +569,21 @@ class _NewMenupageState extends State<NewMenupage> {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Advertise With  SoundChat",
-                                      style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     SizedBox(
+                                //       width: 5,
+                                //     ),
+                                //     Text(
+                                //       "Advertise With  SoundChat",
+                                //       style: TextStyle(
+                                //           fontSize: fontSize,
+                                //           fontWeight: FontWeight.bold,
+                                //           fontFamily: fontfamily,
+                                //           color: Colors.white),
+                                //     ),
+                                //   ],
+                                // ),
                               ],
                             ),
                           ],

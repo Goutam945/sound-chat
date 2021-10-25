@@ -108,7 +108,7 @@ class _UpdatehomeState extends State<Updatehome> {
         child: Scaffold(
       extendBody: true,
       body: Container(
-        padding: EdgeInsets.only(bottom: 10),
+        // padding: EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.centerLeft,
@@ -364,9 +364,6 @@ class _UpdatehomeState extends State<Updatehome> {
                             height: height * 0.1),
                       ),
                     ),
-            ),
-            SizedBox(
-              height: 5,
             ),
           ],
         ),

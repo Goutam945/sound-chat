@@ -19,6 +19,11 @@ class _GalleryDesign extends State<GalleryDesign> {
     super.initState();
     createGalleryState(context);
     _loadSavedData();
+    butoncolor = butoncolor
+        .asMap()
+        .entries
+        .map((e) => e.key == 6 ? false : true)
+        .toList();
   }
 
   _loadSavedData() async {
@@ -95,7 +100,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 10),
+                                        padding: const EdgeInsets.only(top: 5),
                                         child: SizedBox(
                                             width: width * 0.30656,
                                             height: height * 0.049170,
@@ -104,7 +109,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                               superherosLength[i]['post_title'],
                                               style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 12,
+                                                fontSize: 10,
                                                 fontFamily: fontfamily,
                                               ),
                                               textAlign: TextAlign.center,
@@ -145,147 +150,6 @@ class _GalleryDesign extends State<GalleryDesign> {
                     SizedBox(
                       height: 20,
                     ),
-//                    for (int j = 0; j < superherosLength[imgcount]
-//                    ['img_gallery_pic'].length; j = j + 4)
-//                      SizedBox(
-//                        height: 400,
-//                        child: Row(
-//                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                          children: [
-//                            Column(
-//                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                              children: [
-//                                if(superherosLength[imgcount]
-//                                ['img_gallery_pic'].length>j+0)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 0])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.3023,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 0],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                                if(superherosLength[imgcount]
-//                                ['img_gallery_pic'].length>j+1)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 1])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.1393,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 1],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                              ],
-//                            ),
-//                            Column(
-//                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                              children: [
-//                                if(superherosLength[imgcount]
-//                            ['img_gallery_pic'].length>j+2)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 2])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.1393,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 2],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                                if(superherosLength[imgcount]
-//                                ['img_gallery_pic'].length>j+3)
-//                                GestureDetector(
-//                                  onTap: () {
-//                                    Navigator.of(context).push(MaterialPageRoute(
-//                                        builder: (context) => FullImage(
-//                                            superherosLength[imgcount]
-//                                                ['img_gallery_pic'][j + 3])));
-//                                  },
-//                                  child: Container(
-//                                    width: width * 0.3997,
-//                                    height: height * 0.3023,
-//                                    child: ClipRRect(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      child: CachedNetworkImage(
-//                                        imageUrl: superherosLength[imgcount]
-//                                            ['img_gallery_pic'][j + 3],
-//                                        fit: BoxFit.fill,
-//                                        placeholder: (context, url) => Center(
-//                                            child: CircularProgressIndicator()),
-//                                        errorWidget: (context, url, error) =>
-//                                            Icon(Icons.error),
-//                                      ),
-//                                    ),
-//                                    decoration: BoxDecoration(
-//                                      borderRadius: BorderRadius.circular(15),
-//                                      color: Colors.white,
-//                                    ),
-//                                  ),
-//                                ),
-//                              ],
-//                            ),
-//                          ],
-//                        ),
-//                      ),
-
                     Expanded(
                       child: Container(
                         //height: height * 0.5,
@@ -339,7 +203,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                   imgcount][
                                                               'img_gallery_pic']
                                                           [j + 0],
-                                                      fit: BoxFit.fill,
+                                                      fit: BoxFit.cover,
                                                       placeholder: (context,
                                                               url) =>
                                                           Center(
@@ -388,7 +252,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                   imgcount][
                                                               'img_gallery_pic']
                                                           [j + 1],
-                                                      fit: BoxFit.fill,
+                                                      fit: BoxFit.cover,
                                                       placeholder: (context,
                                                               url) =>
                                                           Center(
@@ -443,7 +307,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                   imgcount][
                                                               'img_gallery_pic']
                                                           [j + 2],
-                                                      fit: BoxFit.fill,
+                                                      fit: BoxFit.cover,
                                                       placeholder: (context,
                                                               url) =>
                                                           Center(
@@ -491,7 +355,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                   imgcount][
                                                               'img_gallery_pic']
                                                           [j + 3],
-                                                      fit: BoxFit.fill,
+                                                      fit: BoxFit.cover,
                                                       placeholder: (context,
                                                               url) =>
                                                           Center(
@@ -539,32 +403,6 @@ class _GalleryDesign extends State<GalleryDesign> {
   }
 }
 
-// class FullImage extends StatefulWidget {
-//   final image;
-//   FullImage(this.image);
-//   @override
-//   _FullImageState createState() => _FullImageState();
-// }
-
-// class _FullImageState extends State<FullImage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         backgroundColor: Colors.black,
-//         appBar: PreferredSize(
-//             preferredSize: Size.fromHeight(55), child: Backappbar()),
-//         body: Center(
-//           child: Container(
-//             child: PhotoView(
-//               imageProvider: CachedNetworkImageProvider(widget.image),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 class FullImage extends StatelessWidget {
   final List images;
   final int currentIndex;
@@ -598,19 +436,6 @@ class FullImage extends StatelessWidget {
                     child: PhotoView(
                       imageProvider: CachedNetworkImageProvider(images[i]),
                     ),
-                    // child: CachedNetworkImage(
-                    //   imageUrl: images[i],
-                    //   fit: BoxFit.fitWidth,
-                    //   placeholder: (context, url) => SizedBox(
-                    //     child: Shimmer.fromColors(
-                    //         baseColor: Colors.red,
-                    //         highlightColor: Colors.yellow,
-                    //         child: Container(
-                    //           color: Colors.black12,
-                    //         )),
-                    //   ),
-                    //   errorWidget: (context, url, error) => Icon(Icons.error),
-                    // ),
                   ),
               ],
             ),

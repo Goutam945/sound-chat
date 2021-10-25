@@ -94,8 +94,8 @@ class _ImageSliderState extends State<ImageSlider>
             duration: Duration(seconds: 1),
             opacity: (animationController.value < 0.2) ? 0 : 1,
             child: Container(
-              height: shortestSide * 0.8,
-              width: shortestSide * 0.9,
+              height: shortestSide * 0.85,
+              width: shortestSide * 0.85,
               // decoration: BoxDecoration(
               //     borderRadius: BorderRadius.circular(10),
               //     boxShadow: [
@@ -130,7 +130,7 @@ class _ImageSliderState extends State<ImageSlider>
             ),
           )
         : SizedBox(
-            height: shortestSide * 0.8,
+            height: shortestSide * 0.85,
             child: Center(
               child: CircularProgressIndicator(),
             ),
