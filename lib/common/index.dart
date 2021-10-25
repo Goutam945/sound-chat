@@ -122,3 +122,4 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:sound_chat/api/search_api.dart';
 export 'package:sound_chat/screens/spleshscreen.dart';
 export 'package:sound_chat/screens/upgrade_subscriptions.dart';
+export 'package:sound_chat/screens/refundpolicy.dart';

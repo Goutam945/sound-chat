@@ -446,6 +446,7 @@ class _CardScreenState extends State<CardScreen> {
                                         cart.cart1[index].productname,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
+                                          fontFamily: fontfamily,
                                           fontSize: 14,
                                           color: Colors.white,
                                         ),
@@ -454,12 +455,14 @@ class _CardScreenState extends State<CardScreen> {
                                     Text("Size: " + cart.cart1[index].size,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
+                                          fontFamily: fontfamily,
                                           fontSize: 15,
                                           color: Colors.white,
                                         )),
                                     Text("Color: " + cart.cart1[index].color,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
+                                          fontFamily: fontfamily,
                                           color: Colors.white,
                                         )),
                                     Text(
@@ -469,6 +472,7 @@ class _CardScreenState extends State<CardScreen> {
                                                 .toString(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
+                                          fontFamily: fontfamily,
                                           color: Colors.white,
                                         )),
                                     Row(
@@ -476,6 +480,7 @@ class _CardScreenState extends State<CardScreen> {
                                         Text("Quantity: ",
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
+                                              fontFamily: fontfamily,
                                               color: Colors.white,
                                             )),
                                         GestureDetector(

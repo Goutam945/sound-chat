@@ -418,13 +418,23 @@ class _NewMenupageState extends State<NewMenupage> {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Text(
-                                      "Refund Policy",
-                                      style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            PageTransition(
+                                                type: PageTransitionType
+                                                    .rightToLeft,
+                                                child: Refundpolicy()));
+                                      },
+                                      child: Text(
+                                        "Refund Policy",
+                                        style: TextStyle(
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: fontfamily,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ],
                                 ),

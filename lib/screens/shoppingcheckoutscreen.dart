@@ -79,7 +79,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
-                                fontFamily: 'Montserrat1',
+                                fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
                       ],
                     )),
@@ -144,9 +144,11 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                     child: Text(
                                       cardvalue.cart1[index].productname,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14,
-                                          color: Color(0xFFA79A9A)),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        fontFamily: fontfamily,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                   // Text(" Size:-" + cardvalue.cart1[index].size,
@@ -158,8 +160,10 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                         cardvalue.cart1[index].quantity
                                             .toString(),
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xFFA79A9A)),
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: fontfamily,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                   Text(
                                       "Price: \$" +
@@ -168,8 +172,10 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                                       .cart1[index].quantity)
                                               .toString(),
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xFFA79A9A))),
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: fontfamily,
+                                        color: Colors.white,
+                                      )),
                                   // Row(
                                   //   children: [
                                   //     Text("Quantity:",
@@ -244,9 +250,9 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                         Text("Product Details",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xFFFFFFFF),
+                                color: Colors.white,
                                 fontSize: 20,
-                                fontFamily: 'Montserrat1',
+                                fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -262,31 +268,31 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("Subtotal:",
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("Tax:",
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("Shipping Charge:",
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("Grand Total:",
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                 ],
                               ),
@@ -298,31 +304,31 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("\$" + cardvalue.sum1.toString(),
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("\$0.00",
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("\$0.00",
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                   Text("\$" + cardvalue.sum1.toString(),
                                       style: TextStyle(
                                           color: Color(0xFFFFFFFF),
                                           fontSize: 15,
-                                          fontFamily: 'Montserrat1',
+                                          fontFamily: fontfamily,
                                           fontWeight: FontWeight.bold)),
                                 ],
                               )

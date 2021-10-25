@@ -14,6 +14,8 @@ final String baseUrl = 'http://3.23.210.57:3000/api/v1/auth/';
 final String baseurlimage = 'http://3.23.210.57/soundradiobackend/images/';
 final String baseurlimagepodcast =
     'http://3.23.210.57/soundradiobackend/images/podcast/';
+final String baseurlimageinetrviews =
+    'http://3.23.210.57/soundradiobackend/images/interviews/';
 // const String publicationKey =
 //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
 // const String secretKey =
