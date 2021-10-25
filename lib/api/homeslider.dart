@@ -30,12 +30,12 @@ class HomesliderResponse with ChangeNotifier {
     notifyListeners();
   }
   imgIndex() {
-    if (imageIndex <= data.length) {
+    if (imageIndex < data["data"].length - 1) {
       imageIndex++;
     } else {
       imageIndex = 0;
     }
-    print(imageIndex);
+    print("$imageIndex ${data["data"].length}");
     notifyListeners();
   }
 }
