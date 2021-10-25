@@ -131,7 +131,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
             body: ListView(
               children: [
                 SizedBox(
-                  height: 300,
+                  height: height * 0.5,
                   child: PageView(
                     children: [
                       //for (int j = 0; j < widget.product['images'].length; j++)
@@ -286,7 +286,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  fontSize: width * 0.0438,
+                                  fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),
@@ -347,7 +347,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  fontSize: width * 0.0438,
+                                  fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),

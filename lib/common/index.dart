@@ -103,7 +103,7 @@ export 'package:sound_chat/screens/termsConditions.dart';
 export 'package:sound_chat/api/subscription_approve_user.dart';
 export 'package:sound_chat/screens/registrationshipnext.dart';
 export 'package:image_picker/image_picker.dart';
-export 'package:file_picker/file_picker.dart';
+// export 'package:file_picker/file_picker.dart';
 export 'package:sound_chat/api/sendmail.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:whatsapp_unilink/whatsapp_unilink.dart';

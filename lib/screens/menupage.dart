@@ -566,7 +566,7 @@ class _NewMenupageState extends State<NewMenupage> {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    SendMessage()));
+                                                    ReportProblem()));
                                       },
                                       child: Text(
                                         "Send a Genral Message ",
