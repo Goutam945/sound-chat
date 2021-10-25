@@ -1,7 +1,7 @@
 name: sound_chat
 description: A new Flutter application.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -33,7 +33,7 @@ dependencies:
   # flutter_braintree: ^2.0.0+1
   #flutter_stripe_payment: ^0.0.17
   connectivity: ^3.0.6
-  audioplayer: ^0.8.1
+  # audioplayer: ^0.8.1
   image_picker: ^0.8.4+2
   flutter_html: ^2.1.5
   whatsapp_unilink: ^2.0.0
@@ -49,7 +49,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   curved_navigation_bar: ^1.0.1
   awesome_dialog: ^2.1.1
-  flutter_advanced_drawer: ^1.2.3+1
+  # flutter_advanced_drawer: ^1.2.3+1
   badges: ^2.0.1
   vibration: ^1.7.3
   better_player: ^0.0.77
@@ -79,4 +79,3 @@ flutter:
 
   assets:
     - assets/
-

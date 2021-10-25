@@ -233,8 +233,7 @@ class _CardScreenState extends State<CardScreen> {
                     children: [
                       Text(
                         'Cart is empty. ',
-                        style: (TextStyle(
-                            fontSize: width * 0.05, color: Colors.white)),
+                        style: (TextStyle(fontSize: 20, color: Colors.white)),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -244,8 +243,8 @@ class _CardScreenState extends State<CardScreen> {
                         },
                         child: Text(
                           'Please Add Iteam',
-                          style: (TextStyle(
-                              fontSize: width * 0.05, color: Colors.red[900])),
+                          style:
+                              (TextStyle(fontSize: 20, color: Colors.red[900])),
                         ),
                       ),
                     ],

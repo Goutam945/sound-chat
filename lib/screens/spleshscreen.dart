@@ -26,7 +26,6 @@ class SplashScreenState extends State<SpleshScreen> {
     createtermsState(context);
     createMembershipState(context);
     createCoupncodeState(context);
-    createCoupncodeState(context);
     _loadSavedData();
     super.initState();
     /*Timer(
@@ -37,7 +36,7 @@ class SplashScreenState extends State<SpleshScreen> {
                 builder: (context) =>
                     (email == null) ? DesignLogin() : HomeScreen())));*/
     Timer(
-        Duration(seconds: 5),
+        Duration(seconds: 3),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomeBottomBar())));
   }
