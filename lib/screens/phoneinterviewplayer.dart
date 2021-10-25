@@ -211,7 +211,7 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                                                       child: GestureDetector(
                                                         child:
                                                             CachedNetworkImage(
-                                                          imageUrl:
+                                                          imageUrl: baseurlimageinetrviews +
                                                               superherosLength[
                                                                       i][
                                                                   'feature_img'],

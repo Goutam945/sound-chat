@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 
 Future<PhoneinterviewResponse> createPhoneinterviewState(context) async {
   final http.Response response =
-  await http.post( Uri.parse(baseUrl+'listphoneinterviews'));
+      await http.post(Uri.parse(baseUrl + 'listphoneinterviews'));
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-   // print(response.body.toString());
+    // print(response.body.toString());
     Provider.of<PhoneinterviewResponse>(context, listen: false).data = data;
     return PhoneinterviewResponse.fromJson(json.decode(response.body));
   } else {

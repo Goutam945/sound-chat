@@ -222,10 +222,11 @@ class _PrimiumvideoDesign extends State<Primiumvideo> {
                                                       child: GestureDetector(
                                                         child:
                                                             CachedNetworkImage(
-                                                          imageUrl: superherosLength[
-                                                                  'premium_content']
-                                                              [
-                                                              i]['feature_img'],
+                                                          imageUrl: baseurlimageinetrviews +
+                                                              superherosLength[
+                                                                      'premium_content'][i]
+                                                                  [
+                                                                  'feature_img'],
                                                           fit: BoxFit.cover,
                                                           placeholder: (context,
                                                                   url) =>

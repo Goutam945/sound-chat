@@ -93,7 +93,7 @@ class _YellowvideoScreenState extends State<YellowvideoScreen> {
                                   child: Opacity(
                                     opacity: 0.8,
                                     child: CachedNetworkImage(
-                                      imageUrl:
+                                      imageUrl: baseurlimageinetrviews +
                                           superherosLength['yellow_content'][i]
                                               ['feature_img'],
                                       fit: BoxFit.cover,

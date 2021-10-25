@@ -73,8 +73,9 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                                   child: Opacity(
                                     opacity: 0.8,
                                     child: CachedNetworkImage(
-                                      imageUrl: superherosLength['free_content']
-                                          [i]['feature_img'],
+                                      imageUrl: baseurlimageinetrviews +
+                                          superherosLength['free_content'][i]
+                                              ['feature_img'],
                                       fit: BoxFit.cover,
                                       placeholder: (context, url) => Center(
                                           child: CircularProgressIndicator()),

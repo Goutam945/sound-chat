@@ -75,8 +75,9 @@ class _StudiovideoScreenState extends State<PhonevideoScreen> {
                                       child: Opacity(
                                         opacity: 0.8,
                                         child: CachedNetworkImage(
-                                          imageUrl: superherosLength[i]
-                                              ['feature_img'],
+                                          imageUrl: baseurlimageinetrviews +
+                                              superherosLength[i]
+                                                  ['feature_img'],
                                           fit: BoxFit.cover,
                                           placeholder: (context, url) => Center(
                                               child:

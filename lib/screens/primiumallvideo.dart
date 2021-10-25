@@ -92,7 +92,7 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                                   child: Opacity(
                                     opacity: 0.8,
                                     child: CachedNetworkImage(
-                                      imageUrl:
+                                      imageUrl: baseurlimageinetrviews +
                                           superherosLength['premium_content'][i]
                                               ['feature_img'],
                                       fit: BoxFit.cover,

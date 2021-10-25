@@ -211,10 +211,11 @@ class _InterviewDesign extends State<InterviewPlay> {
                                                       child: GestureDetector(
                                                         child:
                                                             CachedNetworkImage(
-                                                          imageUrl: superherosLength[
-                                                                  'yellow_content']
-                                                              [
-                                                              i]['feature_img'],
+                                                          imageUrl: baseurlimageinetrviews +
+                                                              superherosLength[
+                                                                      'yellow_content'][i]
+                                                                  [
+                                                                  'feature_img'],
                                                           fit: BoxFit.cover,
                                                           placeholder: (context,
                                                                   url) =>

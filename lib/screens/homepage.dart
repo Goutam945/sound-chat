@@ -295,10 +295,11 @@ class _UpdatehomeState extends State<Updatehome> {
                                                       child: GestureDetector(
                                                         child:
                                                             CachedNetworkImage(
-                                                          imageUrl: superherosLength[
-                                                                  'free_content']
-                                                              [
-                                                              i]['feature_img'],
+                                                          imageUrl: baseurlimageinetrviews +
+                                                              superherosLength[
+                                                                      'free_content'][i]
+                                                                  [
+                                                                  'feature_img'],
                                                           fit: BoxFit.cover,
                                                           placeholder: (context,
                                                                   url) =>

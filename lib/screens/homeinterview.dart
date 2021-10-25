@@ -123,10 +123,12 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                             image:
                                                                 DecorationImage(
                                                               image: NetworkImage(
-                                                                  superherosLength[
-                                                                          'free_content'][i]
-                                                                      [
-                                                                      'feature_img']),
+                                                                  baseurlimageinetrviews +
+                                                                      superherosLength['free_content']
+                                                                              [
+                                                                              i]
+                                                                          [
+                                                                          'feature_img']),
                                                               fit: BoxFit.cover,
                                                             ),
                                                             // border:
@@ -406,7 +408,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                         child:
                                                                             CachedNetworkImage(
                                                                           imageUrl:
-                                                                              superherosLength['premium_content'][i]['feature_img'],
+                                                                              baseurlimageinetrviews + superherosLength['premium_content'][i]['feature_img'],
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           placeholder: (context, url) =>
@@ -560,7 +562,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                         child:
                                                                             CachedNetworkImage(
                                                                           imageUrl:
-                                                                              superherosLength['yellow_content'][i]['feature_img'],
+                                                                              baseurlimageinetrviews + superherosLength['yellow_content'][i]['feature_img'],
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           placeholder: (context, url) =>
@@ -727,7 +729,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                         child:
                                                                             CachedNetworkImage(
                                                                           imageUrl:
-                                                                              superherosLength['free_content'][i]['feature_img'],
+                                                                              baseurlimageinetrviews + superherosLength['free_content'][i]['feature_img'],
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           placeholder: (context, url) =>
@@ -890,7 +892,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                         child:
                                                                             CachedNetworkImage(
                                                                           imageUrl:
-                                                                              phonesuperherosLength[i]['feature_img'],
+                                                                              baseurlimageinetrviews + phonesuperherosLength[i]['feature_img'],
                                                                           fit: BoxFit
                                                                               .cover,
                                                                           placeholder: (context, url) =>
