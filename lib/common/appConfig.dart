@@ -10,8 +10,10 @@ double subtitlefontsize = 14;
 String fontfamily = "Montserrat";
 StreamController<String> streamController =
     StreamController<String>.broadcast();
-final String baseUrl = ('http://3.23.210.57:3000/api/v1/auth/');
-final String baseurlimage = ('http://3.23.210.57/soundradiobackend/images/');
+final String baseUrl = 'http://3.23.210.57:3000/api/v1/auth/';
+final String baseurlimage = 'http://3.23.210.57/soundradiobackend/images/';
+final String baseurlimagepodcast =
+    'http://3.23.210.57/soundradiobackend/images/podcast/';
 // const String publicationKey =
 //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
 // const String secretKey =

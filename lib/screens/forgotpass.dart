@@ -75,7 +75,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                         style: TextStyle(
                             color: Colors.white, fontFamily: fontfamily),
                         controller: _name,
-                        validator: Validators.required('MobileNo. is required'),
+                        validator: Validators.required('Username is required'),
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10),
                           border: border,
@@ -86,7 +86,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                             Icons.phone_android,
                             color: Color(0xFFA6B3BC),
                           ),
-                          hintText: 'MobileNumber',
+                          hintText: 'Username',
                           hintStyle: TextStyle(
                               color: Colors.white, fontFamily: fontfamily),
                         ),

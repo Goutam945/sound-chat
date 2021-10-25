@@ -296,15 +296,24 @@ class _NewMenupageState extends State<NewMenupage> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        setState(() {
-                                          loader = true;
-                                        });
-                                        createAllOrderState(id, context)
-                                            .whenComplete(() {
+                                        if (email == null)
+                                          Navigator.push(
+                                              context,
+                                              PageTransition(
+                                                  type: PageTransitionType
+                                                      .rightToLeft,
+                                                  child: NewLogin()));
+                                        else {
                                           setState(() {
-                                            loader = false;
+                                            loader = true;
                                           });
-                                        });
+                                          createAllOrderState(id, context)
+                                              .whenComplete(() {
+                                            setState(() {
+                                              loader = false;
+                                            });
+                                          });
+                                        }
                                       },
                                       child: Text(
                                         "My Orders",
@@ -385,21 +394,21 @@ class _NewMenupageState extends State<NewMenupage> {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      "Profile",
-                                      style: TextStyle(
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     SizedBox(
+                                //       width: 5,
+                                //     ),
+                                //     Text(
+                                //       "Profile",
+                                //       style: TextStyle(
+                                //           fontSize: fontSize,
+                                //           fontWeight: FontWeight.bold,
+                                //           fontFamily: fontfamily,
+                                //           color: Colors.white),
+                                //     ),
+                                //   ],
+                                // ),
                                 Row(
                                   children: [
                                     SizedBox(

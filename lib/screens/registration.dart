@@ -180,12 +180,12 @@ class _SignupPageState extends State<Registrationship> {
                         border: border,
                         enabledBorder: border,
                         focusedBorder: border,
-                        labelText: "Phone",
+                        labelText: "Username",
                         labelStyle: TextStyle(
                           color: Colors.white,
                         ),
                         fillColor: Colors.white,
-                        hintText: 'Phone:',
+                        hintText: 'Username:',
                         hintStyle: TextStyle(color: Colors.white),
                         prefixIcon: Icon(
                           Icons.phone_android,
@@ -193,7 +193,7 @@ class _SignupPageState extends State<Registrationship> {
                         ),
                       ),
                       controller: _phone,
-                      validator: Validators.required('Phone is required'),
+                      validator: Validators.required('Username is required'),
                     ),
                   ),
                   SizedBox(

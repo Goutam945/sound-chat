@@ -109,7 +109,7 @@ class _ImageSliderState extends State<ImageSlider>
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(0),
                 child: Image.network(
-                  ads[imageIndex]['img'],
+                  baseurlimage + ads[imageIndex]['img'],
                   fit: BoxFit.fill,
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent loadingProgress) {

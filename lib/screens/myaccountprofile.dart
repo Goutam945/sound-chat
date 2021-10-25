@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/shared_preferences.dart';
 import 'package:sound_chat/stripe_api/cancel_subscription.dart';
@@ -125,16 +126,6 @@ class _MyAccountState extends State<MyAccount> {
                       height: 20,
                     ),
                     Center(
-                      //                      child: CachedNetworkImage(
-                      //                        imageUrl: image,
-                      //                        fit: BoxFit.cover,
-                      //                        placeholder: (context, url) => Center(
-                      //                            child:
-                      //                            CircularProgressIndicator()),
-                      //                        errorWidget:
-                      //                            (context, url, error) =>
-                      //                            Icon(Icons.error),
-                      //                      ),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -193,16 +184,31 @@ class _MyAccountState extends State<MyAccount> {
                     SizedBox(
                       height: 20,
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Account Details',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                        textAlign: TextAlign.start,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Account Details',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                          textAlign: TextAlign.start,
+                        ),
+                        IconButton(
+                            visualDensity: VisualDensity.compact,
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: DesignUpdate()));
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                            )),
+                      ],
                     ),
                     SizedBox(
                       height: 10,
@@ -250,13 +256,13 @@ class _MyAccountState extends State<MyAccount> {
                                     color: Colors.white,
                                     fontFamily: fontfamily),
                               ),
-                              Text(
-                                'Update Profile:',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    fontFamily: fontfamily),
-                              ),
+                              // Text(
+                              //   'Update Profile:',
+                              //   style: TextStyle(
+                              //       fontSize: 14,
+                              //       color: Colors.white,
+                              //       fontFamily: fontfamily),
+                              // ),
                             ],
                           ),
                           SizedBox(
@@ -302,21 +308,21 @@ class _MyAccountState extends State<MyAccount> {
                                       color: Colors.green, fontSize: 16),
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      PageTransition(
-                                          type: PageTransitionType.rightToLeft,
-                                          child: DesignUpdate()));
-                                },
-                                child: Text(
-                                  "Upgrade Profile",
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                      color: Colors.green, fontSize: 16),
-                                ),
-                              ),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     Navigator.push(
+                              //         context,
+                              //         PageTransition(
+                              //             type: PageTransitionType.rightToLeft,
+                              //             child: DesignUpdate()));
+                              //   },
+                              //   child: Text(
+                              //     "Upgrade Profile",
+                              //     textAlign: TextAlign.end,
+                              //     style: TextStyle(
+                              //         color: Colors.green, fontSize: 16),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ],

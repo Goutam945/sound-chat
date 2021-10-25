@@ -289,11 +289,23 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             SizedBox(
-                                                width: width * 0.3037,
-                                                child: Image.asset(
-                                                  'assets/imgpodcast.png',
-                                                  fit: BoxFit.fill,
-                                                )),
+                                              width: width * 0.3037,
+                                              child: (superherosLength[day]
+                                                              ['shows'][j]
+                                                          ['show_image'] !=
+                                                      null)
+                                                  ? Image.network(
+                                                      baseurlimagepodcast +
+                                                          superherosLength[day]
+                                                                  ['shows'][j]
+                                                              ['show_image'],
+                                                      fit: BoxFit.fill,
+                                                    )
+                                                  : Image.asset(
+                                                      'assets/imgpodcast.png',
+                                                      fit: BoxFit.fill,
+                                                    ),
+                                            ),
                                             Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,

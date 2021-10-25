@@ -201,25 +201,28 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                         .spaceBetween,
                                                 children: [
                                                   SizedBox(
-                                                      width: width * 0.3037,
-                                                      child: Image.asset(
-                                                        'assets/imgpodcast.png',
-                                                        fit: BoxFit.fill,
-                                                      )),
-                                                  // Container(
-                                                  //   margin: EdgeInsets.only(
-                                                  //     right: 12,
-                                                  //   ),
-                                                  //   width: width * 0.3037,
-                                                  //   height: height * 0.1501,
-                                                  //   decoration: BoxDecoration(
-                                                  //       color: Colors.white,
-                                                  //      ),
-                                                  //   child: Image.asset(
-                                                  //     'assets/imgpodcast.png',
-                                                  //     fit: BoxFit.fill,
-                                                  //   ),
-                                                  // ),
+                                                    width: width * 0.3037,
+                                                    child: (superherosLength[
+                                                                        day]
+                                                                    ['shows'][j]
+                                                                [
+                                                                'show_image'] !=
+                                                            null)
+                                                        ? Image.network(
+                                                            baseurlimagepodcast +
+                                                                superherosLength[
+                                                                            day]
+                                                                        [
+                                                                        'shows'][j]
+                                                                    [
+                                                                    'show_image'],
+                                                            fit: BoxFit.fill,
+                                                          )
+                                                        : Image.asset(
+                                                            'assets/imgpodcast.png',
+                                                            fit: BoxFit.fill,
+                                                          ),
+                                                  ),
                                                   Column(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment

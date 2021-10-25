@@ -113,7 +113,7 @@ class _UpdatehomeState extends State<Updatehome> {
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(
               height: 100,
@@ -171,60 +171,10 @@ class _UpdatehomeState extends State<Updatehome> {
             SizedBox(
               height: 10,
             ),
-            // Expanded(
-            //   child: Opacity(
-            //       opacity: 0.7,
-            //       child: (homeslider != null)
-            //           ? CarouselSlider(
-            //               options: CarouselOptions(
-            //                 onPageChanged: (value, image) {
-            //                   setState(() {
-            //                     imageNo = value;
-            //                   });
-            //                 },
-            //                 height: double.infinity,
-            //                 autoPlay: true,
-            //                 enlargeCenterPage: true,
-            //                 viewportFraction: 1,
-            //                 autoPlayInterval: Duration(seconds: 4),
-            //                 autoPlayAnimationDuration: Duration(seconds: 1),
-            //               ),
-            //               items: <Widget>[
-            //                 for (int i = 0; i < homeslider.length; i++)
-            //                   Container(
-            //                     width: width * 0.95,
-            //                     margin: EdgeInsets.symmetric(horizontal: 5.0),
-            //                     child: CachedNetworkImage(
-            //                       imageUrl: homeslider[i]['img'],
-            //                       fit: BoxFit.fill,
-            //                       placeholder: (context, url) => SizedBox(
-            //                         width: width,
-            //                         height: double.infinity,
-            //                         child: Shimmer.fromColors(
-            //                             baseColor: Colors.red,
-            //                             highlightColor: Colors.yellow,
-            //                             child: Container(
-            //                               color: Colors.black12,
-            //                             )),
-            //                       ),
-            //                       errorWidget: (context, url, error) =>
-            //                           Icon(Icons.error),
-            //                     ),
-            //                   ),
-            //               ],
-            //             )
-            //           : Shimmer.fromColors(
-            //               baseColor: Colors.black12,
-            //               highlightColor: Colors.grey[600],
-            //               child: Container(
-            //                 margin: EdgeInsets.symmetric(vertical: 10),
-            //                 color: Colors.black,
-            //                 width: width * 0.95,
-            //                 height: height * 0.5,
-            //               ),
-            //             )),
-            // ),
-            Expanded(child: ImageSlider()),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ImageSlider(),
+            ),
             Container(
               //padding: const EdgeInsets.all(8.0),
               width: width * 1.01998,
@@ -415,7 +365,7 @@ class _UpdatehomeState extends State<Updatehome> {
                     ),
             ),
             SizedBox(
-              height: 20,
+              height: 5,
             ),
           ],
         ),

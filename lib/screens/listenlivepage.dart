@@ -195,8 +195,9 @@ class _ListenlivepageState extends State<Listenlivepage> {
                             ),
                           ]),
                       child: CachedNetworkImage(
-                        imageUrl:
-                            "https://soundchatradio.com/wp-content/uploads/2021/01/supa-fridge-1024x1024.jpg",
+                        imageUrl: baseurlimagepodcast +
+                            timeAndDate[weekday]['shows'][showtime]
+                                ['show_image'],
                         fit: BoxFit.fill,
                         placeholder: (context, url) => SizedBox(
                           width: width,
@@ -367,9 +368,9 @@ class _ListenlivepageState extends State<Listenlivepage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              for (int i = 0;
-                                  i < timeAndDate[day]['shows'].length;
-                                  i++)
+                              for (int j = 0;
+                                  j < timeAndDate[day]['shows'].length;
+                                  j++)
                                 Row(
                                   children: [
                                     Column(
@@ -382,8 +383,11 @@ class _ListenlivepageState extends State<Listenlivepage> {
                                                     BorderRadius.circular(5),
                                                 child: GestureDetector(
                                                   child: CachedNetworkImage(
-                                                    imageUrl:
-                                                        "https://soundchatradio.com/wp-content/uploads/2021/01/supa-fridge-1024x1024.jpg",
+                                                    imageUrl: baseurlimagepodcast +
+                                                        timeAndDate[day]
+                                                                    ['shows'][j]
+                                                                ['show_image']
+                                                            .toString(),
                                                     fit: BoxFit.fill,
                                                     placeholder: (context,
                                                             url) =>
@@ -405,7 +409,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
                                                                     null)
                                                                 ? NewLogin()
                                                                 : PodcastPlayCloud(
-                                                                    i,
+                                                                    j,
                                                                     weekday)));
                                                   },
                                                 ))),

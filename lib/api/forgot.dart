@@ -13,22 +13,25 @@ Future<ForgotResponse> createForgotResponse(String name, context) async {
   if (response.statusCode == 200) {
     dynamic forgotResponse = json.decode(response.body);
     print(response.body.toString());
-    String responseCode = forgotResponse['code'];
-    print(responseCode);
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => NewLogin()));
-    Toast.show("Email sent Successfully", context,
+    int responseCode = forgotResponse['status'];
+    String message = forgotResponse['message'];
+    if (responseCode == 200) {
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => NewLogin()));
+    }
+
+    Toast.show(message, context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     return ForgotResponse.fromJson(json.decode(response.body));
   } else {
-    Toast.show("Server Error", context,
+    Toast.show(response.body, context,
         duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
     throw Exception(response.body);
   }
 }
 
 class ForgotResponse {
-  String response;
+  int response;
   String message;
 
   ForgotResponse({
@@ -37,7 +40,7 @@ class ForgotResponse {
   });
 
   ForgotResponse.fromJson(Map<String, dynamic> json) {
-    response = json['code'];
-    message = json['msg'];
+    response = json['status'];
+    message = json['message'];
   }
 }
