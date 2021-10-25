@@ -139,7 +139,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         child: CachedNetworkImage(
                           //imageUrl:widget.product[j]['images'],
                           imageUrl: widget.product['image'],
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           placeholder: (context, url) =>
                               Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>
@@ -165,23 +165,23 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 Text(widget.product['title'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Color(0xFF535353),
+                        color: Colors.white,
                         fontSize: 20,
-                        fontFamily: 'Montserrat1',
+                        fontFamily: fontfamily,
                         fontWeight: FontWeight.bold)),
                 Text("\$" + widget.product['Price'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.red,
                         fontSize: 15,
-                        fontFamily: 'Montserrat1',
+                        fontFamily: fontfamily,
                         fontWeight: FontWeight.bold)),
                 Text(widget.product['description'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Color(0xFF535353),
-                        fontSize: 15,
-                        fontFamily: 'Montserrat1',
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontFamily: fontfamily,
                         fontWeight: FontWeight.bold)),
                 /*Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -251,8 +251,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: Text("Size:   ",
                             style: TextStyle(
-                                color: Color(0xFF535353),
-                                fontSize: 20,
+                                color: Colors.white,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -264,7 +264,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         child: DropdownButton<String>(
                           dropdownColor: Color(0xFF464646),
                           value: dropdownSize,
-                          icon: Icon(Icons.arrow_drop_down_sharp),
+                          icon: Icon(
+                            Icons.arrow_drop_down_sharp,
+                            color: Colors.white,
+                          ),
                           iconSize: 44,
                           elevation: 16,
                           style: TextStyle(color: Color(0xFFA79A9A)),
@@ -282,7 +285,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               value: value,
                               child: Text(
                                 value,
-                                style: TextStyle(fontSize: width * 0.0438),
+                                style: TextStyle(
+                                  fontSize: width * 0.0438,
+                                  color: Colors.white,
+                                ),
                               ),
                             );
                           }).toList(),
@@ -306,8 +312,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: Text("Color: ",
                             style: TextStyle(
-                                color: Color(0xFF535353),
-                                fontSize: 20,
+                                color: Colors.white,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -319,7 +325,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         child: DropdownButton<String>(
                           dropdownColor: Color(0xFF464646),
                           value: dropdownValue,
-                          icon: Icon(Icons.arrow_drop_down_sharp),
+                          icon: Icon(
+                            Icons.arrow_drop_down_sharp,
+                            color: Colors.white,
+                          ),
                           iconSize: 44,
                           elevation: 16,
                           style: TextStyle(color: Color(0xFFA79A9A)),
@@ -337,7 +346,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               value: value,
                               child: Text(
                                 value,
-                                style: TextStyle(fontSize: width * 0.0438),
+                                style: TextStyle(
+                                  fontSize: width * 0.0438,
+                                  color: Colors.white,
+                                ),
                               ),
                             );
                           }).toList(),

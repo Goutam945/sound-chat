@@ -445,38 +445,45 @@ class _CardScreenState extends State<CardScreen> {
                                       child: Text(
                                         cart.cart1[index].productname,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                            color: Color(0xFFA79A9A)),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    Text("Size:" + cart.cart1[index].size,
+                                    Text("Size: " + cart.cart1[index].size,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15,
-                                            color: Color(0xFFA79A9A))),
-                                    Text("Color:" + cart.cart1[index].color,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                        )),
+                                    Text("Color: " + cart.cart1[index].color,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Color(0xFFA79A9A))),
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        )),
                                     Text(
-                                        "Price: \$" +
+                                        "Price: \$ " +
                                             (cart.cart1[index].price *
                                                     cart.cart1[index].quantity)
                                                 .toString(),
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Color(0xFFA79A9A))),
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        )),
                                     Row(
                                       children: [
-                                        Text("Quantity:",
+                                        Text("Quantity: ",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                color: Color(0xFFA79A9A))),
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            )),
                                         GestureDetector(
-                                            child: new Icon(Icons.arrow_left,
-                                                size: 30,
-                                                color: Color(0xFFA79A9A)),
+                                            child: new Icon(
+                                              Icons.arrow_left,
+                                              size: 30,
+                                              color: Colors.white,
+                                            ),
                                             onTap: () {
                                               if (cart.cart1[index].quantity >
                                                   1)
@@ -494,12 +501,13 @@ class _CardScreenState extends State<CardScreen> {
                                         Text(
                                           cart.cart1[index].quantity.toString(),
                                           style: TextStyle(
-                                              color: Color(0xFFA79A9A)),
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         GestureDetector(
                                           child: new Icon(
                                             Icons.arrow_right,
-                                            color: Color(0xFFA79A9A),
+                                            color: Colors.white,
                                             size: 30,
                                           ),
                                           onTap: () {
@@ -554,7 +562,7 @@ class _CardScreenState extends State<CardScreen> {
                                 },
                                 child: new Icon(
                                   Icons.delete,
-                                  color: Color(0xFFA79A9A),
+                                  color: Colors.white,
                                 )),
                           )
                         ],
