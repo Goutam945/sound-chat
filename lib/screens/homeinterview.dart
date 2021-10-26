@@ -1024,7 +1024,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
-                    ;
+                   
                   })),
           if (roated)
             Positioned(

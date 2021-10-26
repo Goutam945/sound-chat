@@ -1,5 +1,4 @@
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/stripe_api/get_product.dart';
 
 class Shopping extends StatefulWidget {
   @override

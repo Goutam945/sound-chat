@@ -13,7 +13,7 @@ class Updatehome extends StatefulWidget {
 class _UpdatehomeState extends State<Updatehome> {
   int id;
 
-  Future<int> _loadSavedData() async {
+  Future<int> loadSavedData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
       if (sharedPreferences.getString('email') != null &&
