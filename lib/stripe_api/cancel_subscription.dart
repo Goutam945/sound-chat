@@ -8,7 +8,7 @@ Future<CancelSubscriptionStatusReponse> cancelSubscriptionState(
     headers: {'Authorization': 'Bearer $secretKey'},
   );
   if (response.statusCode == 200) {
-    dynamic data = json.decode(response.body);
+    // dynamic data = json.decode(response.body);
     //print(data);
 
     return CancelSubscriptionStatusReponse.fromJson(json.decode(response.body));

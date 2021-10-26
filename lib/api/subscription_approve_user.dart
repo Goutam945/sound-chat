@@ -64,7 +64,7 @@ Future<SubscriptionResponse> createSubscriptionState(
     'plan_level': level
   });
   if (response.statusCode == 200) {
-    var data = json.decode(response.body);
+    // var data = json.decode(response.body);
     {
       // print(data.toString());
       // Provider.of<SubscriptionResponse>(context, listen: false).data = data;

@@ -104,7 +104,7 @@ Future<LoginResponse> createLoginState(
         Sharedpreferences()
             .saveUsernamePassword(username: mobile, password: password);
       }
-      final get = await Sharedpreferences().getUsername();
+      // final get = await Sharedpreferences().getUsername();
 
       //  print("USERNAME" + get.toString());
       createSubcriptionlevalState(id, context);

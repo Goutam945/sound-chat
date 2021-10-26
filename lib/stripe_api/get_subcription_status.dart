@@ -8,7 +8,7 @@ Future<SubscriptionStatusReponse> createSubscriptionStatusState(
     headers: {'Authorization': 'Bearer $secretKey'},
   );
   if (response.statusCode == 200) {
-    dynamic data = json.decode(response.body);
+    // dynamic data = json.decode(response.body);
     //print(data);
     // Provider.of<InvoiceReponse>(context, listen: false).data = data;
     return SubscriptionStatusReponse.fromJson(json.decode(response.body));

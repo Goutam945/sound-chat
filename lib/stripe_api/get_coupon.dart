@@ -7,7 +7,7 @@ Future<Coupon> createCouponState({context, String couponid}) async {
     headers: {'Authorization': 'Bearer $secretKey'},
   );
   if (response.statusCode == 200) {
-    dynamic data = json.decode(response.body);
+    // dynamic data = json.decode(response.body);
     //print(data);
     return Coupon.fromJson(json.decode(response.body));
   } else {
