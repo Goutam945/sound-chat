@@ -28,24 +28,23 @@ class Constants {
   static const double VIDEO_TITLE_HEIGHT_PIP = 70;
 }
 
-int getschedule({context}) {
+int getschedule({context, data}) {
   Duration duration = Duration(hours: 9, minutes: 30);
   //if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
-  var timeAndDate =
-      Provider.of<ScheduleResponse>(context, listen: false).data['data'];
+  //var timeAndDate = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
   int weekday = 7 - DateTime.now().subtract(duration).weekday;
   var startTime;
   var endTime;
-  if (timeAndDate != null)
-    for (int i = 0; i < timeAndDate[weekday]['shows'].length; i++) {
+  if (data != null)
+    for (int i = 0; i < data[weekday]['shows'].length; i++) {
       startTime =
           DateTime.now().subtract(duration).toIso8601String().split('T')[0] +
               ' ' +
-              timeAndDate[weekday]['shows'][i]['show_start_date'];
+              data[weekday]['shows'][i]['show_start_date'];
       endTime =
           DateTime.now().subtract(duration).toIso8601String().split('T')[0] +
               ' ' +
-              timeAndDate[weekday]['shows'][i]['show_end_date'];
+              data[weekday]['shows'][i]['show_end_date'];
       DateTime a = DateTime.parse(startTime);
       DateTime b = DateTime.parse(endTime);
       DateTime c = DateTime.now().subtract(duration);

@@ -17,15 +17,13 @@ class SplashScreenState extends State<SpleshScreen> {
       // createFCMTokenState(token);
       print('token: $token');
     });
-    createVideoState(context);
-    createPhoneinterviewState(context);
-    createScheduleState(context);
-    createGalleryState(context);
-    createHomesliderState(context);
-    createBanneradsState(context);
-    createtermsState(context);
-    createMembershipState(context);
-    createCoupncodeState(context);
+    // createPhoneinterviewState(context);
+    // createScheduleState(context);
+    // createGalleryState(context);
+    // createHomesliderState(context);
+    // createtermsState(context);
+    // createMembershipState(context);
+    // createCoupncodeState(context);
     _loadSavedData();
     super.initState();
     /*Timer(
