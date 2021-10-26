@@ -11,7 +11,8 @@ class Listenlivepage extends StatefulWidget {
   _ListenlivepageState createState() => _ListenlivepageState();
 }
 
-class _ListenlivepageState extends State<Listenlivepage> {
+class _ListenlivepageState extends State<Listenlivepage>
+    with WidgetsBindingObserver {
   int id;
 
   Future<int> _loadSavedData() async {
@@ -52,7 +53,7 @@ class _ListenlivepageState extends State<Listenlivepage> {
   void initState() {
     super.initState();
     _loadSavedData().then((value) => createSubcriptionlevalState(id, context));
-    // WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     if (Platform.isIOS)
       audioPlayer.notificationService.setNotification(title: "Soundchat Radio");
     onPlayerErr();
