@@ -22,7 +22,7 @@ Future<Crteatecustomer> createcustomerState(
 
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    print(data);
+    //print(data);
     Provider.of<Crteatecustomer>(context, listen: false).data = data;
     return Crteatecustomer.fromJson(json.decode(response.body));
   } else {

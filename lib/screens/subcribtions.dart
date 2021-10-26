@@ -192,7 +192,7 @@ class _SubscriptionState extends State<Subscription> {
     createproductState(context).then((data) {
       setState(() {
         productname = data.data['data'];
-        print(data);
+        // print(data);
       });
     });
   }

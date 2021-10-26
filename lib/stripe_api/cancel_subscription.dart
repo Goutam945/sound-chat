@@ -9,7 +9,7 @@ Future<CancelSubscriptionStatusReponse> cancelSubscriptionState(
   );
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    print(data);
+    //print(data);
 
     return CancelSubscriptionStatusReponse.fromJson(json.decode(response.body));
   } else {

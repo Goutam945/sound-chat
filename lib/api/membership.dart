@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 
 Future<MembershipResponse> createMembershipState(context) async {
   final http.Response response =
-  await http.post( Uri.parse(baseUrl+'listplan'));
+      await http.post(Uri.parse(baseUrl + 'listplan'));
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    print(data);
+    // print(data);
     Provider.of<MembershipResponse>(context, listen: false).data = data;
     return MembershipResponse.fromJson(json.decode(response.body));
   } else {

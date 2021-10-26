@@ -7,7 +7,7 @@ Future<Productname> createproductState(context) async {
     headers: {'Authorization': 'Bearer $secretKey'},
   );
   if (response.statusCode == 200) {
-    print(response.body);
+    // print(response.body);
     // dynamic data = json.decode(response.body);
     // Provider.of<Productname>(context, listen: false).data = data;
     return Productname.fromJson(json.decode(response.body));

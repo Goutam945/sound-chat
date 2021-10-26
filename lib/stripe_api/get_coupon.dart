@@ -8,7 +8,7 @@ Future<Coupon> createCouponState({context, String couponid}) async {
   );
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    print(data);
+    //print(data);
     return Coupon.fromJson(json.decode(response.body));
   } else {
     Toast.show("server error", context,

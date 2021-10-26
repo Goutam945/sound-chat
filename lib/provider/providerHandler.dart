@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+
 class OverlayHandlerProvider with ChangeNotifier {
   OverlayEntry overlayEntry;
   double _aspectRatio = 1.77;
@@ -7,14 +8,14 @@ class OverlayHandlerProvider with ChangeNotifier {
   enablePip(double aspect) {
     inPipMode = true;
     _aspectRatio = aspect;
-    print("$inPipMode enablePip");
+    //print("$inPipMode enablePip");
     notifyListeners();
   }
 
   disablePip() {
     pipDisabled = true;
     inPipMode = false;
-    print("$inPipMode disablePip");
+    //print("$inPipMode disablePip");
     notifyListeners();
   }
 
@@ -22,7 +23,7 @@ class OverlayHandlerProvider with ChangeNotifier {
   get aspectRatio => _aspectRatio;
 
   insertOverlay(BuildContext context, OverlayEntry overlay) {
-    if(overlayEntry != null) {
+    if (overlayEntry != null) {
       overlayEntry.remove();
     }
     overlayEntry = null;
@@ -32,10 +33,9 @@ class OverlayHandlerProvider with ChangeNotifier {
   }
 
   removeOverlay(BuildContext context) {
-    if(overlayEntry != null) {
+    if (overlayEntry != null) {
       overlayEntry.remove();
     }
     overlayEntry = null;
   }
-
 }

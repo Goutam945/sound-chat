@@ -372,7 +372,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Fluttertoast.showToast(msg: state.toString());
-    print('AppLifeCycle State: ' + state.toString());
+    //print('AppLifeCycle State: ' + state.toString());
     switch (state) {
       case AppLifecycleState.resumed:
         setState(() {
@@ -476,11 +476,11 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
     PaymentMethod paymentResponse =
         await StripePayment.paymentRequestWithCardForm(CardFormPaymentRequest())
             .onError((error, stackTrace) {
-      print(error);
+      // print(error);
       return faileddialog(error, context);
     });
     _paymentMethodId = paymentResponse.id;
-    print("PAYMENTTTT" + paymentResponse.id.toString());
+    // print("PAYMENTTTT" + paymentResponse.id.toString());
     setState(() {
       isloding = true;
     });
@@ -581,7 +581,7 @@ class _PaymentDetailsMemberPageState extends State<PaymentDetailsMember>
 
   @override
   Widget build(BuildContext context) {
-    print(widget.lid.toString() + "       " + widget.uid.toString());
+    //print(widget.lid.toString() + "       " + widget.uid.toString());
     return SafeArea(
       child: Stack(children: [
         Scaffold(

@@ -121,7 +121,7 @@ Future<SignUpResponse> createSignUpState(
     if (status == 200) {
       int uid = data['data']['id'];
       String message = data['message'];
-      print(data);
+      // print(data);
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => (plan['amount'] != 0)
               ? PaymentDetailsMember(plan, uid, lid, productname, firstName,

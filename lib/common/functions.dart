@@ -29,36 +29,32 @@ class Constants {
 }
 
 int getschedule({context}) {
+  Duration duration = Duration(hours: 9, minutes: 30);
   //if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
   var timeAndDate =
       Provider.of<ScheduleResponse>(context, listen: false).data['data'];
-  int weekday =
-      7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
+  int weekday = 7 - DateTime.now().subtract(duration).weekday;
   var startTime;
   var endTime;
   if (timeAndDate != null)
     for (int i = 0; i < timeAndDate[weekday]['shows'].length; i++) {
-      startTime = DateTime.now()
-              .subtract(Duration(hours: 9, minutes: 30))
-              .toIso8601String()
-              .split('T')[0] +
-          ' ' +
-          timeAndDate[weekday]['shows'][i]['show_start_date'];
-      endTime = DateTime.now()
-              .subtract(Duration(hours: 9, minutes: 30))
-              .toIso8601String()
-              .split('T')[0] +
-          ' ' +
-          timeAndDate[weekday]['shows'][i]['show_end_date'];
+      startTime =
+          DateTime.now().subtract(duration).toIso8601String().split('T')[0] +
+              ' ' +
+              timeAndDate[weekday]['shows'][i]['show_start_date'];
+      endTime =
+          DateTime.now().subtract(duration).toIso8601String().split('T')[0] +
+              ' ' +
+              timeAndDate[weekday]['shows'][i]['show_end_date'];
       DateTime a = DateTime.parse(startTime);
       DateTime b = DateTime.parse(endTime);
-      DateTime c = DateTime.now().subtract(Duration(hours: 9, minutes: 30));
-      print("$a, $b, $c");
+      DateTime c = DateTime.now().subtract(duration);
+      //  print("$a, $b, $c");
       if (c.isAfter(a) && c.isBefore(b)) {
         // setState(() {
         //   showtime = i;
         // });
-        print("TIME" + i.toString());
+        //  print("TIME" + i.toString());
         return i;
       }
     }

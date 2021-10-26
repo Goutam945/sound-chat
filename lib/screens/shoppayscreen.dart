@@ -468,7 +468,7 @@ class _ShopPayState extends State<ShopPay> {
         await StripePayment.paymentRequestWithCardForm(
             CardFormPaymentRequest());
     _paymentMethodId = paymentResponse.id;
-    print("PAYMENTTTT" + paymentResponse.id.toString());
+    //print("PAYMENTTTT" + paymentResponse.id.toString());
   }
 
   Future<void> createIntent(amount) async {
@@ -477,13 +477,13 @@ class _ShopPayState extends State<ShopPay> {
         headers: {'Authorization': 'Bearer $secretKey'},
         encoding: Encoding.getByName('x-www-form-urlencoded'),
         body: {'amount': '${(amount * 100).round()}', 'currency': 'INR'});
-    print('Response status: ${response.statusCode}');
+    //print('Response status: ${response.statusCode}');
     if (response.statusCode == 200) {
-      print('Response body: ${response.body}');
+      // print('Response body: ${response.body}');
       dynamic data = json.decode(response.body);
       setState(() {
         clientSecret = data['client_secret'];
-        print("clientSecret: " + clientSecret);
+        // print("clientSecret: " + clientSecret);
       });
     } else {
       throw Exception(response.body);
@@ -497,21 +497,21 @@ class _ShopPayState extends State<ShopPay> {
         paymentMethodId: _paymentMethodId,
       ),
     ).then((paymentIntent) {
-      print("GOUTAM1" + paymentIntent.status);
-      print("GOUTAM2" + paymentIntent.paymentIntentId.toString());
-      print("GOUTAM3" + _paymentMethodId.toString());
+      //print("GOUTAM1" + paymentIntent.status);
+      //print("GOUTAM2" + paymentIntent.paymentIntentId.toString());
+      //print("GOUTAM3" + _paymentMethodId.toString());
       paymentIntentId = paymentIntent.paymentIntentId;
 
       if (paymentIntent.status == "succeeded") {
         _status = paymentIntent.status;
         createOrder();
-        print("SUCESSSFUL");
+        // print("SUCESSSFUL");
       }
     }).onError((error, stackTrace) {
-      print("ERRORRR" + error.toString());
+      //print("ERRORRR" + error.toString());
       faileddialog(error, context);
     }).catchError((e) {
-      print('Got error: $e');
+      //print('Got error: $e');
       return true;
     });
   }
@@ -601,7 +601,7 @@ class _ShopPayState extends State<ShopPay> {
         }
     ];
     totalamount = cart.sum1.toString();
-    print(lineItems);
+    //print(lineItems);
     //end
     return SafeArea(
         child: Stack(children: [

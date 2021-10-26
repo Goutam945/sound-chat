@@ -40,10 +40,6 @@ class _ListenlivepageState extends State<Listenlivepage>
   var timeAndDate;
   //int day;
   int weekday;
-  int time;
-  var startTime;
-  var endTime;
-  var endTimeMin;
   var homeslider;
   int imageNo = 0;
   bool isButtonPressed = false;
@@ -96,7 +92,7 @@ class _ListenlivepageState extends State<Listenlivepage>
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Fluttertoast.showToast(msg: state.toString());
-    print('AppLifeCycle State: ' + state.toString());
+    //print('AppLifeCycle State: ' + state.toString());
     switch (state) {
       case AppLifecycleState.detached:
         exit(0);
@@ -129,12 +125,12 @@ class _ListenlivepageState extends State<Listenlivepage>
       await audioPlayer.stop();
     }
     !sound ? audioPlayer.setVolume(0) : audioPlayer.setVolume(1);
-    print(sound);
+    //  print(sound);
   }
 
   onPlayerErr() {
     audioPlayer.onPlayerError.listen((msg) async {
-      print('audioPlayer error : $msg');
+      //print('audioPlayer error : $msg');
       await audioPlayer.pause();
       if (mounted) {
         setState(() => play = true);
@@ -379,7 +375,7 @@ class _ListenlivepageState extends State<Listenlivepage>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              for (int j = 0;
+                              for (int j = showtime;
                                   j < timeAndDate[weekday]['shows'].length;
                                   j++)
                                 Row(

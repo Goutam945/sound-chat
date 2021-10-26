@@ -19,7 +19,7 @@ Future<AllorderResponse> createAllOrderState(int userid, context) async {
     {
 //      String message = data['message'];
 
-      print(data);
+      //print(data);
       Provider.of<AllorderResponse>(context, listen: false).data = data;
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => AllOrderlist()));

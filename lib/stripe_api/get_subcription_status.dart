@@ -9,7 +9,7 @@ Future<SubscriptionStatusReponse> createSubscriptionStatusState(
   );
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    print(data);
+    //print(data);
     // Provider.of<InvoiceReponse>(context, listen: false).data = data;
     return SubscriptionStatusReponse.fromJson(json.decode(response.body));
   } else {

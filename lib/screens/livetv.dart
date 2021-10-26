@@ -255,8 +255,8 @@ class _VideoPlayerState extends State<VideoPlayer> {
       controlsConfiguration:
           BetterPlayerControlsConfiguration(enableSkips: false),
       eventListener: (event) {
-        print(event.betterPlayerEventType);
-        print(event.parameters);
+        //print(event.betterPlayerEventType);
+        // print(event.parameters);
       },
       deviceOrientationsOnFullScreen: [
         DeviceOrientation.landscapeLeft,
@@ -290,7 +290,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
   @override
   void dispose() {
     _betterPlayerController.isPictureInPictureSupported().then((value) {
-      print(value);
+      //   print(value);
       if (value)
         _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
     });

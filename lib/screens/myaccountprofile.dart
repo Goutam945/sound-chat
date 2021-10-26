@@ -11,11 +11,11 @@ class MyAccount extends StatefulWidget {
 }
 
 class _MyAccountState extends State<MyAccount> {
-  String email;
-  String name;
-  String phone;
-  String country;
-  String image;
+  String email = "";
+  String name = "";
+  String phone = "";
+  String country = "";
+  String image = "";
   bool loader = false;
   dynamic data;
   int id;
@@ -30,7 +30,7 @@ class _MyAccountState extends State<MyAccount> {
         country = sharedPreferences.getString('country');
         image = sharedPreferences.getString('image');
         id = sharedPreferences.getInt('id');
-        print("image" + image.toString());
+        // print("$image $email $name $phone $country $id");
       }
     });
     return id;

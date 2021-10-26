@@ -1,10 +1,11 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
 import 'package:sound_chat/screens/login.dart';
-Future<ChangepasswordResponse> createChangepasswrdState(int uid,String passwod,String newpassword,
-    context) async {
+
+Future<ChangepasswordResponse> createChangepasswrdState(
+    int uid, String passwod, String newpassword, context) async {
   final http.Response response = await http.post(
-      Uri.parse(baseUrl+'changepassword'),
+      Uri.parse(baseUrl + 'changepassword'),
       // headers: <String, String>{"content-type": "application/json"},
       body: {
         'user_id': "$uid",
@@ -16,10 +17,10 @@ Future<ChangepasswordResponse> createChangepasswrdState(int uid,String passwod,S
     var data = json.decode(response.body);
 //    int status = data['status'];
 //    if(status==200)
-        {
+    {
 //      String message = data['message'];
 
-      print(data);
+      //print(data);
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (context) => NewLogin()));
       Toast.show(data.toString(), context,
@@ -32,6 +33,7 @@ Future<ChangepasswordResponse> createChangepasswrdState(int uid,String passwod,S
     throw Exception(response.body);
   }
 }
+
 class ChangepasswordResponse {
   dynamic data;
 

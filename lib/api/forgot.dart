@@ -12,7 +12,7 @@ Future<ForgotResponse> createForgotResponse(String name, context) async {
 
   if (response.statusCode == 200) {
     dynamic forgotResponse = json.decode(response.body);
-    print(response.body.toString());
+    //print(response.body.toString());
     int responseCode = forgotResponse['status'];
     String message = forgotResponse['message'];
     if (responseCode == 200) {

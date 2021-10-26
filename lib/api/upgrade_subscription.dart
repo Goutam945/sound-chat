@@ -35,7 +35,7 @@ Future<UpgradeSubscriptionResponse> createUpgradeSubscriptionState(
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
     {
-      print(data);
+      // print(data);
       return UpgradeSubscriptionResponse.fromJson(json.decode(response.body));
     }
   } else {

@@ -13,7 +13,7 @@ Future<CancelSubpResponse> createCancelsubcripState(uid, context) async {
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
     {
-      print(data);
+     // print(data);
 //      Navigator.of(context)
 //          .pushReplacement(MaterialPageRoute(builder: (context) => AllOrderlist()));
 //       Toast.show(data.toString(), context,

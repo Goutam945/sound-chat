@@ -35,7 +35,7 @@ class HomesliderResponse with ChangeNotifier {
     } else {
       imageIndex = 0;
     }
-    print("$imageIndex ${data["data"].length}");
+    //print("$imageIndex ${data["data"].length}");
     notifyListeners();
   }
 }

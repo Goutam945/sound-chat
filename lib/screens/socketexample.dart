@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+
 class ChatPage extends StatefulWidget {
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -16,21 +17,24 @@ class _ChatPageState extends State<ChatPage> {
     super.initState();
     createSocketConnection();
   }
+
   createSocketConnection() {
     socket = IO.io('https://api.rybitt.com/', {
       'transports': ['websocket'],
       'autoConnect': false,
     })
-      ..on('connect', (_) {})..on('disconnect', (_) {});
-    print(socket.id);
-    print(socket.connected);
+      ..on('connect', (_) {})
+      ..on('disconnect', (_) {});
+    // print(socket.id);
+    // print(socket.connected);
     socket.connect();
     //socket.off('active_bands');
     socket.emit('add_band', {'name': 'goutam'});
     socket.on('active_bands', _eventHandler);
   }
+
   void _eventHandler(Object object) {
-    print(object);
+    //print(object);
   }
 
   @override
@@ -43,7 +47,9 @@ class _ChatPageState extends State<ChatPage> {
           child: Center(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Text(socket.id.toString()),
                 Text(socket.connected.toString())
               ],

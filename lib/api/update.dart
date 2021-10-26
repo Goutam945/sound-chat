@@ -45,9 +45,9 @@ Future<UpdateResponse> createUpdateState(
   var response = await http.Response.fromStream(streamResponse);
 
   if (response.statusCode == 200) {
-    print(response.body);
+    // print(response.body);
     dynamic updateResponse = json.decode(response.body);
-    print(response.body);
+    // print(response.body);
     if (response.statusCode == 200) {
       dynamic data = updateResponse['data'];
       String email = data['email'];
@@ -59,7 +59,7 @@ Future<UpdateResponse> createUpdateState(
       String userlogin = data['username'];
       Sharedpreferences()
           .saveData(email, name, phone, image, country, id, userlogin, true);
-      print(id);
+      // print(id);
       createSubcriptionlevalState(id, context);
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => HomeBottomBar()));

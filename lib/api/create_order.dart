@@ -145,7 +145,7 @@ Future<OrderResponse> createOrderState(
   if (response.statusCode == 200) {
     dynamic orderResponse = json.decode(response.body);
     Provider.of<OrderResponse>(context, listen: false).addData(orderResponse);
-    print(orderResponse);
+    //print(orderResponse);
     return OrderResponse.fromJson(json.decode(response.body));
   } else {
     throw Exception('Failed to create album.');

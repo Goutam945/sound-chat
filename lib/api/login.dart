@@ -86,7 +86,7 @@ Future<LoginResponse> createLoginState(
         'password': password,
       }));
   if (response.statusCode == 200) {
-    print(response.body);
+    //print(response.body);
 
     dynamic data = json.decode(response.body);
     if (data['status'] == null) {
@@ -106,7 +106,7 @@ Future<LoginResponse> createLoginState(
       }
       final get = await Sharedpreferences().getUsername();
 
-      print("USERNAME" + get.toString());
+      //  print("USERNAME" + get.toString());
       createSubcriptionlevalState(id, context);
 
       Provider.of<LoginResponse>(context, listen: false).data = data;

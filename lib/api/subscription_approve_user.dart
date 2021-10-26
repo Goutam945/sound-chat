@@ -46,8 +46,7 @@ Future<SubscriptionResponse> createSubscriptionState(
     expireddate,
     level,
     context}) async {
-  print(
-      "$uid $lid $status $invoiceid $amount $currencytype $plantype $customerid $subscriptionid $subscriptionmethod $currentdate $expireddate $level");
+  // print("$uid $lid $status $invoiceid $amount $currencytype $plantype $customerid $subscriptionid $subscriptionmethod $currentdate $expireddate $level");
   final http.Response response =
       await http.post(Uri.parse(baseUrl + 'usersubscription'), body: {
     'user_id': "$uid",
@@ -67,7 +66,7 @@ Future<SubscriptionResponse> createSubscriptionState(
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
     {
-      print(data.toString());
+      // print(data.toString());
       // Provider.of<SubscriptionResponse>(context, listen: false).data = data;
       return SubscriptionResponse.fromJson(json.decode(response.body));
     }

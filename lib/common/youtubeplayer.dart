@@ -133,7 +133,7 @@ class VideoState extends State<Youtubeplayer> {
 
     streamsub = stream.listen((event) {
       _ytbPlayerController.load(getVideoID(event));
-      print("GOUTAM" + event);
+      // print("GOUTAM" + event);
     });
   }
 
@@ -166,13 +166,13 @@ class VideoState extends State<Youtubeplayer> {
         DeviceOrientation.landscapeLeft,
         DeviceOrientation.landscapeRight,
       ]);
-      print('Entered Fullscreen');
+      //print('Entered Fullscreen');
     };
     _ytbPlayerController.onExitFullscreen = () {
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.portraitUp,
       ]);
-      print('Exited Fullscreen');
+      // print('Exited Fullscreen');
     };
     load();
   }

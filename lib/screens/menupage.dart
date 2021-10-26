@@ -11,8 +11,8 @@ class _NewMenupageState extends State<NewMenupage> {
   Color tilecolor = Colors.white30.withOpacity(0.1);
   String email;
   String name;
+  bool islogin = false;
 
-  bool checklogin = true;
   bool checksignbutton = false;
   bool loader = false;
   int id;
@@ -31,12 +31,12 @@ class _NewMenupageState extends State<NewMenupage> {
       if (sharedPreferences.getString('email') != null &&
           sharedPreferences.getString('email').isNotEmpty) {
         email = sharedPreferences.getString('email');
+        islogin = sharedPreferences.getBool('islogin');
         name = sharedPreferences.getString('name');
         id = sharedPreferences.getInt('id');
-        checklogin = true;
+
         checksignbutton = false;
       } else {
-        checklogin = false;
         checksignbutton = true;
       }
     });
@@ -247,7 +247,7 @@ class _NewMenupageState extends State<NewMenupage> {
                         context,
                         PageTransition(
                             type: PageTransitionType.rightToLeft,
-                            child: (email == null) ? NewLogin() : MyAccount()));
+                            child: (!islogin) ? NewLogin() : MyAccount()));
                   },
                 ),
                 SizedBox(

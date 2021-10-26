@@ -82,7 +82,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                     widget.product['id'],
                                     widget.product['image'],
                                     context);
-                          print(cart.cart1.length.toString());
+                          // print(cart.cart1.length.toString());
                           Toast.show("Added to cart", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);

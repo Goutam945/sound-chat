@@ -15,7 +15,7 @@ Future<CreateSubscription> createSubscriptionstripeState(
 
   if (response.statusCode == 200) {
     dynamic data = json.decode(response.body);
-    print(data);
+    //print(data);
     Provider.of<CreateSubscription>(context, listen: false).data = data;
     return CreateSubscription.fromJson(json.decode(response.body));
   } else {

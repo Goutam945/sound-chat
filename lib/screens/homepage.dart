@@ -72,7 +72,7 @@ class _UpdatehomeState extends State<Updatehome> {
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Fluttertoast.showToast(msg: state.toString());
-    print('AppLifeCycle State: ' + state.toString());
+   // print('AppLifeCycle State: ' + state.toString());
     switch (state) {
       case AppLifecycleState.detached:
         exit(0);
