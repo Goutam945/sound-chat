@@ -163,221 +163,206 @@ class _GalleryDesign extends State<GalleryDesign> {
                                               ['img_gallery_pic']
                                           .length;
                                   j = j + 4)
-                                SizedBox(
-                                    height: 480,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Column(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            if (superherosLength[imgcount]
-                                                        ['img_gallery_pic']
-                                                    .length >
-                                                j + 0)
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              FullImage(
-                                                                images: superherosLength[
-                                                                        imgcount]
-                                                                    [
-                                                                    'img_gallery_pic'],
-                                                                currentIndex:
-                                                                    j + 0,
-                                                              )));
-                                                },
-                                                child: Container(
-                                                  width: width * 0.3997,
-                                                  height: height * 0.3023,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: superherosLength[
-                                                                  imgcount][
-                                                              'img_gallery_pic']
-                                                          [j + 0],
-                                                      fit: BoxFit.cover,
-                                                      placeholder: (context,
-                                                              url) =>
-                                                          Center(
-                                                              child:
-                                                                  CircularProgressIndicator()),
-                                                      errorWidget: (context,
-                                                              url, error) =>
-                                                          Icon(Icons.error),
-                                                    ),
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                            if (superherosLength[imgcount]
-                                                        ['img_gallery_pic']
-                                                    .length >
-                                                j + 1)
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              FullImage(
-                                                                images: superherosLength[
-                                                                        imgcount]
-                                                                    [
-                                                                    'img_gallery_pic'],
-                                                                currentIndex:
-                                                                    j + 1,
-                                                              )));
-                                                },
-                                                child: Container(
-                                                  width: width * 0.3997,
-                                                  height: height * 0.1393,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: superherosLength[
-                                                                  imgcount][
-                                                              'img_gallery_pic']
-                                                          [j + 1],
-                                                      fit: BoxFit.cover,
-                                                      placeholder: (context,
-                                                              url) =>
-                                                          Center(
-                                                              child:
-                                                                  CircularProgressIndicator()),
-                                                      errorWidget: (context,
-                                                              url, error) =>
-                                                          Icon(Icons.error),
-                                                    ),
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                          ],
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            if (superherosLength[imgcount]
-                                                        ['img_gallery_pic']
-                                                    .length >
-                                                j + 2)
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              FullImage(
-                                                                images: superherosLength[
-                                                                        imgcount]
-                                                                    [
-                                                                    'img_gallery_pic'],
-                                                                currentIndex:
-                                                                    j + 2,
-                                                              )));
-                                                },
-                                                child: Container(
-                                                  width: width * 0.3997,
-                                                  height: height * 0.1393,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: superherosLength[
-                                                                  imgcount][
-                                                              'img_gallery_pic']
-                                                          [j + 2],
-                                                      fit: BoxFit.cover,
-                                                      placeholder: (context,
-                                                              url) =>
-                                                          Center(
-                                                              child:
-                                                                  CircularProgressIndicator()),
-                                                      errorWidget: (context,
-                                                              url, error) =>
-                                                          Icon(Icons.error),
-                                                    ),
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                            if (superherosLength[imgcount]
-                                                        ['img_gallery_pic']
-                                                    .length >
-                                                j + 3)
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Navigator.of(context)
-                                                      .push(MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        FullImage(
-                                                      images: superherosLength[
+                                        if (superherosLength[imgcount]
+                                                    ['img_gallery_pic']
+                                                .length >
+                                            j + 0)
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FullImage(
+                                                            images: superherosLength[
+                                                                    imgcount][
+                                                                'img_gallery_pic'],
+                                                            currentIndex: j + 0,
+                                                          )));
+                                            },
+                                            child: Container(
+                                              width: width * 0.3997,
+                                              height: height * 0.3023,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: superherosLength[
                                                               imgcount]
-                                                          ['img_gallery_pic'],
-                                                      currentIndex: j + 3,
-                                                    ),
-                                                  ));
-                                                },
-                                                child: Container(
-                                                  width: width * 0.3997,
-                                                  height: height * 0.3023,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    child: CachedNetworkImage(
-                                                      imageUrl: superherosLength[
-                                                                  imgcount][
-                                                              'img_gallery_pic']
-                                                          [j + 3],
-                                                      fit: BoxFit.cover,
-                                                      placeholder: (context,
-                                                              url) =>
-                                                          Center(
-                                                              child:
-                                                                  CircularProgressIndicator()),
-                                                      errorWidget: (context,
-                                                              url, error) =>
+                                                          ['img_gallery_pic']
+                                                      [j + 0],
+                                                  fit: BoxFit.cover,
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget:
+                                                      (context, url, error) =>
                                                           Icon(Icons.error),
-                                                    ),
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    color: Colors.white,
-                                                  ),
                                                 ),
                                               ),
-                                          ],
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        SizedBox(
+                                          height: 10,
                                         ),
+                                        if (superherosLength[imgcount]
+                                                    ['img_gallery_pic']
+                                                .length >
+                                            j + 1)
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FullImage(
+                                                            images: superherosLength[
+                                                                    imgcount][
+                                                                'img_gallery_pic'],
+                                                            currentIndex: j + 1,
+                                                          )));
+                                            },
+                                            child: Container(
+                                              width: width * 0.3997,
+                                              height: height * 0.1393,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: superherosLength[
+                                                              imgcount]
+                                                          ['img_gallery_pic']
+                                                      [j + 1],
+                                                  fit: BoxFit.cover,
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
                                       ],
-                                    )),
+                                    ),
+                                    Column(
+                                      // mainAxisAlignment:
+                                      // MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        if (superherosLength[imgcount]
+                                                    ['img_gallery_pic']
+                                                .length >
+                                            j + 2)
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FullImage(
+                                                            images: superherosLength[
+                                                                    imgcount][
+                                                                'img_gallery_pic'],
+                                                            currentIndex: j + 2,
+                                                          )));
+                                            },
+                                            child: Container(
+                                              width: width * 0.3997,
+                                              height: height * 0.1393,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: superherosLength[
+                                                              imgcount]
+                                                          ['img_gallery_pic']
+                                                      [j + 2],
+                                                  fit: BoxFit.cover,
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        if (superherosLength[imgcount]
+                                                    ['img_gallery_pic']
+                                                .length >
+                                            j + 3)
+                                          GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) => FullImage(
+                                                  images:
+                                                      superherosLength[imgcount]
+                                                          ['img_gallery_pic'],
+                                                  currentIndex: j + 3,
+                                                ),
+                                              ));
+                                            },
+                                            child: Container(
+                                              width: width * 0.3997,
+                                              height: height * 0.3023,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: superherosLength[
+                                                              imgcount]
+                                                          ['img_gallery_pic']
+                                                      [j + 3],
+                                                  fit: BoxFit.cover,
+                                                  placeholder: (context, url) =>
+                                                      Center(
+                                                          child:
+                                                              CircularProgressIndicator()),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          Icon(Icons.error),
+                                                ),
+                                              ),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                             ],
                           ),
                         ),
