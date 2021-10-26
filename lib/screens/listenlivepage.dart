@@ -36,11 +36,11 @@ class _ListenlivepageState extends State<Listenlivepage>
   // bool play = true;
   bool stop = true;
   String status = 'hidden';
-  var superherosLength;
-  var timeAndDate;
+  // var superherosLength;
+  // var timeAndDate;
   //int day;
   int weekday;
-  var homeslider;
+  // var homeslider;
   int imageNo = 0;
   bool isButtonPressed = false;
   int showtime = 0;
@@ -69,14 +69,14 @@ class _ListenlivepageState extends State<Listenlivepage>
       });
     });
     //apis calls
-    createVideoState(context);
-    createPhoneinterviewState(context);
-    createScheduleState(context);
-    createGalleryState(context);
-    createHomesliderState(context);
-    createAllproductState(context);
-    createtermsState(context);
-    createCoupncodeState(context);
+    // createVideoState(context);
+    // createPhoneinterviewState(context);
+    // createScheduleState(context);
+    // createGalleryState(context);
+    // createHomesliderState(context);
+    // createAllproductState(context);
+    // createtermsState(context);
+    // createCoupncodeState(context);
     state();
   }
 
@@ -144,17 +144,15 @@ class _ListenlivepageState extends State<Listenlivepage>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    if (Provider.of<VideoResponse>(context, listen: false).data != null)
-      superherosLength =
-          Provider.of<VideoResponse>(context, listen: false).data['data'];
-    if (Provider.of<HomesliderResponse>(context, listen: false).data != null)
-      homeslider =
-          Provider.of<HomesliderResponse>(context, listen: false).data['data'];
-    if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
-      timeAndDate =
-          Provider.of<ScheduleResponse>(context, listen: false).data['data'];
-
-    showtime = getschedule(context: context);
+    // if (Provider.of<VideoResponse>(context, listen: false).data != null)
+    //   superherosLength =
+    //       Provider.of<VideoResponse>(context, listen: false).data['data'];
+    // if (Provider.of<HomesliderResponse>(context, listen: false).data != null)
+    //   homeslider =
+    //       Provider.of<HomesliderResponse>(context, listen: false).data['data'];
+    // if (Provider.of<ScheduleResponse>(context, listen: false).data != null)
+    //   timeAndDate =
+    //       Provider.of<ScheduleResponse>(context, listen: false).data['data'];
 
     return SafeArea(
         child: Scaffold(
@@ -166,305 +164,321 @@ class _ListenlivepageState extends State<Listenlivepage>
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [Color(0xFF481621), Color(0xFF140F16)])),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 230,
-              width: 230,
-              child: (homeslider != null)
-                  ? Container(
-                      width: width * 0.8,
-                      margin: EdgeInsets.all(10),
+        child: FutureBuilder(
+            future: createScheduleState(context),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                var timeAndDate = snapshot.data.data['data'];
+                showtime = getschedule(context: context, data: timeAndDate);
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                        height: 230,
+                        width: 230,
+                        child: Container(
+                          width: width * 0.8,
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFF7E737F).withOpacity(1.0),
+                                  spreadRadius: 10,
+                                  blurRadius: 10,
+                                  offset: Offset(
+                                      0, 0), // changes position of shadow
+                                ),
+                              ]),
+                          child: (timeAndDate[weekday]['shows'][showtime]
+                                      ['show_image'] !=
+                                  null)
+                              ? CachedNetworkImage(
+                                  imageUrl: baseurlimagepodcast +
+                                      timeAndDate[weekday]['shows'][showtime]
+                                              ['show_image']
+                                          .toString(),
+                                  fit: BoxFit.fill,
+                                  placeholder: (context, url) => SizedBox(
+                                    width: width,
+                                    height: double.infinity,
+                                    child: Shimmer.fromColors(
+                                        baseColor: Colors.red,
+                                        highlightColor: Colors.yellow,
+                                        child: Container(
+                                          color: Colors.black12,
+                                        )),
+                                  ),
+                                  errorWidget: (context, url, error) => Icon(
+                                    Icons.error,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : Image.asset(
+                                  'assets/soundpic.png',
+                                  fit: BoxFit.fill,
+                                ),
+                        )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      //width: 200,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            timeAndDate[weekday]['shows'][showtime]['show_name']
+                                .toString(),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 200,
+                            child: Divider(
+                              thickness: 3,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            "Soundchat Radio",
+                            style: TextStyle(
+                              color: Colors.white54,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.white, width: 2)),
+                              child: Icon(Icons.stop,
+                                  size: 30, color: Colors.white),
+                            ),
+                            onTap: () {
+                              setState(() {
+                                play = true;
+                              });
+                              callAudio("pause");
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.white, width: 2)),
+                              child: Icon(
+                                  stop
+                                      ? (play ? Icons.play_arrow : Icons.pause)
+                                      : Icons.stop,
+                                  size: 50,
+                                  color: Color(0xFFFFFEFF)),
+                            ),
+                            onTap: () {
+                              setState(() {
+                                play = !play;
+                              });
+                              play ? callAudio("pause") : callAudio("start");
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.white, width: 2)),
+                              //child: Icon(Icons.volume_up_rounded, size: 30, color: Colors.white),
+                              child: Icon(
+                                  (sound
+                                      ? Icons.volume_up_rounded
+                                      : Icons.volume_off),
+                                  size: 30,
+                                  color: Color(0xFFFFFEFF)),
+                            ),
+                            onTap: () {
+                              sound
+                                  ? audioPlayer.setVolume(0)
+                                  : audioPlayer.setVolume(1);
+                              setState(() {
+                                sound = !sound;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      margin: EdgeInsets.only(left: 10, right: 10),
+                      width: width * 1.01998,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
+                          color: Color(0xFF0F0810),
                           boxShadow: [
                             BoxShadow(
                               color: Color(0xFF7E737F).withOpacity(1.0),
-                              spreadRadius: 10,
-                              blurRadius: 10,
+                              spreadRadius: 1,
+                              blurRadius: 1,
                               offset:
                                   Offset(0, 0), // changes position of shadow
                             ),
                           ]),
-                      child: (timeAndDate[weekday]['shows'][showtime]
-                                  ['show_image'] !=
-                              null)
-                          ? CachedNetworkImage(
-                              imageUrl: baseurlimagepodcast +
-                                  timeAndDate[weekday]['shows'][showtime]
-                                          ['show_image']
-                                      .toString(),
-                              fit: BoxFit.fill,
-                              placeholder: (context, url) => SizedBox(
-                                width: width,
-                                height: double.infinity,
-                                child: Shimmer.fromColors(
-                                    baseColor: Colors.red,
-                                    highlightColor: Colors.yellow,
-                                    child: Container(
-                                      color: Colors.black12,
-                                    )),
-                              ),
-                              errorWidget: (context, url, error) => Icon(
-                                Icons.error,
-                                color: Colors.white,
-                              ),
-                            )
-                          : Image.asset(
-                              'assets/soundpic.png',
-                              fit: BoxFit.fill,
-                            ),
-                    )
-                  : Shimmer.fromColors(
-                      baseColor: Colors.black12,
-                      highlightColor: Colors.grey[600],
-                      child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
-                        color: Colors.black,
-                        width: width * 0.95,
-                        height: height * 0.5,
-                      ),
-                    ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              //width: 200,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    timeAndDate[weekday]['shows'][showtime]['show_name']
-                        .toString(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 200,
-                    child: Divider(
-                      thickness: 3,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    "Soundchat Radio",
-                    style: TextStyle(
-                      color: Colors.white54,
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2)),
-                      child: Icon(Icons.stop, size: 30, color: Colors.white),
-                    ),
-                    onTap: () {
-                      setState(() {
-                        play = true;
-                      });
-                      callAudio("pause");
-                    },
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2)),
-                      child: Icon(
-                          stop
-                              ? (play ? Icons.play_arrow : Icons.pause)
-                              : Icons.stop,
-                          size: 50,
-                          color: Color(0xFFFFFEFF)),
-                    ),
-                    onTap: () {
-                      setState(() {
-                        play = !play;
-                      });
-                      play ? callAudio("pause") : callAudio("start");
-                    },
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2)),
-                      //child: Icon(Icons.volume_up_rounded, size: 30, color: Colors.white),
-                      child: Icon(
-                          (sound ? Icons.volume_up_rounded : Icons.volume_off),
-                          size: 30,
-                          color: Color(0xFFFFFEFF)),
-                    ),
-                    onTap: () {
-                      sound
-                          ? audioPlayer.setVolume(0)
-                          : audioPlayer.setVolume(1);
-                      setState(() {
-                        sound = !sound;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              margin: EdgeInsets.only(left: 10, right: 10),
-              width: width * 1.01998,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color(0xFF0F0810),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFF7E737F).withOpacity(1.0),
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                      offset: Offset(0, 0), // changes position of shadow
-                    ),
-                  ]),
-              child: (timeAndDate != null)
-                  ? Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 10, right: 10, top: 2),
-                          margin: EdgeInsets.only(right: width * 0.5),
-                          color: Colors.black,
-                          height: height * 0.0366,
-                          child: Text("Upcoming Shows",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: fontfamily)),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              for (int j = showtime;
-                                  j < timeAndDate[weekday]['shows'].length;
-                                  j++)
-                                Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                            width: 110,
-                                            height: 90,
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                child: GestureDetector(
-                                                  child: (timeAndDate[weekday]
-                                                                  ['shows'][j]
-                                                              ['show_image'] !=
-                                                          null)
-                                                      ? CachedNetworkImage(
-                                                          imageUrl: baseurlimagepodcast +
-                                                              timeAndDate[weekday]
+                      child: (timeAndDate != null)
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(
+                                      left: 10, right: 10, top: 2),
+                                  margin: EdgeInsets.only(right: width * 0.5),
+                                  color: Colors.black,
+                                  height: height * 0.0366,
+                                  child: Text("Upcoming Shows",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: fontfamily)),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      for (int j = showtime;
+                                          j <
+                                              timeAndDate[weekday]['shows']
+                                                  .length;
+                                          j++)
+                                        Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                    width: 110,
+                                                    height: 90,
+                                                    child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        child: GestureDetector(
+                                                          child: (timeAndDate[weekday]
                                                                           [
                                                                           'shows'][j]
                                                                       [
-                                                                      'show_image']
-                                                                  .toString(),
-                                                          fit: BoxFit.fill,
-                                                          placeholder: (context,
-                                                                  url) =>
-                                                              Center(
-                                                                  child:
-                                                                      CircularProgressIndicator()),
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              Icon(
-                                                            Icons.error,
-                                                            color: Colors.white,
-                                                          ),
-                                                        )
-                                                      : Container(
-                                                          color:
-                                                              Color(0xff324a69),
-                                                          child: Image.asset(
-                                                            'assets/soundpic.png',
-                                                            fit: BoxFit.fill,
-                                                          ),
-                                                        ),
-                                                  onTap: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        PageTransition(
-                                                            type:
-                                                                PageTransitionType
-                                                                    .rightToLeft,
-                                                            child: (email ==
-                                                                    null)
-                                                                ? NewLogin()
-                                                                : PodcastPlayCloud(
-                                                                    j,
-                                                                    weekday)));
-                                                  },
-                                                ))),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                  ],
+                                                                      'show_image'] !=
+                                                                  null)
+                                                              ? CachedNetworkImage(
+                                                                  imageUrl: baseurlimagepodcast +
+                                                                      timeAndDate[weekday]['shows'][j]
+                                                                              [
+                                                                              'show_image']
+                                                                          .toString(),
+                                                                  fit: BoxFit
+                                                                      .fill,
+                                                                  placeholder: (context,
+                                                                          url) =>
+                                                                      Center(
+                                                                          child:
+                                                                              CircularProgressIndicator()),
+                                                                  errorWidget:
+                                                                      (context,
+                                                                              url,
+                                                                              error) =>
+                                                                          Icon(
+                                                                    Icons.error,
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                )
+                                                              : Container(
+                                                                  color: Color(
+                                                                      0xff324a69),
+                                                                  child: Image
+                                                                      .asset(
+                                                                    'assets/soundpic.png',
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  ),
+                                                                ),
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                                context,
+                                                                PageTransition(
+                                                                    type: PageTransitionType
+                                                                        .rightToLeft,
+                                                                    child: (email ==
+                                                                            null)
+                                                                        ? NewLogin()
+                                                                        : PodcastPlayCloud(
+                                                                            j,
+                                                                            weekday)));
+                                                          },
+                                                        ))),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                          ],
+                                        ),
+                                    ],
+                                  ),
                                 ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    )
-                  : Center(
-                      child: Shimmer.fromColors(
-                        baseColor: Colors.black12,
-                        highlightColor: Colors.grey[600],
-                        child: Container(
-                            color: Colors.black,
-                            width: width,
-                            height: height * 0.1),
-                      ),
+                              ],
+                            )
+                          : Center(
+                              child: Shimmer.fromColors(
+                                baseColor: Colors.black12,
+                                highlightColor: Colors.grey[600],
+                                child: Container(
+                                    color: Colors.black,
+                                    width: width,
+                                    height: height * 0.1),
+                              ),
+                            ),
                     ),
-            ),
-            SizedBox(
-              height: 15,
-            )
-          ],
-        ),
+                    SizedBox(
+                      height: 15,
+                    )
+                  ],
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }),
       ),
     ));
   }
