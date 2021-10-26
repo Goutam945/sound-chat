@@ -134,7 +134,8 @@ class _YellowvideoScreenState extends State<YellowvideoScreen> {
                                       superherosLength['yellow_content'][i]
                                           ['post_title'],
                                       superherosLength['yellow_content'][i]
-                                          ['post_excerpt'])));
+                                          ['post_excerpt'],
+                                      i)));
                             });
                           },
                         ),

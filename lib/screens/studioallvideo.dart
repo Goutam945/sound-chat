@@ -116,13 +116,13 @@ class _StudiovideoScreenState extends State<StudiovideoScreen> {
                             setState(() {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => InterviewNewPlayer(
-                                        superherosLength['free_content'][i]
-                                            ['video_url'],
-                                        superherosLength['free_content'][i]
-                                            ['post_title'],
-                                        superherosLength['free_content'][i]
-                                            ['post_excerpt'],
-                                      )));
+                                      superherosLength['free_content'][i]
+                                          ['video_url'],
+                                      superherosLength['free_content'][i]
+                                          ['post_title'],
+                                      superherosLength['free_content'][i]
+                                          ['post_excerpt'],
+                                      i)));
                             });
                           },
                         ),

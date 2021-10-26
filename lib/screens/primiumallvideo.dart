@@ -137,7 +137,8 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                                             superherosLength['premium_content']
                                                 [i]['post_title'],
                                             superherosLength['premium_content']
-                                                [i]['post_excerpt'])
+                                                [i]['post_excerpt'],
+                                            i)
                                         : UpgradeSubscription()));
                             // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                           },

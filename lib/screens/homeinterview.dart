@@ -163,15 +163,19 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                         left: 20,
                                                         child: GestureDetector(
                                                           onTap: () {
-                                                            Navigator.of(context).push(
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            InterviewNewPlayer(
-                                                                              superherosLength['free_content'][i]['video_url'],
-                                                                              superherosLength['free_content'][i]['post_title'],
-                                                                              superherosLength['free_content'][i]['post_excerpt'],
-                                                                            )));
+                                                            Navigator.of(context).push(MaterialPageRoute(
+                                                                builder: (context) => InterviewNewPlayer(
+                                                                    superherosLength['free_content']
+                                                                            [i][
+                                                                        'video_url'],
+                                                                    superherosLength['free_content']
+                                                                            [i][
+                                                                        'post_title'],
+                                                                    superherosLength[
+                                                                            'free_content'][i]
+                                                                        [
+                                                                        'post_excerpt'],
+                                                                    i)));
                                                           },
                                                           child: Container(
                                                             height: 35,
@@ -427,7 +431,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                   builder: (context) => (email == null)
                                                                       ? NewLogin()
                                                                       : (membership != null && membership['stripe_status'] == 'ACTIVE')
-                                                                          ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'])
+                                                                          ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'],i)
                                                                           : UpgradeSubscription()));
                                                               // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                                                             },
@@ -596,7 +600,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                             'post_title'],
                                                                         superherosLength['yellow_content'][i]
                                                                             [
-                                                                            'post_excerpt'])));
+                                                                            'post_excerpt'],i)));
                                                               });
                                                             },
                                                           )),
@@ -753,14 +757,18 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                             ),
                                                             onTap: () {
                                                               setState(() {
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .push(MaterialPageRoute(
-                                                                        builder: (context) => InterviewNewPlayer(
-                                                                              superherosLength['free_content'][i]['video_url'],
-                                                                              superherosLength['free_content'][i]['post_title'],
-                                                                              superherosLength['free_content'][i]['post_excerpt'],
-                                                                            )));
+                                                                Navigator.of(context).push(MaterialPageRoute(
+                                                                    builder: (context) => InterviewNewPlayer(
+                                                                        superherosLength['free_content'][i]
+                                                                            [
+                                                                            'video_url'],
+                                                                        superherosLength['free_content'][i]
+                                                                            [
+                                                                            'post_title'],
+                                                                        superherosLength['free_content'][i]
+                                                                            [
+                                                                            'post_excerpt'],
+                                                                        i)));
                                                               });
                                                             },
                                                           )),
@@ -922,7 +930,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                         builder: (context) => PhoneinteviewPlayer(
                                                                               phonesuperherosLength[i]['video_url'],
                                                                               phonesuperherosLength[i]['post_title'],
-                                                                              phonesuperherosLength[i]['post_excerpt'],
+                                                                              phonesuperherosLength[i]['post_excerpt'],i,
                                                                             )));
                                                               });
                                                             },

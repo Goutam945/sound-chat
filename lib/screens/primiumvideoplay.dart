@@ -1,8 +1,8 @@
 import 'package:sound_chat/common/index.dart';
 
 class Primiumvideo extends StatefulWidget {
-  final playvideo, title, content;
-  Primiumvideo(this.playvideo, this.title, this.content);
+  final playvideo, title, content, currentIndex;
+  Primiumvideo(this.playvideo, this.title, this.content, this.currentIndex);
   @override
   _PrimiumvideoDesign createState() => _PrimiumvideoDesign();
 }
@@ -10,7 +10,7 @@ class Primiumvideo extends StatefulWidget {
 class _PrimiumvideoDesign extends State<Primiumvideo> {
   String data;
   int day = 6;
-  int j;
+  int j = 0;
   String url;
   bool isTrue = true;
   String imageUrl;
@@ -27,6 +27,7 @@ class _PrimiumvideoDesign extends State<Primiumvideo> {
     content = widget.content;
     url = widget.playvideo;
     titlepost = widget.title;
+    j = widget.currentIndex;
   }
 
   _loadSavedData() async {
@@ -207,88 +208,92 @@ class _PrimiumvideoDesign extends State<Primiumvideo> {
                                             superherosLength['premium_content']
                                                 .length;
                                         i++)
-                                      Row(
-                                        children: [
-                                          //SizedBox(width: 80,height:60,child: GestureDetector(child: Image.network(jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,),
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                  width: 120,
-                                                  height: 120,
-                                                  child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      child: GestureDetector(
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          imageUrl: baseurlimageinetrviews +
-                                                              superherosLength[
+                                      if (i != j)
+                                        Row(
+                                          children: [
+                                            //SizedBox(width: 80,height:60,child: GestureDetector(child: Image.network(jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                    width: 120,
+                                                    height: 120,
+                                                    child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        child: GestureDetector(
+                                                          child:
+                                                              CachedNetworkImage(
+                                                            imageUrl: baseurlimageinetrviews +
+                                                                superherosLength[
+                                                                        'premium_content'][i]
+                                                                    [
+                                                                    'feature_img'],
+                                                            fit: BoxFit.cover,
+                                                            placeholder: (context,
+                                                                    url) =>
+                                                                Center(
+                                                                    child:
+                                                                        CircularProgressIndicator()),
+                                                            errorWidget:
+                                                                (context, url,
+                                                                        error) =>
+                                                                    Icon(Icons
+                                                                        .error),
+                                                          ),
+                                                          onTap: () {
+                                                            setState(() {
+                                                              j = i;
+                                                              url = superherosLength[
+                                                                      'premium_content']
+                                                                  [
+                                                                  i]['video_url'];
+                                                              imageUrl = superherosLength[
                                                                       'premium_content'][i]
                                                                   [
-                                                                  'feature_img'],
-                                                          fit: BoxFit.cover,
-                                                          placeholder: (context,
-                                                                  url) =>
-                                                              Center(
-                                                                  child:
-                                                                      CircularProgressIndicator()),
-                                                          errorWidget: (context,
-                                                                  url, error) =>
-                                                              Icon(Icons.error),
-                                                        ),
-                                                        onTap: () {
-                                                          setState(() {
-                                                            url = superherosLength[
-                                                                    'premium_content']
-                                                                [
-                                                                i]['video_url'];
-                                                            imageUrl = superherosLength[
-                                                                    'premium_content']
-                                                                [
-                                                                i]['feature_img'];
-                                                            titlepost = superherosLength[
-                                                                    'premium_content']
-                                                                [
-                                                                i]['post_title'];
-                                                            content = superherosLength[
-                                                                    'premium_content'][i]
-                                                                [
-                                                                'post_excerpt'];
+                                                                  'feature_img'];
+                                                              titlepost = superherosLength[
+                                                                      'premium_content'][i]
+                                                                  [
+                                                                  'post_title'];
+                                                              content = superherosLength[
+                                                                      'premium_content'][i]
+                                                                  [
+                                                                  'post_excerpt'];
 
-                                                            streamController
-                                                                .add(url);
-                                                          });
-                                                        },
-                                                      ))),
-                                              Opacity(
-                                                opacity: 0.7,
-                                                child: Container(
-                                                    height: 20,
-                                                    width: 120,
-                                                    color: Colors.black,
-                                                    child: Text(
-                                                      superherosLength[
-                                                              'premium_content']
-                                                          [i]['post_title'],
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w900,
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                      ),
-                                                    )),
-                                              )
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                        ],
-                                      ),
+                                                              streamController
+                                                                  .add(url);
+                                                            });
+                                                          },
+                                                        ))),
+                                                Opacity(
+                                                  opacity: 0.7,
+                                                  child: Container(
+                                                      height: 20,
+                                                      width: 120,
+                                                      color: Colors.black,
+                                                      child: Text(
+                                                        superherosLength[
+                                                                'premium_content']
+                                                            [i]['post_title'],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w900,
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                        ),
+                                                      )),
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                          ],
+                                        ),
                                   ],
                                 ),
                               ),

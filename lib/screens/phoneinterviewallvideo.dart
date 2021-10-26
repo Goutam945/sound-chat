@@ -122,7 +122,8 @@ class _StudiovideoScreenState extends State<PhonevideoScreen> {
                                   builder: (context) => PhoneinteviewPlayer(
                                       superherosLength[i]['video_url'],
                                       superherosLength[i]['post_title'],
-                                      superherosLength[i]['post_excerpt'])));
+                                      superherosLength[i]['post_excerpt'],
+                                      i)));
                             });
                           },
                         ),

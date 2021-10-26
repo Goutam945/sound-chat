@@ -72,7 +72,7 @@ class _UpdatehomeState extends State<Updatehome> {
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Fluttertoast.showToast(msg: state.toString());
-   // print('AppLifeCycle State: ' + state.toString());
+    // print('AppLifeCycle State: ' + state.toString());
     switch (state) {
       case AppLifecycleState.detached:
         exit(0);
@@ -319,6 +319,7 @@ class _UpdatehomeState extends State<Updatehome> {
                                                                             superherosLength['free_content'][i]['video_url'],
                                                                             superherosLength['free_content'][i]['post_title'],
                                                                             superherosLength['free_content'][i]['post_excerpt'],
+                                                                            i,
                                                                           )));
                                                         },
                                                       ))),
