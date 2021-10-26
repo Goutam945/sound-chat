@@ -10,6 +10,8 @@ class _TermsConditionsState extends State<TermsConditions> {
   var terms;
   @override
   void initState() {
+    createtermsState(context);
+
     super.initState();
   }
 
