@@ -320,7 +320,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                       .spaceBetween,
                                               children: [
                                                 SizedBox(
-                                                  width: width * 0.3037,
+                                                  width: 120,
                                                   child: (superherosLength[day]
                                                                   ['shows'][j]
                                                               ['show_image'] !=
@@ -335,16 +335,23 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                                       'show_image']
                                                                   .toString(),
                                                           fit: BoxFit.fill,
-                                                          placeholder: (context,
-                                                                  url) =>
-                                                              Center(
-                                                                  child:
-                                                                      CircularProgressIndicator()),
+                                                          placeholder:
+                                                              (context, url) =>
+                                                                  SizedBox(
+                                                            height: 120,
+                                                            child: Center(
+                                                                child:
+                                                                    CircularProgressIndicator()),
+                                                          ),
                                                           errorWidget: (context,
                                                                   url, error) =>
-                                                              Icon(
-                                                            Icons.error,
-                                                            color: Colors.white,
+                                                              SizedBox(
+                                                            height: 120,
+                                                            child: Icon(
+                                                              Icons.error,
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
                                                           ),
                                                         )
                                                       : Container(
