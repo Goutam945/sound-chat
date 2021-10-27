@@ -300,7 +300,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                             ),
                                                           ),
                                                           Text(
-                                                            "LIVE ON:    " +
+                                                            "LIVE ON:  " +
                                                                 superherosLength[
                                                                             weekday]
                                                                         [

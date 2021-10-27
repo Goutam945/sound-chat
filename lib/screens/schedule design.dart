@@ -122,7 +122,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                 width: width * 0.2037,
                                                 height: height * 0.1053,
                                                 child: CircleAvatar(
-                                                  backgroundColor: Colors.black,
+                                                  backgroundColor:
+                                                      Color(0xff324a69),
                                                   backgroundImage:
                                                       (superherosLength[weekday]
                                                                       [

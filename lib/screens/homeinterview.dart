@@ -386,108 +386,121 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
+                                      Container(
                                         padding: const EdgeInsets.all(5.0),
-                                        child: Container(
-                                          width: width * 1.01998,
-                                          color: Color(0xFF222222),
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                for (int i = 0;
-                                                    i <
-                                                        superherosLength[
-                                                                'premium_content']
-                                                            .length;
-                                                    i++)
-                                                  Row(
-                                                    children: [
-                                                      Column(
-                                                        children: [
-                                                          SizedBox(
-                                                              width: width *
-                                                                  0.3094,
-                                                              height: height *
-                                                                  0.1977,
-                                                              child:
-                                                                  GestureDetector(
-                                                                child: Stack(
-                                                                  children: [
-                                                                    SizedBox
-                                                                        .expand(
+                                        //width: width * 1.01998,
+                                        color: Color(0xFF222222),
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              for (int i = 0;
+                                                  i <
+                                                      superherosLength[
+                                                              'premium_content']
+                                                          .length;
+                                                  i++)
+                                                Row(
+                                                  children: [
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(
+                                                            width:
+                                                                width * 0.3094,
+                                                            height:
+                                                                height * 0.1977,
+                                                            child:
+                                                                GestureDetector(
+                                                              child: Stack(
+                                                                children: [
+                                                                  SizedBox
+                                                                      .expand(
+                                                                    child:
+                                                                        Container(
                                                                       child:
-                                                                          Container(
+                                                                          Opacity(
+                                                                        opacity:
+                                                                            0.7,
                                                                         child:
-                                                                            Opacity(
-                                                                          opacity:
-                                                                              0.7,
+                                                                            ClipRRect(
+                                                                          borderRadius: BorderRadius.only(
+                                                                              topLeft: Radius.circular(10),
+                                                                              topRight: Radius.circular(10)),
                                                                           child:
-                                                                              ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            child:
-                                                                                CachedNetworkImage(
-                                                                              imageUrl: baseurlimageinetrviews + superherosLength['premium_content'][i]['feature_img'],
-                                                                              fit: BoxFit.cover,
-                                                                              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                                              errorWidget: (context, url, error) => Icon(Icons.error),
-                                                                            ),
+                                                                              CachedNetworkImage(
+                                                                            imageUrl:
+                                                                                baseurlimageinetrviews + superherosLength['premium_content'][i]['feature_img'],
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                            placeholder: (context, url) =>
+                                                                                Center(child: CircularProgressIndicator()),
+                                                                            errorWidget: (context, url, error) =>
+                                                                                Icon(Icons.error),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ],
-                                                                ),
-                                                                onTap: () {
-                                                                  Navigator.of(context).push(MaterialPageRoute(
-                                                                      builder: (context) => (email == null)
-                                                                          ? NewLogin()
-                                                                          : (membership != null && membership['stripe_status'] == 'ACTIVE')
-                                                                              ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'], i)
-                                                                              : UpgradeSubscription()));
-                                                                  // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-                                                                },
-                                                              )),
-                                                          Opacity(
-                                                            opacity: 0.7,
-                                                            child: Container(
-                                                                height: 20,
-                                                                width: width *
-                                                                    0.3094,
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              onTap: () {
+                                                                Navigator.of(context).push(MaterialPageRoute(
+                                                                    builder: (context) => (email == null)
+                                                                        ? NewLogin()
+                                                                        : (membership != null && membership['stripe_status'] == 'ACTIVE')
+                                                                            ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'], i)
+                                                                            : UpgradeSubscription()));
+                                                                // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                                                              },
+                                                            )),
+                                                        Opacity(
+                                                          opacity: 0.7,
+                                                          child: Container(
+                                                              height: 20,
+                                                              width: width *
+                                                                  0.3094,
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 color: Colors
                                                                     .black,
-                                                                child: Text(
-                                                                  superherosLength[
-                                                                          'premium_content'][i]
-                                                                      [
-                                                                      'post_title'],
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w900,
-                                                                    fontFamily:
-                                                                        'Montserrat',
-                                                                  ),
-                                                                )),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                    ],
-                                                  ),
-                                              ],
-                                            ),
+                                                                borderRadius: BorderRadius.only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            10),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            10)),
+                                                              ),
+                                                              child: Text(
+                                                                superherosLength[
+                                                                        'premium_content'][i]
+                                                                    [
+                                                                    'post_title'],
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w900,
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                ),
+                                                              )),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                            ],
                                           ),
                                         ),
                                       ),
