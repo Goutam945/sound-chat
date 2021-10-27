@@ -1,4 +1,3 @@
-import 'package:flutter_html/html_parser.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Errorwidget extends StatefulWidget {

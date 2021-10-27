@@ -53,6 +53,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    BorderRadius bottomBorderRadius = BorderRadius.only(
+        bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10));
+    BorderRadius topBorderRadius = BorderRadius.only(
+        topLeft: Radius.circular(10), topRight: Radius.circular(10));
     // var superherosLength =
     //     (Provider.of<VideoResponse>(context, listen: false).data != null)
     //         ? Provider.of<VideoResponse>(context, listen: false).data['data']
@@ -425,9 +429,8 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                             0.7,
                                                                         child:
                                                                             ClipRRect(
-                                                                          borderRadius: BorderRadius.only(
-                                                                              topLeft: Radius.circular(10),
-                                                                              topRight: Radius.circular(10)),
+                                                                          borderRadius:
+                                                                              topBorderRadius,
                                                                           child:
                                                                               CachedNetworkImage(
                                                                             imageUrl:
@@ -461,18 +464,11 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                               height: 20,
                                                               width: width *
                                                                   0.3094,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: Colors
-                                                                    .black,
-                                                                borderRadius: BorderRadius.only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            10),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            10)),
-                                                              ),
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  borderRadius:
+                                                                      bottomBorderRadius),
                                                               child: Text(
                                                                 superherosLength[
                                                                         'premium_content'][i]
@@ -555,118 +551,129 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
+                                      Container(
                                         padding: const EdgeInsets.all(5.0),
-                                        child: Container(
-                                          width: width * 1.01998,
-                                          color: Color(0xFF222222),
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                for (int i = 0;
-                                                    i <
-                                                        superherosLength[
-                                                                'yellow_content']
-                                                            .length;
-                                                    i++)
-                                                  Row(
-                                                    children: [
-                                                      //SizedBox(width: 80,height:60,child: GestureDetector(child: Image.network(jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,),
-                                                      Column(
-                                                        children: [
-                                                          SizedBox(
-                                                              width: width *
-                                                                  0.3094,
-                                                              height: height *
-                                                                  0.1977,
-                                                              child:
-                                                                  GestureDetector(
-                                                                child: Stack(
-                                                                  children: [
-                                                                    SizedBox
-                                                                        .expand(
+                                        // width: width * 1.01998,
+                                        color: Color(0xFF222222),
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              for (int i = 0;
+                                                  i <
+                                                      superherosLength[
+                                                              'yellow_content']
+                                                          .length;
+                                                  i++)
+                                                Row(
+                                                  children: [
+                                                    //SizedBox(width: 80,height:60,child: GestureDetector(child: Image.network(jsonDecode(data)['data']['free_content']['$i']['featured_img'],fit: BoxFit.fill,),
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(
+                                                            width:
+                                                                width * 0.3094,
+                                                            height:
+                                                                height * 0.1977,
+                                                            child:
+                                                                GestureDetector(
+                                                              child: Stack(
+                                                                children: [
+                                                                  SizedBox
+                                                                      .expand(
+                                                                    child:
+                                                                        Container(
                                                                       child:
-                                                                          Container(
+                                                                          Opacity(
+                                                                        opacity:
+                                                                            0.7,
                                                                         child:
-                                                                            Opacity(
-                                                                          opacity:
-                                                                              0.7,
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              topBorderRadius,
                                                                           child:
-                                                                              ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            child:
-                                                                                CachedNetworkImage(
-                                                                              imageUrl: baseurlimageinetrviews + superherosLength['yellow_content'][i]['feature_img'],
-                                                                              fit: BoxFit.cover,
-                                                                              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                                              errorWidget: (context, url, error) => Icon(Icons.error),
-                                                                            ),
+                                                                              CachedNetworkImage(
+                                                                            imageUrl:
+                                                                                baseurlimageinetrviews + superherosLength['yellow_content'][i]['feature_img'],
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                            placeholder: (context, url) =>
+                                                                                Center(child: CircularProgressIndicator()),
+                                                                            errorWidget: (context, url, error) =>
+                                                                                Icon(Icons.error),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    /*Positioned(bottom: 5,left: 20,right: 20,child: Container(decoration: BoxDecoration(
-                                                          boxShadow: [
-                                                            BoxShadow(offset: Offset(0.0,5.0),
-                                                              color: Colors.black,
-                                                              blurRadius: 15.0,
-                                                            ),
-                                                          ]),
-                                                          child: SizedBox(height: 30,child: Text(superherosLength['yellow_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
-                                                                  ],
-                                                                ),
-                                                                onTap: () {
-                                                                  setState(() {
-                                                                    Navigator.of(context).push(MaterialPageRoute(
-                                                                        builder: (context) => InterviewPlay(
-                                                                            superherosLength['yellow_content'][i]['video_url'],
-                                                                            superherosLength['yellow_content'][i]['post_title'],
-                                                                            superherosLength['yellow_content'][i]['post_excerpt'],
-                                                                            i)));
-                                                                  });
-                                                                },
-                                                              )),
-                                                          Opacity(
-                                                            opacity: 0.7,
-                                                            child: Container(
-                                                                height: 20,
-                                                                width: width *
-                                                                    0.3094,
-                                                                color: Colors
-                                                                    .black,
-                                                                child: Text(
-                                                                  superherosLength[
-                                                                          'yellow_content'][i]
-                                                                      [
-                                                                      'post_title'],
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w900,
-                                                                    fontFamily:
-                                                                        'Montserrat',
                                                                   ),
-                                                                )),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                    ],
-                                                  ),
-                                              ],
-                                            ),
+                                                                  /*Positioned(bottom: 5,left: 20,right: 20,child: Container(decoration: BoxDecoration(
+                                                        boxShadow: [
+                                                          BoxShadow(offset: Offset(0.0,5.0),
+                                                            color: Colors.black,
+                                                            blurRadius: 15.0,
+                                                          ),
+                                                        ]),
+                                                        child: SizedBox(height: 30,child: Text(superherosLength['yellow_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
+                                                                ],
+                                                              ),
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  Navigator.of(context).push(MaterialPageRoute(
+                                                                      builder: (context) => InterviewPlay(
+                                                                          superherosLength['yellow_content'][i]
+                                                                              [
+                                                                              'video_url'],
+                                                                          superherosLength['yellow_content'][i]
+                                                                              [
+                                                                              'post_title'],
+                                                                          superherosLength['yellow_content'][i]
+                                                                              [
+                                                                              'post_excerpt'],
+                                                                          i)));
+                                                                });
+                                                              },
+                                                            )),
+                                                        Opacity(
+                                                          opacity: 0.7,
+                                                          child: Container(
+                                                              height: 20,
+                                                              width: width *
+                                                                  0.3094,
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
+                                                                      .black,
+                                                                  borderRadius:
+                                                                      bottomBorderRadius),
+                                                              child: Text(
+                                                                superherosLength[
+                                                                        'yellow_content'][i]
+                                                                    [
+                                                                    'post_title'],
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w900,
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                ),
+                                                              )),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -721,117 +728,130 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
+                                      Container(
                                         padding: const EdgeInsets.all(5.0),
-                                        child: Container(
-                                          width: width * 1.01998,
-                                          color: Color(0xFF222222),
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                for (int i = 0;
-                                                    i <
-                                                        superherosLength[
-                                                                'free_content']
-                                                            .length;
-                                                    i++)
-                                                  Row(
-                                                    children: [
-                                                      Column(
-                                                        children: [
-                                                          SizedBox(
-                                                              width: width *
-                                                                  0.3094,
-                                                              height: height *
-                                                                  0.1977,
-                                                              child:
-                                                                  GestureDetector(
-                                                                child: Stack(
-                                                                  children: [
-                                                                    SizedBox
-                                                                        .expand(
+                                        //width: width * 1.01998,
+                                        color: Color(0xFF222222),
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              for (int i = 0;
+                                                  i <
+                                                      superherosLength[
+                                                              'free_content']
+                                                          .length;
+                                                  i++)
+                                                Row(
+                                                  children: [
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(
+                                                            width:
+                                                                width * 0.3094,
+                                                            height:
+                                                                height * 0.1977,
+                                                            child:
+                                                                GestureDetector(
+                                                              child: Stack(
+                                                                children: [
+                                                                  SizedBox
+                                                                      .expand(
+                                                                    child:
+                                                                        Container(
                                                                       child:
-                                                                          Container(
+                                                                          Opacity(
+                                                                        opacity:
+                                                                            0.7,
                                                                         child:
-                                                                            Opacity(
-                                                                          opacity:
-                                                                              0.7,
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              topBorderRadius,
                                                                           child:
-                                                                              ClipRRect(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            child:
-                                                                                CachedNetworkImage(
-                                                                              imageUrl: baseurlimageinetrviews + superherosLength['free_content'][i]['feature_img'],
-                                                                              fit: BoxFit.cover,
-                                                                              placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                                              errorWidget: (context, url, error) => Icon(Icons.error),
-                                                                            ),
+                                                                              CachedNetworkImage(
+                                                                            imageUrl:
+                                                                                baseurlimageinetrviews + superherosLength['free_content'][i]['feature_img'],
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                            placeholder: (context, url) =>
+                                                                                Center(child: CircularProgressIndicator()),
+                                                                            errorWidget: (context, url, error) =>
+                                                                                Icon(Icons.error),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    /*Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
-                                                          boxShadow: [
-                                                            BoxShadow(offset: Offset(0.0,5.0),
-                                                              color: Colors.black,
-                                                              blurRadius: 15.0,
-                                                            ),
-                                                          ]),
-                                                          child: SizedBox(height: 30,child: Text(superherosLength['free_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
-                                                                  ],
-                                                                ),
-                                                                onTap: () {
-                                                                  setState(() {
-                                                                    Navigator.of(context).push(MaterialPageRoute(
-                                                                        builder: (context) => InterviewNewPlayer(
-                                                                            superherosLength['free_content'][i]['video_url'],
-                                                                            superherosLength['free_content'][i]['post_title'],
-                                                                            superherosLength['free_content'][i]['post_excerpt'],
-                                                                            i)));
-                                                                  });
-                                                                },
-                                                              )),
-                                                          Opacity(
-                                                            opacity: 0.7,
-                                                            child: Container(
-                                                                height: 20,
-                                                                width: width *
-                                                                    0.3094,
+                                                                  ),
+                                                                  /*Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
+                                                        boxShadow: [
+                                                          BoxShadow(offset: Offset(0.0,5.0),
+                                                            color: Colors.black,
+                                                            blurRadius: 15.0,
+                                                          ),
+                                                        ]),
+                                                        child: SizedBox(height: 30,child: Text(superherosLength['free_content'][i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
+                                                                ],
+                                                              ),
+                                                              onTap: () {
+                                                                setState(() {
+                                                                  Navigator.of(context).push(MaterialPageRoute(
+                                                                      builder: (context) => InterviewNewPlayer(
+                                                                          superherosLength['free_content'][i]
+                                                                              [
+                                                                              'video_url'],
+                                                                          superherosLength['free_content'][i]
+                                                                              [
+                                                                              'post_title'],
+                                                                          superherosLength['free_content'][i]
+                                                                              [
+                                                                              'post_excerpt'],
+                                                                          i)));
+                                                                });
+                                                              },
+                                                            )),
+                                                        Opacity(
+                                                          opacity: 0.7,
+                                                          child: Container(
+                                                              height: 20,
+                                                              width: width *
+                                                                  0.3094,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    bottomBorderRadius,
                                                                 color: Colors
                                                                     .black,
-                                                                child: Text(
-                                                                  superherosLength[
-                                                                          'free_content'][i]
-                                                                      [
-                                                                      'post_title'],
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w900,
-                                                                    fontFamily:
-                                                                        'Montserrat',
-                                                                  ),
-                                                                )),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                    ],
-                                                  ),
-                                              ],
-                                            ),
+                                                              ),
+                                                              child: Text(
+                                                                superherosLength[
+                                                                        'free_content'][i]
+                                                                    [
+                                                                    'post_title'],
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w900,
+                                                                  fontFamily:
+                                                                      'Montserrat',
+                                                                ),
+                                                              )),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                  ],
+                                                ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -906,106 +926,111 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                       ),
                                                     ),
                                                   ),
-                                                  Padding(
+                                                  Container(
                                                     padding:
                                                         const EdgeInsets.all(
                                                             5.0),
-                                                    child: Container(
-                                                      width: width * 1.01998,
-                                                      color: Color(0xFF222222),
-                                                      child:
-                                                          SingleChildScrollView(
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            for (int i = 0;
-                                                                i <
-                                                                    phonesuperherosLength
-                                                                        .length;
-                                                                i++)
-                                                              Row(
-                                                                children: [
-                                                                  Column(
-                                                                    children: [
-                                                                      SizedBox(
-                                                                          width: width *
-                                                                              0.3094,
-                                                                          height: height *
-                                                                              0.1977,
+                                                    //width: width * 1.01998,
+                                                    color: Color(0xFF222222),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          for (int i = 0;
+                                                              i <
+                                                                  phonesuperherosLength
+                                                                      .length;
+                                                              i++)
+                                                            Row(
+                                                              children: [
+                                                                Column(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: width *
+                                                                            0.3094,
+                                                                        height: height *
+                                                                            0.1977,
+                                                                        child:
+                                                                            GestureDetector(
                                                                           child:
-                                                                              GestureDetector(
-                                                                            child:
-                                                                                Stack(
-                                                                              children: [
-                                                                                SizedBox.expand(
-                                                                                  child: Container(
-                                                                                    child: Opacity(
-                                                                                      opacity: 0.7,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(10),
-                                                                                        child: CachedNetworkImage(
-                                                                                          imageUrl: baseurlimageinetrviews + phonesuperherosLength[i]['feature_img'],
-                                                                                          fit: BoxFit.cover,
-                                                                                          placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-                                                                                          errorWidget: (context, url, error) => Icon(Icons.error),
-                                                                                        ),
+                                                                              Stack(
+                                                                            children: [
+                                                                              SizedBox.expand(
+                                                                                child: Container(
+                                                                                  child: Opacity(
+                                                                                    opacity: 0.7,
+                                                                                    child: ClipRRect(
+                                                                                      borderRadius: topBorderRadius,
+                                                                                      child: CachedNetworkImage(
+                                                                                        imageUrl: baseurlimageinetrviews + phonesuperherosLength[i]['feature_img'],
+                                                                                        fit: BoxFit.cover,
+                                                                                        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                                                                                        errorWidget: (context, url, error) => Icon(Icons.error),
                                                                                       ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
-                                                                                /*Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
-                                                              boxShadow: [
-                                                                BoxShadow(offset: Offset(0.0,5.0),
-                                                                  color: Colors.black,
-                                                                  blurRadius: 15.0,
-                                                                ),
-                                                              ]),
-                                                              child: SizedBox(height: 30,child: Text(phonesuperherosLength[i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
-                                                                              ],
-                                                                            ),
-                                                                            onTap:
-                                                                                () {
-                                                                              setState(() {
-                                                                                Navigator.of(context).push(MaterialPageRoute(
-                                                                                    builder: (context) => PhoneinteviewPlayer(
-                                                                                          phonesuperherosLength[i]['video_url'],
-                                                                                          phonesuperherosLength[i]['post_title'],
-                                                                                          phonesuperherosLength[i]['post_excerpt'],
-                                                                                          i,
-                                                                                        )));
-                                                                              });
-                                                                            },
-                                                                          )),
-                                                                      Opacity(
-                                                                        opacity:
-                                                                            0.7,
-                                                                        child: Container(
-                                                                            height: 20,
-                                                                            width: width * 0.3094,
-                                                                            color: Colors.black,
-                                                                            child: Text(
-                                                                              phonesuperherosLength[i]['post_title'],
-                                                                              textAlign: TextAlign.center,
-                                                                              style: TextStyle(
-                                                                                color: Colors.white,
-                                                                                fontWeight: FontWeight.w900,
-                                                                                fontFamily: 'Montserrat',
                                                                               ),
-                                                                            )),
-                                                                      )
-                                                                    ],
-                                                                  ),
-                                                                  SizedBox(
-                                                                    width: 10,
-                                                                  ),
-                                                                ],
+                                                                              /*Positioned(bottom: 10,left: 20,right: 20,child: Container(decoration: BoxDecoration(
+                                                            boxShadow: [
+                                                              BoxShadow(offset: Offset(0.0,5.0),
+                                                                color: Colors.black,
+                                                                blurRadius: 15.0,
                                                               ),
-                                                          ],
-                                                        ),
+                                                            ]),
+                                                            child: SizedBox(height: 30,child: Text(phonesuperherosLength[i]['post_title'],textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontWeight:FontWeight.normal,fontSize: 12),))))*/
+                                                                            ],
+                                                                          ),
+                                                                          onTap:
+                                                                              () {
+                                                                            setState(() {
+                                                                              Navigator.of(context).push(MaterialPageRoute(
+                                                                                  builder: (context) => PhoneinteviewPlayer(
+                                                                                        phonesuperherosLength[i]['video_url'],
+                                                                                        phonesuperherosLength[i]['post_title'],
+                                                                                        phonesuperherosLength[i]['post_excerpt'],
+                                                                                        i,
+                                                                                      )));
+                                                                            });
+                                                                          },
+                                                                        )),
+                                                                    Opacity(
+                                                                      opacity:
+                                                                          0.7,
+                                                                      child: Container(
+                                                                          height: 20,
+                                                                          width: width * 0.3094,
+                                                                          decoration: BoxDecoration(
+                                                                            borderRadius:
+                                                                                bottomBorderRadius,
+                                                                            color:
+                                                                                Colors.black,
+                                                                          ),
+                                                                          child: Text(
+                                                                            phonesuperherosLength[i]['post_title'],
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: Colors.white,
+                                                                              fontWeight: FontWeight.w900,
+                                                                              fontFamily: 'Montserrat',
+                                                                            ),
+                                                                          )),
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 10,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
