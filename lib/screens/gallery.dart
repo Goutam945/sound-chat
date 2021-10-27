@@ -115,8 +115,8 @@ class _GalleryDesign extends State<GalleryDesign> {
                                             padding:
                                                 const EdgeInsets.only(top: 5),
                                             child: SizedBox(
-                                                width: width * 0.30656,
-                                                height: height * 0.049170,
+                                                width: 120,
+                                                height: 40,
                                                 child: Center(
                                                     child: Text(
                                                   superherosLength[i]
