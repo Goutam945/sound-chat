@@ -78,11 +78,8 @@ class _ReportProblemState extends State<ReportProblem> {
               child: ListView(
                 keyboardDismissBehavior:
                     ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: EdgeInsets.only(bottom: 120, top: 50),
+                padding: EdgeInsets.only(bottom: 40, top: 20),
                 children: [
-                  SizedBox(
-                    height: 40,
-                  ),
                   Center(
                       child: Text(
                     "Report A Problem",
@@ -98,7 +95,7 @@ class _ReportProblemState extends State<ReportProblem> {
                       child: Text(
                     "What issue(s) are your experiencing?",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Color(0xFFA79A9A)),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   )),
                   SizedBox(
                     height: 40,
@@ -107,7 +104,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -115,13 +112,13 @@ class _ReportProblemState extends State<ReportProblem> {
                         focusedErrorBorder: textFieldBorder,
                         labelText: "Email",
                         labelStyle: TextStyle(
-                          color: Color(0xFFA79A9A),
+                          color: Colors.white,
                         ),
                         fillColor: Colors.white,
                         focusedBorder: textFieldBorder,
                         hintText: 'Enter your Email',
-                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        //suffixIcon: Icon(Icons.alternate_email_outlined,color: Color(0xFFA79A9A),),
+                        hintStyle: TextStyle(color: Colors.white),
+                        //suffixIcon: Icon(Icons.alternate_email_outlined,color: Colors.white,),
                       ),
                       controller: _email,
                       validator: (value) {
@@ -141,7 +138,7 @@ class _ReportProblemState extends State<ReportProblem> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -149,13 +146,13 @@ class _ReportProblemState extends State<ReportProblem> {
                         focusedErrorBorder: textFieldBorder,
                         labelText: "Subject",
                         labelStyle: TextStyle(
-                          color: Color(0xFFA79A9A),
+                          color: Colors.white,
                         ),
                         fillColor: Colors.white,
                         focusedBorder: textFieldBorder,
                         hintText: 'Suject',
-                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
+                        hintStyle: TextStyle(color: Colors.white),
+                        //suffixIcon: Icon(Icons.message,color: Colors.white,),
                       ),
                       controller: _subject,
                       validator: (value) {
@@ -172,7 +169,7 @@ class _ReportProblemState extends State<ReportProblem> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -180,13 +177,13 @@ class _ReportProblemState extends State<ReportProblem> {
                         focusedErrorBorder: textFieldBorder,
                         labelText: "Message",
                         labelStyle: TextStyle(
-                          color: Color(0xFFA79A9A),
+                          color: Colors.white,
                         ),
                         fillColor: Colors.white,
                         focusedBorder: textFieldBorder,
                         hintText: 'Type Message',
-                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
+                        hintStyle: TextStyle(color: Colors.white),
+                        //suffixIcon: Icon(Icons.message,color: Colors.white,),
                       ),
                       maxLines: 5,
                       controller: _message,
@@ -204,7 +201,7 @@ class _ReportProblemState extends State<ReportProblem> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -212,13 +209,13 @@ class _ReportProblemState extends State<ReportProblem> {
                         focusedErrorBorder: textFieldBorder,
                         labelText: "Name",
                         labelStyle: TextStyle(
-                          color: Color(0xFFA79A9A),
+                          color: Colors.white,
                         ),
                         fillColor: Colors.white,
                         focusedBorder: textFieldBorder,
                         hintText: 'Enter your Name',
-                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        //suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
+                        hintStyle: TextStyle(color: Colors.white),
+                        //suffixIcon: Icon(Icons.account_circle,color: Colors.white,),
                       ),
                       controller: _name,
                       validator: (value) {
@@ -236,7 +233,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
-                      style: TextStyle(color: Color(0xFFA79A9A)),
+                      style: TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -244,13 +241,13 @@ class _ReportProblemState extends State<ReportProblem> {
                         focusedErrorBorder: textFieldBorder,
                         labelText: "Contact No",
                         labelStyle: TextStyle(
-                          color: Color(0xFFA79A9A),
+                          color: Colors.white,
                         ),
                         fillColor: Colors.white,
                         focusedBorder: textFieldBorder,
                         hintText: 'Enter your Contact No',
-                        hintStyle: TextStyle(color: Color(0xFFA79A9A)),
-                        //suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
+                        hintStyle: TextStyle(color: Colors.white),
+                        //suffixIcon: Icon(Icons.account_circle,color: Colors.white,),
                       ),
                       controller: _contact,
                       validator: (value) {
@@ -473,7 +470,7 @@ class _ReportProblemState extends State<ReportProblem> {
 //                           fillColor: Colors.white,
 //                           hintText: 'Email:',
 //                           hintStyle: TextStyle(color: Colors.white),
-//                           //suffixIcon: Icon(Icons.alternate_email_outlined,color: Color(0xFFA79A9A),),
+//                           //suffixIcon: Icon(Icons.alternate_email_outlined,color: Colors.white,),
 //                         ),
 //                         controller: _email,
 //                         validator: Validators.required('Email is required'),
@@ -499,7 +496,7 @@ class _ReportProblemState extends State<ReportProblem> {
 //                           fillColor: Colors.white,
 //                           hintText: 'Suject:',
 //                           hintStyle: TextStyle(color: Colors.white),
-//                           //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
+//                           //suffixIcon: Icon(Icons.message,color: Colors.white,),
 //                         ),
 //                         controller: _subject,
 //                         validator: Validators.required('Subject is required'),
@@ -525,7 +522,7 @@ class _ReportProblemState extends State<ReportProblem> {
 //                           fillColor: Colors.white,
 //                           hintText: 'Message:',
 //                           hintStyle: TextStyle(color: Colors.white),
-//                           //suffixIcon: Icon(Icons.message,color: Color(0xFFA79A9A),),
+//                           //suffixIcon: Icon(Icons.message,color: Colors.white,),
 //                         ),
 //                         maxLines: 5,
 //                         controller: _message,
@@ -552,7 +549,7 @@ class _ReportProblemState extends State<ReportProblem> {
 //                           fillColor: Colors.white,
 //                           hintText: 'Name:',
 //                           hintStyle: TextStyle(color: Colors.white),
-//                           //suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
+//                           //suffixIcon: Icon(Icons.account_circle,color: Colors.white,),
 //                         ),
 //                         controller: _name,
 //                         validator: Validators.required('Name is required'),
@@ -578,7 +575,7 @@ class _ReportProblemState extends State<ReportProblem> {
 //                           fillColor: Colors.white,
 //                           hintText: 'Mobile number:',
 //                           hintStyle: TextStyle(color: Colors.white),
-//                           //suffixIcon: Icon(Icons.account_circle,color: Color(0xFFA79A9A),),
+//                           //suffixIcon: Icon(Icons.account_circle,color: Colors.white,),
 //                         ),
 //                         controller: _mobile,
 //                         validator:

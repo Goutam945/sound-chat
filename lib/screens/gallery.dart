@@ -413,6 +413,15 @@ class _GalleryDesign extends State<GalleryDesign> {
                       ],
                     );
                   }
+                  if (snapshot.hasError) {
+                    return Errorwidget(
+                      onTap: () {
+                        setState(() {
+                          createGalleryState(context);
+                        });
+                      },
+                    );
+                  }
                   return Center(child: CircularProgressIndicator());
                 })),
         Positioned(

@@ -401,10 +401,19 @@ class _UpdatehomeState extends State<Updatehome> {
                                 child: Container(
                                     color: Colors.black,
                                     width: width,
-                                    height: height * 0.1),
+                                    height: height * 0.13),
                               ),
                             );
-                          return SizedBox();
+                          return Shimmer.fromColors(
+                            baseColor: Colors.black12,
+                            highlightColor: Colors.grey[600],
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 10),
+                              color: Colors.black,
+                              width: width,
+                              height: height * 0.13,
+                            ),
+                          );
                         }),
                   ],
                 )),

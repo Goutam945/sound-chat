@@ -335,144 +335,139 @@ class _ListenlivepageState extends State<Listenlivepage>
                       height: 5,
                     ),
                     Container(
-                      padding: const EdgeInsets.all(8.0),
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      width: width * 1.01998,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xFF0F0810),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xFF7E737F).withOpacity(1.0),
-                              spreadRadius: 1,
-                              blurRadius: 1,
-                              offset:
-                                  Offset(0, 0), // changes position of shadow
+                        padding: const EdgeInsets.all(8.0),
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        width: width * 1.01998,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color(0xFF0F0810),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xFF7E737F).withOpacity(1.0),
+                                spreadRadius: 1,
+                                blurRadius: 1,
+                                offset:
+                                    Offset(0, 0), // changes position of shadow
+                              ),
+                            ]),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding:
+                                  EdgeInsets.only(left: 10, right: 10, top: 2),
+                              margin: EdgeInsets.only(right: width * 0.5),
+                              color: Colors.black,
+                              height: height * 0.0366,
+                              child: Text("Upcoming Shows",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: fontfamily)),
                             ),
-                          ]),
-                      child: (timeAndDate != null)
-                          ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 10, right: 10, top: 2),
-                                  margin: EdgeInsets.only(right: width * 0.5),
-                                  color: Colors.black,
-                                  height: height * 0.0366,
-                                  child: Text("Upcoming Shows",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily)),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      for (int j = showtime;
-                                          j <
-                                              timeAndDate[weekday]['shows']
-                                                  .length;
-                                          j++)
-                                        Row(
+                            SizedBox(
+                              height: 5,
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  for (int j = showtime;
+                                      j < timeAndDate[weekday]['shows'].length;
+                                      j++)
+                                    Row(
+                                      children: [
+                                        Column(
                                           children: [
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                    width: 110,
-                                                    height: 90,
-                                                    child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: GestureDetector(
-                                                          child: (timeAndDate[weekday]
-                                                                          [
-                                                                          'shows'][j]
-                                                                      [
-                                                                      'show_image'] !=
-                                                                  null)
-                                                              ? CachedNetworkImage(
-                                                                  imageUrl: baseurlimagepodcast +
-                                                                      timeAndDate[weekday]['shows'][j]
-                                                                              [
-                                                                              'show_image']
-                                                                          .toString(),
-                                                                  fit: BoxFit
-                                                                      .fill,
-                                                                  placeholder: (context,
-                                                                          url) =>
-                                                                      Center(
-                                                                          child:
-                                                                              CircularProgressIndicator()),
-                                                                  errorWidget:
-                                                                      (context,
-                                                                              url,
-                                                                              error) =>
-                                                                          Icon(
-                                                                    Icons.error,
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                                )
-                                                              : Container(
-                                                                  color: Color(
-                                                                      0xff324a69),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/soundpic.png',
-                                                                    fit: BoxFit
-                                                                        .fill,
-                                                                  ),
-                                                                ),
-                                                          onTap: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                PageTransition(
-                                                                    type: PageTransitionType
-                                                                        .rightToLeft,
-                                                                    child: (email ==
-                                                                            null)
-                                                                        ? NewLogin()
-                                                                        : PodcastPlayCloud(
-                                                                            j,
-                                                                            weekday)));
-                                                          },
-                                                        ))),
-                                              ],
-                                            ),
                                             SizedBox(
-                                              width: 10,
-                                            ),
+                                                width: 110,
+                                                height: 90,
+                                                child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5),
+                                                    child: GestureDetector(
+                                                      child: (timeAndDate[weekday]
+                                                                      [
+                                                                      'shows'][j]
+                                                                  [
+                                                                  'show_image'] !=
+                                                              null)
+                                                          ? CachedNetworkImage(
+                                                              imageUrl: baseurlimagepodcast +
+                                                                  timeAndDate[weekday]['shows']
+                                                                              [
+                                                                              j]
+                                                                          [
+                                                                          'show_image']
+                                                                      .toString(),
+                                                              fit: BoxFit.fill,
+                                                              placeholder: (context,
+                                                                      url) =>
+                                                                  Center(
+                                                                      child:
+                                                                          CircularProgressIndicator()),
+                                                              errorWidget:
+                                                                  (context, url,
+                                                                          error) =>
+                                                                      Icon(
+                                                                Icons.error,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            )
+                                                          : Container(
+                                                              color: Color(
+                                                                  0xff324a69),
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/soundpic.png',
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                              ),
+                                                            ),
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                                type: PageTransitionType
+                                                                    .rightToLeft,
+                                                                child: (email ==
+                                                                        null)
+                                                                    ? NewLogin()
+                                                                    : PodcastPlayCloud(
+                                                                        j,
+                                                                        weekday)));
+                                                      },
+                                                    ))),
                                           ],
                                         ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            )
-                          : Center(
-                              child: Shimmer.fromColors(
-                                baseColor: Colors.black12,
-                                highlightColor: Colors.grey[600],
-                                child: Container(
-                                    color: Colors.black,
-                                    width: width,
-                                    height: height * 0.1),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                      ],
+                                    ),
+                                ],
                               ),
                             ),
-                    ),
+                          ],
+                        )),
                     SizedBox(
                       height: 15,
                     )
                   ],
+                );
+              }
+              if (snapshot.hasError) {
+                return Errorwidget(
+                  onTap: () {
+                    setState(() {
+                      createScheduleState(context);
+                    });
+                  },
                 );
               }
               return Center(

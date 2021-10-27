@@ -1017,14 +1017,19 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                         ),
                       );
                     }
-                    if (snapshot.hasError)
-                      return Center(
-                        child: CircularProgressIndicator(),
+                    if (snapshot.hasError) {
+                      return Errorwidget(
+                        onTap: () {
+                          setState(() {
+                            createVideoState(context);
+                            createPhoneinterviewState(context);
+                          });
+                        },
                       );
+                    }
                     return Center(
                       child: CircularProgressIndicator(),
                     );
-                   
                   })),
           if (roated)
             Positioned(

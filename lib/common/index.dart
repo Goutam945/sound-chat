@@ -123,3 +123,4 @@ export 'package:sound_chat/api/search_api.dart';
 export 'package:sound_chat/screens/spleshscreen.dart';
 export 'package:sound_chat/screens/upgrade_subscriptions.dart';
 export 'package:sound_chat/screens/refundpolicy.dart';
+export 'package:sound_chat/common/error_widget.dart';

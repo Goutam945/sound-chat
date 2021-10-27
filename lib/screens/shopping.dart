@@ -118,6 +118,15 @@ class _ShoppingState extends State<Shopping> {
                       ],
                     );
                   }
+                  if (snapshot.hasError) {
+                    return Errorwidget(
+                      onTap: () {
+                        setState(() {
+                          createAllproductState(context);
+                        });
+                      },
+                    );
+                  }
                   return Center(child: CircularProgressIndicator());
                 })),
         Positioned(
