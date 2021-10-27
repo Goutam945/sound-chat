@@ -25,14 +25,12 @@ class _ScheduleDesign extends State<ScheduleDesign> {
               membership = value.data['data'];
             }));
     setState(() {
-      // weekday = DateTime.now().weekday - 1;
-      // if (weekday == -1) weekday = 6;
-      //
-      // day=DateTime.now().weekday-1;
-      // if(day==-1)
-      //   day=6;
-      weekday = 7 - DateTime.now().weekday;
-      day = 7 - DateTime.now().weekday;
+      weekday =
+          7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
+      day =
+          7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
+      // weekday = 7 - DateTime.now().weekday;
+      //day = 7 - DateTime.now().weekday;
     });
   }
 
@@ -121,14 +119,14 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                             child: CircleAvatar(
                                               backgroundColor: Colors.black,
                                               backgroundImage:
-                                                  (superherosLength[day]
+                                                  (superherosLength[weekday]
                                                                   ['shows'][j]
                                                               ['show_image'] !=
                                                           null)
                                                       ? NetworkImage(
                                                           baseurlimagepodcast +
                                                               superherosLength[
-                                                                              day]
+                                                                              weekday]
                                                                           [
                                                                           'shows'][j]
                                                                       [

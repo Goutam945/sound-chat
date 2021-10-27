@@ -54,6 +54,7 @@ int getschedule({context, data}) {
         //   showtime = i;
         // });
         //  print("TIME" + i.toString());
+        print("$a, $b, $c");
         return i;
       }
     }

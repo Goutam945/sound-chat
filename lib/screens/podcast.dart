@@ -10,7 +10,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
   bool play = true;
   String dropdownValue = 'FEATURED SHOWS';
   String data;
-  int day = 6;
+  //int day = 6;
   int weekday;
   var superherosLength;
   String email;
@@ -21,9 +21,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
   void initState() {
     super.initState();
     setState(() {
-      // weekday = DateTime.now().weekday - 1;
-      // if (weekday == -1) weekday = 6;
-      weekday = 7 - DateTime.now().weekday;
+      //weekday = 7 - DateTime.now().weekday;
+      weekday =
+          7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
     });
     _loadSavedData()
         .then((value) => createSubcriptionlevalState(id, context).then((value) {

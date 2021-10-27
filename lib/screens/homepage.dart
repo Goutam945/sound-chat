@@ -242,7 +242,17 @@ class _UpdatehomeState extends State<Updatehome> {
                                             height: 20,
                                           ),
                                         );
-                                      return SizedBox();
+                                      return Shimmer.fromColors(
+                                        baseColor: Colors.black12,
+                                        highlightColor: Colors.grey[600],
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          color: Colors.black,
+                                          width: 200,
+                                          height: 20,
+                                        ),
+                                      );
                                     }),
                                 Divider(
                                   thickness: 3,
