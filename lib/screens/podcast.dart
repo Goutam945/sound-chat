@@ -75,15 +75,15 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                               height: height * 0.1224,
                               width: width,
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 40),
+                                padding: const EdgeInsets.only(top: 50),
                                 child: Text(
                                   "ALL YOUR FAVOURITE SHOW IN ONE PLACE",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontFamily: fontfamily,
-                                      fontStyle: FontStyle.italic),
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontFamily: fontfamily,
+                                  ),
                                 ),
                               ),
                             ),
