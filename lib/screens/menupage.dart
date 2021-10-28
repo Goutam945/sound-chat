@@ -556,29 +556,29 @@ class _NewMenupageState extends State<NewMenupage> {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ReportProblem()));
-                                      },
-                                      child: Text(
-                                        "Send a Genral Message ",
-                                        style: TextStyle(
-                                            fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: fontfamily,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     SizedBox(
+                                //       width: 5,
+                                //     ),
+                                //     GestureDetector(
+                                //       onTap: () {
+                                //         Navigator.of(context).push(
+                                //             MaterialPageRoute(
+                                //                 builder: (context) =>
+                                //                     ReportProblem()));
+                                //       },
+                                //       child: Text(
+                                //         "Send a Genral Message ",
+                                //         style: TextStyle(
+                                //             fontSize: fontSize,
+                                //             fontWeight: FontWeight.bold,
+                                //             fontFamily: fontfamily,
+                                //             color: Colors.white),
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
                                 // Row(
                                 //   children: [
                                 //     SizedBox(

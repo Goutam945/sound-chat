@@ -317,8 +317,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                             color: Colors.white10,
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 SizedBox(
                                                   width: 120,
@@ -363,6 +362,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             fit: BoxFit.fill,
                                                           ),
                                                         ),
+                                                ),
+                                                SizedBox(
+                                                  width: 20,
                                                 ),
                                                 Column(
                                                   mainAxisAlignment:

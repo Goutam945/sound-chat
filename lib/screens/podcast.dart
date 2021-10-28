@@ -203,8 +203,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                   color: Colors.white10,
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                        MainAxisAlignment.start,
                                                     children: [
                                                       SizedBox(
                                                         width: 120,
@@ -255,6 +254,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                       .fill,
                                                                 ),
                                                               ),
+                                                      ),
+                                                      SizedBox(
+                                                        width: 20,
                                                       ),
                                                       Column(
                                                         mainAxisAlignment:

@@ -75,53 +75,47 @@ class _PrimiumvideoScreenState extends State<PrimiumvideoScreen> {
                 Expanded(
                   child: GridView.count(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    childAspectRatio: 300 / 320,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
                     primary: false,
                     children: <Widget>[
                       for (int i = 0;
                           i < superherosLength['premium_content'].length;
                           i++)
                         GestureDetector(
-                          child: Stack(
+                          child: Column(
                             children: [
-                              SizedBox(
-                                width: width * 0.3094,
-                                height: height * 0.1577,
-                                child: Container(
-                                  child: Opacity(
-                                    opacity: 0.8,
-                                    child: CachedNetworkImage(
-                                      imageUrl: baseurlimageinetrviews +
-                                          superherosLength['premium_content'][i]
-                                              ['feature_img'],
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) => Center(
-                                          child: CircularProgressIndicator()),
-                                      errorWidget: (context, url, error) =>
-                                          Icon(Icons.error),
-                                    ),
+                              Opacity(
+                                opacity: 0.8,
+                                child: SizedBox(
+                                  height: 100,
+                                  width: 120,
+                                  child: CachedNetworkImage(
+                                    imageUrl: baseurlimageinetrviews +
+                                        superherosLength['premium_content'][i]
+                                            ['feature_img'],
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) => Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
                                   ),
                                 ),
                               ),
-                              Positioned(
-                                  bottom: 5,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                      height: 18,
-                                      width: width * 0.3094,
-                                      color: Colors.black,
-                                      child: SizedBox(
-                                          child: Text(
-                                        superherosLength['premium_content'][i]
-                                            ['post_title'],
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal,
-                                            fontFamily: fontfamily),
-                                      ))))
+                              Container(
+                                  height: 18,
+                                  width: width * 0.3094,
+                                  color: Colors.black,
+                                  child: Text(
+                                    superherosLength['premium_content'][i]
+                                        ['post_title'],
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.normal,
+                                        fontFamily: fontfamily),
+                                  ))
                             ],
                           ),
                           onTap: () {
