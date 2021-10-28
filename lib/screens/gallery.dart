@@ -485,7 +485,7 @@ class FullImage extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     child: PhotoView(
                       imageProvider: CachedNetworkImageProvider(
-                          baseurlimageGellery + images[i]),
+                          baseurlimageGellery + images[i]['image_name']),
                     ),
                   ),
               ],
