@@ -88,8 +88,9 @@ class _GalleryDesign extends State<GalleryDesign> {
                                               width: width * 0.2137,
                                               height: height * 0.1153,
                                               child: CachedNetworkImage(
-                                                imageUrl: superherosLength[i]
-                                                    ['feature_img'],
+                                                imageUrl: baseurlimageGellery +
+                                                    superherosLength[i]
+                                                        ['feature_img'],
                                                 fit: BoxFit.cover,
                                                 imageBuilder:
                                                     (context, imageProvider) =>
@@ -177,7 +178,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                   for (int j = 0;
                                       j <
                                           superherosLength[imgcount]
-                                                  ['img_gallery_pic']
+                                                  ['galleryimages']
                                               .length;
                                       j = j + 4)
                                     Padding(
@@ -191,7 +192,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                             // MainAxisAlignment.spaceEvenly,
                                             children: [
                                               if (superherosLength[imgcount]
-                                                          ['img_gallery_pic']
+                                                          ['galleryimages']
                                                       .length >
                                                   j + 0)
                                                 GestureDetector(
@@ -204,7 +205,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                       images: superherosLength[
                                                                               imgcount]
                                                                           [
-                                                                          'img_gallery_pic'],
+                                                                          'galleryimages'],
                                                                       currentIndex:
                                                                           j + 0,
                                                                     )));
@@ -217,10 +218,13 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                           BorderRadius.circular(
                                                               15),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: superherosLength[
-                                                                    imgcount][
-                                                                'img_gallery_pic']
-                                                            [j + 0],
+                                                        imageUrl: baseurlimageGellery +
+                                                            superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'galleryimages']
+                                                                [
+                                                                j + 0]['image_name'],
                                                         fit: BoxFit.cover,
                                                         placeholder: (context,
                                                                 url) =>
@@ -244,7 +248,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                 height: 10,
                                               ),
                                               if (superherosLength[imgcount]
-                                                          ['img_gallery_pic']
+                                                          ['galleryimages']
                                                       .length >
                                                   j + 1)
                                                 GestureDetector(
@@ -257,7 +261,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                       images: superherosLength[
                                                                               imgcount]
                                                                           [
-                                                                          'img_gallery_pic'],
+                                                                          'galleryimages'],
                                                                       currentIndex:
                                                                           j + 1,
                                                                     )));
@@ -270,10 +274,13 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                           BorderRadius.circular(
                                                               15),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: superherosLength[
-                                                                    imgcount][
-                                                                'img_gallery_pic']
-                                                            [j + 1],
+                                                        imageUrl: baseurlimageGellery +
+                                                            superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'galleryimages']
+                                                                [
+                                                                j + 1]['image_name'],
                                                         fit: BoxFit.cover,
                                                         placeholder: (context,
                                                                 url) =>
@@ -300,7 +307,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                             // MainAxisAlignment.spaceEvenly,
                                             children: [
                                               if (superherosLength[imgcount]
-                                                          ['img_gallery_pic']
+                                                          ['galleryimages']
                                                       .length >
                                                   j + 2)
                                                 GestureDetector(
@@ -313,7 +320,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                                       images: superherosLength[
                                                                               imgcount]
                                                                           [
-                                                                          'img_gallery_pic'],
+                                                                          'galleryimages'],
                                                                       currentIndex:
                                                                           j + 2,
                                                                     )));
@@ -326,10 +333,13 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                           BorderRadius.circular(
                                                               15),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: superherosLength[
-                                                                    imgcount][
-                                                                'img_gallery_pic']
-                                                            [j + 2],
+                                                        imageUrl: baseurlimageGellery +
+                                                            superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'galleryimages']
+                                                                [
+                                                                j + 2]['image_name'],
                                                         fit: BoxFit.cover,
                                                         placeholder: (context,
                                                                 url) =>
@@ -353,7 +363,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                 height: 10,
                                               ),
                                               if (superherosLength[imgcount]
-                                                          ['img_gallery_pic']
+                                                          ['galleryimages']
                                                       .length >
                                                   j + 3)
                                                 GestureDetector(
@@ -364,7 +374,7 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                           FullImage(
                                                         images: superherosLength[
                                                                 imgcount]
-                                                            ['img_gallery_pic'],
+                                                            ['galleryimages'],
                                                         currentIndex: j + 3,
                                                       ),
                                                     ));
@@ -377,10 +387,13 @@ class _GalleryDesign extends State<GalleryDesign> {
                                                           BorderRadius.circular(
                                                               15),
                                                       child: CachedNetworkImage(
-                                                        imageUrl: superherosLength[
-                                                                    imgcount][
-                                                                'img_gallery_pic']
-                                                            [j + 3],
+                                                        imageUrl: baseurlimageGellery +
+                                                            superherosLength[
+                                                                        imgcount]
+                                                                    [
+                                                                    'galleryimages']
+                                                                [
+                                                                j + 3]['image_name'],
                                                         fit: BoxFit.cover,
                                                         placeholder: (context,
                                                                 url) =>
@@ -471,7 +484,8 @@ class FullImage extends StatelessWidget {
                     height: height,
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     child: PhotoView(
-                      imageProvider: CachedNetworkImageProvider(images[i]),
+                      imageProvider: CachedNetworkImageProvider(
+                          baseurlimageGellery + images[i]),
                     ),
                   ),
               ],
