@@ -20,6 +20,7 @@ final String baseurlimageGellery =
     'http://3.23.210.57/soundradiobackend/images/gallery/';
 final String baseurlimageproduct =
     'http://3.23.210.57/soundradiobackend/images/product/';
+const String socketUrl = "https://soundchatfirstapp.herokuapp.com/";
 // const String publicationKey =
 //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
 // const String secretKey =
@@ -58,4 +59,9 @@ bool validatePassword(String value) {
 bool validateEmail(String value) {
   RegExp regxPassword = new RegExp(emailPattern);
   return regxPassword.hasMatch(value);
+}
+
+class SocketEvents {
+  static const String sendMessage = "send_message";
+  static const String receiveMessage = "receive_message";
 }

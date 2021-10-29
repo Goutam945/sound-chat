@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/chat_screen.dart';
 
 /*
 class LiveVideo extends StatefulWidget {
@@ -198,6 +199,7 @@ class _LiveVideoState extends State<LiveVideo> {
               //   key: _betterPlayerKey,
               // ),
               VideoPlayer(),
+              Expanded(child: ChatScreen())
             ],
           ),
         ),
