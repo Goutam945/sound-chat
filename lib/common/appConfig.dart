@@ -18,6 +18,8 @@ final String baseurlimageinetrviews =
     'http://3.23.210.57/soundradiobackend/images/interviews/';
 final String baseurlimageGellery =
     'http://3.23.210.57/soundradiobackend/images/gallery/';
+final String baseurlimageproduct =
+    'http://3.23.210.57/soundradiobackend/images/product/';
 // const String publicationKey =
 //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
 // const String secretKey =

@@ -123,7 +123,8 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: CachedNetworkImage(
-                                    imageUrl: cardvalue.cart1[index].image,
+                                    imageUrl: baseurlimageproduct +
+                                        cardvalue.cart1[index].image,
                                     fit: BoxFit.cover,
                                     placeholder: (context, url) => Center(
                                         child: CircularProgressIndicator()),

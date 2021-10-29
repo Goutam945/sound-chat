@@ -138,7 +138,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       GestureDetector(
                         child: CachedNetworkImage(
                           //imageUrl:widget.product[j]['images'],
-                          imageUrl: widget.product['image'],
+                          imageUrl:
+                              baseurlimageproduct + widget.product['image'],
                           fit: BoxFit.cover,
                           placeholder: (context, url) =>
                               Center(child: CircularProgressIndicator()),
@@ -150,7 +151,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               context,
                               PageTransition(
                                   type: PageTransitionType.scale,
-                                  child: FullImage(
+                                  child: FullImageproduct(
                                     images: [widget.product['image']],
                                     currentIndex: 0,
                                   )));
@@ -252,7 +253,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         child: Text("Size:   ",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -268,7 +269,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                             Icons.arrow_drop_down_sharp,
                             color: Colors.white,
                           ),
-                          iconSize: 44,
+                          iconSize: 35,
                           elevation: 16,
                           style: TextStyle(color: Color(0xFFA79A9A)),
                           underline: Container(
@@ -286,7 +287,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.white,
                                 ),
                               ),
@@ -313,7 +314,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         child: Text("Color: ",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -329,7 +330,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                             Icons.arrow_drop_down_sharp,
                             color: Colors.white,
                           ),
-                          iconSize: 44,
+                          iconSize: 35,
                           elevation: 16,
                           style: TextStyle(color: Color(0xFFA79A9A)),
                           underline: Container(
@@ -347,7 +348,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.white,
                                 ),
                               ),
@@ -401,7 +402,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
               ],
             )),
         Positioned(
-          top: AppBar().preferredSize.height * 0.2,
+          top: AppBar().preferredSize.height * 0.05,
           left: width * 0.39865,
           child: SizedBox(
             height: height * 0.12168,
@@ -412,6 +413,59 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
           ),
         ),
       ]),
+    );
+  }
+}
+
+class FullImageproduct extends StatelessWidget {
+  final List images;
+  final int currentIndex;
+  const FullImageproduct({Key key, this.images, this.currentIndex})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: [
+            CarouselSlider(
+              options: CarouselOptions(
+                height: height,
+                initialPage: currentIndex,
+                autoPlay: false,
+                enlargeCenterPage: true,
+                viewportFraction: 1,
+                autoPlayInterval: Duration(seconds: 10),
+                autoPlayAnimationDuration: Duration(seconds: 5),
+              ),
+              items: <Widget>[
+                for (int i = 0; i < images.length; i++)
+                  Container(
+                    width: width,
+                    height: height,
+                    margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    child: PhotoView(
+                      imageProvider: CachedNetworkImageProvider(
+                          baseurlimageproduct + images[i]),
+                    ),
+                  ),
+              ],
+            ),
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ))
+          ],
+        ),
+      ),
     );
   }
 }

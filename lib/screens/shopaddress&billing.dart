@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+
 class Shopaddress extends StatefulWidget {
   @override
   _ShopaddressState createState() => _ShopaddressState();
@@ -41,8 +42,7 @@ class _ShopaddressState extends State<Shopaddress> {
             appBar: AppBar(
               backgroundColor: Color(0xFF3F535E),
             ),
-            body:
-            Form(
+            body: Form(
               key: _formKey,
               child: ListView(
                 children: [
@@ -62,7 +62,8 @@ class _ShopaddressState extends State<Shopaddress> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -80,11 +81,14 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('Name is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -102,11 +106,14 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('Last Name is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -124,11 +131,14 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('Address is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -145,11 +155,14 @@ class _ShopaddressState extends State<Shopaddress> {
                       controller: _address2,
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -167,11 +180,14 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('City is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -189,20 +205,22 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('State is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      keyboardType: TextInputType.number,
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
                         enabledBorder: border,
                         focusedBorder: border,
                         labelText: "Post code",
-                        labelStyle: TextStyle(
-                          color: Colors.white
-                        ),
+                        labelStyle: TextStyle(color: Colors.white),
                         fillColor: Colors.white,
                         hintText: 'Post code:',
                         hintStyle: TextStyle(color: Colors.white),
@@ -211,20 +229,21 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('Post code is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
                         enabledBorder: border,
                         focusedBorder: border,
                         labelText: "Country",
-                        labelStyle: TextStyle(
-                          color:Colors.white
-                        ),
+                        labelStyle: TextStyle(color: Colors.white),
                         fillColor: Colors.white,
                         hintText: 'Country:',
                         hintStyle: TextStyle(color: Colors.white),
@@ -233,11 +252,15 @@ class _ShopaddressState extends State<Shopaddress> {
                       validator: Validators.required('Country is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      keyboardType: TextInputType.emailAddress,
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -252,14 +275,26 @@ class _ShopaddressState extends State<Shopaddress> {
                         hintStyle: TextStyle(color: Colors.white),
                       ),
                       controller: _email,
-                      validator: Validators.required('Email is required'),
+                      validator: (value) {
+                        if (value.trim().isEmpty) {
+                          return "Email is empty";
+                        }
+                        if (!validateEmail(value)) {
+                          return 'Please Enter a valid Email ID';
+                        } else
+                          return null;
+                      },
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white,fontFamily: fontfamily),
+                      keyboardType: TextInputType.phone,
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10),
                         border: border,
@@ -274,13 +309,17 @@ class _ShopaddressState extends State<Shopaddress> {
                         hintStyle: TextStyle(color: Colors.white),
                       ),
                       controller: _phone,
-                      validator: Validators.required('phone number is required'),
+                      validator:
+                          Validators.required('phone number is required'),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
-                    child: SizedBox(height: 50,
+                    child: SizedBox(
+                      height: 50,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             primary: Color(0xFF8E0E14),
@@ -303,20 +342,22 @@ class _ShopaddressState extends State<Shopaddress> {
                             //       _email.text,
                             //       _phone.text,
                             //     )));
-                          Navigator.push(context,
-                              PageTransition(type:
-                              PageTransitionType.rightToLeft, child:ShopPay(
-                                _firstname.text,
-                                _lastname.text,
-                                _address1.text,
-                                _address2.text,
-                                _city.text,
-                                _state.text,
-                                _postcode.text,
-                                _country.text,
-                                _email.text,
-                                _phone.text,
-                              )));
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeft,
+                                    child: ShopPay(
+                                      _firstname.text,
+                                      _lastname.text,
+                                      _address1.text,
+                                      _address2.text,
+                                      _city.text,
+                                      _state.text,
+                                      _postcode.text,
+                                      _country.text,
+                                      _email.text,
+                                      _phone.text,
+                                    )));
                         },
                         child: Text(
                           " Proceed to Pay",

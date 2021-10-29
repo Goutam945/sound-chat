@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/allorderdetails.dart';
 import 'package:sound_chat/screens/pagination.dart';
 
 class NewMenupage extends StatefulWidget {
@@ -275,10 +276,10 @@ class _NewMenupageState extends State<NewMenupage> {
                       SizedBox(
                         height: 10,
                       ),
-                      if (loader)
-                        Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                      // if (loader)
+                      //   Center(
+                      //     child: CircularProgressIndicator(),
+                      //   ),
                       SizedBox(
                         width: width,
                         height: 200,
@@ -308,15 +309,19 @@ class _NewMenupageState extends State<NewMenupage> {
                                                       .rightToLeft,
                                                   child: NewLogin()));
                                         else {
-                                          setState(() {
-                                            loader = true;
-                                          });
-                                          createAllOrderState(id, context)
-                                              .whenComplete(() {
-                                            setState(() {
-                                              loader = false;
-                                            });
-                                          });
+                                          // setState(() {
+                                          //   loader = true;
+                                          // });
+                                          // createAllOrderState(id, context)
+                                          //     .whenComplete(() {
+                                          //   setState(() {
+                                          //     loader = false;
+                                          //   });
+                                          // });
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      AllOrderlist()));
                                         }
                                       },
                                       child: Text(

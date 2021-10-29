@@ -58,7 +58,9 @@ class _ShoppingState extends State<Shopping> {
                                               child: Opacity(
                                                 opacity: 1,
                                                 child: CachedNetworkImage(
-                                                  imageUrl: product[i]['image'],
+                                                  imageUrl:
+                                                      baseurlimageproduct +
+                                                          product[i]['image'],
                                                   fit: BoxFit.cover,
                                                   placeholder: (context, url) =>
                                                       Center(

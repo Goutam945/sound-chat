@@ -703,7 +703,7 @@ class _ShopPayState extends State<ShopPay> {
                           setState(() {
                             radioItem = val;
                             setPaid = true;
-                            paymentMethodTitle = 'Online Payment (Stripe)';
+                            paymentMethodTitle = 'Online Payment';
                             // Strippay();
                           });
                         },
