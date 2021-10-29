@@ -258,17 +258,16 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                       SizedBox(
                                                         width: 20,
                                                       ),
-                                                      Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          SizedBox(
-                                                            width: width * 0.65,
-                                                            child: Text(
+                                                      Expanded(
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
                                                               superherosLength[
                                                                               weekday]
                                                                           [
@@ -286,10 +285,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   fontFamily:
                                                                       fontfamily),
                                                             ),
-                                                          ),
-                                                          SizedBox(
-                                                            width: width * 0.65,
-                                                            child: Text(
+                                                            Text(
                                                               superherosLength[
                                                                       weekday][
                                                                   'post_title'],
@@ -300,23 +296,23 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   fontFamily:
                                                                       fontfamily),
                                                             ),
-                                                          ),
-                                                          Text(
-                                                            "LIVE ON:  " +
-                                                                superherosLength[
-                                                                            weekday]
-                                                                        [
-                                                                        'shows'][j]
-                                                                    [
-                                                                    'show_start_date'],
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 16,
-                                                                fontFamily:
-                                                                    fontfamily),
-                                                          )
-                                                        ],
+                                                            Text(
+                                                              "LIVE ON:  " +
+                                                                  superherosLength[
+                                                                              weekday]
+                                                                          [
+                                                                          'shows'][j]
+                                                                      [
+                                                                      'show_start_date'],
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 16,
+                                                                  fontFamily:
+                                                                      fontfamily),
+                                                            )
+                                                          ],
+                                                        ),
                                                       )
                                                     ],
                                                   ),

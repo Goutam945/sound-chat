@@ -104,7 +104,8 @@ class _ReportProblemState extends State<ReportProblem> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
                       keyboardType: TextInputType.emailAddress,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -138,7 +139,8 @@ class _ReportProblemState extends State<ReportProblem> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -150,7 +152,7 @@ class _ReportProblemState extends State<ReportProblem> {
                         ),
                         fillColor: Colors.white,
                         focusedBorder: textFieldBorder,
-                        hintText: 'Suject',
+                        hintText: 'Enter Subject',
                         hintStyle: TextStyle(color: Colors.white),
                         //suffixIcon: Icon(Icons.message,color: Colors.white,),
                       ),
@@ -169,7 +171,8 @@ class _ReportProblemState extends State<ReportProblem> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -201,7 +204,8 @@ class _ReportProblemState extends State<ReportProblem> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,
@@ -233,7 +237,8 @@ class _ReportProblemState extends State<ReportProblem> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
                         enabledBorder: textFieldBorder,
                         errorBorder: textFieldBorder,

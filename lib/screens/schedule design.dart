@@ -366,16 +366,16 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                 SizedBox(
                                                   width: 20,
                                                 ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    SizedBox(
-                                                      width: width * 0.65,
-                                                      child: Text(
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
                                                         superherosLength[day]
                                                                     ['shows'][j]
                                                                 ['show_name']
@@ -388,10 +388,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             fontFamily:
                                                                 fontfamily),
                                                       ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: width * 0.65,
-                                                      child: Text(
+                                                      Text(
                                                         superherosLength[day]
                                                             ['post_title'],
                                                         style: TextStyle(
@@ -400,22 +397,25 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             fontFamily:
                                                                 fontfamily),
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      superherosLength[day]
-                                                                  ['shows'][j][
-                                                              'show_start_date'] +
-                                                          "  - " +
-                                                          superherosLength[day]
-                                                                  ['shows'][j]
-                                                              ['show_end_date'],
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 16,
-                                                          fontFamily:
-                                                              fontfamily),
-                                                    )
-                                                  ],
+                                                      Text(
+                                                        superherosLength[day]
+                                                                    ['shows'][j]
+                                                                [
+                                                                'show_start_date'] +
+                                                            "  - " +
+                                                            superherosLength[
+                                                                        day]
+                                                                    ['shows'][j]
+                                                                [
+                                                                'show_end_date'],
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 16,
+                                                            fontFamily:
+                                                                fontfamily),
+                                                      )
+                                                    ],
+                                                  ),
                                                 )
                                               ],
                                             ),
