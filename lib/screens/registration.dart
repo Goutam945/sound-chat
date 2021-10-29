@@ -188,7 +188,7 @@ class _SignupPageState extends State<Registrationship> {
                         hintText: 'Username:',
                         hintStyle: TextStyle(color: Colors.white),
                         prefixIcon: Icon(
-                          Icons.phone_android,
+                          Icons.account_circle_outlined,
                           color: Color(0xFFA6B3BC),
                         ),
                       ),
