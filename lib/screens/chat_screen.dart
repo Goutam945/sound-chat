@@ -185,8 +185,8 @@ class _ChatScreenState extends State<ChatScreen> {
       if (lastMessageId > 0) {
         setState(() {
           isLoading = true;
-          lastMessageId -= 10;
           getMessages().then((value) => addOldMessages(value));
+          lastMessageId -= 10;
           print(lastMessageId);
         });
       }
