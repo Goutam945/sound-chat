@@ -1,24 +1,25 @@
 {
   "project_info": {
     "project_number": "720390631568",
+    "firebase_url": "https://sound-chat-5d1ff-default-rtdb.firebaseio.com",
     "project_id": "sound-chat-5d1ff",
     "storage_bucket": "sound-chat-5d1ff.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:720390631568:android:e7cf365fb25ed23703e815",
+        "mobilesdk_app_id": "1:720390631568:android:2c3da1bddfe2a4a103e815",
         "android_client_info": {
           "package_name": "com.soundchatradio.broadlink"
         }
       },
       "oauth_client": [
         {
-          "client_id": "720390631568-m0jijqe2iblkieg70q9clgjr8q3d1ddk.apps.googleusercontent.com",
+          "client_id": "720390631568-6tod7m6e872ud8fh1iqagp2kdj8e6r2g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.soundchatradio.broadlink",
-            "certificate_hash": "421cd4d8b26cd6a3c4e46fdc00534e318670f589"
+            "certificate_hash": "bff18679966adff1de1b7376238510cb53205bd2"
           }
         },
         {
@@ -37,6 +38,13 @@
             {
               "client_id": "720390631568-ijjf8hko3vs13jav8o168pq9obi6oj4b.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "720390631568-i3ituajj6gbtmjqp6a5v29h5m0c38u78.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.soundChatRadio"
+              }
             }
           ]
         }

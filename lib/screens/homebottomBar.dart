@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/firebase.dart';
 
 class HomeBottomBar extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _HomeBottomBarState extends State<HomeBottomBar>
   void initState() {
     super.initState();
     _loadSavedData();
+    firebase(context);
   }
 
   @override

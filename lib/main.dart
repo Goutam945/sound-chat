@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/firebase.dart';
 import 'package:sound_chat/stripe_api/create_customer.dart';
 import 'package:sound_chat/stripe_api/create_subcription.dart';
 import 'package:sound_chat/stripe_api/get_plans.dart';
@@ -37,6 +38,9 @@ void main() async {
   );
 }
 
+final GlobalKey<NavigatorState> navigatorKey =
+    GlobalKey(debugLabel: "Main Navigator");
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -68,10 +72,17 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    firebase(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     internetcheck();
     //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Montserrat1'),
         home: checkinternet

@@ -14,6 +14,7 @@ class _GalleryDesign extends State<GalleryDesign> {
   //int count = 0;
   List<bool> butoncolor = [for (int i = 0; i < 100; i++) true];
   String email, name;
+  var apigallery;
   @override
   void initState() {
     super.initState();
@@ -28,6 +29,7 @@ class _GalleryDesign extends State<GalleryDesign> {
     });
 
     _loadSavedData();
+    apigallery = createGalleryState(context);
   }
 
   _loadSavedData() async {
@@ -55,7 +57,7 @@ class _GalleryDesign extends State<GalleryDesign> {
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(55), child: Backappbar()),
             body: FutureBuilder(
-                future: createGalleryState(context),
+                future: apigallery,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     var superherosLength = snapshot.data.data['data'];

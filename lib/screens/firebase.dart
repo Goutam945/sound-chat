@@ -6,13 +6,12 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // await Firebase.initializeApp();
   print("Handling a background message: ${message.messageId}");
   print("Handling a background message: ${message.data}");
-  print("Handling a background message: ${message.category}");
+  //print("Handling a background message: ${message.category}");
   print("Handling a background message: ${message.notification.title}");
   print("Handling a background message: ${message.notification.body}");
 }
 
-firebase(context) async{
-
+firebase(context) async {
   NotificationSettings settings = await _firebaseMessaging.requestPermission(
     alert: true,
     announcement: false,
@@ -35,29 +34,56 @@ firebase(context) async{
       print('Message also contained a notification: ${message.notification}');
       print(message.notification.title);
       print(message.notification.body);
-
     }
   });
 
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
     print('onMessageOpenedApp: ' + message.notification.title.toString());
-    //Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BibleReading()));
+    // Navigator.of(context)
+    //     .push(MaterialPageRoute(builder: (context) => AllHomeInterview()));
+    // navigatorKey.currentState
+    //     .push(MaterialPageRoute(builder: (_) => AllHomeInterview()));
+    // if (message.data['type'] == 'interview') {}
+
+    switch (message.data['type']) {
+      case 'interview':
+        {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => AllHomeInterview()));
+        }
+        break;
+
+      case 'gallery':
+        {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => GalleryDesign()));
+        }
+        break;
+
+      default:
+        {
+          //statements;
+        }
+        break;
+    }
   });
 
-  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 }
 
 class Notification1 extends StatelessWidget {
   final notification;
-  Notification1({Key key, this.notification}):super(key: key);
+  Notification1({Key key, this.notification}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: Text(notification.title),),
-        body: ListView(children: [
-          Text(notification.body)
-        ],),
+        appBar: AppBar(
+          title: Text(notification.title),
+        ),
+        body: ListView(
+          children: [Text(notification.body)],
+        ),
       ),
     );
   }

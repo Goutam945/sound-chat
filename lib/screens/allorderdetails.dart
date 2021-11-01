@@ -173,7 +173,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                                       fontFamily: fontfamily),
                                                 ),
                                                 Text(
-                                                  "status: $status",
+                                                  "Status: $status",
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       fontFamily: fontfamily,

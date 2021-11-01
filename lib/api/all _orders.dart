@@ -9,7 +9,7 @@ Future<AllorderResponse> createAllOrderState(int userid, context) async {
 
   if (response.statusCode == 200) {
     Map data = json.decode(response.body);
-    print(data);
+    // print(data);
     Provider.of<AllorderResponse>(context, listen: false).data = data;
     // Navigator.of(context)
     //     .push(MaterialPageRoute(builder: (context) => AllOrderlist()));

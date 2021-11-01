@@ -87,4 +87,5 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
    // implementation 'com.braintreepayments.api:braintree:3.16.1'
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/firebase.dart';
 
 class SpleshScreen extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class SplashScreenState extends State<SpleshScreen> {
 
   @override
   void initState() {
+    firebase(context);
     final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
     _firebaseMessaging.getToken().then((token) {
       // createFCMTokenState(token);

@@ -21,6 +21,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
   List<int> number;
   int id;
   var membership;
+  var apivideointerview;
 
   @override
   void initState() {
@@ -35,6 +36,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
       var rng = new Random();
       randomNumber = rng.nextInt(100);
     });
+    apivideointerview = createVideoState(context);
   }
 
   _loadSavedData() async {
@@ -75,7 +77,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
               appBar: PreferredSize(
                   preferredSize: Size.fromHeight(55), child: Backappbar()),
               body: FutureBuilder(
-                  future: createVideoState(context),
+                  future: apivideointerview,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       var superherosLength = snapshot.data.data['data'];
