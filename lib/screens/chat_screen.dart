@@ -246,8 +246,8 @@ class _ChatScreenState extends State<ChatScreen> {
           senderId: data[i]["sender_id"],
           isMe: data[i]["sender_id"] == userId,
           time: data[i]["createdAt"]);
-      // messages.add(msg);
-      messages.insert(0, msg);
+      messages.add(msg);
+      // messages.insert(0, msg);
     }
     lastMessageId = data[0]["id"];
   }
