@@ -21,6 +21,7 @@ final String baseurlimageGellery =
 final String baseurlimageproduct =
     'http://3.23.210.57/soundradiobackend/images/product/';
 const String socketUrl = "https://soundchatfirstapp.herokuapp.com/";
+const String sockerUrl1 = "http://192.168.29.69:8081/";
 // const String publicationKey =
 //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
 // const String secretKey =

@@ -104,6 +104,7 @@ class LiveVideo extends StatefulWidget {
 class _LiveVideoState extends State<LiveVideo> {
   AudioPlayer audioPlayer = new AudioPlayer(
       playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
+  bool isLogin = false;
 
   stopaudio() async {
     await audioPlayer.stop();
@@ -114,8 +115,20 @@ class _LiveVideoState extends State<LiveVideo> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  loadSavedData() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      if (sharedPreferences.getBool('islogin') != null) {
+        isLogin = sharedPreferences.getBool('islogin');
+      } else {
+        isLogin = false;
+      }
+    });
+  }
+
   @override
   void initState() {
+    loadSavedData();
     audioPlayer.stop();
     //isPlaying = false;
     stopaudio();
@@ -199,7 +212,31 @@ class _LiveVideoState extends State<LiveVideo> {
               //   key: _betterPlayerKey,
               // ),
               VideoPlayer(),
-              Expanded(child: ChatScreen())
+              Expanded(
+                  child: isLogin
+                      ? ChatScreen()
+                      : Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Please Login first to see this chat",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) => NewLogin()));
+                                  },
+                                  child: Text("Go to Login Screen"))
+                            ],
+                          ),
+                        ))
             ],
           ),
         ),

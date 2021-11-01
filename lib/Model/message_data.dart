@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class MessageData {
   String socketId = "";
-  String roomId = "";
+  int roomId = 123;
   String message = "";
   int senderId = 0;
   bool isMe = true;

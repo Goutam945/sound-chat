@@ -6,6 +6,7 @@ import 'package:sound_chat/common/appConfig.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/common/message_view.dart';
 import 'package:http/http.dart' as http;
+import 'package:sound_chat/common/shared_preferences.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key key}) : super(key: key);
@@ -20,11 +21,19 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   bool isMe = true;
+  Future<ChatResponse> _getMessages;
+  int userId = 0;
+  bool isLoading = false;
+  int lastMessageId = 0;
 
   @override
   void initState() {
-    getMessages();
-    scrollToBottom();
+    Sharedpreferences().getUserId().then((value) => userId = value);
+    _getMessages = getLastMessages().then((value) {
+      addMessages(value);
+      scrollToBottom();
+      return value;
+    });
     socketConfig();
     super.initState();
   }
@@ -44,11 +53,31 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                  controller: _scrollController,
-                  itemCount: messages.length,
-                  itemBuilder: (context, index) =>
-                      MessageView(messages: messages[index])),
+              child: FutureBuilder(
+                  future: _getMessages,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      print(snapshot.data.data);
+                      return ListView.builder(
+                          controller: _scrollController,
+                          itemCount: messages.length,
+                          itemBuilder: (context, index) {
+                            // List data = snapshot.data.data['data'];
+                            // MessageData msg = MessageData(
+                            //     socketId: socket.id,
+                            //     roomId: data[index]["room_id"],
+                            //     message: data[index]["message"],
+                            //     senderId: int.parse(data[index]["sender_id"]),
+                            //     isMe: isMe,
+                            //     time: data[index]["created_date"]);
+                            // messages.add(msg);
+                            return MessageView(messages: messages[index]);
+                          });
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
             ),
             Row(
               children: [messageField(), sendBtn()],
@@ -92,9 +121,9 @@ class _ChatScreenState extends State<ChatScreen> {
     if (_messageController.text.isNotEmpty) {
       final message = MessageData(
           socketId: socket.id,
-          roomId: "123",
+          roomId: 123,
           message: _messageController.text,
-          senderId: 0,
+          senderId: userId,
           isMe: isMe,
           time: DateTime.now().toString());
       setState(() {
@@ -108,7 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void socketConfig() {
     socket = io.io(
-        socketUrl,
+        sockerUrl1,
         io.OptionBuilder()
             .setTransports(['websocket'])
             .disableAutoConnect()
@@ -130,7 +159,7 @@ class _ChatScreenState extends State<ChatScreen> {
     socket.on(SocketEvents.receiveMessage, (data) {
       print(data.toString());
       setState(() {
-        if (socket.id != data['socketId']) {
+        if (userId != data['senderId']) {
           // Map<String, dynamic> msg = {
           //   'socketId': data['socketId'],
           //   'roomId': data['roomId'],
@@ -150,6 +179,20 @@ class _ChatScreenState extends State<ChatScreen> {
     socket.onError((data) => print('error: $data'));
   }
 
+  void pagination() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.minScrollExtent) {
+      if (lastMessageId > 0) {
+        setState(() {
+          isLoading = true;
+          lastMessageId -= 10;
+          getMessages().then((value) => addOldMessages(value));
+          print(lastMessageId);
+        });
+      }
+    }
+  }
+
   void scrollToBottom() async {
     // _scrollController.position.maxScrollExtent;
     await Future.delayed(const Duration(milliseconds: 1));
@@ -158,21 +201,71 @@ class _ChatScreenState extends State<ChatScreen> {
           duration: const Duration(milliseconds: 100),
           curve: Curves.fastOutSlowIn);
     });
+
+    _scrollController.addListener(pagination);
   }
 
   Future<ChatResponse> getMessages() async {
-    final http.Response response = await http.get(
-        Uri.parse('https://soundchatfirstapp.herokuapp.com/groupchatlist/0'));
+    final http.Response response = await http.get(Uri.parse(
+        'http://192.168.29.69:8081/group_chat_history_bylastmessageid/$lastMessageId'));
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       Provider.of<SearchResponse>(context, listen: false).data = data;
       print(data);
       return ChatResponse.fromJson(json.decode(response.body));
     } else {
-      Toast.show("server error", context,
+      Toast.show(response.body, context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       throw Exception(response.body);
     }
+  }
+
+  Future<ChatResponse> getLastMessages() async {
+    final http.Response response = await http
+        .get(Uri.parse('http://192.168.29.69:8081/group_chat_history'));
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = json.decode(response.body);
+      Provider.of<SearchResponse>(context, listen: false).data = data;
+      print(data);
+      return ChatResponse.fromJson(json.decode(response.body));
+    } else {
+      Toast.show(response.body, context,
+          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+      throw Exception(response.body);
+    }
+  }
+
+  void addMessages(ChatResponse value) {
+    List data = value.data['data'];
+    print("data from history: $data");
+    for (int i = 0; i < data.length; i++) {
+      MessageData msg = MessageData(
+          socketId: socket.id,
+          roomId: data[i]["room_id"],
+          message: data[i]["message"],
+          senderId: data[i]["sender_id"],
+          isMe: data[i]["sender_id"] == userId,
+          time: data[i]["createdAt"]);
+      // messages.add(msg);
+      messages.insert(0, msg);
+    }
+    lastMessageId = data[0]["id"];
+  }
+
+  void addOldMessages(ChatResponse value) {
+    List data = value.data['data'];
+    print("data from history: $data");
+    for (int i = 0; i < data.length; i++) {
+      MessageData msg = MessageData(
+          socketId: socket.id,
+          roomId: data[i]["room_id"],
+          message: data[i]["message"],
+          senderId: data[i]["sender_id"],
+          isMe: data[i]["sender_id"] == userId,
+          time: data[i]["createdAt"]);
+      messages.insert(0, msg);
+    }
+    setState(() {});
   }
 }
 
