@@ -255,7 +255,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void addOldMessages(ChatResponse value) {
     List data = value.data['data'];
     print("data from history: $data");
-    for (int i = 0; i < data.length; i++) {
+    for (int i = data.length - 1; i >= 0; i--) {
       MessageData msg = MessageData(
           socketId: socket.id,
           roomId: data[i]["room_id"],
