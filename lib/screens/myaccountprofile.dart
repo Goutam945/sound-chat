@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sound_chat/api/logout.dart';
 import 'package:sound_chat/common/index.dart';
-import 'package:sound_chat/common/shared_preferences.dart';
 import 'package:sound_chat/stripe_api/cancel_subscription.dart';
 
 class MyAccount extends StatefulWidget {

@@ -12,7 +12,7 @@ class Interviewpagination extends StatefulWidget {
 class _InterviewpaginationState extends State<Interviewpagination> {
   int currentPage = 1;
   List users = [];
-  int total_pages;
+  int totalPages;
   List data = [];
   bool isLoading = false;
   ScrollController _scrollController = ScrollController();
@@ -55,7 +55,7 @@ class _InterviewpaginationState extends State<Interviewpagination> {
         users = res['data'];
         //  users.add(res['data']);
         for (int i = 0; i < users.length; i++) data.add(users[i]);
-        total_pages = res["total_pages"];
+        totalPages = res["total_pages"];
         isLoading = false;
       });
       return res;

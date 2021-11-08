@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:sound_chat/Model/message_data.dart';
 import 'package:sound_chat/common/appConfig.dart';
@@ -25,6 +26,108 @@ class _ChatScreenState extends State<ChatScreen> {
   int userId = 0;
   bool isLoading = false;
   int lastMessageId = 0;
+  Color pickedTextColor = Color(0xFFFFFFFF);
+  Color pickedBubbleColor = Color(0xFF0B410E);
+  // Color currentColor = Color(0xff443a49);
+  bool isBold = false, isItalic = false, isUnderline = false;
+
+  changeBubbleColor(Color color) {
+    setState(() => pickedBubbleColor = color);
+  }
+
+  changeTextColor(Color color) {
+    setState(() => pickedTextColor = color);
+  }
+
+  pickTextColor() {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Pick a color!'),
+        content: SingleChildScrollView(
+          child: ColorPicker(
+            pickerColor: pickedTextColor,
+            onColorChanged: changeTextColor,
+            showLabel: true,
+            pickerAreaHeightPercent: 0.8,
+          ),
+          // Use Material color picker:
+          //
+          // child: MaterialPicker(
+          //   pickerColor: pickerColor,
+          //   onColorChanged: changeColor,
+          //   // showLabel: true, // only on portrait mode
+          // ),
+          //
+          // Use Block color picker:
+          //
+          // child: BlockPicker(
+          //   pickerColor: currentColor,
+          //   onColorChanged: changeColor,
+          // ),
+          //
+          // child: MultipleChoiceBlockPicker(
+          //   pickerColors: currentColors,
+          //   onColorsChanged: changeColors,
+          // ),
+        ),
+        actions: <Widget>[
+          ElevatedButton(
+            child: const Text('Got it'),
+            onPressed: () {
+              // setState(() => currentColor = pickedTextColor);
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  pickBubbleColor() {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Pick a color!'),
+        content: SingleChildScrollView(
+          child: ColorPicker(
+            pickerColor: pickedBubbleColor,
+            onColorChanged: changeBubbleColor,
+            showLabel: true,
+            pickerAreaHeightPercent: 0.8,
+          ),
+          // Use Material color picker:
+          //
+          // child: MaterialPicker(
+          //   pickerColor: pickerColor,
+          //   onColorChanged: changeColor,
+          //   // showLabel: true, // only on portrait mode
+          // ),
+          //
+          // Use Block color picker:
+          //
+          // child: BlockPicker(
+          //   pickerColor: currentColor,
+          //   onColorChanged: changeColor,
+          // ),
+          //
+          // child: MultipleChoiceBlockPicker(
+          //   pickerColors: currentColors,
+          //   onColorsChanged: changeColors,
+          // ),
+        ),
+        actions: <Widget>[
+          ElevatedButton(
+            child: const Text('Got it'),
+            onPressed: () {
+              // setState(() => currentColor = pickedTextColor);
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -71,7 +174,11 @@ class _ChatScreenState extends State<ChatScreen> {
                             //     isMe: isMe,
                             //     time: data[index]["created_date"]);
                             // messages.add(msg);
-                            return MessageView(messages: messages[index]);
+                            return MessageView(
+                              messages: messages[index],
+                              pickedBubbleColor: pickedBubbleColor,
+                              pickedTextColor: pickedTextColor,
+                            );
                           });
                     }
                     return Center(
@@ -79,6 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     );
                   }),
             ),
+            chatStyles(),
             Row(
               children: [messageField(), sendBtn()],
             )
@@ -87,6 +195,71 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
     );
   }
+
+  Widget chatStyles() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          GestureDetector(
+            onTap: pickTextColor,
+            child: Container(
+              height: 20,
+              width: 20,
+              color: pickedTextColor,
+            ),
+          ),
+          GestureDetector(
+            onTap: pickBubbleColor,
+            child: Container(
+              height: 20,
+              width: 20,
+              color: pickedBubbleColor,
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isBold = !isBold;
+              });
+            },
+            child: Text(
+              "B",
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                color: isBold ? Colors.white : pickedTextColor,
+              ),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isItalic = !isItalic;
+              });
+            },
+            child: Text(
+              "I",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: isItalic ? Colors.white : pickedTextColor,
+                  fontStyle: FontStyle.italic),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isUnderline = !isUnderline;
+              });
+            },
+            child: Text(
+              "U",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: isUnderline ? Colors.white : pickedTextColor,
+                  // fontStyle: FontStyle.italic,
+                  decoration: TextDecoration.underline),
+            ),
+          ),
+        ],
+      );
 
   Widget messageField() => Expanded(
         child: Card(
