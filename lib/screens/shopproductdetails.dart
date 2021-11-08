@@ -402,11 +402,11 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
               ],
             )),
         Positioned(
-          top: AppBar().preferredSize.height * 0.05,
+          top: AppBar().preferredSize.height * 0.2,
           left: width * 0.39865,
           child: SizedBox(
-            height: height * 0.12168,
-            width: width * 0.21875,
+            height: height * 0.10168,
+            width: width * 0.20275,
             child: Image.asset(
               'assets/soundpic.png',
             ),

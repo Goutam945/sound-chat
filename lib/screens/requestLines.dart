@@ -1,4 +1,5 @@
 import 'package:sound_chat/common/index.dart';
+
 class RequestLines extends StatefulWidget {
   @override
   _RequestLinesState createState() => _RequestLinesState();
@@ -10,6 +11,7 @@ class _RequestLinesState extends State<RequestLines> {
     super.initState();
     // getData();
   }
+
   void launchUrl(String url) async {
     if (await canLaunch(url)) {
       launch(url);
@@ -17,6 +19,7 @@ class _RequestLinesState extends State<RequestLines> {
       throw "Could not launch $url";
     }
   }
+
   void whatsAppOpen() async {
     final link = WhatsAppUnilink(
       phoneNumber: '+1-(347)7579865',
@@ -36,38 +39,45 @@ class _RequestLinesState extends State<RequestLines> {
       child: Stack(children: [
         Scaffold(
           backgroundColor: Colors.black,
-          appBar: PreferredSize(preferredSize: Size.fromHeight(55),
-              child: Backappbar()),
-          body: Container( decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFF3F535E),
-                    Color(0xFF3A432E),
-                    //Color(0xFF0E0D13)
-                  ])),
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(55), child: Backappbar()),
+          body: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                  Color(0xFF3F535E),
+                  Color(0xFF3A432E),
+                  //Color(0xFF0E0D13)
+                ])),
             child: ListView(
               children: [
                 SizedBox(
                   height: 40,
                 ),
                 Text(
-                  "Request Lines",textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.orange),
+                  "Request Lines",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  "Tune in to SoundChat Radio Live",textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12,color: Colors.white),
+                  "Tune in to SoundChat Radio Live",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
                     children: [
                       Positioned(
@@ -84,15 +94,17 @@ class _RequestLinesState extends State<RequestLines> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
-                              child:Padding(padding: EdgeInsets.only(left: 20),
-                              child: Text("+1(718)-554-8598",
+                                child: Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(
+                                "+1(718)-554-8598",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: titlefontsize,
                                     fontWeight: FontWeight.bold),
-                              ),)
-                            ),
+                              ),
+                            )),
                           ),
                         ),
                       ),
@@ -108,7 +120,8 @@ class _RequestLinesState extends State<RequestLines> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
                     children: [
                       Positioned(
@@ -125,14 +138,17 @@ class _RequestLinesState extends State<RequestLines> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(50)),
                             child: Center(
-                              child:Padding(padding: EdgeInsets.only(left: 20),
-                              child: Text("+44 208-068-0507",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: titlefontsize,
-                                    fontWeight: FontWeight.bold),
-                              ),),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Text(
+                                  "+44 208-068-0507",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: titlefontsize,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -149,7 +165,8 @@ class _RequestLinesState extends State<RequestLines> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
                     children: [
                       Positioned(
@@ -165,15 +182,19 @@ class _RequestLinesState extends State<RequestLines> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(50)),
-                            child: Center(child:Padding(padding: EdgeInsets.only(left: 20),
-                              child: Text("+1(646)-484-7826",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: titlefontsize,
-                                    fontWeight: FontWeight.bold),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Text(
+                                  "+1(646)-484-7826",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: titlefontsize,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),),
+                            ),
                           ),
                         ),
                       ),
@@ -189,7 +210,8 @@ class _RequestLinesState extends State<RequestLines> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Stack(
                     children: [
                       Positioned(
@@ -205,14 +227,18 @@ class _RequestLinesState extends State<RequestLines> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(50)),
-                            child: Center(child:Padding(padding: EdgeInsets.only(left: 20),
-                              child: Text("+1(347)-757-9865",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: titlefontsize,
-                                    fontWeight: FontWeight.bold),
-                              ),),
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Text(
+                                  "+1(347)-757-9865",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: titlefontsize,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -233,11 +259,11 @@ class _RequestLinesState extends State<RequestLines> {
           ),
         ),
         Positioned(
-          top: AppBar().preferredSize.height*0.2,
+          top: AppBar().preferredSize.height * 0.2,
           left: width * 0.39865,
           child: SizedBox(
-            height: height * 0.12168,
-            width: width * 0.21875,
+            height: height * 0.10168,
+            width: width * 0.20275,
             child: Image.asset(
               'assets/soundpic.png',
             ),

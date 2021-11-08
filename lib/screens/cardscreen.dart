@@ -577,8 +577,8 @@ class _CardScreenState extends State<CardScreen> {
           top: AppBar().preferredSize.height * 0.2,
           left: width * 0.39865,
           child: SizedBox(
-            height: height * 0.10368,
-            width: width * 0.20375,
+            height: height * 0.10168,
+            width: width * 0.20275,
             child: Image.asset(
               'assets/soundpic.png',
             ),

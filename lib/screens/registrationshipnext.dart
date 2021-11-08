@@ -378,11 +378,11 @@ class _SignupnextPageState extends State<Registrationshipnext> {
             child: CircularProgressIndicator(),
           ),
         Positioned(
-          top: AppBar().preferredSize.height * 0.1,
+          top: AppBar().preferredSize.height * 0.2,
           left: width * 0.39865,
           child: SizedBox(
-            height: height * 0.13168,
-            width: width * 0.21875,
+            height: height * 0.10168,
+            width: width * 0.20275,
             child: Image.asset(
               'assets/soundpic.png',
             ),

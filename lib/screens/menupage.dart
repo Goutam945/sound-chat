@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/allorderdetails.dart';
 import 'package:sound_chat/screens/pagination.dart';
@@ -21,6 +22,15 @@ class _NewMenupageState extends State<NewMenupage> {
   int staticlibid = 2;
   dynamic data;
   double fontSize = 12;
+  AudioPlayer audioPlayer = new AudioPlayer(
+      playerId: 'Soundchat Radio', mode: PlayerMode.MEDIA_PLAYER);
+
+  stopaudio() async {
+    await audioPlayer.stop();
+    play = true;
+    MediaNotification.showNotification(
+        title: 'Soundchat Radio', isPlaying: !play);
+  }
 
   void initState() {
     super.initState();
@@ -90,6 +100,8 @@ class _NewMenupageState extends State<NewMenupage> {
                         color: Colors.white),
                   ),
                   onTap: () {
+                    audioPlayer.stop();
+                    stopaudio();
                     Navigator.push(
                         context,
                         PageTransition(
@@ -121,6 +133,8 @@ class _NewMenupageState extends State<NewMenupage> {
                         color: Colors.white),
                   ),
                   onTap: () {
+                    audioPlayer.stop();
+                    stopaudio();
                     Navigator.push(
                         context,
                         PageTransition(
@@ -214,6 +228,8 @@ class _NewMenupageState extends State<NewMenupage> {
                         color: Colors.white),
                   ),
                   onTap: () {
+                    audioPlayer.stop();
+                    stopaudio();
                     Navigator.push(
                         context,
                         PageTransition(
