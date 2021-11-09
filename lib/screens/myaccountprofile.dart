@@ -499,7 +499,7 @@ class _MyAccountState extends State<MyAccount> {
                                   borderRadius: BorderRadius.circular(50)),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
+                                    horizontal: 10, vertical: 8),
                                 child: Text(
                                   "Upgrade membership",
                                   style: TextStyle(color: Colors.white),
@@ -528,7 +528,7 @@ class _MyAccountState extends State<MyAccount> {
                                   borderRadius: BorderRadius.circular(50)),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 15, vertical: 10),
+                                    horizontal: 10, vertical: 8),
                                 child: Text(
                                   "Cancel Subscription",
                                   style: TextStyle(color: Colors.white),
