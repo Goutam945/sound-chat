@@ -290,7 +290,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
       // controlsConfiguration: BetterPlayerControlsConfiguration(enablePip: true,pipMenuIcon: IconData(20)),
       aspectRatio: 16 / 9,
       fit: BoxFit.contain,
-      autoPlay: true,
+      autoPlay: true, allowedScreenSleep: false,
       controlsConfiguration:
           BetterPlayerControlsConfiguration(enableSkips: false),
       eventListener: (event) {

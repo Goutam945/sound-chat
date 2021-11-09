@@ -501,7 +501,7 @@ class _MyAccountState extends State<MyAccount> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 8),
                                 child: Text(
-                                  "Upgrade membership",
+                                  "Upgrade Plan",
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
@@ -530,7 +530,7 @@ class _MyAccountState extends State<MyAccount> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 8),
                                 child: Text(
-                                  "Cancel Subscription",
+                                  "Cancel Plan",
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
