@@ -38,6 +38,11 @@ class Sharedpreferences {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getInt('id');
   }
+
+  Future<String> getName() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('name');
+  }
 }
 
 class SessionData {

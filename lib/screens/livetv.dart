@@ -150,7 +150,7 @@ class _LiveVideoState extends State<LiveVideo> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     // double width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
@@ -167,11 +167,11 @@ class _LiveVideoState extends State<LiveVideo> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: height * 0.015,
-              ),
-              SizedBox(
-                height: 20,
+              // SizedBox(
+              //   height: height * 0.015,
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
                 child: Row(
                   children: [
                     Image.asset(

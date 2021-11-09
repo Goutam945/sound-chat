@@ -24,7 +24,7 @@ class MessageView extends StatelessWidget {
       children: [
         CustomPaint(
           painter: CustomShape(
-              bgColor: (messages.isMe) ? Colors.green : Colors.blue,
+              bgColor: (messages.isMe) ? pickedBubbleColor : Colors.blue,
               isMe: messages.isMe),
           child: Container(
             constraints: BoxConstraints(maxWidth: width * 0.85),
@@ -42,9 +42,10 @@ class MessageView extends StatelessWidget {
                   constraints: BoxConstraints(maxWidth: width * 0.7),
                   child: Text(
                     messages.message,
-                    style: (messages.isMe)
-                        ? pickedTextColor
-                        : TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 14,
+                        color:
+                            (messages.isMe) ? pickedTextColor : Colors.white),
                   ),
                 ),
                 const SizedBox(

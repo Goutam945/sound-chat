@@ -222,7 +222,8 @@ class _HomeBottomBarState extends State<HomeBottomBar>
                   if (!Provider.of<OverlayHandlerProvider>(context,
                               listen: false)
                           .inPipMode &&
-                      !pipDisabled) addVideosOverlay(context);
+                      !pipDisabled &&
+                      pageIndex != 2) addVideosOverlay(context);
                 },
               ),
               body: tabPages[pageIndex]),

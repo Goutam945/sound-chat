@@ -24,6 +24,7 @@ class _ChatScreenState extends State<ChatScreen> {
   bool isMe = true;
   Future<ChatResponse> _getMessages;
   int userId = 0;
+  String userName = "";
   bool isLoading = false;
   int lastMessageId = 0;
   Color pickedTextColor = Color(0xFFFFFFFF);
@@ -132,6 +133,11 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     Sharedpreferences().getUserId().then((value) => userId = value);
+    Sharedpreferences().getName().then((value) {
+      setState(() {
+        userName = value;
+      });
+    });
     _getMessages = getLastMessages().then((value) {
       addMessages(value);
       scrollToBottom();
@@ -149,12 +155,35 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        // appBar: AppBar(
+        //   title: Text(userName),
+        // ),
+        body: Column(
           children: [
+            Card(
+              color: Colors.yellowAccent,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      userName,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ChatScreen()));
+                        },
+                        child: Icon(Icons.fullscreen))
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: FutureBuilder(
                   future: _getMessages,
@@ -164,6 +193,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       return ListView.builder(
                           controller: _scrollController,
                           itemCount: messages.length,
+                          padding: const EdgeInsets.all(8.0),
+                          // shrinkWrap: true,
+                          // addAutomaticKeepAlives: true,
+                          physics: AlwaysScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
                             // List data = snapshot.data.data['data'];
                             // MessageData msg = MessageData(
@@ -196,69 +229,74 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget chatStyles() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            onTap: pickTextColor,
-            child: Container(
-              height: 20,
-              width: 20,
-              color: pickedTextColor,
-            ),
-          ),
-          GestureDetector(
-            onTap: pickBubbleColor,
-            child: Container(
-              height: 20,
-              width: 20,
-              color: pickedBubbleColor,
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                isBold = !isBold;
-              });
-            },
-            child: Text(
-              "B",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                color: isBold ? Colors.white : pickedTextColor,
+  Widget chatStyles() => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: pickTextColor,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: pickedTextColor),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                isItalic = !isItalic;
-              });
-            },
-            child: Text(
-              "I",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: isItalic ? Colors.white : pickedTextColor,
-                  fontStyle: FontStyle.italic),
+            GestureDetector(
+              onTap: pickBubbleColor,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: pickedBubbleColor),
+              ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                isUnderline = !isUnderline;
-              });
-            },
-            child: Text(
-              "U",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: isUnderline ? Colors.white : pickedTextColor,
-                  // fontStyle: FontStyle.italic,
-                  decoration: TextDecoration.underline),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isBold = !isBold;
+                });
+              },
+              child: Text(
+                "B",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  color: isBold ? Colors.white : pickedTextColor,
+                ),
+              ),
             ),
-          ),
-        ],
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isItalic = !isItalic;
+                });
+              },
+              child: Text(
+                "I",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isItalic ? Colors.white : pickedTextColor,
+                    fontStyle: FontStyle.italic),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isUnderline = !isUnderline;
+                });
+              },
+              child: Text(
+                "U",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isUnderline ? Colors.white : pickedTextColor,
+                    // fontStyle: FontStyle.italic,
+                    decoration: TextDecoration.underline),
+              ),
+            ),
+          ],
+        ),
       );
 
   Widget messageField() => Expanded(
@@ -270,7 +308,7 @@ class _ChatScreenState extends State<ChatScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: TextField(
               controller: _messageController,
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 14),
               // onChanged: (value) {
               //   socket!.emit("Typing");
               // },
