@@ -383,8 +383,8 @@ class _ListenlivepageState extends State<Listenlivepage>
                                         Column(
                                           children: [
                                             SizedBox(
-                                                width: 110,
-                                                height: 90,
+                                                width: 100,
+                                                height: 100,
                                                 child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(

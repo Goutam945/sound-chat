@@ -180,57 +180,74 @@ class _UpdatehomeState extends State<Updatehome> {
                     SizedBox(
                       height: 10,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 85,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border:
-                                    Border.all(color: Colors.white, width: 4)),
-                            child: Text(
-                              "LIVE",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 26,
-                                  fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          pageIndex = 1;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 40,
+                              width: 85,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(
+                                      color: Colors.white, width: 4)),
+                              child: Text(
+                                "LIVE",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 40,
-                          ),
-                          SizedBox(
-                            width: 200,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                FutureBuilder(
-                                    future: createScheduleState(context),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                        showtime = getschedule(
-                                            context: context,
-                                            data: snapshot.data.data['data']);
+                            SizedBox(
+                              width: 40,
+                            ),
+                            SizedBox(
+                              width: 200,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  FutureBuilder(
+                                      future: createScheduleState(context),
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
+                                          showtime = getschedule(
+                                              context: context,
+                                              data: snapshot.data.data['data']);
 
-                                        return Text(
-                                          snapshot
-                                              .data
-                                              .data['data'][weekday]['shows']
-                                                  [showtime]['show_name']
-                                              .toString(),
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        );
-                                      }
-                                      if (snapshot.hasError)
+                                          return Text(
+                                            snapshot
+                                                .data
+                                                .data['data'][weekday]['shows']
+                                                    [showtime]['show_name']
+                                                .toString(),
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                            ),
+                                          );
+                                        }
+                                        if (snapshot.hasError)
+                                          return Shimmer.fromColors(
+                                            baseColor: Colors.black12,
+                                            highlightColor: Colors.grey[600],
+                                            child: Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 10),
+                                              color: Colors.black,
+                                              width: 200,
+                                              height: 20,
+                                            ),
+                                          );
                                         return Shimmer.fromColors(
                                           baseColor: Colors.black12,
                                           highlightColor: Colors.grey[600],
@@ -242,33 +259,23 @@ class _UpdatehomeState extends State<Updatehome> {
                                             height: 20,
                                           ),
                                         );
-                                      return Shimmer.fromColors(
-                                        baseColor: Colors.black12,
-                                        highlightColor: Colors.grey[600],
-                                        child: Container(
-                                          margin: EdgeInsets.symmetric(
-                                              vertical: 10),
-                                          color: Colors.black,
-                                          width: 200,
-                                          height: 20,
-                                        ),
-                                      );
-                                    }),
-                                Divider(
-                                  thickness: 3,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  "Soundchat Radio",
-                                  style: TextStyle(
-                                    color: Colors.white54,
-                                    fontSize: 10,
+                                      }),
+                                  Divider(
+                                    thickness: 3,
+                                    color: Colors.white,
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    "Soundchat Radio",
+                                    style: TextStyle(
+                                      color: Colors.white54,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -321,8 +328,8 @@ class _UpdatehomeState extends State<Updatehome> {
                                               Column(
                                                 children: [
                                                   SizedBox(
-                                                      width: 110,
-                                                      height: 90,
+                                                      width: 100,
+                                                      height: 100,
                                                       child: ClipRRect(
                                                           borderRadius:
                                                               BorderRadius

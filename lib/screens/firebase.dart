@@ -68,7 +68,7 @@ firebase(context) async {
     }
   });
 
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 }
 
 class Notification1 extends StatelessWidget {

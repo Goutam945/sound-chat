@@ -56,6 +56,7 @@ dependencies:
   stripe_payment: ^1.1.4
   youtube_player_iframe: ^2.2.2
   flutter_colorpicker: ^0.6.1
+  audio_service: ^0.18.1
   
 
 dev_dependencies:

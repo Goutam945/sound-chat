@@ -382,13 +382,13 @@ class _MyAccountState extends State<MyAccount> {
                                     color: Colors.white,
                                     fontFamily: fontfamily),
                               ),
-                              Text(
-                                'Cancel Plan: ',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    fontFamily: fontfamily),
-                              ),
+                              // Text(
+                              //   'Cancel Plan: ',
+                              //   style: TextStyle(
+                              //       fontSize: 14,
+                              //       color: Colors.white,
+                              //       fontFamily: fontfamily),
+                              // ),
                             ],
                           ),
                           SizedBox(
@@ -429,7 +429,7 @@ class _MyAccountState extends State<MyAccount> {
                                             fontFamily: fontfamily),
                                       ),
                                     ),
-                                    GestureDetector(
+                                    /* GestureDetector(
                                         onTap: () => {
                                               setState(() {
                                                 loader = true;
@@ -451,7 +451,7 @@ class _MyAccountState extends State<MyAccount> {
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Colors.orange),
-                                        )),
+                                        )),*/
                                   ],
                                 )
                               : Text(
@@ -464,21 +464,82 @@ class _MyAccountState extends State<MyAccount> {
                     SizedBox(
                       height: 10,
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(
-                                  builder: (context) => UpgradeSubscription(
-                                      // customerid: data['customer_id'],
-                                      // userid: id.toString(),
-                                      // subid: data['subscription_id'],
-                                      // status: data['stripe_status']
-                                      )));
-                        },
-                        child: Text(
-                          "Upgrade membership",
-                          style: TextStyle(color: Colors.white),
-                        )),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        /*ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
+                                      builder: (context) => UpgradeSubscription(
+                                          // customerid: data['customer_id'],
+                                          // userid: id.toString(),
+                                          // subid: data['subscription_id'],
+                                          // status: data['stripe_status']
+                                          )));
+                            },
+                            child: Text(
+                              "Upgrade membership",
+                              style: TextStyle(color: Colors.white),
+                            )),*/
+                        InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
+                                      builder: (context) => UpgradeSubscription(
+                                          // customerid: data['customer_id'],
+                                          // userid: id.toString(),
+                                          // subid: data['subscription_id'],
+                                          // status: data['stripe_status']
+                                          )));
+                            },
+                            child: Card(
+                              color: Colors.orange,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 10),
+                                child: Text(
+                                  "Upgrade membership",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            )),
+                        InkWell(
+                            onTap: () => {
+                                  setState(() {
+                                    loader = true;
+                                  }),
+                                  cancelSubscriptionState(
+                                      context: context,
+                                      subscriptionid: data["subscription_id"]),
+                                  createCancelsubcripState(
+                                          id.toString(), context)
+                                      .whenComplete(() {
+                                    setState(() {
+                                      loader = false;
+                                    });
+                                  }),
+                                },
+                            child: Card(
+                              color: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 10),
+                                child: Text(
+                                  "Cancel Subscription",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            )),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                   ],
                 ),
               ),
