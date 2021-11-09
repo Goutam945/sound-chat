@@ -306,7 +306,7 @@ class _MyAccountState extends State<MyAccount> {
                                   "Change Password",
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
-                                      color: Colors.green, fontSize: 16),
+                                      color: Colors.green, fontSize: 14),
                                 ),
                               ),
                               // GestureDetector(
@@ -403,7 +403,7 @@ class _MyAccountState extends State<MyAccount> {
                                     Text(
                                       data["plan_level"].toString(),
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           color: Colors.white,
                                           fontFamily: fontfamily),
                                     ),
@@ -413,7 +413,7 @@ class _MyAccountState extends State<MyAccount> {
                                       child: Text(
                                         data["plan_expired"].toString(),
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             color: Colors.white,
                                             fontFamily: fontfamily),
                                       ),
@@ -424,7 +424,7 @@ class _MyAccountState extends State<MyAccount> {
                                       child: Text(
                                         data["plan_active"].toString(),
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             color: Colors.white,
                                             fontFamily: fontfamily),
                                       ),
