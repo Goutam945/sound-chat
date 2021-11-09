@@ -176,8 +176,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ChatScreen()));
+                          isFullScreenChat
+                              ? Navigator.pop(context)
+                              : Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ChatScreen()));
+                          isFullScreenChat = !isFullScreenChat;
                         },
                         child: Icon(Icons.fullscreen))
                   ],
@@ -258,11 +261,20 @@ class _ChatScreenState extends State<ChatScreen> {
                   isBold = !isBold;
                 });
               },
-              child: Text(
-                "B",
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  color: isBold ? Colors.white : pickedTextColor,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey)),
+                child: Center(
+                  child: Text(
+                    "B",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      color: isBold ? Colors.white : pickedTextColor,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -272,12 +284,21 @@ class _ChatScreenState extends State<ChatScreen> {
                   isItalic = !isItalic;
                 });
               },
-              child: Text(
-                "I",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: isItalic ? Colors.white : pickedTextColor,
-                    fontStyle: FontStyle.italic),
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey)),
+                child: Center(
+                  child: Text(
+                    "I",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: isItalic ? Colors.white : pickedTextColor,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ),
               ),
             ),
             GestureDetector(
@@ -286,13 +307,22 @@ class _ChatScreenState extends State<ChatScreen> {
                   isUnderline = !isUnderline;
                 });
               },
-              child: Text(
-                "U",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: isUnderline ? Colors.white : pickedTextColor,
-                    // fontStyle: FontStyle.italic,
-                    decoration: TextDecoration.underline),
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey)),
+                child: Center(
+                  child: Text(
+                    "U",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: isUnderline ? Colors.white : pickedTextColor,
+                        // fontStyle: FontStyle.italic,
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
               ),
             ),
           ],
@@ -397,7 +427,7 @@ class _ChatScreenState extends State<ChatScreen> {
         setState(() {
           isLoading = true;
           getMessages().then((value) => addOldMessages(value));
-          lastMessageId -= 10;
+          lastMessageId -= 50;
           print(lastMessageId);
         });
       }
