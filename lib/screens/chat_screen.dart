@@ -153,80 +153,91 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
+  Future<bool> onwillpop() async {
+    isFullScreenChat = false;
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        // appBar: AppBar(
-        //   title: Text(userName),
-        // ),
-        body: Column(
-          children: [
-            Card(
-              color: Colors.yellowAccent,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      userName,
-                      style: TextStyle(color: Colors.black),
-                    ),
-                    InkWell(
-                        onTap: () {
-                          isFullScreenChat
-                              ? Navigator.pop(context)
-                              : Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ChatScreen()));
-                          isFullScreenChat = !isFullScreenChat;
-                        },
-                        child: Icon(Icons.fullscreen))
-                  ],
+    return WillPopScope(
+      onWillPop: onwillpop,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.black,
+          // appBar: AppBar(
+          //   title: Text(userName),
+          // ),
+          body: Column(
+            children: [
+              Card(
+                color: Color(0xFF3F535E),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Sound Chat Radio",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      InkWell(
+                          onTap: () {
+                            isFullScreenChat
+                                ? Navigator.pop(context)
+                                : Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => ChatScreen()));
+                            isFullScreenChat = !isFullScreenChat;
+                          },
+                          child: Icon(
+                            isFullScreenChat
+                                ? Icons.fullscreen_exit
+                                : Icons.fullscreen,
+                            color: Colors.white,
+                          ))
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: FutureBuilder(
-                  future: _getMessages,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      print(snapshot.data.data);
-                      return ListView.builder(
-                          controller: _scrollController,
-                          itemCount: messages.length,
-                          padding: const EdgeInsets.all(8.0),
-                          // shrinkWrap: true,
-                          // addAutomaticKeepAlives: true,
-                          physics: AlwaysScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            // List data = snapshot.data.data['data'];
-                            // MessageData msg = MessageData(
-                            //     socketId: socket.id,
-                            //     roomId: data[index]["room_id"],
-                            //     message: data[index]["message"],
-                            //     senderId: int.parse(data[index]["sender_id"]),
-                            //     isMe: isMe,
-                            //     time: data[index]["created_date"]);
-                            // messages.add(msg);
-                            return MessageView(
-                              messages: messages[index],
-                              pickedBubbleColor: pickedBubbleColor,
-                              pickedTextColor: pickedTextColor,
-                            );
-                          });
-                    }
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }),
-            ),
-            chatStyles(),
-            Row(
-              children: [messageField(), sendBtn()],
-            )
-          ],
+              Expanded(
+                child: FutureBuilder(
+                    future: _getMessages,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        print(snapshot.data.data);
+                        return ListView.builder(
+                            controller: _scrollController,
+                            itemCount: messages.length,
+                            padding: const EdgeInsets.all(8.0),
+                            // shrinkWrap: true,
+                            // addAutomaticKeepAlives: true,
+                            physics: AlwaysScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              // List data = snapshot.data.data['data'];
+                              // MessageData msg = MessageData(
+                              //     socketId: socket.id,
+                              //     roomId: data[index]["room_id"],
+                              //     message: data[index]["message"],
+                              //     senderId: int.parse(data[index]["sender_id"]),
+                              //     isMe: isMe,
+                              //     time: data[index]["created_date"]);
+                              // messages.add(msg);
+                              return MessageView(
+                                messages: messages[index],
+                              );
+                            });
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }),
+              ),
+              chatStyles(),
+              Row(
+                children: [messageField(), sendBtn()],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -272,7 +283,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     "B",
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: isBold ? Colors.white : pickedTextColor,
+                      color: isBold ? pickedTextColor : Colors.white,
                     ),
                   ),
                 ),
@@ -295,7 +306,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     "I",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: isItalic ? Colors.white : pickedTextColor,
+                        color: isItalic ? pickedTextColor : Colors.white,
                         fontStyle: FontStyle.italic),
                   ),
                 ),
@@ -318,7 +329,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     "U",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: isUnderline ? Colors.white : pickedTextColor,
+                        color: isUnderline ? pickedTextColor : Colors.white,
                         // fontStyle: FontStyle.italic,
                         decoration: TextDecoration.underline),
                   ),
@@ -366,7 +377,13 @@ class _ChatScreenState extends State<ChatScreen> {
           message: _messageController.text,
           senderId: userId,
           isMe: isMe,
-          time: DateTime.now().toString());
+          time: DateTime.now().toString(),
+          textColor: pickedTextColor.toString().split("(")[1].split(")")[0],
+          messageBubbleColor:
+              pickedBubbleColor.toString().split("(")[1].split(")")[0],
+          bold: isBold,
+          italic: isItalic,
+          underline: isUnderline);
       setState(() {
         messages.add(message);
         _messageController.clear();
@@ -378,7 +395,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void socketConfig() {
     socket = io.io(
-        sockerUrl1,
+        socketBaseUrl,
         io.OptionBuilder()
             .setTransports(['websocket'])
             .disableAutoConnect()
@@ -448,7 +465,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Future<ChatResponse> getMessages() async {
     final http.Response response = await http.get(Uri.parse(
-        'http://192.168.29.69:8081/group_chat_history_bylastmessageid/$lastMessageId'));
+        '${socketBaseUrl}group_chat_history_bylastmessageid/$lastMessageId'));
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       Provider.of<SearchResponse>(context, listen: false).data = data;
@@ -462,8 +479,8 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<ChatResponse> getLastMessages() async {
-    final http.Response response = await http
-        .get(Uri.parse('http://192.168.29.69:8081/group_chat_history'));
+    final http.Response response =
+        await http.get(Uri.parse('${socketBaseUrl}group_chat_history'));
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       Provider.of<SearchResponse>(context, listen: false).data = data;
@@ -486,7 +503,12 @@ class _ChatScreenState extends State<ChatScreen> {
           message: data[i]["message"],
           senderId: data[i]["sender_id"],
           isMe: data[i]["sender_id"] == userId,
-          time: data[i]["createdAt"]);
+          time: data[i]["createdAt"],
+          textColor: data[i]["textColor"],
+          messageBubbleColor: data[i]["messageBubbleColor"],
+          italic: data[i]["italic"] != 0,
+          bold: data[i]["bold"] != 0,
+          underline: data[i]["underline"] != 0);
       messages.add(msg);
       // messages.insert(0, msg);
     }
@@ -503,7 +525,12 @@ class _ChatScreenState extends State<ChatScreen> {
           message: data[i]["message"],
           senderId: data[i]["sender_id"],
           isMe: data[i]["sender_id"] == userId,
-          time: data[i]["createdAt"]);
+          time: data[i]["createdAt"],
+          textColor: data[i]["textColor"],
+          messageBubbleColor: data[i]["messageBubbleColor"],
+          bold: data[i]["bold"] != 0,
+          italic: data[i]["italic"] != 0,
+          underline: data[i]["underline"] != 0);
       messages.insert(0, msg);
     }
     setState(() {});

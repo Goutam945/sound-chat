@@ -3,16 +3,9 @@ import 'package:sound_chat/Model/message_data.dart';
 import 'package:sound_chat/common/message_bubble.dart';
 
 class MessageView extends StatelessWidget {
-  const MessageView(
-      {Key key,
-      @required this.messages,
-      @required this.pickedBubbleColor,
-      @required this.pickedTextColor})
-      : super(key: key);
+  const MessageView({Key key, @required this.messages}) : super(key: key);
 
   final MessageData messages;
-  final Color pickedBubbleColor;
-  final Color pickedTextColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +17,16 @@ class MessageView extends StatelessWidget {
       children: [
         CustomPaint(
           painter: CustomShape(
-              bgColor: (messages.isMe) ? pickedBubbleColor : Colors.blue,
+              bgColor:
+                  Color(int.parse(messages.messageBubbleColor ?? '0xff18a4f6')),
               isMe: messages.isMe),
           child: Container(
             constraints: BoxConstraints(maxWidth: width * 0.85),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             margin: const EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
-                color: (messages.isMe) ? pickedBubbleColor : Colors.blue,
+                color: Color(
+                    int.parse(messages.messageBubbleColor ?? '0xff18a4f6')),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(
               textBaseline: TextBaseline.alphabetic,
@@ -44,8 +39,16 @@ class MessageView extends StatelessWidget {
                     messages.message,
                     style: TextStyle(
                         fontSize: 14,
-                        color:
-                            (messages.isMe) ? pickedTextColor : Colors.white),
+                        color: Color(
+                            int.parse(messages.textColor ?? "0xffffffff")),
+                        fontWeight:
+                            messages.bold ? FontWeight.w800 : FontWeight.normal,
+                        fontStyle: messages.italic
+                            ? FontStyle.italic
+                            : FontStyle.normal,
+                        decoration: messages.underline
+                            ? TextDecoration.underline
+                            : TextDecoration.none),
                   ),
                 ),
                 const SizedBox(

@@ -24,6 +24,7 @@ final String baseurlimageproduct =
 const String socketUrl = "https://soundchatfirstapp.herokuapp.com/";
 const String sockerUrl1 = "http://192.168.29.69:8081/";
 const String onlineSocketUrl = "http://3.129.127.189:3000/";
+const String socketBaseUrl = "http://3.129.127.189:3000/";
 // const String publicationKey =
 //     'pk_test_51IcrCaSGgp78HSWo97V4Z9xHkZ8aYfbJJwA588p5XxmMGQLbESkrNASsxZ5jZlpqUd7xluY1DDkwaJrsarf5XSJt00jZ0YKVIm';
 // const String secretKey =
