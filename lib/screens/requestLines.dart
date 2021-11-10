@@ -61,6 +61,7 @@ class _RequestLinesState extends State<RequestLines> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 20,
+                      fontFamily: fontfamily,
                       fontWeight: FontWeight.bold,
                       color: Colors.orange),
                 ),
@@ -70,7 +71,10 @@ class _RequestLinesState extends State<RequestLines> {
                 Text(
                   "Tune in to SoundChat Radio Live",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                      fontFamily: fontfamily),
                 ),
                 SizedBox(
                   height: 10,

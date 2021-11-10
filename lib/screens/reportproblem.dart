@@ -85,6 +85,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     "Report A Problem",
                     style: TextStyle(
                         fontSize: 19,
+                        fontFamily: fontfamily,
                         color: Color(0xFFE18D13),
                         fontWeight: FontWeight.bold),
                   )),
@@ -95,7 +96,11 @@ class _ReportProblemState extends State<ReportProblem> {
                       child: Text(
                     "What issue(s) are your experiencing?",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontFamily: fontfamily,
+                    ),
                   )),
                   SizedBox(
                     height: 40,

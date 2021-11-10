@@ -11,17 +11,41 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   @override
   void initState() {
     super.initState();
+    list = widget.product['productavailabilities'];
+    getSize();
   }
 
-  var cart;
+  getSize() {
+    for (int i = 0; i < widget.product['productavailabilities'].length; i++) {
+      String size = widget.product['productavailabilities'][i]['size'];
+      if (!sizes.contains(size)) sizes.add(size);
+    }
+    for (int i = 0; i < widget.product['productavailabilities'].length; i++) {
+      String color = widget.product['productavailabilities'][i]['color'];
+      if (!colors.contains(color)) colors.add(color);
+    }
+    setState(() {
+      dropdownColor = colors.first;
+      dropdownSize = sizes.first;
+      stock = list.first['avaibility'];
+    });
+  }
+
+  ProductModellist cart;
   int _itemCount = 1;
-  String dropdownValue = 'Black';
-  String dropdownSize = 'S';
-  //String size='S';
+  String dropdownColor = 'Select Color';
+  String dropdownSize = 'Select Size';
+
   List<bool> butoncolor = [for (int i = 0; i < 4; i++) true];
   bool itemFound = false;
   var countprice;
-  //int id=2; live id add and remove on final id
+  List<String> sizes = [];
+  List<String> colors = [];
+
+  int productId;
+  int stock = 0;
+  List list = [];
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -50,13 +74,27 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: TextButton(
                         onPressed: () {
                           Vibration.vibrate();
-                          //comdition check on iteam dulicate
+                          ProductModellist product = ProductModellist(
+                              widget.product['title'],
+                              dropdownColor,
+                              double.parse(widget.product['Price']),
+                              dropdownSize,
+                              _itemCount,
+                              widget.product['id'],
+                              widget.product['image']);
+                          // cart.cart1.forEach((element) {
+                          //   //element.productId==productId
+                          //   print("PPP" + element.productId.toString());
+                          // });
+
                           for (int i = 0; i < cart.cart1.length; i++)
-                            // if(widget.id==cart.cart1[i].id)
+
+                            // if (cart.cart1.length >= 1 &&
+                            //     widget.product == cart.cart1[i].id &&
+                            //     dropdownSize == cart.cart1[i].size &&
+                            //     dropdownColor == cart.cart1[i].color)
                             if (cart.cart1.length >= 1 &&
-                                widget.product == cart.cart1[i].id &&
-                                dropdownSize == cart.cart1[i].size &&
-                                dropdownValue == cart.cart1[i].color)
+                                cart.cart1[i].productId == productId)
                               setState(() {
                                 itemFound = true;
                                 cart.cart1[i].quantity++;
@@ -70,22 +108,25 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                 itemFound = false;
                               });
                             }
-                          if (!itemFound) //endd*/
-                            Provider.of<ProductModellist>(context,
-                                    listen: false)
-                                .add1(
-                                    widget.product['title'],
-                                    double.parse(widget.product['Price']),
-                                    dropdownSize,
-                                    dropdownValue,
-                                    _itemCount,
-                                    widget.product['id'],
-                                    widget.product['image'],
-                                    context);
+                          if (!itemFound &&
+                              dropdownSize != "Select Size" &&
+                              dropdownColor != "Select Color") //endd*/
+                          {
+                            cart.add1(
+                                widget.product['title'],
+                                double.parse(widget.product['Price']),
+                                dropdownSize,
+                                dropdownColor,
+                                _itemCount,
+                                widget.product['id'],
+                                widget.product['image'],
+                                productId,
+                                context);
+                            Toast.show("Added to cart", context,
+                                duration: Toast.LENGTH_SHORT,
+                                gravity: Toast.BOTTOM);
+                          }
                           // print(cart.cart1.length.toString());
-                          Toast.show("Added to cart", context,
-                              duration: Toast.LENGTH_SHORT,
-                              gravity: Toast.BOTTOM);
                         },
                         child: Text(
                           'Add to Cart',
@@ -112,10 +153,11 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                   widget.product['title'],
                                   double.parse(widget.product['Price']),
                                   dropdownSize,
-                                  dropdownValue,
+                                  dropdownColor,
                                   _itemCount,
                                   widget.product['id'],
                                   widget.product['image'],
+                                  productId,
                                   context);
                         },
                         child: Text(
@@ -184,60 +226,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         fontSize: 14,
                         fontFamily: fontfamily,
                         fontWeight: FontWeight.bold)),
-                /*Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text("Size:",style: TextStyle(
-                        color: Color(0xFF535353),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold)),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: butoncolor[0] ? Color(0xFFE18D13) : Colors.grey,),
-                      onPressed: () {
-                      setState(() {
-                        size='S';
-                        butoncolor=butoncolor.asMap().entries.map((e) => e.key==0 ? false:true).toList();
-                      });
-                      },
-                      child: Text('S'),
-                    ),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: butoncolor[1] ? Color(0xFFE18D13) : Colors.grey,),
-                      onPressed: () {
-                      setState(() {
-                        size='M';
-                        butoncolor=butoncolor.asMap().entries.map((e) => e.key==1 ? false:true).toList();
-                      });
-                      },
-                      child: Text('M'),
-                    ),
-                    // ElevatedButton(style:ElevatedButton.styleFrom( primary: butoncolor[1] ? Color(0xFFE18D13) : Colors.grey,),
-                    //   onPressed: () {
-                    //     setState(() {
-                    //       size='L';
-                    //       butoncolor=butoncolor.asMap().entries.map((e) => e.key==1 ? false:true).toList();
-                    //     });
-                    //   },
-                    //   child: Text('L'),
-                    // ),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: butoncolor[2] ? Color(0xFFE18D13) : Colors.grey,),
-                      onPressed: () {
-                       setState(() {
-                         size='2XL';
-                         butoncolor=butoncolor.asMap().entries.map((e) => e.key==2 ? false:true).toList();
-                       });
-                      },
-                      child: Text('2XL'),
-                    ),
-                    ElevatedButton(style:ElevatedButton.styleFrom( primary: butoncolor[3] ? Color(0xFFE18D13) : Colors.grey,),
-                      onPressed: () {
-                      setState(() {
-                        size='3XL';
-                        butoncolor=butoncolor.asMap().entries.map((e) => e.key==3 ? false:true).toList();
-                      });
-                      },
-                      child: Text('3XL'),
-                    ),
 
-                  ],
-                ),*/
                 SizedBox(
                   height: height * 0.0146,
                 ),
@@ -278,9 +267,16 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownSize = newValue;
+                              int index = list.indexWhere((element) =>
+                                  element['size'] == dropdownSize &&
+                                  element['color'] == dropdownColor);
+                              productId = list[index]['id'];
+                              stock = list[index]['avaibility'];
                             });
+                            print("productId " + productId.toString());
+                            print("stock " + stock.toString());
                           },
-                          items: <String>['S', 'M', 'L', 'XL', '2XL', '3XL']
+                          items: sizes
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -325,7 +321,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: DropdownButton<String>(
                           dropdownColor: Color(0xFF464646),
-                          value: dropdownValue,
+                          value: dropdownColor,
                           icon: Icon(
                             Icons.arrow_drop_down_sharp,
                             color: Colors.white,
@@ -338,10 +334,17 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           ),
                           onChanged: (String newValue) {
                             setState(() {
-                              dropdownValue = newValue;
+                              dropdownColor = newValue;
+                              int index = list.indexWhere((element) =>
+                                  element['size'] == dropdownSize &&
+                                  element['color'] == dropdownColor);
+                              productId = list[index]['id'];
+                              stock = list[index]['avaibility'];
+                              print("productId " + productId.toString());
+                              print("stock " + stock.toString());
                             });
                           },
-                          items: <String>['Black', 'Blue', 'Red', 'Yellow']
+                          items: colors
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -359,6 +362,16 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Text(
+                    "$stock  In Stock",
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 12,
+                        fontFamily: fontfamily),
+                  ),
+                ),
 
                 SizedBox(
                   height: height * 0.0146,
@@ -370,7 +383,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 //       //comdition check on iteam dulicate
                 //       for(int i=0;i<cart.cart1.length;i++)
                 //        // if(widget.id==cart.cart1[i].id)
-                //         if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownValue==cart.cart1[i].color )
+                //         if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownColor==cart.cart1[i].color )
                 //           setState(() {
                 //             itemFound=true;
                 //             cart.cart1[i].quantity++;
@@ -382,7 +395,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 //             itemFound=false;
                 //           });}
                 //         if(!itemFound)//endd*/
-                //           Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,widget.product['id'],widget.product['image'],context);
+                //           Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownColor, _itemCount,widget.product['id'],widget.product['image'],context);
                 //         print(cart.cart1.length.toString());
                 //         Toast.show("Added to cart", context,
                 //             duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
@@ -391,7 +404,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 //     ),
                 //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
                 //       onPressed: () {
-                //         Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownValue, _itemCount,
+                //         Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownColor, _itemCount,
                 //             widget.product['id'],
                 //             widget.product['image'],context);
                 //       },
