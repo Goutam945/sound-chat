@@ -188,6 +188,8 @@ class _CardScreenState extends State<CardScreen> {
   }
 }*/
 
+import 'package:sound_chat/api/stockcheck_product.dart';
+import 'package:sound_chat/common/checkproduct_stock.dart';
 import 'package:sound_chat/common/index.dart';
 
 class CardScreen extends StatefulWidget {
@@ -198,6 +200,7 @@ class CardScreen extends StatefulWidget {
 class _CardScreenState extends State<CardScreen> {
   int id;
   var countprice;
+  List lineItems;
   @override
   void initState() {
     super.initState();
@@ -219,6 +222,17 @@ class _CardScreenState extends State<CardScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var cart = context.watch<ProductModellist>();
+    lineItems = [
+      for (int i = 0; i < cart.cart1.length; i++)
+        {
+          "product_id": cart.cart1[i].id,
+          "quantity": cart.cart1[i].quantity,
+          "size": cart.cart1[i].size,
+          "color": cart.cart1[i].color,
+          "total_price":
+              (cart.cart1[i].price * cart.cart1[i].quantity).toString()
+        }
+    ];
     return SafeArea(
       child: Stack(children: [
         cart.cart1.length == 0
@@ -335,9 +349,9 @@ class _CardScreenState extends State<CardScreen> {
                           child: TextButton(
                             onPressed: () {
                               if (id != null) {
-                                // Navigator.of(context)
-                                //     .pushReplacement(
-                                //     MaterialPageRoute(builder: (context) => ShopCheckoutscreen()));
+                                //check quantity api
+                                orderstockCheckState(lineItems, context);
+
                                 Navigator.push(
                                     context,
                                     PageTransition(
@@ -516,17 +530,27 @@ class _CardScreenState extends State<CardScreen> {
                                             size: 30,
                                           ),
                                           onTap: () {
-                                            setState(() {
-                                              cart.cart1[index].quantity++;
-                                              countprice =
-                                                  cart.cart1[index].price;
-                                              countprice = cart
-                                                      .cart1[index].price +
-                                                  cart.cart1[index]
-                                                      .price; //price coutnt in plus
-                                              cart.sum1 = cart.sum1 +
-                                                  cart.cart1[index]
-                                                      .price; //all value saum
+                                            checkProductStock(
+                                                    context: context,
+                                                    quantity: cart
+                                                        .cart1[index].quantity,
+                                                    stock:
+                                                        cart.cart1[index].stock)
+                                                .then((value) {
+                                              if (value) {
+                                                setState(() {
+                                                  cart.cart1[index].quantity++;
+                                                  countprice =
+                                                      cart.cart1[index].price;
+                                                  countprice = cart
+                                                          .cart1[index].price +
+                                                      cart.cart1[index]
+                                                          .price; //price coutnt in plus
+                                                  cart.sum1 = cart.sum1 +
+                                                      cart.cart1[index]
+                                                          .price; //all value saum
+                                                });
+                                              }
                                             });
                                           },
                                         ),

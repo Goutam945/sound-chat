@@ -110,7 +110,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                             }
                           if (!itemFound &&
                               dropdownSize != "Select Size" &&
-                              dropdownColor != "Select Color") //endd*/
+                              dropdownColor != "Select Color" &&
+                              stock != 0) //endd*/
                           {
                             cart.add1(
                                 widget.product['title'],
@@ -121,6 +122,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                 widget.product['id'],
                                 widget.product['image'],
                                 productId,
+                                stock,
                                 context);
                             Toast.show("Added to cart", context,
                                 duration: Toast.LENGTH_SHORT,
@@ -148,7 +150,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: TextButton(
                         onPressed: () {
                           Vibration.vibrate();
-                          Provider.of<ProductModellist>(context, listen: false)
+                          /* Provider.of<ProductModellist>(context, listen: false)
                               .addbuynow(
                                   widget.product['title'],
                                   double.parse(widget.product['Price']),
@@ -158,7 +160,49 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                   widget.product['id'],
                                   widget.product['image'],
                                   productId,
-                                  context);
+                                  context);*/
+                          ProductModellist product = ProductModellist(
+                              widget.product['title'],
+                              dropdownColor,
+                              double.parse(widget.product['Price']),
+                              dropdownSize,
+                              _itemCount,
+                              widget.product['id'],
+                              widget.product['image']);
+
+                          for (int i = 0; i < cart.cart1.length; i++)
+                            if (cart.cart1.length >= 1 &&
+                                cart.cart1[i].productId == productId)
+                              setState(() {
+                                itemFound = true;
+                                cart.cart1[i].quantity++;
+                                countprice = cart.cart1[i].price;
+                                countprice = cart.cart1[i].price +
+                                    cart.cart1[i].price; //price coutnt in plus
+                                cart.sum1 = cart.sum1 + cart.cart1[i].price;
+                              });
+                            else {
+                              setState(() {
+                                itemFound = false;
+                              });
+                            }
+                          if (!itemFound &&
+                              dropdownSize != "Select Size" &&
+                              dropdownColor != "Select Color" &&
+                              stock != 0) //endd*/
+                          {
+                            cart.add1(
+                                widget.product['title'],
+                                double.parse(widget.product['Price']),
+                                dropdownSize,
+                                dropdownColor,
+                                _itemCount,
+                                widget.product['id'],
+                                widget.product['image'],
+                                productId,
+                                stock,
+                                context);
+                          }
                         },
                         child: Text(
                           'Buy Now',
@@ -365,10 +409,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Text(
-                    "$stock  In Stock",
+                    (stock != 0) ? "$stock  In Stock" : "Out of Stock",
                     style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 12,
+                        color: (stock != 0) ? Colors.green : Colors.red,
+                        fontSize: 14,
                         fontFamily: fontfamily),
                   ),
                 ),
