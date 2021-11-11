@@ -283,7 +283,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     "B",
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: isBold ? pickedTextColor : Colors.white,
+                      color:
+                          isBold ? Colors.white : Colors.white.withOpacity(0.5),
                     ),
                   ),
                 ),
@@ -306,7 +307,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     "I",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: isItalic ? pickedTextColor : Colors.white,
+                        color: isItalic
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.5),
                         fontStyle: FontStyle.italic),
                   ),
                 ),
@@ -329,7 +332,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     "U",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: isUnderline ? pickedTextColor : Colors.white,
+                        color: isUnderline
+                            ? Colors.white
+                            : Colors.white.withOpacity(0.5),
                         // fontStyle: FontStyle.italic,
                         decoration: TextDecoration.underline),
                   ),
