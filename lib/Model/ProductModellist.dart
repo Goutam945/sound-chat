@@ -12,6 +12,7 @@ class ProductModellist with ChangeNotifier {
   int id;
   String image;
   int productId;
+  int stock;
 
   ProductModellist(
       [String productname,
@@ -21,7 +22,8 @@ class ProductModellist with ChangeNotifier {
       int quantity,
       int id,
       String image,
-      int productId]) {
+      int productId,
+      int stock]) {
     this.productname = productname;
     this.price = price;
     this.size = size;
@@ -30,14 +32,15 @@ class ProductModellist with ChangeNotifier {
     this.id = id;
     this.image = image;
     this.productId = productId;
+    this.stock = stock;
 
     notifyListeners();
   }
 
   void add1(productname, price, size, color, quantity, id, image, productId,
-      context) {
-    this.cart1.add(ProductModellist(
-        productname, color, price, size, quantity, id, image, productId));
+      stock, context) {
+    this.cart1.add(ProductModellist(productname, color, price, size, quantity,
+        id, image, productId, stock));
     this.sum1 = (this.sum1 + price * quantity);
     notifyListeners();
     // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
