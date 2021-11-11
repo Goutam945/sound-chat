@@ -78,7 +78,7 @@ class _ReportProblemState extends State<ReportProblem> {
               child: ListView(
                 keyboardDismissBehavior:
                     ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: EdgeInsets.only(bottom: 40, top: 20),
+                padding: EdgeInsets.only(bottom: 40, top: 25),
                 children: [
                   Center(
                       child: Text(
@@ -289,7 +289,8 @@ class _ReportProblemState extends State<ReportProblem> {
                       child: Center(
                           child: Text(
                         "Attach files",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                            color: Colors.white, fontFamily: fontfamily),
                       )),
                     ),
                   ),
@@ -297,7 +298,8 @@ class _ReportProblemState extends State<ReportProblem> {
                       child: Text(
                     // _file != null ? _file.path : 'select file',
                     _pickedImage != null ? _pickedImage.name : 'select file',
-                    style: TextStyle(color: Colors.blue),
+                    style:
+                        TextStyle(color: Colors.blue, fontFamily: fontfamily),
                   )),
                   SizedBox(
                     height: 20,
@@ -357,8 +359,12 @@ class _ReportProblemState extends State<ReportProblem> {
             ),
           ),
         ),
+        if (loader)
+          Center(
+            child: CircularProgressIndicator(),
+          ),
         Positioned(
-          top: AppBar().preferredSize.height * 0.2,
+          top: AppBar().preferredSize.height * 0.5,
           left: width * 0.39865,
           child: SizedBox(
             height: height * 0.10168,
@@ -368,10 +374,6 @@ class _ReportProblemState extends State<ReportProblem> {
             ),
           ),
         ),
-        if (loader)
-          Center(
-            child: CircularProgressIndicator(),
-          )
       ],
     );
   }

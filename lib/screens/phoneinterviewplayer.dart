@@ -79,11 +79,14 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                           colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
                   child: Column(
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          child: Youtubeplayer(
-                            url,
-                          ),
+                      Container(
+                        height: 10,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        height: 240,
+                        child: Youtubeplayer(
+                          url,
                         ),
                       ),
                       if (roated)

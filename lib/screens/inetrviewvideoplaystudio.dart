@@ -77,6 +77,10 @@ class _InterviewNewPlayer extends State<InterviewNewPlayer> {
                           colors: [Color(0xFF2F3F51), Color(0xFF3A442D)])),
                   child: Column(
                     children: [
+                      Container(
+                        height: 10,
+                        color: Colors.black,
+                      ),
                       SizedBox(
                         height: 240,
                         child: Youtubeplayer(

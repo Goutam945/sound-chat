@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:sound_chat/api/logout.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/stripe_api/cancel_subscription.dart';
@@ -160,8 +161,9 @@ class _MyAccountState extends State<MyAccount> {
                     Text(
                       name.toString(),
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 18,
                           color: Colors.white,
+                          fontWeight: FontWeight.bold,
                           fontFamily: fontfamily),
                     ),
                     SizedBox(
@@ -171,15 +173,17 @@ class _MyAccountState extends State<MyAccount> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          phone.toString() + "  (",
+                          phone.toString(),
                           style: TextStyle(
-                              color: Colors.white, fontFamily: fontfamily),
+                              color: Colors.white,
+                              fontFamily: fontfamily,
+                              fontSize: 12),
                         ),
-                        Text(
-                          country.toString() + ")",
-                          style: TextStyle(
-                              color: Colors.white, fontFamily: fontfamily),
-                        ),
+                        // Text(
+                        //   country.toString() + ")",
+                        //   style: TextStyle(
+                        //       color: Colors.white, fontFamily: fontfamily),
+                        // ),
                       ],
                     ),
                     SizedBox(
@@ -237,7 +241,7 @@ class _MyAccountState extends State<MyAccount> {
                                     fontFamily: fontfamily),
                               ),
                               Text(
-                                'User name: ',
+                                'Name: ',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.white,
@@ -376,7 +380,7 @@ class _MyAccountState extends State<MyAccount> {
                                     fontFamily: fontfamily),
                               ),
                               Text(
-                                'Data Purchased: ',
+                                'Date Purchased: ',
                                 style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.white,
