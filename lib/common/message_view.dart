@@ -28,38 +28,49 @@ class MessageView extends StatelessWidget {
                 color: Color(
                     int.parse(messages.messageBubbleColor ?? '0xff18a4f6')),
                 borderRadius: BorderRadius.circular(10)),
-            child: Row(
-              textBaseline: TextBaseline.alphabetic,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: width * 0.7),
-                  child: Text(
-                    messages.message,
+                Text(messages.name,
                     style: TextStyle(
+                        color: Color(0xffae8713),
                         fontSize: 14,
-                        color: Color(
-                            int.parse(messages.textColor ?? "0xffffffff")),
-                        fontWeight:
-                            messages.bold ? FontWeight.w800 : FontWeight.normal,
-                        fontStyle: messages.italic
-                            ? FontStyle.italic
-                            : FontStyle.normal,
-                        decoration: messages.underline
-                            ? TextDecoration.underline
-                            : TextDecoration.none),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "${time.hour}:${time.minute}",
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Colors.white70,
-                  ),
+                        fontWeight: FontWeight.bold)),
+                Row(
+                  textBaseline: TextBaseline.alphabetic,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: width * 0.7),
+                      child: Text(
+                        messages.message,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color(
+                                int.parse(messages.textColor ?? "0xffffffff")),
+                            fontWeight: messages.bold
+                                ? FontWeight.w800
+                                : FontWeight.normal,
+                            fontStyle: messages.italic
+                                ? FontStyle.italic
+                                : FontStyle.normal,
+                            decoration: messages.underline
+                                ? TextDecoration.underline
+                                : TextDecoration.none),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "${time.hour}:${time.minute}",
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

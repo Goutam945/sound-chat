@@ -5,6 +5,7 @@ class MessageData {
   int roomId = 123;
   String message = "";
   int senderId = 0;
+  String name = "";
   bool isMe = true;
   String time = "";
   String textColor = "";
@@ -18,6 +19,7 @@ class MessageData {
       @required this.roomId,
       @required this.message,
       @required this.senderId,
+      @required this.name,
       @required this.isMe,
       @required this.time,
       @required this.textColor,
@@ -32,6 +34,7 @@ class MessageData {
       roomId: jsonData['roomId'],
       message: jsonData['message'],
       senderId: jsonData['senderId'],
+      name: jsonData['name'],
       isMe: false, //jsonData['isMe'],
       time: jsonData['time'],
       textColor: jsonData['textColor'],
@@ -48,6 +51,7 @@ class MessageData {
     m['roomId'] = roomId;
     m['message'] = message;
     m['senderId'] = senderId;
+    m['name'] = name;
     m['isMe'] = isMe;
     m['time'] = time;
     m['textColor'] = textColor;
@@ -55,7 +59,6 @@ class MessageData {
     m['bold'] = bold;
     m['italic'] = italic;
     m['underline'] = underline;
-
     return m;
   }
 }
