@@ -66,6 +66,11 @@ bool validateEmail(String value) {
 }
 
 class SocketEvents {
+  static const String connect = "connect";
   static const String sendMessage = "send_message";
   static const String receiveMessage = "receive_message";
+}
+
+class Strings {
+  static const String unknown = "Unknown";
 }

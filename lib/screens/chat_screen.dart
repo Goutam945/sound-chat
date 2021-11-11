@@ -409,7 +409,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     socket.connect();
 
-    socket.on('connect', (data) {
+    socket.on(SocketEvents.connect, (data) {
       print('Connected to Server');
     });
 
@@ -508,7 +508,7 @@ class _ChatScreenState extends State<ChatScreen> {
           roomId: data[i]["room_id"],
           message: data[i]["message"],
           senderId: data[i]["sender_id"],
-          name: data[i]["name"] ?? "Unknown",
+          name: data[i]["name"] ?? Strings.unknown,
           isMe: data[i]["sender_id"] == userId,
           time: data[i]["createdAt"],
           textColor: data[i]["textColor"],
@@ -531,7 +531,7 @@ class _ChatScreenState extends State<ChatScreen> {
           roomId: data[i]["room_id"],
           message: data[i]["message"],
           senderId: data[i]["sender_id"],
-          name: data[i]["name"] ?? "Unknown",
+          name: data[i]["name"] ?? Strings.unknown,
           isMe: data[i]["sender_id"] == userId,
           time: data[i]["createdAt"],
           textColor: data[i]["textColor"],
