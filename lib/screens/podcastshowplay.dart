@@ -79,8 +79,8 @@ class _ListenState extends State<PodcastPlayCloud> {
                               isLoading = false;
                             });
                           },
-                          initialUrl: superheroslength[weekday]['shows']
-                              [widget.j]['show_audio_url'],
+                          initialUrl: superheroslength[weekday]
+                              ['scheduleperdays'][widget.j]['show_audio_url'],
                         ),
                       ),
                     ],

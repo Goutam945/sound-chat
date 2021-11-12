@@ -194,13 +194,13 @@ class _ListenlivepageState extends State<Listenlivepage>
                                       0, 0), // changes position of shadow
                                 ),
                               ]),
-                          child: (timeAndDate[weekday]['shows'][showtime]
-                                      ['show_image'] !=
+                          child: (timeAndDate[weekday]['scheduleperdays']
+                                      [showtime]['show_image'] !=
                                   null)
                               ? CachedNetworkImage(
                                   imageUrl: baseurlimagepodcast +
-                                      timeAndDate[weekday]['shows'][showtime]
-                                              ['show_image']
+                                      timeAndDate[weekday]['scheduleperdays']
+                                              [showtime]['show_image']
                                           .toString(),
                                   fit: BoxFit.fill,
                                   placeholder: (context, url) => SizedBox(
@@ -232,7 +232,8 @@ class _ListenlivepageState extends State<Listenlivepage>
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            timeAndDate[weekday]['shows'][showtime]['show_name']
+                            timeAndDate[weekday]['scheduleperdays'][showtime]
+                                    ['show_name']
                                 .toString(),
                             style: TextStyle(
                                 color: Colors.white,
@@ -377,7 +378,10 @@ class _ListenlivepageState extends State<Listenlivepage>
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   for (int j = showtime;
-                                      j < timeAndDate[weekday]['shows'].length;
+                                      j <
+                                          timeAndDate[weekday]
+                                                  ['scheduleperdays']
+                                              .length;
                                       j++)
                                     Row(
                                       children: [
@@ -399,7 +403,7 @@ class _ListenlivepageState extends State<Listenlivepage>
                                                               null)
                                                           ? CachedNetworkImage(
                                                               imageUrl: baseurlimagepodcast +
-                                                                  timeAndDate[weekday]['shows']
+                                                                  timeAndDate[weekday]['scheduleperdays']
                                                                               [
                                                                               j]
                                                                           [

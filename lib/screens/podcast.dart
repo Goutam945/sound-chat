@@ -172,7 +172,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                             for (int j = 0;
                                                 j <
                                                     superherosLength[weekday]
-                                                            ['shows']
+                                                            ['scheduleperdays']
                                                         .length;
                                                 j++)
                                               GestureDetector(
@@ -216,7 +216,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                 null)
                                                             ? CachedNetworkImage(
                                                                 imageUrl: baseurlimagepodcast +
-                                                                    superherosLength[weekday]['shows'][j]
+                                                                    superherosLength[weekday]['scheduleperdays'][j]
                                                                             [
                                                                             'show_image']
                                                                         .toString(),

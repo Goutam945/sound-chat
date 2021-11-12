@@ -226,7 +226,7 @@ class _UpdatehomeState extends State<Updatehome> {
                                           return Text(
                                             snapshot
                                                 .data
-                                                .data['data'][weekday]['shows']
+                                                .data['data'][weekday]['scheduleperdays']
                                                     [showtime]['show_name']
                                                 .toString(),
                                             textAlign: TextAlign.center,

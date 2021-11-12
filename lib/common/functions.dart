@@ -36,15 +36,15 @@ int getschedule({context, data}) {
   var startTime;
   var endTime;
   if (data != null)
-    for (int i = 0; i < data[weekday]['shows'].length; i++) {
+    for (int i = 0; i < data[weekday]['scheduleperdays'].length; i++) {
       startTime =
           DateTime.now().subtract(duration).toIso8601String().split('T')[0] +
               ' ' +
-              data[weekday]['shows'][i]['show_start_date'];
+              data[weekday]['scheduleperdays'][i]['show_start_date'];
       endTime =
           DateTime.now().subtract(duration).toIso8601String().split('T')[0] +
               ' ' +
-              data[weekday]['shows'][i]['show_end_date'];
+              data[weekday]['scheduleperdays'][i]['show_end_date'];
       DateTime a = DateTime.parse(startTime);
       DateTime b = DateTime.parse(endTime);
       DateTime c = DateTime.now().subtract(duration);

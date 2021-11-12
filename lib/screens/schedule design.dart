@@ -104,7 +104,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   children: [
                                     for (int j = 0;
                                         j <
-                                            superherosLength[weekday]['shows']
+                                            superherosLength[weekday]
+                                                    ['scheduleperdays']
                                                 .length;
                                         j++)
                                       SizedBox(
@@ -133,7 +134,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                               null)
                                                           ? NetworkImage(
                                                               baseurlimagepodcast +
-                                                                  superherosLength[weekday]['shows']
+                                                                  superherosLength[weekday]['scheduleperdays']
                                                                               [
                                                                               j]
                                                                           [
@@ -160,8 +161,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                       child: Text(
                                                         superherosLength[
                                                                         weekday]
-                                                                    ['shows'][j]
-                                                                ['show_name']
+                                                                    [
+                                                                    'scheduleperdays']
+                                                                [j]['show_name']
                                                             .toString(),
                                                         style: TextStyle(
                                                             color: Colors.white,
@@ -184,8 +186,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                               ),
                                             ),
                                             Text(
-                                              superherosLength[weekday]['shows']
-                                                  [j]['show_start_date'],
+                                              superherosLength[weekday]
+                                                      ['scheduleperdays'][j]
+                                                  ['show_start_date'],
                                               style: TextStyle(
                                                   color: Color(0xFFE18D13),
                                                   fontSize: 12,
@@ -287,7 +290,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                     children: [
                                       for (int j = 0;
                                           j <
-                                              superherosLength[day]['shows']
+                                              superherosLength[day]
+                                                      ['scheduleperdays']
                                                   .length;
                                           j++)
                                         GestureDetector(
@@ -321,9 +325,10 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                               children: [
                                                 SizedBox(
                                                   width: 120,
-                                                  child: (superherosLength[day]
-                                                                  ['shows'][j]
-                                                              ['show_image'] !=
+                                                  child: (superherosLength[day][
+                                                                  'scheduleperdays']
+                                                              [
+                                                              j]['show_image'] !=
                                                           null)
                                                       ? CachedNetworkImage(
                                                           imageUrl: baseurlimagepodcast +
@@ -376,9 +381,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        superherosLength[day]
-                                                                    ['shows'][j]
-                                                                ['show_name']
+                                                        superherosLength[day][
+                                                                    'scheduleperdays']
+                                                                [j]['show_name']
                                                             .toString(),
                                                         style: TextStyle(
                                                             color: Colors.white,
@@ -398,14 +403,14 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                                 fontfamily),
                                                       ),
                                                       Text(
-                                                        superherosLength[day]
-                                                                    ['shows'][j]
+                                                        superherosLength[day][
+                                                                    'scheduleperdays'][j]
                                                                 [
                                                                 'show_start_date'] +
                                                             "  - " +
                                                             superherosLength[
-                                                                        day]
-                                                                    ['shows'][j]
+                                                                        day][
+                                                                    'scheduleperdays'][j]
                                                                 [
                                                                 'show_end_date'],
                                                         style: TextStyle(
