@@ -210,7 +210,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                         child: (superherosLength[
                                                                             weekday]
                                                                         [
-                                                                        'shows'][j]
+                                                                        'scheduleperdays'][j]
                                                                     [
                                                                     'show_image'] !=
                                                                 null)
@@ -271,7 +271,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               superherosLength[
                                                                               weekday]
                                                                           [
-                                                                          'shows'][j]
+                                                                          'scheduleperdays'][j]
                                                                       [
                                                                       'show_name']
                                                                   .toString(),
@@ -301,7 +301,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   superherosLength[
                                                                               weekday]
                                                                           [
-                                                                          'shows'][j]
+                                                                          'scheduleperdays'][j]
                                                                       [
                                                                       'show_start_date'],
                                                               style: TextStyle(

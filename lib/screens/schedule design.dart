@@ -125,25 +125,25 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                 child: CircleAvatar(
                                                   backgroundColor:
                                                       Color(0xff324a69),
-                                                  backgroundImage:
-                                                      (superherosLength[weekday]
-                                                                      [
-                                                                      'shows'][j]
-                                                                  [
-                                                                  'show_image'] !=
-                                                              null)
-                                                          ? NetworkImage(
-                                                              baseurlimagepodcast +
-                                                                  superherosLength[weekday]['scheduleperdays']
-                                                                              [
-                                                                              j]
+                                                  backgroundImage: (superherosLength[
+                                                                      weekday][
+                                                                  'scheduleperdays']
+                                                              [
+                                                              j]['show_image'] !=
+                                                          null)
+                                                      ? NetworkImage(
+                                                          baseurlimagepodcast +
+                                                              superherosLength[
+                                                                              weekday]
                                                                           [
-                                                                          'show_image']
-                                                                      .toString(),
-                                                            )
-                                                          : AssetImage(
-                                                              'assets/soundpic.png',
-                                                            ),
+                                                                          'scheduleperdays'][j]
+                                                                      [
+                                                                      'show_image']
+                                                                  .toString(),
+                                                        )
+                                                      : AssetImage(
+                                                          'assets/soundpic.png',
+                                                        ),
                                                 ),
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -335,7 +335,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                               superherosLength[
                                                                               day]
                                                                           [
-                                                                          'shows'][j]
+                                                                          'scheduleperdays'][j]
                                                                       [
                                                                       'show_image']
                                                                   .toString(),

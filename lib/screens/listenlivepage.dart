@@ -397,7 +397,7 @@ class _ListenlivepageState extends State<Listenlivepage>
                                                     child: GestureDetector(
                                                       child: (timeAndDate[weekday]
                                                                       [
-                                                                      'shows'][j]
+                                                                      'scheduleperdays'][j]
                                                                   [
                                                                   'show_image'] !=
                                                               null)
