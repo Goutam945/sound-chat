@@ -367,7 +367,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                 color: Colors.white,
                                 fontSize: 20,
                                 // fontFamily: fontfamily,
-                                fontWeight: FontWeight.w900)),
+                                fontWeight: FontWeight.bold)),
                       ),
                       Text("\$" + widget.product['Price'],
                           textAlign: TextAlign.center,
@@ -384,9 +384,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                   child: Text(widget.product['description'],
                       // textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold)),
+                        color: Colors.white,
+                        fontSize: 12,
+                      )),
                 ),
 
                 SizedBox(

@@ -231,9 +231,9 @@ class _UpdatehomeState extends State<Updatehome> {
                                                 .toString(),
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16,
-                                            ),
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold),
                                           );
                                         }
                                         if (snapshot.hasError)

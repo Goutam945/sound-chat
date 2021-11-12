@@ -45,7 +45,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
 
         break;
       case "2":
-        return "Dellivred";
+        return "Delivered";
 
         break;
 
@@ -160,7 +160,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                                       color: Colors.white,
                                                       fontSize: 17,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w500,
                                                       fontFamily: fontfamily),
                                                 ),
                                                 Text(

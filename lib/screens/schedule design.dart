@@ -384,7 +384,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             color: Colors.white,
                                                             fontSize: 17,
                                                             fontWeight:
-                                                                FontWeight.bold,
+                                                                FontWeight.w500,
                                                             fontFamily:
                                                                 fontfamily),
                                                       ),

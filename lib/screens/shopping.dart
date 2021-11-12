@@ -81,7 +81,7 @@ class _ShoppingState extends State<Shopping> {
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: fontfamily,
-                                                fontSize: 12,
+                                                fontSize: 14,
                                               ),
                                             ),
                                           ),
@@ -89,7 +89,7 @@ class _ShoppingState extends State<Shopping> {
                                             "\$" +
                                                 product[i]['Price'].toString(),
                                             style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.red,
                                               fontWeight: FontWeight.bold,
                                               fontFamily: fontfamily,
                                               fontSize: 14,

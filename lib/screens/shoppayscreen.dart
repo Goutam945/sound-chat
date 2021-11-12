@@ -639,10 +639,10 @@ class _ShopPayState extends State<ShopPay> {
                   child: Text(
                     " Total Amount Pay:   \$" + cart.sum1.toString(),
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic),
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

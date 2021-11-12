@@ -281,7 +281,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   fontSize: 17,
                                                                   fontWeight:
                                                                       FontWeight
-                                                                          .bold,
+                                                                          .w500,
                                                                   fontFamily:
                                                                       fontfamily),
                                                             ),

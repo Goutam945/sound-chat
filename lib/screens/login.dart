@@ -484,7 +484,6 @@ class _DesignLogin extends State<NewLogin> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.bold,
                                     fontFamily: fontfamily),
                               ),
                             ],
@@ -503,7 +502,6 @@ class _DesignLogin extends State<NewLogin> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
-                                fontWeight: FontWeight.bold,
                                 fontFamily: fontfamily),
                           ),
                         ),

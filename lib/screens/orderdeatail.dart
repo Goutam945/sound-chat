@@ -335,7 +335,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
 
         break;
       case "2":
-        return "Dellivred";
+        return "Delivered";
 
         break;
 

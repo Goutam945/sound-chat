@@ -330,10 +330,10 @@ class _CardScreenState extends State<CardScreen> {
                           color: Color(0xFFE18D13),
                           child: Text("Total: \$" + (cart.sum1).toString(),
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic)),
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              )),
                         ),
                       ),
                       Expanded(
@@ -385,10 +385,10 @@ class _CardScreenState extends State<CardScreen> {
                             child: Text(
                               "Pay",
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic),
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

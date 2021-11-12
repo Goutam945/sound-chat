@@ -62,6 +62,7 @@ class _NewMenupageState extends State<NewMenupage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    FontWeight fontWeight = FontWeight.w600;
     return SafeArea(
       child: Scaffold(
           extendBody: true,
@@ -87,7 +88,7 @@ class _NewMenupageState extends State<NewMenupage> {
                     "TV Interview",
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: fontWeight,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -120,7 +121,7 @@ class _NewMenupageState extends State<NewMenupage> {
                     "Radio Podcast",
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: fontWeight,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -153,7 +154,7 @@ class _NewMenupageState extends State<NewMenupage> {
                     "Soundchat Store",
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: fontWeight,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -184,7 +185,7 @@ class _NewMenupageState extends State<NewMenupage> {
                     "SoundChat Gallery",
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: fontWeight,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -215,7 +216,7 @@ class _NewMenupageState extends State<NewMenupage> {
                     "Programe Guide",
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: fontWeight,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -248,7 +249,7 @@ class _NewMenupageState extends State<NewMenupage> {
                     "Profile & Setting",
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: fontWeight,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -268,7 +269,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   },
                 ),
                 SizedBox(
-                  height: 5,
+                  height: 15,
                 ),
                 Container(
                   width: width,
@@ -288,13 +289,6 @@ class _NewMenupageState extends State<NewMenupage> {
                               fontFamily: fontfamily,
                             )),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      // if (loader)
-                      //   Center(
-                      //     child: CircularProgressIndicator(),
-                      //   ),
                       SizedBox(
                         width: width,
                         height: 200,
@@ -343,7 +337,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "My Orders",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),
@@ -390,7 +383,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                       "Notification",
                                       style: TextStyle(
                                           fontSize: fontSize,
-                                          fontWeight: FontWeight.bold,
                                           fontFamily: fontfamily,
                                           color: Colors.white),
                                     ),
@@ -412,7 +404,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "Terms & Conditions",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),
@@ -452,7 +443,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "Refund Policy",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),
@@ -501,7 +491,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "Studio Request Lines",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),
@@ -524,7 +513,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "Office Contact Details",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),
@@ -547,7 +535,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "Follow Us On Social Media",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),
@@ -570,7 +557,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                         "ReportA Problem",
                                         style: TextStyle(
                                             fontSize: fontSize,
-                                            fontWeight: FontWeight.bold,
                                             fontFamily: fontfamily,
                                             color: Colors.white),
                                       ),

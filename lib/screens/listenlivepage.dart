@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Listenlivepage extends StatefulWidget {
@@ -234,9 +235,9 @@ class _ListenlivepageState extends State<Listenlivepage>
                             timeAndDate[weekday]['shows'][showtime]['show_name']
                                 .toString(),
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 200,
