@@ -84,7 +84,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: 'Montserrat1'),
+        theme: ThemeData(fontFamily: fontfamily),
         home: checkinternet
             ? Container(
                 color: Colors.white,

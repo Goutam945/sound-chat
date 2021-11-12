@@ -365,7 +365,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         child: Text(widget.product['title'],
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 24,
+                                fontSize: 20,
                                 // fontFamily: fontfamily,
                                 fontWeight: FontWeight.w900)),
                       ),
@@ -374,7 +374,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 20,
-                              fontFamily: fontfamily,
                               fontWeight: FontWeight.bold)),
                     ],
                   ),
@@ -386,8 +385,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       // textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14,
-                          fontFamily: fontfamily,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold)),
                 ),
 
