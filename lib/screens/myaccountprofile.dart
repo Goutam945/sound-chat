@@ -510,35 +510,51 @@ class _MyAccountState extends State<MyAccount> {
                                 ),
                               ),
                             )),
-                        InkWell(
-                            onTap: () => {
-                                  setState(() {
-                                    loader = true;
-                                  }),
-                                  cancelSubscriptionState(
+                        if (data != null && data['stripe_status'] != 'INACTIVE')
+                          InkWell(
+                              onTap: () => {
+                                    AwesomeDialog(
                                       context: context,
-                                      subscriptionid: data["subscription_id"]),
-                                  createCancelsubcripState(
-                                          id.toString(), context)
-                                      .whenComplete(() {
-                                    setState(() {
-                                      loader = false;
-                                    });
-                                  }),
-                                },
-                            child: Card(
-                              color: Colors.red,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50)),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 8),
-                                child: Text(
-                                  "Cancel Plan",
-                                  style: TextStyle(color: Colors.white),
+                                      dialogType: DialogType.WARNING,
+                                      animType: AnimType.BOTTOMSLIDE,
+                                      btnOkColor: Colors.red,
+                                      title: 'Are You Sure',
+                                      desc: 'Cancel Plan ?',
+                                      btnCancelOnPress: () {},
+                                      btnCancelText: "No",
+                                      btnOkText: "Yes",
+                                      btnCancelColor: Colors.orange,
+                                      btnOkOnPress: () {
+                                        setState(() {
+                                          loader = true;
+                                        });
+                                        cancelSubscriptionState(
+                                            context: context,
+                                            subscriptionid:
+                                                data["subscription_id"]);
+                                        createCancelsubcripState(
+                                                id.toString(), context)
+                                            .whenComplete(() {
+                                          setState(() {
+                                            loader = false;
+                                          });
+                                        });
+                                      },
+                                    )..show()
+                                  },
+                              child: Card(
+                                color: Colors.red,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 8),
+                                  child: Text(
+                                    "Cancel Plan",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
-                              ),
-                            )),
+                              )),
                       ],
                     ),
                     SizedBox(
