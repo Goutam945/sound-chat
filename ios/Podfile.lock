@@ -343,10 +343,6 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - audio_service (0.0.1):
-    - Flutter
-  - audio_session (0.0.1):
-    - Flutter
   - audioplayers (0.0.1):
     - Flutter
   - better_player (0.0.1):
@@ -547,8 +543,6 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - audio_service (from `.symlinks/plugins/audio_service/ios`)
-  - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - better_player (from `.symlinks/plugins/better_player/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
@@ -604,10 +598,6 @@ SPEC REPOS:
     - Stripe
 
 EXTERNAL SOURCES:
-  audio_service:
-    :path: ".symlinks/plugins/audio_service/ios"
-  audio_session:
-    :path: ".symlinks/plugins/audio_session/ios"
   audioplayers:
     :path: ".symlinks/plugins/audioplayers/ios"
   better_player:
@@ -654,8 +644,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  audio_service: f509d65da41b9521a61f1c404dd58651f265a567
-  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
   better_player: 5f77b030c433bd39af0aaaffc184cf4267601a84
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879

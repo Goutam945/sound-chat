@@ -92,7 +92,7 @@ class MessageView extends StatelessWidget {
                 "$month ${time.day} $hM",
                 style: const TextStyle(
                   fontSize: 10,
-                  color: Colors.white70,
+                  color: Colors.grey,
                 ),
               ),
             ),

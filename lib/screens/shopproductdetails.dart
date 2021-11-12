@@ -61,65 +61,106 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
             floatingActionButton: FloatingActionButton(
                 backgroundColor: themeColor,
                 onPressed: () {
-                  ProductModellist product = ProductModellist(
-                      widget.product['title'],
-                      dropdownColor,
-                      double.parse(widget.product['Price']),
-                      dropdownSize,
-                      _itemCount,
-                      widget.product['id'],
-                      widget.product['image']);
-
-                  for (int i = 0; i < cart.cart1.length; i++)
-
-                    // if (cart.cart1.length >= 1 &&
-                    //     widget.product == cart.cart1[i].id &&
-                    //     dropdownSize == cart.cart1[i].size &&
-                    //     dropdownColor == cart.cart1[i].color)
-                    if (cart.cart1.length >= 1 &&
-                        cart.cart1[i].productId == productId)
-                      // checkProductStock(
-                      //         context: context,
-                      //         quantity: cart.cart1[i].quantity,
-                      //         stock: cart.cart1[i].stock)
-                      //     .then((value) {
-                      //   if (value) {
-
-                      //   }
-                      // });
-                      setState(() {
-                        itemFound = true;
-                        cart.cart1[i].quantity++;
-                        countprice = cart.cart1[i].price;
-                        countprice = cart.cart1[i].price +
-                            cart.cart1[i].price; //price coutnt in plus
-                        cart.sum1 = cart.sum1 + cart.cart1[i].price;
-                      });
-                    else {
-                      setState(() {
-                        itemFound = false;
-                      });
+                  int indexOfMatchedItem = cart.cart1
+                      .indexWhere((product) => product.productId == productId);
+                  print(indexOfMatchedItem);
+                  if (indexOfMatchedItem != -1 && stock != 0) {
+                    //increase quantity of product
+                    checkProductStock(
+                            context: context,
+                            quantity: cart.cart1[indexOfMatchedItem].quantity,
+                            stock: stock)
+                        .then((value) {
+                      if (value) {
+                        setState(() {
+                          cart.cart1[indexOfMatchedItem].quantity++;
+                          countprice = cart.cart1[indexOfMatchedItem].price;
+                          countprice = cart.cart1[indexOfMatchedItem].price +
+                              cart.cart1[indexOfMatchedItem]
+                                  .price; //price coutnt in plus
+                          cart.sum1 =
+                              cart.sum1 + cart.cart1[indexOfMatchedItem].price;
+                          Toast.show("Added to cart", context,
+                              duration: Toast.LENGTH_SHORT,
+                              gravity: Toast.BOTTOM);
+                        });
+                      }
+                    });
+                  } else {
+                    //add item to cart because item is not in the cart
+                    if (dropdownSize != "Select Size" &&
+                        dropdownColor != "Select Color" &&
+                        stock != 0) //endd*/
+                    {
+                      Vibration.vibrate();
+                      cart.add1(
+                          widget.product['title'],
+                          double.parse(widget.product['Price']),
+                          dropdownSize,
+                          dropdownColor,
+                          _itemCount,
+                          widget.product['id'],
+                          widget.product['image'],
+                          productId,
+                          stock,
+                          context);
+                      Toast.show("Added to cart", context,
+                          duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                    } else {
+                      outOfStockDialog(context: context, stock: stock);
                     }
-                  if (!itemFound &&
-                      dropdownSize != "Select Size" &&
-                      dropdownColor != "Select Color" &&
-                      stock != 0) //endd*/
-                  {
-                    Vibration.vibrate();
-                    cart.add1(
-                        widget.product['title'],
-                        double.parse(widget.product['Price']),
-                        dropdownSize,
-                        dropdownColor,
-                        _itemCount,
-                        widget.product['id'],
-                        widget.product['image'],
-                        productId,
-                        stock,
-                        context);
-                    Toast.show("Added to cart", context,
-                        duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
                   }
+
+                  // for (int i = 0; i < cart.cart1.length; i++)
+
+                  //   // if (cart.cart1.length >= 1 &&
+                  //   //     widget.product == cart.cart1[i].id &&
+                  //   //     dropdownSize == cart.cart1[i].size &&
+                  //   //     dropdownColor == cart.cart1[i].color)
+                  //   if (cart.cart1.length >= 1 &&
+                  //       cart.cart1[i].productId == productId)
+                  //     // checkProductStock(
+                  //     //         context: context,
+                  //     //         quantity: cart.cart1[i].quantity,
+                  //     //         stock: cart.cart1[i].stock)
+                  //     //     .then((value) {
+                  //     //   if (value) {
+
+                  //     //   }
+                  //     // });
+                  //     setState(() {
+                  //       itemFound = true;
+                  //       cart.cart1[i].quantity++;
+                  //       countprice = cart.cart1[i].price;
+                  //       countprice = cart.cart1[i].price +
+                  //           cart.cart1[i].price; //price coutnt in plus
+                  //       cart.sum1 = cart.sum1 + cart.cart1[i].price;
+                  //     });
+                  //   else {
+                  //     setState(() {
+                  //       itemFound = false;
+                  //     });
+                  //   }
+                  // if (!itemFound &&
+                  //     dropdownSize != "Select Size" &&
+                  //     dropdownColor != "Select Color" &&
+                  //     stock != 0) //endd*/
+                  // {
+                  //   Vibration.vibrate();
+                  //   cart.add1(
+                  //       widget.product['title'],
+                  //       double.parse(widget.product['Price']),
+                  //       dropdownSize,
+                  //       dropdownColor,
+                  //       _itemCount,
+                  //       widget.product['id'],
+                  //       widget.product['image'],
+                  //       productId,
+                  //       stock,
+                  //       context);
+                  //   Toast.show("Added to cart", context,
+                  //       duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
+                  // }
                   // print(cart.cart1.length.toString());
                 },
                 child: Icon(Icons.shopping_cart)),
@@ -574,6 +615,7 @@ class FullImageproduct extends StatelessWidget {
                 height: height,
                 initialPage: currentIndex,
                 autoPlay: false,
+                enableInfiniteScroll: false,
                 enlargeCenterPage: true,
                 viewportFraction: 1,
                 autoPlayInterval: Duration(seconds: 10),
