@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
@@ -252,11 +254,25 @@ class VideoPlayer extends StatefulWidget {
   _VideoPlayerState createState() => _VideoPlayerState();
 }
 
-class _VideoPlayerState extends State<VideoPlayer> {
+class _VideoPlayerState extends State<VideoPlayer> with WidgetsBindingObserver {
   String videoUrl =
       "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8";
   BetterPlayerController _betterPlayerController;
   GlobalKey _betterPlayerKey = GlobalKey();
+
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+    switch (state) {
+      case AppLifecycleState.detached:
+        exit(0);
+        break;
+      case AppLifecycleState.paused:
+        _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
+        break;
+      default:
+        break;
+    }
+  }
 
   setUrl() {
     setState(() {
@@ -320,6 +336,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     videoPlayerConfig();
     // createAudioVideoListState(context).whenComplete(() => setUrl());
     setUrl();
@@ -333,6 +350,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
       if (value)
         _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
     });
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
