@@ -483,11 +483,6 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                     TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w900,
-                                                                  fontFamily:
-                                                                      'Montserrat',
                                                                 ),
                                                               )),
                                                         )
@@ -660,11 +655,6 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                     TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w900,
-                                                                  fontFamily:
-                                                                      'Montserrat',
                                                                 ),
                                                               )),
                                                         )
@@ -838,11 +828,6 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                     TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w900,
-                                                                  fontFamily:
-                                                                      'Montserrat',
                                                                 ),
                                                               )),
                                                         )
@@ -1020,8 +1005,6 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                             style:
                                                                                 TextStyle(
                                                                               color: Colors.white,
-                                                                              fontWeight: FontWeight.w900,
-                                                                              fontFamily: 'Montserrat',
                                                                             ),
                                                                           )),
                                                                     )

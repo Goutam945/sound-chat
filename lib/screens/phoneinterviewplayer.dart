@@ -166,10 +166,9 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                                     child: Text(
                                         content, // textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Montserrat')),
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        )),
                                   ),
                                 ],
                               ),
@@ -270,10 +269,6 @@ class _InterviewNewPlayer extends State<PhoneinteviewPlayer> {
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           color: Colors.white,
-                                                          fontWeight:
-                                                              FontWeight.w900,
-                                                          fontFamily:
-                                                              'Montserrat',
                                                         ),
                                                       )),
                                                 )

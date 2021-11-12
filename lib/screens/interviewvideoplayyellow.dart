@@ -163,10 +163,9 @@ class _InterviewDesign extends State<InterviewPlay> {
                                     child: Text(
                                         content, // textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'Montserrat')),
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                        )),
                                   ),
                                 ],
                               ),
@@ -272,10 +271,6 @@ class _InterviewDesign extends State<InterviewPlay> {
                                                             TextAlign.center,
                                                         style: TextStyle(
                                                           color: Colors.white,
-                                                          fontWeight:
-                                                              FontWeight.w900,
-                                                          fontFamily:
-                                                              'Montserrat',
                                                         ),
                                                       )),
                                                 )
