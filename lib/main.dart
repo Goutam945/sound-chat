@@ -1,3 +1,4 @@
+import 'package:sound_chat/api/audiovideo_url.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/firebase.dart';
 import 'package:sound_chat/stripe_api/create_customer.dart';
@@ -32,6 +33,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => Plans()),
         ChangeNotifierProvider(create: (_) => Crteatecustomer()),
         ChangeNotifierProvider(create: (_) => CreateSubscription()),
+        ChangeNotifierProvider(create: (context) => AudiovideoUrls()),
       ],
       child: MyApp(),
     ),

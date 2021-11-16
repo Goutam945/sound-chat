@@ -158,7 +158,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                                           .toString(),
                                                   style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 17,
+                                                      fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       fontFamily: fontfamily),
@@ -169,13 +169,13 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                                       .split("T")[0],
                                                   style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 14,
+                                                      fontSize: 12,
                                                       fontFamily: fontfamily),
                                                 ),
                                                 Text(
                                                   "Status: $status",
                                                   style: TextStyle(
-                                                      fontSize: 14,
+                                                      fontSize: 12,
                                                       fontFamily: fontfamily,
                                                       color: Colors.white),
                                                 ),

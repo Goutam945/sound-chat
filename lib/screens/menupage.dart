@@ -62,7 +62,7 @@ class _NewMenupageState extends State<NewMenupage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    FontWeight fontWeight = FontWeight.w600;
+    FontWeight fontWeight = FontWeight.w500;
     return SafeArea(
       child: Scaffold(
           extendBody: true,
@@ -79,6 +79,9 @@ class _NewMenupageState extends State<NewMenupage> {
                 ])),
             child: ListView(
               children: [
+                SizedBox(
+                  height: 15,
+                ),
                 ListTile(
                   tileColor: tilecolor,
                   leading: Image.asset(

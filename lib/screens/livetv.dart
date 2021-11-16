@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:sound_chat/api/audiovideo_url.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/chat_screen.dart';
 
@@ -154,6 +155,7 @@ class _LiveVideoState extends State<LiveVideo> {
   Widget build(BuildContext context) {
     // double height = MediaQuery.of(context).size.height;
     // double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Color(0xFF481621),
@@ -255,8 +257,9 @@ class VideoPlayer extends StatefulWidget {
 }
 
 class _VideoPlayerState extends State<VideoPlayer> with WidgetsBindingObserver {
-  String videoUrl =
-      "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8";
+  // String videoUrl =
+  //     "https://5dcabf026b188.streamlock.net/soundchatradio/livestream/playlist.m3u8";
+  String videoUrl = "";
   BetterPlayerController _betterPlayerController;
   GlobalKey _betterPlayerKey = GlobalKey();
 
@@ -276,14 +279,11 @@ class _VideoPlayerState extends State<VideoPlayer> with WidgetsBindingObserver {
 
   setUrl() {
     setState(() {
-      // audioUrl = Provider.of<AudioVideoListResponse>(context, listen: false)
-      //     .data['audio']['file'];
-      // videoUrl = Provider.of<AudioVideoListResponse>(context, listen: false)
-      //     .data['video']['file'];
-      // print(videoUrl);
-      // isPlaying ? play() : pause();
+      videoUrl = Provider.of<AudiovideoUrls>(context, listen: false)
+          .data['data'][1]['livelink'];
+      print(videoUrl);
     });
-    // videoPlayerConfig();
+    videoPlayerConfig();
     BetterPlayerDataSource dataSource =
         BetterPlayerDataSource(BetterPlayerDataSourceType.network, videoUrl,
             liveStream: true,
@@ -338,8 +338,7 @@ class _VideoPlayerState extends State<VideoPlayer> with WidgetsBindingObserver {
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     videoPlayerConfig();
-    // createAudioVideoListState(context).whenComplete(() => setUrl());
-    setUrl();
+    createAudiovideoUrlsState(context).whenComplete(() => setUrl());
     super.initState();
   }
 

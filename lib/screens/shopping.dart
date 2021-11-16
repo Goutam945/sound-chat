@@ -79,7 +79,6 @@ class _ShoppingState extends State<Shopping> {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color: Colors.white,
-                                                fontWeight: FontWeight.bold,
                                                 fontFamily: fontfamily,
                                                 fontSize: 14,
                                               ),

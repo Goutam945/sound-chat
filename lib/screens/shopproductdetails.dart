@@ -83,6 +83,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           Toast.show("Added to cart", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
+                          Vibration.vibrate();
                         });
                       }
                     });
@@ -403,9 +404,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: Text("Size:   ",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold)),
+                              color: Colors.white,
+                              fontSize: 14,
+                            )),
                       ),
                     ),
                     Container(
@@ -445,7 +446,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Colors.white,
                                 ),
                               ),
@@ -482,9 +483,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: Text("Color: ",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold)),
+                              color: Colors.white,
+                              fontSize: 14,
+                            )),
                       ),
                     ),
                     Container(
@@ -524,7 +525,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 14,
                                   color: Colors.white,
                                 ),
                               ),

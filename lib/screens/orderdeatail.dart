@@ -415,7 +415,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                           widget.order['last_name'] +
                           ",",
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -425,7 +425,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       widget.order['address_1'] + ",",
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -435,7 +435,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       widget.order['city'] + ",",
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -445,7 +445,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       widget.order['state'] + ",",
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -455,7 +455,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       widget.order['postcode'] + ",",
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -465,7 +465,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       widget.order['phone'],
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -480,7 +480,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                           " " +
                           widget.order['payment_method'].toString(),
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: Colors.white,
                           fontFamily: fontfamily),
                     ),
@@ -495,7 +495,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                           " \$" +
                           widget.order['total_amount'].toString(),
                       style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: Colors.green,
                           fontFamily: fontfamily),
@@ -543,22 +543,22 @@ class _OrderdeatailState extends State<Orderdeatail> {
                                         Text("Quantity",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                         Text("Color",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                         Text("Size",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                         Text("Total price",
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                       ],
                                     ),
@@ -572,24 +572,24 @@ class _OrderdeatailState extends State<Orderdeatail> {
                                             items[index]['quantity'].toString(),
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                         Text(items[index]['color'].toString(),
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                         Text(items[index]['size'].toString(),
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                         Text(
                                             items[index]['total_price']
                                                 .toString(),
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14,
+                                                fontSize: 12,
                                                 fontFamily: fontfamily)),
                                       ],
                                     )

@@ -10,12 +10,6 @@ class HomeBottomBar extends StatefulWidget {
 
 class _HomeBottomBarState extends State<HomeBottomBar>
     with WidgetsBindingObserver {
-  List<Widget> tabPages = [
-    Updatehome(),
-    Listenlivepage(),
-    LiveVideo(),
-    NewMenupage()
-  ];
   @override
   void initState() {
     super.initState();
@@ -106,6 +100,12 @@ class _HomeBottomBarState extends State<HomeBottomBar>
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> tabPages = [
+      Updatehome(),
+      Listenlivepage(),
+      LiveVideo(),
+      NewMenupage()
+    ];
     if (Provider.of<SubcriptionlevalResponse>(context, listen: false).data !=
         null)
       data = Provider.of<SubcriptionlevalResponse>(context, listen: false)

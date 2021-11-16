@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:sound_chat/api/audiovideo_url.dart';
 import 'package:sound_chat/common/index.dart';
 
 class Listenlivepage extends StatefulWidget {
@@ -33,19 +34,14 @@ class _ListenlivepageState extends State<Listenlivepage>
   String name;
   String data;
   bool listen = true;
-
-  // bool play = true;
   bool stop = true;
   String status = 'hidden';
-  // var superherosLength;
-  // var timeAndDate;
-  //int day;
   int weekday;
-  // var homeslider;
   int imageNo = 0;
   bool isButtonPressed = false;
   int showtime = 0;
-
+  String audioUrl = '';
+  var scheduleapi;
   @override
   void initState() {
     super.initState();
@@ -69,16 +65,11 @@ class _ListenlivepageState extends State<Listenlivepage>
         play = false;
       });
     });
-    //apis calls
-    // createVideoState(context);
-    // createPhoneinterviewState(context);
-    // createScheduleState(context);
-    // createGalleryState(context);
-    // createHomesliderState(context);
-    // createAllproductState(context);
-    // createtermsState(context);
-    // createCoupncodeState(context);
+    scheduleapi = createScheduleState(context);
     state();
+    createAudiovideoUrlsState(context).then((value) {
+      audioUrl = value.data['data'][0]['livelink'];
+    });
   }
 
   void state() {
@@ -110,7 +101,8 @@ class _ListenlivepageState extends State<Listenlivepage>
   Future<void> callAudio(String action) async {
     if (action == "start") {
       // stream.start();
-      await audioPlayer.play("https://s2.voscast.com:9059/stream");
+      await audioPlayer.play(audioUrl);
+      //print(audioUrl);
       MediaNotification.showNotification(
           title: 'Soundchat Radio', isPlaying: !play);
       if (Platform.isIOS)
@@ -166,7 +158,7 @@ class _ListenlivepageState extends State<Listenlivepage>
                 end: Alignment.bottomCenter,
                 colors: [Color(0xFF481621), Color(0xFF140F16)])),
         child: FutureBuilder(
-            future: createScheduleState(context),
+            future: scheduleapi,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 var timeAndDate = snapshot.data.data['data'];
@@ -195,8 +187,11 @@ class _ListenlivepageState extends State<Listenlivepage>
                                 ),
                               ]),
                           child: (timeAndDate[weekday]['scheduleperdays']
-                                      [showtime]['show_image'] !=
-                                  null)
+                                          [showtime]['show_image'] !=
+                                      null &&
+                                  timeAndDate[weekday]['scheduleperdays']
+                                          [showtime]['show_image'] !=
+                                      "")
                               ? CachedNetworkImage(
                                   imageUrl: baseurlimagepodcast +
                                       timeAndDate[weekday]['scheduleperdays']
@@ -396,11 +391,17 @@ class _ListenlivepageState extends State<Listenlivepage>
                                                             5),
                                                     child: GestureDetector(
                                                       child: (timeAndDate[weekday]
+                                                                          [
+                                                                          'scheduleperdays'][j]
                                                                       [
-                                                                      'scheduleperdays'][j]
-                                                                  [
-                                                                  'show_image'] !=
-                                                              null)
+                                                                      'show_image'] !=
+                                                                  null &&
+                                                              timeAndDate[weekday]
+                                                                          [
+                                                                          'scheduleperdays'][j]
+                                                                      [
+                                                                      'show_image'] !=
+                                                                  "")
                                                           ? CachedNetworkImage(
                                                               imageUrl: baseurlimagepodcast +
                                                                   timeAndDate[weekday]['scheduleperdays']

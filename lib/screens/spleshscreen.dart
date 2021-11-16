@@ -1,3 +1,4 @@
+import 'package:sound_chat/api/audiovideo_url.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/firebase.dart';
 
@@ -24,6 +25,7 @@ class SplashScreenState extends State<SpleshScreen> {
     // createGalleryState(context);
     // createHomesliderState(context);
     createtermsState(context);
+    createAudiovideoUrlsState(context);
     // createMembershipState(context);
     // createCoupncodeState(context);
     _loadSavedData();

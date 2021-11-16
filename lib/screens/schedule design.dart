@@ -29,8 +29,13 @@ class _ScheduleDesign extends State<ScheduleDesign> {
           7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
       day =
           7 - DateTime.now().subtract(Duration(hours: 9, minutes: 30)).weekday;
-      // weekday = 7 - DateTime.now().weekday;
-      //day = 7 - DateTime.now().weekday;
+
+      // weekday =
+      //     DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday - 1;
+      // if (weekday == -1) weekday = 6;
+      // day =
+      //     DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday - 1;
+      // if (day == -1) day = 6;
     });
   }
 
@@ -72,18 +77,21 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: height * 0.2002,
-                                  width: width * 1.018,
-                                  child: Image.network(
-                                    'https://i0.wp.com/soundchatradio.com/wp-content/uploads/2020/07/rsz_soundchat_wall-min.jpg?fit=960%2C500&ssl=1&resize=350%2C200',
-                                    fit: BoxFit.fitWidth,
-                                  ),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 10,
                             ),
+                            // Column(
+                            //   children: [
+                            //     SizedBox(
+                            //       height: height * 0.2002,
+                            //       width: width * 1.018,
+                            //       child: Image.network(
+                            //         'https://i0.wp.com/soundchatradio.com/wp-content/uploads/2020/07/rsz_soundchat_wall-min.jpg?fit=960%2C500&ssl=1&resize=350%2C200',
+                            //         fit: BoxFit.fitWidth,
+                            //       ),
+                            //     ),
+                            //   ],
+                            // ),
                             Container(
                               child: Padding(
                                 padding:
@@ -91,11 +99,15 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                 child: Text("UPCOMMING SHOWS",
                                     style: TextStyle(
                                       color: Colors.white,
+                                      fontWeight: FontWeight.w500,
                                       fontSize: 14,
                                     )),
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -126,11 +138,17 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                   backgroundColor:
                                                       Color(0xff324a69),
                                                   backgroundImage: (superherosLength[
-                                                                      weekday][
-                                                                  'scheduleperdays']
-                                                              [
-                                                              j]['show_image'] !=
-                                                          null)
+                                                                          weekday]
+                                                                      [
+                                                                      'scheduleperdays'][j]
+                                                                  [
+                                                                  'show_image'] !=
+                                                              null &&
+                                                          superherosLength[day][
+                                                                      'scheduleperdays'][j]
+                                                                  [
+                                                                  'show_image'] !=
+                                                              "")
                                                       ? NetworkImage(
                                                           baseurlimagepodcast +
                                                               superherosLength[
@@ -167,7 +185,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             .toString(),
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 14,
+                                                            fontSize: 13,
+                                                            fontWeight:
+                                                                FontWeight.w500,
                                                             fontFamily:
                                                                 fontfamily),
                                                         textAlign:
@@ -213,10 +233,10 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                   child: Text("WEEKLY SHEDULE:",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontFamily: fontfamily,
-                                          fontWeight: FontWeight.bold))),
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontFamily: fontfamily,
+                                      ))),
                             ),
                             Container(
                               color: Color(0xFF464646),
@@ -272,7 +292,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                       child: Text(
                                         value,
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             fontFamily: fontfamily),
                                       ),
                                     );
@@ -311,7 +331,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                                         'stripe_status'] ==
                                                                     'ACTIVE')
                                                             ? PodcastPlayCloud(
-                                                                j, weekday)
+                                                                j, day)
                                                             : UpgradeSubscription()));
                                           },
                                           child: Container(
@@ -324,12 +344,17 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 SizedBox(
-                                                  width: 120,
+                                                  width: 100,
                                                   child: (superherosLength[day][
-                                                                  'scheduleperdays']
-                                                              [
-                                                              j]['show_image'] !=
-                                                          null)
+                                                                      'scheduleperdays'][j]
+                                                                  [
+                                                                  'show_image'] !=
+                                                              null &&
+                                                          superherosLength[day][
+                                                                      'scheduleperdays'][j]
+                                                                  [
+                                                                  'show_image'] !=
+                                                              "")
                                                       ? CachedNetworkImage(
                                                           imageUrl: baseurlimagepodcast +
                                                               superherosLength[
@@ -343,7 +368,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                           placeholder:
                                                               (context, url) =>
                                                                   SizedBox(
-                                                            height: 120,
+                                                            height: 100,
                                                             child: Center(
                                                                 child:
                                                                     CircularProgressIndicator()),
@@ -351,7 +376,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                           errorWidget: (context,
                                                                   url, error) =>
                                                               SizedBox(
-                                                            height: 120,
+                                                            height: 100,
                                                             child: Icon(
                                                               Icons.error,
                                                               color:
@@ -369,7 +394,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                         ),
                                                 ),
                                                 SizedBox(
-                                                  width: 20,
+                                                  width: 30,
                                                 ),
                                                 Expanded(
                                                   child: Column(
@@ -387,7 +412,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             .toString(),
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 17,
+                                                            fontSize: 14,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             fontFamily:
@@ -398,7 +423,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             ['post_title'],
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 14,
+                                                            fontSize: 12,
                                                             fontFamily:
                                                                 fontfamily),
                                                       ),
@@ -415,7 +440,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                                 'show_end_date'],
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 16,
+                                                            fontSize: 12,
                                                             fontFamily:
                                                                 fontfamily),
                                                       )

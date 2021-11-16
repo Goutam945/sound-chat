@@ -98,7 +98,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 16,
+                                              fontSize: 14,
                                               fontFamily: fontfamily))),
                                 ),
                                 Container(
@@ -152,7 +152,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                           child: Text(
                                             value,
                                             style: TextStyle(
-                                                fontSize: 16,
+                                                fontSize: 14,
                                                 fontFamily: fontfamily),
                                           ),
                                         );
@@ -206,14 +206,19 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                         MainAxisAlignment.start,
                                                     children: [
                                                       SizedBox(
-                                                        width: 120,
-                                                        child: (superherosLength[
-                                                                            weekday]
+                                                        width: 100,
+                                                        child: (superherosLength[weekday]
+                                                                            [
+                                                                            'scheduleperdays'][j]
                                                                         [
-                                                                        'scheduleperdays'][j]
-                                                                    [
-                                                                    'show_image'] !=
-                                                                null)
+                                                                        'show_image'] !=
+                                                                    null &&
+                                                                superherosLength[weekday]
+                                                                            [
+                                                                            'scheduleperdays'][j]
+                                                                        [
+                                                                        'show_image'] !=
+                                                                    "")
                                                             ? CachedNetworkImage(
                                                                 imageUrl: baseurlimagepodcast +
                                                                     superherosLength[weekday]['scheduleperdays'][j]
@@ -226,7 +231,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                     (context,
                                                                             url) =>
                                                                         SizedBox(
-                                                                  height: 120,
+                                                                  height: 100,
                                                                   child: Center(
                                                                       child:
                                                                           CircularProgressIndicator()),
@@ -236,7 +241,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                             url,
                                                                             error) =>
                                                                         SizedBox(
-                                                                  height: 120,
+                                                                  height: 100,
                                                                   child: Icon(
                                                                     Icons.error,
                                                                     color: Colors
@@ -256,7 +261,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               ),
                                                       ),
                                                       SizedBox(
-                                                        width: 20,
+                                                        width: 30,
                                                       ),
                                                       Expanded(
                                                         child: Column(
@@ -278,7 +283,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 17,
+                                                                  fontSize: 14,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w500,
@@ -292,7 +297,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 14,
+                                                                  fontSize: 12,
                                                                   fontFamily:
                                                                       fontfamily),
                                                             ),
@@ -307,7 +312,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 16,
+                                                                  fontSize: 12,
                                                                   fontFamily:
                                                                       fontfamily),
                                                             )

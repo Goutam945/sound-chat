@@ -48,7 +48,9 @@ class _UpdatehomeState extends State<Updatehome> {
   int imageNo = 0;
   int bannerno = 0;
   bool isButtonPressed = false;
-
+  var apivideointerview;
+  var scheduleapi;
+  var bannerapi;
   @override
   void initState() {
     super.initState();
@@ -66,6 +68,9 @@ class _UpdatehomeState extends State<Updatehome> {
     // createAllpr   oductState(context);
     // createtermsState(context);
     // createCoupncodeState(context);
+    apivideointerview = createVideoState(context);
+    scheduleapi = createScheduleState(context);
+    bannerapi = createBanneradsState(context);
   }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -106,7 +111,7 @@ class _UpdatehomeState extends State<Updatehome> {
               child: Opacity(
                   opacity: 0.7,
                   child: FutureBuilder(
-                      future: createBanneradsState(context),
+                      future: bannerapi,
                       builder: (context, snapshot) {
                         if (snapshot.hasData)
                           return CarouselSlider(
@@ -216,7 +221,7 @@ class _UpdatehomeState extends State<Updatehome> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   FutureBuilder(
-                                      future: createScheduleState(context),
+                                      future: scheduleapi,
                                       builder: (context, snapshot) {
                                         if (snapshot.hasData) {
                                           showtime = getschedule(
@@ -226,7 +231,8 @@ class _UpdatehomeState extends State<Updatehome> {
                                           return Text(
                                             snapshot
                                                 .data
-                                                .data['data'][weekday]['scheduleperdays']
+                                                .data['data'][weekday]
+                                                    ['scheduleperdays']
                                                     [showtime]['show_name']
                                                 .toString(),
                                             textAlign: TextAlign.center,
@@ -282,7 +288,7 @@ class _UpdatehomeState extends State<Updatehome> {
                       height: 10,
                     ),
                     FutureBuilder(
-                        future: createVideoState(context),
+                        future: apivideointerview,
                         builder: (context, snapshot) {
                           if (snapshot.hasData)
                             return Container(

@@ -470,13 +470,14 @@ class _CardScreenState extends State<CardScreen> {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: fontfamily,
-                                          fontSize: 15,
+                                          fontSize: 12,
                                           color: Colors.white,
                                         )),
                                     Text("Color: " + cart.cart1[index].color,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: fontfamily,
+                                          fontSize: 12,
                                           color: Colors.white,
                                         )),
                                     Text(
@@ -486,6 +487,7 @@ class _CardScreenState extends State<CardScreen> {
                                                 .toString(),
                                         style: TextStyle(
                                           fontWeight: FontWeight.w500,
+                                          fontSize: 12,
                                           fontFamily: fontfamily,
                                           color: Colors.white,
                                         )),
@@ -495,6 +497,7 @@ class _CardScreenState extends State<CardScreen> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontFamily: fontfamily,
+                                              fontSize: 12,
                                               color: Colors.white,
                                             )),
                                         GestureDetector(
