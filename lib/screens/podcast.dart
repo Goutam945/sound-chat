@@ -206,7 +206,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                         MainAxisAlignment.start,
                                                     children: [
                                                       SizedBox(
-                                                        width: 100,
+                                                        width: 80,
                                                         child: (superherosLength[weekday]
                                                                             [
                                                                             'scheduleperdays'][j]
@@ -231,7 +231,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                     (context,
                                                                             url) =>
                                                                         SizedBox(
-                                                                  height: 100,
+                                                                  height: 80,
                                                                   child: Center(
                                                                       child:
                                                                           CircularProgressIndicator()),
@@ -241,7 +241,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                             url,
                                                                             error) =>
                                                                         SizedBox(
-                                                                  height: 100,
+                                                                  height: 80,
                                                                   child: Icon(
                                                                     Icons.error,
                                                                     color: Colors
@@ -290,6 +290,9 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   fontFamily:
                                                                       fontfamily),
                                                             ),
+                                                            SizedBox(
+                                                              height: 5,
+                                                            ),
                                                             Text(
                                                               superherosLength[
                                                                       weekday][
@@ -297,9 +300,12 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 12,
+                                                                  fontSize: 11,
                                                                   fontFamily:
                                                                       fontfamily),
+                                                            ),
+                                                            SizedBox(
+                                                              height: 5,
                                                             ),
                                                             Text(
                                                               "LIVE ON:  " +
@@ -312,7 +318,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .white,
-                                                                  fontSize: 12,
+                                                                  fontSize: 11,
                                                                   fontFamily:
                                                                       fontfamily),
                                                             )

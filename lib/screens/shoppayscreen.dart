@@ -596,6 +596,8 @@ class _ShopPayState extends State<ShopPay> {
           "quantity": cart.cart1[i].quantity,
           "size": cart.cart1[i].size,
           "color": cart.cart1[i].color,
+          "productname": cart.cart1[i].productname,
+          "image": cart.cart1[i].image,
           "total_price":
               (cart.cart1[i].price * cart.cart1[i].quantity).toString()
         }

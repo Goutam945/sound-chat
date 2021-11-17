@@ -229,10 +229,13 @@ class _CardScreenState extends State<CardScreen> {
           "quantity": cart.cart1[i].quantity,
           "size": cart.cart1[i].size,
           "color": cart.cart1[i].color,
+          "productname": cart.cart1[i].productname,
+          "image": cart.cart1[i].image,
           "total_price":
               (cart.cart1[i].price * cart.cart1[i].quantity).toString()
         }
     ];
+
     return SafeArea(
       child: Stack(children: [
         cart.cart1.length == 0

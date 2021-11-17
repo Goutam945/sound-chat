@@ -98,7 +98,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   subtitle: Text(
                     "Explore SoundChat catalog of exclusive interviews with your favourite artise and sound systems",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -131,7 +131,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   subtitle: Text(
                     "Miss a live show? Replay all your favourite show with a paid subscription package at your convenience.",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -164,7 +164,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   subtitle: Text(
                     "Shop for shoudhat merchandise ans show your support for the network and while repping your showbroadcaster.",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -195,7 +195,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   subtitle: Text(
                     "Take a trip down memory lane with SoundCaht Gallery,revisit moments that made us who we are today",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -226,7 +226,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   subtitle: Text(
                     "The the line up for all our daily programs,set reminders and get alerts when your show is schedule to start.",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -259,7 +259,7 @@ class _NewMenupageState extends State<NewMenupage> {
                   subtitle: Text(
                     "Manage your account subscription and how this app works on your mobile device.",
                     style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontFamily: fontfamily,
                         color: Colors.white),
                   ),
@@ -472,7 +472,6 @@ class _NewMenupageState extends State<NewMenupage> {
                                       "Contact Us",
                                       style: TextStyle(
                                           fontSize: 18,
-                                          fontWeight: FontWeight.bold,
                                           fontFamily: fontfamily,
                                           color: Colors.white),
                                     ),

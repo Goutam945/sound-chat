@@ -36,15 +36,19 @@ class _AllOrderlistState extends State<AllOrderlist> {
   String getStatus(String status) {
     switch (status) {
       case "0":
+        return "Placed";
+
+        break;
+      case "1":
         return "Prepared";
 
         break;
 
-      case "1":
+      case "2":
         return "Shipped";
 
         break;
-      case "2":
+      case "3":
         return "Delivered";
 
         break;
@@ -163,6 +167,9 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                                           FontWeight.w500,
                                                       fontFamily: fontfamily),
                                                 ),
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
                                                 Text(
                                                   data[j]['createdAt']
                                                       .toString()
@@ -171,6 +178,9 @@ class _AllOrderlistState extends State<AllOrderlist> {
                                                       color: Colors.white,
                                                       fontSize: 12,
                                                       fontFamily: fontfamily),
+                                                ),
+                                                SizedBox(
+                                                  height: 5,
                                                 ),
                                                 Text(
                                                   "Status: $status",

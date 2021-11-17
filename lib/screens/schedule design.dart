@@ -201,7 +201,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                   ['post_title'],
                                               style: TextStyle(
                                                 color: Colors.deepOrange,
-                                                fontSize: 13,
+                                                fontSize: 11,
                                                 fontFamily: fontfamily,
                                               ),
                                             ),
@@ -211,7 +211,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                   ['show_start_date'],
                                               style: TextStyle(
                                                   color: Color(0xFFE18D13),
-                                                  fontSize: 12,
+                                                  fontSize: 11,
                                                   fontFamily: fontfamily),
                                             ),
                                           ],
@@ -344,7 +344,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 SizedBox(
-                                                  width: 100,
+                                                  width: 80,
                                                   child: (superherosLength[day][
                                                                       'scheduleperdays'][j]
                                                                   [
@@ -368,7 +368,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                           placeholder:
                                                               (context, url) =>
                                                                   SizedBox(
-                                                            height: 100,
+                                                            height: 80,
                                                             child: Center(
                                                                 child:
                                                                     CircularProgressIndicator()),
@@ -376,7 +376,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                           errorWidget: (context,
                                                                   url, error) =>
                                                               SizedBox(
-                                                            height: 100,
+                                                            height: 80,
                                                             child: Icon(
                                                               Icons.error,
                                                               color:
@@ -418,14 +418,20 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                             fontFamily:
                                                                 fontfamily),
                                                       ),
+                                                      SizedBox(
+                                                        height: 5,
+                                                      ),
                                                       Text(
                                                         superherosLength[day]
                                                             ['post_title'],
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 12,
+                                                            fontSize: 11,
                                                             fontFamily:
                                                                 fontfamily),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 5,
                                                       ),
                                                       Text(
                                                         superherosLength[day][
@@ -440,7 +446,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                                 'show_end_date'],
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 12,
+                                                            fontSize: 11,
                                                             fontFamily:
                                                                 fontfamily),
                                                       )
