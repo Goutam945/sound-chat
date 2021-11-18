@@ -1,68 +1,96 @@
 import 'package:flutter/material.dart';
 
-class StepperDemo extends StatefulWidget {
+class Ordertraking extends StatefulWidget {
   final int currentStep;
 
-  StepperDemo({Key key, @required this.currentStep}) : super();
+  Ordertraking({Key key, @required this.currentStep}) : super();
 
   final String title = "Stepper Demo";
 
   @override
-  StepperDemoState createState() => StepperDemoState();
+  OrdertrakingState createState() => OrdertrakingState();
 }
 
-class StepperDemoState extends State<StepperDemo> {
-  List<Step> steps = [
-    Step(
-      title: Text('Order',
-          style: TextStyle(
-              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white)),
-      content: Text('Your Order has been placed',
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
-      isActive: true,
-    ),
-    Step(
-      title: Text('Packed',
-          style: TextStyle(
-              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white)),
-      content: Text('Seller has Processed your order',
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
-      isActive: true,
-    ),
-    Step(
-      title: Text('Shipped',
-          style: TextStyle(
-              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white)),
-      content: Text('EKart Express',
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
-      isActive: true,
-    ),
-    Step(
-      title: Text('Deliverd',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          )),
-      content: Text('Succesfully deliverd',
-          style: TextStyle(
-              fontSize: 11, fontWeight: FontWeight.bold, color: Colors.white)),
-      isActive: true,
-      state: StepState.complete,
-    ),
-  ];
+class OrdertrakingState extends State<Ordertraking> {
   @override
   Widget build(BuildContext context) {
+    List<Step> steps = [
+      Step(
+        title: Text('Order Placed',
+            style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        content: Text('Your Order has been placed',
+            style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        // content: SizedBox(
+        //   height: 10,
+        //   width: 10,
+        // ),
+        // subtitle: Text('Your Order has been placed',
+        //     style: TextStyle(
+        //         fontSize: 11,
+        //         fontWeight: FontWeight.bold,
+        //         color: Colors.white)),
+
+        isActive: widget.currentStep >= 0,
+      ),
+      Step(
+        title: Text('Order Prepared',
+            style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        content: Text('Seller has Processed your order',
+            style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        isActive: widget.currentStep >= 1,
+      ),
+      Step(
+        title: Text('Order Shipped',
+            style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        content: Text('Reday to Courier',
+            style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        isActive: widget.currentStep >= 2,
+      ),
+      Step(
+        title: Text('Order Deliverd',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            )),
+        content: Text('Succesfully deliverd',
+            style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+        isActive: widget.currentStep >= 3,
+        state: StepState.complete,
+      ),
+    ];
     return Scaffold(
       backgroundColor: Colors.black,
       // Body
-      body: Stepper(
-        currentStep: widget.currentStep,
-        steps: steps,
-        type: StepperType.vertical,
+      body: Theme(
+        data: ThemeData(colorScheme: ColorScheme.light(primary: Colors.green)),
+        child: Stepper(
+          currentStep: widget.currentStep,
+          physics: const NeverScrollableScrollPhysics(),
+          steps: steps,
+          type: StepperType.vertical,
+        ),
       ),
     );
   }

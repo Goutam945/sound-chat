@@ -144,7 +144,9 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                                                                   [
                                                                   'show_image'] !=
                                                               null &&
-                                                          superherosLength[day][
+                                                          superherosLength[
+                                                                          weekday]
+                                                                      [
                                                                       'scheduleperdays'][j]
                                                                   [
                                                                   'show_image'] !=

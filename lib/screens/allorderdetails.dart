@@ -36,7 +36,7 @@ class _AllOrderlistState extends State<AllOrderlist> {
   String getStatus(String status) {
     switch (status) {
       case "0":
-        return "Placed";
+        return "Order Placed";
 
         break;
       case "1":

@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/screens/advertisesoundcahat.dart';
 import 'package:sound_chat/screens/allorderdetails.dart';
 
 class NewMenupage extends StatefulWidget {
@@ -588,21 +589,28 @@ class _NewMenupageState extends State<NewMenupage> {
                                 //     ),
                                 //   ],
                                 // ),
-                                // Row(
-                                //   children: [
-                                //     SizedBox(
-                                //       width: 5,
-                                //     ),
-                                //     Text(
-                                //       "Advertise With  SoundChat",
-                                //       style: TextStyle(
-                                //           fontSize: fontSize,
-                                //           fontWeight: FontWeight.bold,
-                                //           fontFamily: fontfamily,
-                                //           color: Colors.white),
-                                //     ),
-                                //   ],
-                                // ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AdvertisesmentSoundchat()));
+                                      },
+                                      child: Text(
+                                        "Advertise With  SoundChat",
+                                        style: TextStyle(
+                                            fontSize: fontSize,
+                                            fontFamily: fontfamily,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ],

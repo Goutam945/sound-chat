@@ -30,7 +30,8 @@ class _RefundpolicyState extends State<Refundpolicy> {
                           isLoading = false;
                         });
                       },
-                      initialUrl: "",
+                      initialUrl:
+                          "http://3.15.206.161/privacypolicy/index.html",
                     ),
                   ),
                 ],

@@ -57,20 +57,20 @@ class _ListenState extends State<PodcastPlayCloud> {
                         width: width,
                         color: Color(0xFF780001),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Column(
-                        children: [
-                          //SizedBox(child: Image.asset('assets/imgpodcast.png',fit: BoxFit.fill,),height:height*0.3013,width: width,),
-                          Text("Podcast from this show",
-                              style: TextStyle(
-                                  color: Color(0xFF8A8889), fontSize: 20)),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      // SizedBox(
+                      //   height: 30,
+                      // ),
+                      // Column(
+                      //   children: [
+                      //     //SizedBox(child: Image.asset('assets/imgpodcast.png',fit: BoxFit.fill,),height:height*0.3013,width: width,),
+                      //     Text("Podcast from this show",
+                      //         style: TextStyle(
+                      //             color: Color(0xFF8A8889), fontSize: 20)),
+                      //   ],
+                      // ),
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
                       Expanded(
                         child: WebView(
                           javascriptMode: JavascriptMode.unrestricted,
@@ -91,8 +91,8 @@ class _ListenState extends State<PodcastPlayCloud> {
               top: AppBar().preferredSize.height * 0.1,
               left: width * 0.39865,
               child: SizedBox(
-                  height: height * 0.12168,
-                  width: width * 0.21875,
+                  height: height * 0.11068,
+                  width: width * 0.21075,
                   child: Image.asset(
                     'assets/soundpic.png',
                   ))),

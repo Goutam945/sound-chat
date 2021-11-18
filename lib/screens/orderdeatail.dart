@@ -306,7 +306,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
   var superherosLength;
   String email;
   String name;
-  List items;
+  List items = [];
   @override
   void initState() {
     super.initState();
@@ -327,20 +327,20 @@ class _OrderdeatailState extends State<Orderdeatail> {
   String getStatus(String status) {
     switch (status) {
       case "0":
-        return "Placed";
+        return "Order Placed";
 
         break;
       case "1":
-        return "Prepared";
+        return "Order Prepared";
 
         break;
 
       case "2":
-        return "Shipped";
+        return "Order Shipped";
 
         break;
       case "3":
-        return "Delivered";
+        return "Order Delivered";
 
         break;
 
@@ -357,9 +357,6 @@ class _OrderdeatailState extends State<Orderdeatail> {
     double height = MediaQuery.of(context).size.height;
     items = widget.order['items'];
     String status = getStatus(widget.order['order_status']);
-
-    //   if(Provider.of<ScheduleResponse>(context, listen: false).data!=null)
-    // superherosLength = Provider.of<ScheduleResponse>(context, listen: false).data['data'];
     return SafeArea(
       child: Stack(
         children: [
@@ -368,30 +365,17 @@ class _OrderdeatailState extends State<Orderdeatail> {
               backgroundColor: Colors.black,
               appBar: PreferredSize(
                   preferredSize: Size.fromHeight(55), child: Backappbar()),
-              body: Column(
+              body: ListView(
                 children: [
                   SizedBox(height: 20),
-                  // Center(
-                  //     child: Text(
-                  //   '[Order#${widget.order['order_id']}]',
-                  //   style: TextStyle(
-                  //       fontSize: 22,
-                  //       fontWeight: FontWeight.bold,
-                  //       color: Colors.green),
-                  // )),
-
-                  Expanded(
-                      child: StepperDemo(
-                    currentStep: int.parse(widget.order['order_status']),
-                  )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "Shipping Details",
                         style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
                             color: Colors.white),
                       ),
                       Row(
@@ -399,15 +383,15 @@ class _OrderdeatailState extends State<Orderdeatail> {
                           Text(
                             "Status:  ",
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
                                 color: Colors.white),
                           ),
                           Text(
                             status,
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
                                 color: Colors.white),
                           ),
                           SizedBox(
@@ -438,35 +422,35 @@ class _OrderdeatailState extends State<Orderdeatail> {
                         Text(
                           widget.order['address_1'] + ",",
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                               color: Colors.white,
                               fontFamily: fontfamily),
                         ),
                         Text(
                           widget.order['city'] + ",",
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                               color: Colors.white,
                               fontFamily: fontfamily),
                         ),
                         Text(
                           widget.order['state'] + ",",
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                               color: Colors.white,
                               fontFamily: fontfamily),
                         ),
                         Text(
                           widget.order['postcode'] + ",",
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                               color: Colors.white,
                               fontFamily: fontfamily),
                         ),
                         Text(
                           widget.order['phone'],
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 13,
                               color: Colors.white,
                               fontFamily: fontfamily),
                         ),
@@ -480,7 +464,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                                 " " +
                                 widget.order['payment_method'].toString(),
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 13,
                                 color: Colors.white,
                                 fontFamily: fontfamily),
                           ),
@@ -519,274 +503,166 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     child: Text(
                       "Product Details",
                       style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
                           color: Colors.white),
                     ),
                   ),
-                  /* Expanded(
-                    child: ListView.builder(
-                        itemCount: items.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  "Product Details",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, right: 15),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Text("Quantity",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                        Text("Color",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                        Text("Size",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                        Text("Total price",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                      ],
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                            items[index]['quantity'].toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                        Text(items[index]['color'].toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                        Text(items[index]['size'].toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                        Text(
-                                            items[index]['total_price']
-                                                .toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily)),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                height: 1,
-                                color: Colors.orange,
-                              ),
-                            ],
-                          );
-                        }),
-                  ),*/
-                  Expanded(
-                    child: ListView.builder(
-                        itemCount: items.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 15),
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            // height: 160,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF222222),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15),
-                                  topRight: Radius.circular(15),
-                                  bottomLeft: Radius.circular(15),
-                                  bottomRight: Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: Offset(
-                                      0, 2), // changes position of shadow
-                                ),
-                              ],
+                  for (int index = 0; index < items.length; index++)
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      // height: 160,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF222222),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
+                            bottomLeft: Radius.circular(15),
+                            bottomRight: Radius.circular(15)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 2,
+                            offset: Offset(0, 2), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              items[index]['productname'],
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepOrange),
                             ),
-                            child: Column(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    items[index]['productname'],
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.deepOrange),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                height: 80,
+                                width: 80,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: CachedNetworkImage(
+                                    imageUrl: baseurlimageproduct +
+                                        items[index]['image'],
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) => SizedBox(
+                                      height: 80,
+                                      child: Center(
+                                          child: CircularProgressIndicator()),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        SizedBox(
+                                      height: 80,
+                                      child: Icon(
+                                        Icons.error,
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    Container(
-                                      height: 80,
-                                      width: 80,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: CachedNetworkImage(
-                                          imageUrl: baseurlimageproduct +
-                                              items[index]['image'],
-                                          fit: BoxFit.cover,
-                                          placeholder: (context, url) =>
-                                              SizedBox(
-                                            height: 80,
-                                            child: Center(
-                                                child:
-                                                    CircularProgressIndicator()),
-                                          ),
-                                          errorWidget: (context, url, error) =>
-                                              SizedBox(
-                                            height: 80,
-                                            child: Icon(
-                                              Icons.error,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                    Text("Quantity",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
                                     SizedBox(
-                                      width: 10,
+                                      height: 5,
                                     ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text("Quantity",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text("Color",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text("Size",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text("Total price",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                        ],
-                                      ),
+                                    Text("Color",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
+                                    SizedBox(
+                                      height: 5,
                                     ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                              items[index]['quantity']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(items[index]['color'].toString(),
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(items[index]['size'].toString(),
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                          SizedBox(
-                                            height: 5,
-                                          ),
-                                          Text(
-                                              items[index]['total_price']
-                                                  .toString(),
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontFamily: fontfamily)),
-                                        ],
-                                      ),
-                                    )
+                                    Text("Size",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text("Total price",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
                                   ],
                                 ),
-                              ],
-                            ),
-                          );
-                        }),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(items[index]['quantity'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(items[index]['color'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(items[index]['size'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(items[index]['total_price'].toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 12,
+                                            fontFamily: fontfamily)),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  SizedBox(height: 10),
+                  Container(
+                    height: 400,
+                    child: Ordertraking(
+                      currentStep: int.parse(widget.order['order_status']),
+                    ),
                   ),
                 ],
               )),
