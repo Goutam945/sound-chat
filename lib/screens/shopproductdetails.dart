@@ -18,9 +18,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
 
   getSize() {
     for (int i = 0; i < widget.product['productavailabilities'].length; i++) {
-      String size = widget.product['productavailabilities'][i]['size'];
+      // String size = widget.product['productavailabilities'][i]['size'];
       String color = widget.product['productavailabilities'][i]['color'];
-      if (!sizes.contains(size)) sizes.add(size);
+      // if (!sizes.contains(size)) sizes.add(size);
       if (!colors.contains(color)) colors.add(color);
     }
 
@@ -30,7 +30,12 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
     // }
     setState(() {
       dropdownColor = colors.first;
-      dropdownSize = sizes.first;
+      //dropdownSize = list.first['size'];
+      filteredProducts =
+          list.where((element) => element['color'] == colors.first).toList();
+      dropdownSize = filteredProducts.first['size'];
+
+      print(filteredProducts);
       stock = list.first['avaibility'];
       price = list.first['price'];
       productimg = list.first['Image'];
@@ -40,14 +45,14 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   ProductModellist cart;
   int _itemCount = 1;
   String dropdownColor = 'Select Color';
-  String dropdownSize = 'Select Size';
+  String dropdownSize;
 
   List<bool> butoncolor = [for (int i = 0; i < 4; i++) true];
   bool itemFound = false;
   var countprice;
-  List<String> sizes = [];
+  //List<String> sizes = [];
   List<String> colors = [];
-
+  List filteredProducts = [];
   int productId;
   int stock = 0;
   int price = 0;
@@ -176,7 +181,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ],
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(widget.product['description'],
@@ -186,7 +190,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                         fontSize: 12,
                       )),
                 ),
-
                 SizedBox(
                   height: height * 0.0146,
                 ),
@@ -227,13 +230,20 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownColor = newValue;
-                              int index = list.indexWhere((element) =>
-                                  element['size'] == dropdownSize &&
-                                  element['color'] == dropdownColor);
-                              productId = list[index]['id'];
-                              stock = list[index]['avaibility'];
-                              price = list[index]['price'];
-                              productimg = list[index]['Image'];
+
+                              filteredProducts = list
+                                  .where((element) =>
+                                      element['color'] == dropdownColor)
+                                  .toList();
+                              dropdownSize = filteredProducts.first['size'];
+
+                              int index = filteredProducts.indexWhere(
+                                  (element) =>
+                                      element['color'] == dropdownColor);
+                              productId = filteredProducts[index]['id'];
+                              stock = filteredProducts[index]['avaibility'];
+                              price = filteredProducts[index]['price'];
+                              productimg = filteredProducts[index]['Image'];
                               print("productId " + productId.toString());
                               print("stock " + stock.toString());
                             });
@@ -267,7 +277,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: height * 0.0146,
                 ),
@@ -308,19 +317,21 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           onChanged: (String newValue) {
                             setState(() {
                               dropdownSize = newValue;
-                              int index = list.indexWhere((element) =>
-                                  element['size'] == dropdownSize &&
-                                  element['color'] == dropdownColor);
-                              productId = list[index]['id'];
-                              stock = list[index]['avaibility'];
-                              price = list[index]['price'];
-                              productimg = list[index]['Image'];
+                              int index = filteredProducts.indexWhere(
+                                  (element) =>
+                                      element['size'] == dropdownSize &&
+                                      element['color'] == dropdownColor);
+                              productId = filteredProducts[index]['id'];
+                              stock = filteredProducts[index]['avaibility'];
+                              price = filteredProducts[index]['price'];
+                              productimg = filteredProducts[index]['Image'];
                             });
                             print("productId " + productId.toString());
                             print("stock " + stock.toString());
                           },
-                          items: sizes
-                              .map<DropdownMenuItem<String>>((String value) {
+                          items: <String>[
+                            for (Map i in filteredProducts) i["size"]
+                          ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: Text(
@@ -337,47 +348,9 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: height * 0.0146,
                 ),
-
-                // Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: <Widget>[
-                //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
-                //       onPressed: () {
-                //       //comdition check on iteam dulicate
-                //       for(int i=0;i<cart.cart1.length;i++)
-                //        // if(widget.id==cart.cart1[i].id)
-                //         if(cart.cart1.length >=1 && widget.product==cart.cart1[i].id && dropdownSize==cart.cart1[i].size && dropdownColor==cart.cart1[i].color )
-                //           setState(() {
-                //             itemFound=true;
-                //             cart.cart1[i].quantity++;
-                //             countprice=cart.cart1[i].price;
-                //             countprice= cart.cart1[i].price+cart.cart1[i].price;//price coutnt in plus
-                //             cart.sum1=cart.sum1+cart.cart1[i].price;
-                //           });
-                //         else{setState(() {
-                //             itemFound=false;
-                //           });}
-                //         if(!itemFound)//endd*/
-                //           Provider.of<ProductModellist>(context, listen: false).add1(widget.product['title'], double.parse(widget.product['Price']), dropdownSize, dropdownColor, _itemCount,widget.product['id'],widget.product['image'],context);
-                //         print(cart.cart1.length.toString());
-                //         Toast.show("Added to cart", context,
-                //             duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                //       },
-                //       child: Text('Add to Cart',style: TextStyle(fontSize: 13),),
-                //     ),
-                //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
-                //       onPressed: () {
-                //         Provider.of<ProductModellist>(context, listen: false).addbuynow(widget.product['title'],double.parse(widget.product['Price']), dropdownSize, dropdownColor, _itemCount,
-                //             widget.product['id'],
-                //             widget.product['image'],context);
-                //       },
-                //       child: Text('Buy Now',style: TextStyle(fontSize: 13),),
-                //     ),
-                //   ],
-                // )
               ],
             )),
         Positioned(
