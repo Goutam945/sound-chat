@@ -45,6 +45,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
 
   int productId;
   int stock = 0;
+  int price = 0;
   List list = [];
 
   @override
@@ -370,7 +371,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                 // fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
                       ),
-                      Text("\$" + widget.product['Price'],
+                      Text("\$" + "$price",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.red,
@@ -435,6 +436,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                   element['color'] == dropdownColor);
                               productId = list[index]['id'];
                               stock = list[index]['avaibility'];
+                              price = list[index]['price'];
                             });
                             print("productId " + productId.toString());
                             print("stock " + stock.toString());
@@ -514,6 +516,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                   element['color'] == dropdownColor);
                               productId = list[index]['id'];
                               stock = list[index]['avaibility'];
+                              price = list[index]['price'];
                               print("productId " + productId.toString());
                               print("stock " + stock.toString());
                             });

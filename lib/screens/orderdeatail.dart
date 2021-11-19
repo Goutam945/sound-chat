@@ -378,27 +378,27 @@ class _OrderdeatailState extends State<Orderdeatail> {
                             fontWeight: FontWeight.w700,
                             color: Colors.white),
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            "Status:  ",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            status,
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          )
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     Text(
+                      //       "Status:  ",
+                      //       style: TextStyle(
+                      //           fontSize: 15,
+                      //           fontWeight: FontWeight.w700,
+                      //           color: Colors.white),
+                      //     ),
+                      //     Text(
+                      //       status,
+                      //       style: TextStyle(
+                      //           fontSize: 15,
+                      //           fontWeight: FontWeight.w700,
+                      //           color: Colors.white),
+                      //     ),
+                      //     SizedBox(
+                      //       width: 10,
+                      //     )
+                      //   ],
+                      // ),
                     ],
                   ),
                   SizedBox(
@@ -492,7 +492,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
                     height: 20,
                   ),
                   Container(
-                    height: 2,
+                    height: 1,
                     color: Colors.orange,
                   ),
                   SizedBox(
@@ -657,6 +657,24 @@ class _OrderdeatailState extends State<Orderdeatail> {
                         ],
                       ),
                     ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 1,
+                    color: Colors.orange,
+                  ),
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Order Status",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white),
+                    ),
+                  ),
                   SizedBox(height: 10),
                   Container(
                     height: 400,

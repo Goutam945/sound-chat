@@ -16,6 +16,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
   String email;
   String name;
   var membership;
+  int showtime = 0;
   int id;
   @override
   void initState() {
@@ -72,6 +73,8 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     var superherosLength = snapshot.data.data['data'];
+                    showtime =
+                        getschedule(context: context, data: superherosLength);
                     return ListView(
                       children: [
                         Column(
@@ -114,7 +117,7 @@ class _ScheduleDesign extends State<ScheduleDesign> {
                           child: (superherosLength.length != null)
                               ? Row(
                                   children: [
-                                    for (int j = 0;
+                                    for (int j = showtime;
                                         j <
                                             superherosLength[weekday]
                                                     ['scheduleperdays']
