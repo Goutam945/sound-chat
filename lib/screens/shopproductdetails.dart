@@ -19,16 +19,21 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   getSize() {
     for (int i = 0; i < widget.product['productavailabilities'].length; i++) {
       String size = widget.product['productavailabilities'][i]['size'];
-      if (!sizes.contains(size)) sizes.add(size);
-    }
-    for (int i = 0; i < widget.product['productavailabilities'].length; i++) {
       String color = widget.product['productavailabilities'][i]['color'];
+      if (!sizes.contains(size)) sizes.add(size);
       if (!colors.contains(color)) colors.add(color);
     }
+
+    // for (int i = 0; i < widget.product['productavailabilities'].length; i++) {
+    //   String color = widget.product['productavailabilities'][i]['color'];
+    //   if (!colors.contains(color)) colors.add(color);
+    // }
     setState(() {
       dropdownColor = colors.first;
       dropdownSize = sizes.first;
       stock = list.first['avaibility'];
+      price = list.first['price'];
+      productimg = list.first['Image'];
     });
   }
 
@@ -46,6 +51,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   int productId;
   int stock = 0;
   int price = 0;
+  String productimg = '';
   List list = [];
 
   @override
@@ -97,12 +103,12 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       Vibration.vibrate();
                       cart.add1(
                           widget.product['title'],
-                          double.parse(widget.product['Price']),
+                          double.parse("$price"),
                           dropdownSize,
                           dropdownColor,
                           _itemCount,
                           widget.product['id'],
-                          widget.product['image'],
+                          productimg,
                           productId,
                           stock,
                           context);
@@ -112,217 +118,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       outOfStockDialog(context: context, stock: stock);
                     }
                   }
-
-                  // for (int i = 0; i < cart.cart1.length; i++)
-
-                  //   // if (cart.cart1.length >= 1 &&
-                  //   //     widget.product == cart.cart1[i].id &&
-                  //   //     dropdownSize == cart.cart1[i].size &&
-                  //   //     dropdownColor == cart.cart1[i].color)
-                  //   if (cart.cart1.length >= 1 &&
-                  //       cart.cart1[i].productId == productId)
-                  //     // checkProductStock(
-                  //     //         context: context,
-                  //     //         quantity: cart.cart1[i].quantity,
-                  //     //         stock: cart.cart1[i].stock)
-                  //     //     .then((value) {
-                  //     //   if (value) {
-
-                  //     //   }
-                  //     // });
-                  //     setState(() {
-                  //       itemFound = true;
-                  //       cart.cart1[i].quantity++;
-                  //       countprice = cart.cart1[i].price;
-                  //       countprice = cart.cart1[i].price +
-                  //           cart.cart1[i].price; //price coutnt in plus
-                  //       cart.sum1 = cart.sum1 + cart.cart1[i].price;
-                  //     });
-                  //   else {
-                  //     setState(() {
-                  //       itemFound = false;
-                  //     });
-                  //   }
-                  // if (!itemFound &&
-                  //     dropdownSize != "Select Size" &&
-                  //     dropdownColor != "Select Color" &&
-                  //     stock != 0) //endd*/
-                  // {
-                  //   Vibration.vibrate();
-                  //   cart.add1(
-                  //       widget.product['title'],
-                  //       double.parse(widget.product['Price']),
-                  //       dropdownSize,
-                  //       dropdownColor,
-                  //       _itemCount,
-                  //       widget.product['id'],
-                  //       widget.product['image'],
-                  //       productId,
-                  //       stock,
-                  //       context);
-                  //   Toast.show("Added to cart", context,
-                  //       duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
-                  // }
-                  // print(cart.cart1.length.toString());
                 },
                 child: Icon(Icons.shopping_cart)),
-            // bottomNavigationBar: Container(
-            //   height: 46,
-            //   child: Row(
-            //     children: <Widget>[
-            //       Expanded(
-            //         child: Container(
-            //           alignment: Alignment.center,
-            //           decoration: BoxDecoration(
-            //             gradient: LinearGradient(
-            //               colors: [Color(0xFFE18D13), Colors.orange],
-            //               begin: FractionalOffset.centerLeft,
-            //               end: FractionalOffset.centerRight,
-            //             ),
-            //           ),
-            //           child: TextButton(
-            //             onPressed: () {
-            //               Vibration.vibrate();
-            //               ProductModellist product = ProductModellist(
-            //                   widget.product['title'],
-            //                   dropdownColor,
-            //                   double.parse(widget.product['Price']),
-            //                   dropdownSize,
-            //                   _itemCount,
-            //                   widget.product['id'],
-            //                   widget.product['image']);
-            //               // cart.cart1.forEach((element) {
-            //               //   //element.productId==productId
-            //               //   print("PPP" + element.productId.toString());
-            //               // });
-
-            //               for (int i = 0; i < cart.cart1.length; i++)
-
-            //                 // if (cart.cart1.length >= 1 &&
-            //                 //     widget.product == cart.cart1[i].id &&
-            //                 //     dropdownSize == cart.cart1[i].size &&
-            //                 //     dropdownColor == cart.cart1[i].color)
-            //                 if (cart.cart1.length >= 1 &&
-            //                     cart.cart1[i].productId == productId)
-            //                   setState(() {
-            //                     itemFound = true;
-            //                     cart.cart1[i].quantity++;
-            //                     countprice = cart.cart1[i].price;
-            //                     countprice = cart.cart1[i].price +
-            //                         cart.cart1[i].price; //price coutnt in plus
-            //                     cart.sum1 = cart.sum1 + cart.cart1[i].price;
-            //                   });
-            //                 else {
-            //                   setState(() {
-            //                     itemFound = false;
-            //                   });
-            //                 }
-            //               if (!itemFound &&
-            //                   dropdownSize != "Select Size" &&
-            //                   dropdownColor != "Select Color" &&
-            //                   stock != 0) //endd*/
-            //               {
-            //                 cart.add1(
-            //                     widget.product['title'],
-            //                     double.parse(widget.product['Price']),
-            //                     dropdownSize,
-            //                     dropdownColor,
-            //                     _itemCount,
-            //                     widget.product['id'],
-            //                     widget.product['image'],
-            //                     productId,
-            //                     stock,
-            //                     context);
-            //                 Toast.show("Added to cart", context,
-            //                     duration: Toast.LENGTH_SHORT,
-            //                     gravity: Toast.BOTTOM);
-            //               }
-            //               // print(cart.cart1.length.toString());
-            //             },
-            //             child: Text(
-            //               'Add to Cart',
-            //               style: TextStyle(fontSize: 15, color: Colors.white),
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //       Expanded(
-            //         child: Container(
-            //           alignment: Alignment.center,
-            //           decoration: BoxDecoration(
-            //             gradient: LinearGradient(
-            //               colors: [Color(0xFF780001), Color(0xFF780001)],
-            //               begin: FractionalOffset.centerLeft,
-            //               end: FractionalOffset.centerRight,
-            //             ),
-            //           ),
-            //           child: TextButton(
-            //             onPressed: () {
-            //               Vibration.vibrate();
-            //               /* Provider.of<ProductModellist>(context, listen: false)
-            //                   .addbuynow(
-            //                       widget.product['title'],
-            //                       double.parse(widget.product['Price']),
-            //                       dropdownSize,
-            //                       dropdownColor,
-            //                       _itemCount,
-            //                       widget.product['id'],
-            //                       widget.product['image'],
-            //                       productId,
-            //                       context);*/
-            //               ProductModellist product = ProductModellist(
-            //                   widget.product['title'],
-            //                   dropdownColor,
-            //                   double.parse(widget.product['Price']),
-            //                   dropdownSize,
-            //                   _itemCount,
-            //                   widget.product['id'],
-            //                   widget.product['image']);
-
-            //               for (int i = 0; i < cart.cart1.length; i++)
-            //                 if (cart.cart1.length >= 1 &&
-            //                     cart.cart1[i].productId == productId)
-            //                   setState(() {
-            //                     itemFound = true;
-            //                     cart.cart1[i].quantity++;
-            //                     countprice = cart.cart1[i].price;
-            //                     countprice = cart.cart1[i].price +
-            //                         cart.cart1[i].price; //price coutnt in plus
-            //                     cart.sum1 = cart.sum1 + cart.cart1[i].price;
-            //                   });
-            //                 else {
-            //                   setState(() {
-            //                     itemFound = false;
-            //                   });
-            //                 }
-            //               if (!itemFound &&
-            //                   dropdownSize != "Select Size" &&
-            //                   dropdownColor != "Select Color" &&
-            //                   stock != 0) //endd*/
-            //               {
-            //                 cart.add1(
-            //                     widget.product['title'],
-            //                     double.parse(widget.product['Price']),
-            //                     dropdownSize,
-            //                     dropdownColor,
-            //                     _itemCount,
-            //                     widget.product['id'],
-            //                     widget.product['image'],
-            //                     productId,
-            //                     stock,
-            //                     context);
-            //               }
-            //             },
-            //             child: Text(
-            //               'Buy Now',
-            //               style: TextStyle(fontSize: 15, color: Colors.white),
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             body: ListView(
               children: [
                 SizedBox(
@@ -333,8 +130,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       GestureDetector(
                         child: CachedNetworkImage(
                           //imageUrl:widget.product[j]['images'],
-                          imageUrl:
-                              baseurlimageproduct + widget.product['image'],
+                          imageUrl: baseurlimageproduct + productimg,
                           fit: BoxFit.cover,
                           placeholder: (context, url) =>
                               Center(child: CircularProgressIndicator()),
@@ -347,7 +143,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               PageTransition(
                                   type: PageTransitionType.scale,
                                   child: FullImageproduct(
-                                    images: [widget.product['image']],
+                                    images: [productimg],
                                     currentIndex: 0,
                                   )));
                         },
@@ -403,7 +199,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       ),
                       height: height * 0.0702,
                       child: Center(
-                        child: Text("Size:   ",
+                        child: Text("Color: ",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -417,7 +213,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: DropdownButton<String>(
                           dropdownColor: Color(0xFF464646),
-                          value: dropdownSize,
+                          value: dropdownColor,
                           icon: Icon(
                             Icons.arrow_drop_down_sharp,
                             color: Colors.white,
@@ -430,18 +226,19 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           ),
                           onChanged: (String newValue) {
                             setState(() {
-                              dropdownSize = newValue;
+                              dropdownColor = newValue;
                               int index = list.indexWhere((element) =>
                                   element['size'] == dropdownSize &&
                                   element['color'] == dropdownColor);
                               productId = list[index]['id'];
                               stock = list[index]['avaibility'];
                               price = list[index]['price'];
+                              productimg = list[index]['Image'];
+                              print("productId " + productId.toString());
+                              print("stock " + stock.toString());
                             });
-                            print("productId " + productId.toString());
-                            print("stock " + stock.toString());
                           },
-                          items: sizes
+                          items: colors
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -483,7 +280,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       ),
                       height: height * 0.0702,
                       child: Center(
-                        child: Text("Color: ",
+                        child: Text("Size:   ",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 14,
@@ -497,7 +294,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       child: Center(
                         child: DropdownButton<String>(
                           dropdownColor: Color(0xFF464646),
-                          value: dropdownColor,
+                          value: dropdownSize,
                           icon: Icon(
                             Icons.arrow_drop_down_sharp,
                             color: Colors.white,
@@ -510,18 +307,19 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           ),
                           onChanged: (String newValue) {
                             setState(() {
-                              dropdownColor = newValue;
+                              dropdownSize = newValue;
                               int index = list.indexWhere((element) =>
                                   element['size'] == dropdownSize &&
                                   element['color'] == dropdownColor);
                               productId = list[index]['id'];
                               stock = list[index]['avaibility'];
                               price = list[index]['price'];
-                              print("productId " + productId.toString());
-                              print("stock " + stock.toString());
+                              productimg = list[index]['Image'];
                             });
+                            print("productId " + productId.toString());
+                            print("stock " + stock.toString());
                           },
-                          items: colors
+                          items: sizes
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -543,6 +341,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                 SizedBox(
                   height: height * 0.0146,
                 ),
+
                 // Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 //   children: <Widget>[
                 //     ElevatedButton(style:ElevatedButton.styleFrom( primary: Color(0xFFdd0e34)),
