@@ -494,6 +494,17 @@ class _CardScreenState extends State<CardScreen> {
                                           fontFamily: fontfamily,
                                           color: Colors.white,
                                         )),
+                                    Text(
+                                        "Discount: " +
+                                            (cart.cart1[index].discount)
+                                                .toString() +
+                                            "%",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                          color: Colors.white,
+                                        )),
                                     Row(
                                       children: [
                                         Text("Quantity: ",
@@ -520,7 +531,12 @@ class _CardScreenState extends State<CardScreen> {
                                                           .cart1[index].price +
                                                       cart.cart1[index].price;
                                                   cart.sum1 = cart.sum1 -
-                                                      cart.cart1[index].price;
+                                                      (cart.cart1[index].price -
+                                                          cart.cart1[index]
+                                                                  .price *
+                                                              cart.cart1[index]
+                                                                  .discount /
+                                                              100);
                                                 });
                                             }),
                                         Text(
@@ -553,8 +569,12 @@ class _CardScreenState extends State<CardScreen> {
                                                       cart.cart1[index]
                                                           .price; //price coutnt in plus
                                                   cart.sum1 = cart.sum1 +
-                                                      cart.cart1[index]
-                                                          .price; //all value saum
+                                                      (cart.cart1[index].price -
+                                                          cart.cart1[index]
+                                                                  .price *
+                                                              cart.cart1[index]
+                                                                  .discount /
+                                                              100); //all value saum
                                                 });
                                               }
                                             });
@@ -590,8 +610,9 @@ class _CardScreenState extends State<CardScreen> {
                                       cart.remove1(
                                           index,
                                           cart.cart1[index].price,
+                                          cart.cart1[index].quantity,
                                           cart.cart1[index]
-                                              .quantity); //remove card
+                                              .discount); //remove card
                                     },
                                   )..show();
                                 },

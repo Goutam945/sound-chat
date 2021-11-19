@@ -35,7 +35,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
           list.where((element) => element['color'] == colors.first).toList();
       dropdownSize = filteredProducts.first['size'];
 
-      print(filteredProducts);
       stock = list.first['avaibility'];
       price = list.first['price'];
       productimg = list.first['Image'];
@@ -90,8 +89,10 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           countprice = cart.cart1[indexOfMatchedItem].price +
                               cart.cart1[indexOfMatchedItem]
                                   .price; //price coutnt in plus
-                          cart.sum1 =
-                              cart.sum1 + cart.cart1[indexOfMatchedItem].price;
+                          cart.sum1 = cart.sum1 +
+                              (cart.cart1[indexOfMatchedItem].price -
+                                  cart.cart1[indexOfMatchedItem].discount /
+                                      100);
                           Toast.show("Added to cart", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
@@ -116,6 +117,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                           productimg,
                           productId,
                           stock,
+                          int.parse(widget.product['Discount']),
                           context);
                       Toast.show("Added to cart", context,
                           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
