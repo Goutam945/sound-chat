@@ -430,7 +430,7 @@ class _CardScreenState extends State<CardScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: height * 0.1270,
+                                  height: height * 0.1390,
                                   margin: EdgeInsets.only(left: 20),
                                   width: width * 0.2194,
                                   // decoration: BoxDecoration(

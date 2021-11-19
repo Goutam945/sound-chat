@@ -6,7 +6,7 @@ class ShopCheckoutscreen extends StatefulWidget {
 }
 
 class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
-  var cardvalue;
+  ProductModellist cardvalue;
   var countprice;
   @override
   void initState() {
@@ -78,7 +78,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
                       ],
@@ -254,9 +254,12 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
@@ -267,12 +270,12 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text("Total Quantity:",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
+                                  // Text("Total Quantity:",
+                                  //     style: TextStyle(
+                                  //       color: Color(0xFFFFFFFF),
+                                  //       fontSize: 12,
+                                  //       fontFamily: fontfamily,
+                                  //     )),
                                   Text("Subtotal:",
                                       style: TextStyle(
                                         color: Color(0xFFFFFFFF),
@@ -303,12 +306,12 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(cardvalue.cart1.length.toString(),
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
+                                  // Text(cardvalue.cart1.length.toString(),
+                                  //     style: TextStyle(
+                                  //       color: Color(0xFFFFFFFF),
+                                  //       fontSize: 12,
+                                  //       fontFamily: fontfamily,
+                                  //     )),
                                   Text("\$" + cardvalue.sum1.toString(),
                                       style: TextStyle(
                                         color: Color(0xFFFFFFFF),

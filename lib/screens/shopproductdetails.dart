@@ -180,6 +180,15 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                               color: Colors.red,
                               fontSize: 20,
                               fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Text(widget.product['Discount'].toString() + "% off",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 14,
+                          )),
                     ],
                   ),
                 ),

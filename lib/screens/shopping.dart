@@ -84,15 +84,35 @@ class _ShoppingState extends State<Shopping> {
                                               ),
                                             ),
                                           ),
-                                          Text(
-                                            "\$" +
-                                                product[i]['Price'].toString(),
-                                            style: TextStyle(
-                                              color: Colors.red,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: fontfamily,
-                                              fontSize: 14,
-                                            ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "\$" +
+                                                    product[i]['Price']
+                                                        .toString(),
+                                                style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: fontfamily,
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                              Text(
+                                                product[i]['Discount']
+                                                        .toString() +
+                                                    "% off",
+                                                style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontFamily: fontfamily,
+                                                  fontSize: 13,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                           // Container(color: Color(0xFFdd0e34),height: 30,width: 120,
                                           //   child: Center(child: Text("Select Options",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
