@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:sound_chat/api/audiovideo_url.dart';
+import 'package:sound_chat/api/tokennotification.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/firebase.dart';
 
@@ -15,10 +18,14 @@ class SplashScreenState extends State<SpleshScreen> {
   @override
   void initState() {
     firebase(context);
-    // final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-    // _firebaseMessaging.getToken().then((token) {
-    //   print('token: $token');
-    // });
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+    _firebaseMessaging.getToken().then((gettoken) {
+      print('token: $gettoken');
+      createTokenapiState(
+          token: gettoken,
+          devicetype: Platform.operatingSystem,
+          context: context);
+    });
 
     createtermsState(context);
     createAudiovideoUrlsState(context);

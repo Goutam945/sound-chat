@@ -60,3 +60,8 @@ int getschedule({context, data}) {
     }
   return 0;
 }
+
+String getDiscountPrice(double price, int discount) {
+  return (price - double.parse((price * discount / 100).toStringAsFixed(2)))
+      .toString();
+}

@@ -179,21 +179,37 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                 // fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
                       ),
-                      Text("\$" + "$price",
+                      Text(
+                          "\$" +
+                              getDiscountPrice(double.parse("$price"),
+                                  int.parse(widget.product['Discount'])) +
+                              " ",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 20,
                               fontWeight: FontWeight.bold)),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(widget.product['Discount'].toString() + "% off",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 14,
-                          )),
+                      if (int.parse(widget.product['Discount']) > 0)
+                        Text("\$" + "$price",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                decorationColor: Colors.white,
+                                decorationStyle: TextDecorationStyle.solid,
+                                decoration: TextDecoration.lineThrough,
+                                fontWeight: FontWeight.normal)),
+                      if (int.parse(widget.product['Discount']) > 0)
+                        SizedBox(
+                          width: 15,
+                        ),
+                      if (int.parse(widget.product['Discount']) > 0)
+                        Text(widget.product['Discount'].toString() + "% off",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 14,
+                            )),
                     ],
                   ),
                 ),
