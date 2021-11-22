@@ -534,11 +534,17 @@ class _CardScreenState extends State<CardScreen> {
                                                       cart.cart1[index].price;
                                                   cart.sum1 = cart.sum1 -
                                                       (cart.cart1[index].price -
-                                                          cart.cart1[index]
-                                                                  .price *
-                                                              cart.cart1[index]
-                                                                  .discount /
-                                                              100);
+                                                          double.parse((cart
+                                                                      .cart1[
+                                                                          index]
+                                                                      .price *
+                                                                  cart
+                                                                      .cart1[
+                                                                          index]
+                                                                      .discount /
+                                                                  100)
+                                                              .toStringAsFixed(
+                                                                  2)));
                                                 });
                                             }),
                                         Text(
@@ -572,11 +578,17 @@ class _CardScreenState extends State<CardScreen> {
                                                           .price; //price coutnt in plus
                                                   cart.sum1 = cart.sum1 +
                                                       (cart.cart1[index].price -
-                                                          cart.cart1[index]
-                                                                  .price *
-                                                              cart.cart1[index]
-                                                                  .discount /
-                                                              100); //all value saum
+                                                          double.parse((cart
+                                                                      .cart1[
+                                                                          index]
+                                                                      .price *
+                                                                  cart
+                                                                      .cart1[
+                                                                          index]
+                                                                      .discount /
+                                                                  100)
+                                                              .toStringAsFixed(
+                                                                  2))); //all value saum
                                                 });
                                               }
                                             });

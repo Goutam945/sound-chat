@@ -107,6 +107,7 @@ Future<SignUpResponse> createSignUpState(
   request.fields['coupon'] = coupon;
   request.fields['device_token'] = token;
   request.fields['device_type'] = divicetype;
+  request.fields['device_name'] = "device_name";
   // request.files.add(await http.MultipartFile.fromPath('profilepic', _image.path,
   //     filename: _image.path.split('/').last));
   (profilepic != null)

@@ -43,7 +43,9 @@ class ProductModellist with ChangeNotifier {
       stock, discount, context) {
     this.cart1.add(ProductModellist(productname, color, price, size, quantity,
         id, image, productId, stock, discount));
-    this.sum1 = (this.sum1 + (price - price * discount / 100) * quantity);
+    this.sum1 = (this.sum1 +
+        (price - double.parse((price * discount / 100).toStringAsFixed(2))) *
+            quantity);
     notifyListeners();
     // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CardScreen()));
     // Navigator.of(context)
@@ -63,9 +65,11 @@ class ProductModellist with ChangeNotifier {
   //           type: PageTransitionType.rightToLeft, child: CardScreen()));
   // }
 
-  void remove1(i, price, quantity, discount) {
+  void remove1(int i, double price, int quantity, int discount) {
     this.cart1.remove(this.cart1[i]);
-    this.sum1 = (this.sum1 - ((price - price * discount / 100) * quantity));
+    this.sum1 = (this.sum1 -
+        ((price - double.parse((price * discount / 100).toStringAsFixed(2))) *
+            quantity));
     notifyListeners();
   }
 

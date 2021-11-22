@@ -49,7 +49,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
 
   List<bool> butoncolor = [for (int i = 0; i < 4; i++) true];
   bool itemFound = false;
-  var countprice;
+  //var countprice;
   //List<String> sizes = [];
   List<String> colors = [];
   List filteredProducts = [];
@@ -86,14 +86,18 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                       if (value) {
                         setState(() {
                           cart.cart1[indexOfMatchedItem].quantity++;
-                          countprice = cart.cart1[indexOfMatchedItem].price;
-                          countprice = cart.cart1[indexOfMatchedItem].price +
-                              cart.cart1[indexOfMatchedItem]
-                                  .price; //price coutnt in plus
+                          // countprice = cart.cart1[indexOfMatchedItem].price;
+                          // countprice = cart.cart1[indexOfMatchedItem].price +
+                          //     cart.cart1[indexOfMatchedItem]
+                          //         .price; //price coutnt in plus
                           cart.sum1 = cart.sum1 +
                               (cart.cart1[indexOfMatchedItem].price -
-                                  cart.cart1[indexOfMatchedItem].discount /
-                                      100);
+                                  double.parse(
+                                      (cart.cart1[indexOfMatchedItem].price *
+                                              cart.cart1[indexOfMatchedItem]
+                                                  .discount /
+                                              100)
+                                          .toStringAsFixed(2)));
                           Toast.show("Added to cart", context,
                               duration: Toast.LENGTH_SHORT,
                               gravity: Toast.BOTTOM);
