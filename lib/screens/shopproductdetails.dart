@@ -38,6 +38,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
       stock = list.first['avaibility'];
       price = list.first['price'];
       productimg = list.first['Image'];
+      productId = list.first['id'];
     });
   }
 
@@ -52,7 +53,7 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
   //List<String> sizes = [];
   List<String> colors = [];
   List filteredProducts = [];
-  int productId;
+  int productId = 0;
   int stock = 0;
   int price = 0;
   String productimg = '';
@@ -250,7 +251,8 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
 
                               int index = filteredProducts.indexWhere(
                                   (element) =>
-                                      element['color'] == dropdownColor);
+                                      element['color'] == dropdownColor &&
+                                      element['size'] == dropdownSize);
                               productId = filteredProducts[index]['id'];
                               stock = filteredProducts[index]['avaibility'];
                               price = filteredProducts[index]['price'];

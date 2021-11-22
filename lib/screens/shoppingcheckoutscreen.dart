@@ -51,7 +51,8 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                   child: Shopaddress()));
                         },
                         child: Text(
-                          " Total Amount Pay:   \$" + cardvalue.sum1.toString(),
+                          " Total Amount Pay:   \$" +
+                              cardvalue.sum1.toStringAsFixed(2),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -312,7 +313,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                   //       fontSize: 12,
                                   //       fontFamily: fontfamily,
                                   //     )),
-                                  Text("\$" + cardvalue.sum1.toString(),
+                                  Text("\$" + cardvalue.sum1.toStringAsFixed(2),
                                       style: TextStyle(
                                         color: Color(0xFFFFFFFF),
                                         fontSize: 12,
@@ -330,7 +331,7 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                                         fontSize: 12,
                                         fontFamily: fontfamily,
                                       )),
-                                  Text("\$" + cardvalue.sum1.toString(),
+                                  Text("\$" + cardvalue.sum1.toStringAsFixed(2),
                                       style: TextStyle(
                                         color: Color(0xFFFFFFFF),
                                         fontSize: 12,

@@ -11,11 +11,17 @@ class Registrationshipnext extends StatefulWidget {
 
 class _SignupnextPageState extends State<Registrationshipnext> {
   bool value = false;
+  String token;
 
   @override
   void initState() {
     // SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+    _firebaseMessaging.getToken().then((gettoken) {
+      print('token: $gettoken');
+      token = gettoken;
+    });
   }
 
   //Future<SignUpResponse> _futureJwt;
@@ -328,6 +334,8 @@ class _SignupnextPageState extends State<Registrationshipnext> {
                                     widget.phone,
                                     widget.country,
                                     _coupon.text,
+                                    token,
+                                    Platform.operatingSystem,
                                     _image,
                                     context)
                                 .whenComplete(() {

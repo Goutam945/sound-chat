@@ -92,6 +92,8 @@ Future<SignUpResponse> createSignUpState(
     String phoneNumber,
     String country,
     String coupon,
+    String token,
+    String divicetype,
     File profilepic,
     context) async {
   var request = http.MultipartRequest('POST', Uri.parse(baseUrl + 'signup'));
@@ -103,6 +105,8 @@ Future<SignUpResponse> createSignUpState(
   request.fields['mobileno'] = phoneNumber;
   request.fields['country'] = country;
   request.fields['coupon'] = coupon;
+  request.fields['device_token'] = token;
+  request.fields['device_type'] = divicetype;
   // request.files.add(await http.MultipartFile.fromPath('profilepic', _image.path,
   //     filename: _image.path.split('/').last));
   (profilepic != null)

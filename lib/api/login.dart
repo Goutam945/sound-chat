@@ -77,13 +77,15 @@ import 'package:http/http.dart' as http;
 import 'package:sound_chat/common/shared_preferences.dart';
 import 'package:sound_chat/screens/homebottomBar.dart';
 
-Future<LoginResponse> createLoginState(
-    String mobile, String password, bool isRemembered, context) async {
+Future<LoginResponse> createLoginState(String mobile, String password,
+    bool isRemembered, String token, String divicetype, context) async {
   final http.Response response = await http.post(Uri.parse(baseUrl + 'signin'),
       headers: <String, String>{"content-type": "application/json"},
       body: jsonEncode({
         'mobileno': mobile,
         'password': password,
+        'device_token': token,
+        'device_type': divicetype,
       }));
   if (response.statusCode == 200) {
     //print(response.body);

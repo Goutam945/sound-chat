@@ -222,6 +222,7 @@ class _CardScreenState extends State<CardScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     var cart = context.watch<ProductModellist>();
+    print(cart.sum1.toString());
     lineItems = [
       for (int i = 0; i < cart.cart1.length; i++)
         {
@@ -331,12 +332,13 @@ class _CardScreenState extends State<CardScreen> {
                         child: Container(
                           alignment: Alignment.center,
                           color: Color(0xFFE18D13),
-                          child: Text("Total: \$" + (cart.sum1).toString(),
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              )),
+                          child:
+                              Text("Total: \$" + (cart.sum1).toStringAsFixed(2),
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  )),
                         ),
                       ),
                       Expanded(

@@ -15,19 +15,14 @@ class SplashScreenState extends State<SpleshScreen> {
   @override
   void initState() {
     firebase(context);
-    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-    _firebaseMessaging.getToken().then((token) {
-      // createFCMTokenState(token);
-      print('token: $token');
-    });
-    // createPhoneinterviewState(context);
-    // createScheduleState(context);
-    // createGalleryState(context);
-    // createHomesliderState(context);
+    // final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+    // _firebaseMessaging.getToken().then((token) {
+    //   print('token: $token');
+    // });
+
     createtermsState(context);
     createAudiovideoUrlsState(context);
-    // createMembershipState(context);
-    // createCoupncodeState(context);
+
     _loadSavedData();
     super.initState();
     /*Timer(

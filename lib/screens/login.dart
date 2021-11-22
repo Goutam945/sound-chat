@@ -272,6 +272,7 @@ class _DesignLogin extends State<NewLogin> {
 
 
 */
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:sound_chat/common/index.dart';
@@ -284,10 +285,16 @@ class NewLogin extends StatefulWidget {
 
 //SharedPreferences localStorage;
 class _DesignLogin extends State<NewLogin> {
+  String token;
   @override
   void initState() {
     super.initState();
     getuserpassword();
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+    _firebaseMessaging.getToken().then((gettoken) {
+      print('token: $gettoken');
+      token = gettoken;
+    });
   }
 
   final formKey = GlobalKey<FormState>();
@@ -517,8 +524,13 @@ class _DesignLogin extends State<NewLogin> {
                       GestureDetector(
                         onTap: () {
                           if (formKey.currentState.validate()) {
-                            createLoginState(_name.text, _password.text,
-                                    isRemembered, context)
+                            createLoginState(
+                                    _name.text,
+                                    _password.text,
+                                    isRemembered,
+                                    token,
+                                    Platform.operatingSystem,
+                                    context)
                                 .whenComplete(() {
                               setState(() {
                                 loader = false;
