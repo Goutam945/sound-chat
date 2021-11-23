@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -164,6 +163,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    scrollToBottom();
     return WillPopScope(
       onWillPop: onwillpop,
       child: SafeArea(
@@ -214,14 +214,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     future: _getMessages,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        print(snapshot.data.data);
+                        // print(snapshot.data.data);
                         return ListView.builder(
                             controller: _scrollController,
                             itemCount: messages.length,
                             padding: const EdgeInsets.all(8.0),
                             // shrinkWrap: true,
                             // addAutomaticKeepAlives: true,
-                            physics: AlwaysScrollableScrollPhysics(),
+                            physics: BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
                               // List data = snapshot.data.data['data'];
                               // MessageData msg = MessageData(
@@ -257,8 +257,8 @@ class _ChatScreenState extends State<ChatScreen> {
         child: Material(
           child: EmojiPicker(
             onEmojiSelected: (category, emoji) {
-              print(category);
-              print(emoji.emoji);
+              // print(category);
+              // print(emoji.emoji);
               _messageController.text = emoji.emoji;
               messageType = "emoji";
               sendMessage();
@@ -516,27 +516,27 @@ class _ChatScreenState extends State<ChatScreen> {
           isLoading = true;
           getMessages().then((value) => addOldMessages(value));
           lastMessageId -= 50;
-          print(lastMessageId);
+          // print(lastMessageId);
         });
       }
     }
-    print(_scrollController.position.maxScrollExtent);
+    // print(_scrollController.position.maxScrollExtent);
   }
 
   void scrollToBottom() async {
-    // _scrollController.position.maxScrollExtent;
-    // await Future.delayed(const Duration(milliseconds: 1000));
-    // SchedulerBinding.instance?.addPostFrameCallback((_) {
-    //   _scrollController.animateTo(_scrollController.position.maxScrollExtent,
-    //       duration: const Duration(milliseconds: 1000),
-    //       curve: Curves.fastOutSlowIn);
-    // });
+    await Future.delayed(const Duration(milliseconds: 0));
+    SchedulerBinding.instance?.addPostFrameCallback((_) {
+      _scrollController.jumpTo(
+        _scrollController.position.maxScrollExtent,
+        // duration: const Duration(milliseconds: 300), curve: Curves.linear
+      );
+    });
 
-    Timer(
-      Duration(seconds: 1),
-      () =>
-          _scrollController.jumpTo(_scrollController.position.maxScrollExtent),
-    );
+    // Timer(
+    //   Duration(seconds: 1),
+    //   () =>
+    //       _scrollController.jumpTo(_scrollController.position.maxScrollExtent),
+    // );
 
     _scrollController.addListener(pagination);
   }
@@ -547,7 +547,6 @@ class _ChatScreenState extends State<ChatScreen> {
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       Provider.of<SearchResponse>(context, listen: false).data = data;
-      print(data);
       return ChatResponse.fromJson(json.decode(response.body));
     } else {
       Toast.show(response.body, context,
@@ -562,7 +561,6 @@ class _ChatScreenState extends State<ChatScreen> {
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       Provider.of<SearchResponse>(context, listen: false).data = data;
-      // print(data);
       return ChatResponse.fromJson(json.decode(response.body));
     } else {
       Toast.show(response.body, context,
