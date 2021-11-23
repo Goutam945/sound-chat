@@ -163,6 +163,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    scrollToBottom();
     return WillPopScope(
       onWillPop: onwillpop,
       child: SafeArea(
@@ -220,7 +221,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             padding: const EdgeInsets.all(8.0),
                             // shrinkWrap: true,
                             // addAutomaticKeepAlives: true,
-                            physics: BouncingScrollPhysics(),
+                            physics: AlwaysScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               // List data = snapshot.data.data['data'];
                               // MessageData msg = MessageData(
