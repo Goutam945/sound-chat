@@ -409,8 +409,6 @@ class _CardScreenState extends State<CardScreen> {
                           Container(
                             margin: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
-                            // width: width * 0.7737,
-                            height: height * 0.2201,
                             decoration: BoxDecoration(
                               color: Color(0xFF222222),
                               borderRadius: BorderRadius.only(
@@ -432,9 +430,9 @@ class _CardScreenState extends State<CardScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: height * 0.1590,
+                                  height: 95,
                                   margin: EdgeInsets.only(left: 10),
-                                  width: width * 0.2294,
+                                  width: 95,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: CachedNetworkImage(
@@ -451,247 +449,267 @@ class _CardScreenState extends State<CardScreen> {
                                 SizedBox(
                                   width: 15,
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      width: width * 0.5,
-                                      child: Text(
-                                        cart.cart1[index].productname,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: fontfamily,
-                                          fontSize: 14,
-                                          color: Colors.white,
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: width * 0.6,
+                                        child: Text(
+                                          cart.cart1[index].productname,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          softWrap: false,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: fontfamily,
+                                            fontSize: 14,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.5,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Size: ",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: fontfamily,
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                              )),
-                                          Text(cart.cart1[index].size,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: fontfamily,
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.5,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Color: ",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: fontfamily,
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                              )),
-                                          Text(cart.cart1[index].color,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: fontfamily,
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                    if (cart.cart1[index].discount > 0)
                                       SizedBox(
                                         width: width * 0.5,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text("Discount: ",
+                                            Text("Size: ",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 12,
                                                   fontFamily: fontfamily,
-                                                  color: Colors.green,
+                                                  fontSize: 12,
+                                                  color: Colors.white,
                                                 )),
-                                            Text(
-                                                (cart.cart1[index].discount)
-                                                        .toString() +
-                                                    "%",
+                                            Text(cart.cart1[index].size,
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 12,
                                                   fontFamily: fontfamily,
-                                                  color: Colors.green,
+                                                  fontSize: 12,
+                                                  color: Colors.white,
                                                 )),
                                           ],
                                         ),
                                       ),
-                                    SizedBox(
-                                      width: width * 0.5,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Price: ",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 12,
-                                                fontFamily: fontfamily,
-                                                color: Colors.white,
-                                              )),
-                                          Row(
+                                      SizedBox(
+                                        width: width * 0.5,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text("Color: ",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: fontfamily,
+                                                  fontSize: 12,
+                                                  color: Colors.white,
+                                                )),
+                                            Text(cart.cart1[index].color,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: fontfamily,
+                                                  fontSize: 12,
+                                                  color: Colors.white,
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                      if (cart.cart1[index].discount > 0)
+                                        SizedBox(
+                                          width: width * 0.5,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text(
-                                                  "\$" +
-                                                      getDiscountPrice(
-                                                          cart.cart1[index]
-                                                                  .price *
-                                                              cart.cart1[index]
-                                                                  .quantity,
-                                                          cart.cart1[index]
-                                                              .discount),
+                                              Text("Discount: ",
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 12,
                                                     fontFamily: fontfamily,
-                                                    color: Colors.red,
+                                                    color: Colors.green,
                                                   )),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              if (cart.cart1[index].discount >
-                                                  0)
+                                              Text(
+                                                  (cart.cart1[index].discount)
+                                                          .toString() +
+                                                      "%",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 12,
+                                                    fontFamily: fontfamily,
+                                                    color: Colors.green,
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                      SizedBox(
+                                        width: width * 0.5,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text("Price: ",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 12,
+                                                  fontFamily: fontfamily,
+                                                  color: Colors.white,
+                                                )),
+                                            Row(
+                                              children: [
                                                 Text(
-                                                    (cart.cart1[index].price *
+                                                    "\$" +
+                                                        getDiscountPrice(
                                                             cart.cart1[index]
-                                                                .quantity)
-                                                        .toString(),
+                                                                    .price *
+                                                                cart
+                                                                    .cart1[
+                                                                        index]
+                                                                    .quantity,
+                                                            cart.cart1[index]
+                                                                .discount),
                                                     style: TextStyle(
-                                                      decorationColor:
-                                                          Colors.white,
-                                                      decorationStyle:
-                                                          TextDecorationStyle
-                                                              .solid,
-                                                      decoration: TextDecoration
-                                                          .lineThrough,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       fontSize: 12,
                                                       fontFamily: fontfamily,
-                                                      color: Colors.white,
+                                                      color: Colors.red,
                                                     )),
-                                            ],
+                                                SizedBox(
+                                                  width: 10,
+                                                ),
+                                                if (cart.cart1[index].discount >
+                                                    0)
+                                                  Text(
+                                                      (cart.cart1[index].price *
+                                                              cart.cart1[index]
+                                                                  .quantity)
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        decorationColor:
+                                                            Colors.white,
+                                                        decorationStyle:
+                                                            TextDecorationStyle
+                                                                .solid,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .lineThrough,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 12,
+                                                        fontFamily: fontfamily,
+                                                        color: Colors.white,
+                                                      )),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+
+                                      Row(
+                                        children: [
+                                          Text("Quantity: ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: fontfamily,
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              )),
+                                          GestureDetector(
+                                              child: new Icon(
+                                                Icons.arrow_left,
+                                                size: 30,
+                                                color: Colors.white,
+                                              ),
+                                              onTap: () {
+                                                if (cart.cart1[index].quantity >
+                                                    1)
+                                                  setState(() {
+                                                    cart.cart1[index]
+                                                        .quantity--;
+                                                    countprice =
+                                                        cart.cart1[index].price;
+                                                    countprice = cart
+                                                            .cart1[index]
+                                                            .price +
+                                                        cart.cart1[index].price;
+                                                    cart.sum1 = cart.sum1 -
+                                                        (cart.cart1[index]
+                                                                .price -
+                                                            double.parse((cart
+                                                                        .cart1[
+                                                                            index]
+                                                                        .price *
+                                                                    cart
+                                                                        .cart1[
+                                                                            index]
+                                                                        .discount /
+                                                                    100)
+                                                                .toStringAsFixed(
+                                                                    2)));
+                                                  });
+                                              }),
+                                          Text(
+                                            cart.cart1[index].quantity
+                                                .toString(),
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          GestureDetector(
+                                            child: new Icon(
+                                              Icons.arrow_right,
+                                              color: Colors.white,
+                                              size: 30,
+                                            ),
+                                            onTap: () {
+                                              checkProductStock(
+                                                      context: context,
+                                                      quantity: cart
+                                                          .cart1[index]
+                                                          .quantity,
+                                                      stock: cart
+                                                          .cart1[index].stock)
+                                                  .then((value) {
+                                                if (value) {
+                                                  setState(() {
+                                                    cart.cart1[index]
+                                                        .quantity++;
+                                                    countprice =
+                                                        cart.cart1[index].price;
+                                                    countprice = cart
+                                                            .cart1[index]
+                                                            .price +
+                                                        cart.cart1[index]
+                                                            .price; //price coutnt in plus
+                                                    cart.sum1 = cart.sum1 +
+                                                        (cart.cart1[index]
+                                                                .price -
+                                                            double.parse((cart
+                                                                        .cart1[
+                                                                            index]
+                                                                        .price *
+                                                                    cart
+                                                                        .cart1[
+                                                                            index]
+                                                                        .discount /
+                                                                    100)
+                                                                .toStringAsFixed(
+                                                                    2))); //all value saum
+                                                  });
+                                                }
+                                              });
+                                            },
                                           ),
                                         ],
                                       ),
-                                    ),
-
-                                    Row(
-                                      children: [
-                                        Text("Quantity: ",
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: fontfamily,
-                                              fontSize: 12,
-                                              color: Colors.white,
-                                            )),
-                                        GestureDetector(
-                                            child: new Icon(
-                                              Icons.arrow_left,
-                                              size: 30,
-                                              color: Colors.white,
-                                            ),
-                                            onTap: () {
-                                              if (cart.cart1[index].quantity >
-                                                  1)
-                                                setState(() {
-                                                  cart.cart1[index].quantity--;
-                                                  countprice =
-                                                      cart.cart1[index].price;
-                                                  countprice = cart
-                                                          .cart1[index].price +
-                                                      cart.cart1[index].price;
-                                                  cart.sum1 = cart.sum1 -
-                                                      (cart.cart1[index].price -
-                                                          double.parse((cart
-                                                                      .cart1[
-                                                                          index]
-                                                                      .price *
-                                                                  cart
-                                                                      .cart1[
-                                                                          index]
-                                                                      .discount /
-                                                                  100)
-                                                              .toStringAsFixed(
-                                                                  2)));
-                                                });
-                                            }),
-                                        Text(
-                                          cart.cart1[index].quantity.toString(),
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          child: new Icon(
-                                            Icons.arrow_right,
-                                            color: Colors.white,
-                                            size: 30,
-                                          ),
-                                          onTap: () {
-                                            checkProductStock(
-                                                    context: context,
-                                                    quantity: cart
-                                                        .cart1[index].quantity,
-                                                    stock:
-                                                        cart.cart1[index].stock)
-                                                .then((value) {
-                                              if (value) {
-                                                setState(() {
-                                                  cart.cart1[index].quantity++;
-                                                  countprice =
-                                                      cart.cart1[index].price;
-                                                  countprice = cart
-                                                          .cart1[index].price +
-                                                      cart.cart1[index]
-                                                          .price; //price coutnt in plus
-                                                  cart.sum1 = cart.sum1 +
-                                                      (cart.cart1[index].price -
-                                                          double.parse((cart
-                                                                      .cart1[
-                                                                          index]
-                                                                      .price *
-                                                                  cart
-                                                                      .cart1[
-                                                                          index]
-                                                                      .discount /
-                                                                  100)
-                                                              .toStringAsFixed(
-                                                                  2))); //all value saum
-                                                });
-                                              }
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                    // Text((cart.sum1*cart.cart1[index].quantity).toString(),
-                                    //     style: TextStyle(fontWeight: FontWeight.bold)),
-                                  ],
+                                      // Text((cart.sum1*cart.cart1[index].quantity).toString(),
+                                      //     style: TextStyle(fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
