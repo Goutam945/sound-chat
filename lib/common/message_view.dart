@@ -49,22 +49,9 @@ class MessageView extends StatelessWidget {
                       children: [
                         ConstrainedBox(
                           constraints: BoxConstraints(maxWidth: width * 0.7),
-                          child: Text(
-                            messages.message,
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(int.parse(
-                                    messages.textColor ?? "0xffffffff")),
-                                fontWeight: messages.bold
-                                    ? FontWeight.w800
-                                    : FontWeight.normal,
-                                fontStyle: messages.italic
-                                    ? FontStyle.italic
-                                    : FontStyle.normal,
-                                decoration: messages.underline
-                                    ? TextDecoration.underline
-                                    : TextDecoration.none),
-                          ),
+                          child: (messages.messageType == "text")
+                              ? textMessageView()
+                              : emojiMessageView(),
                         ),
                         // const SizedBox(
                         //   width: 10,
@@ -101,4 +88,28 @@ class MessageView extends StatelessWidget {
       ],
     );
   }
+
+  Widget textMessageView() => Text(
+        messages.message,
+        style: TextStyle(
+            fontSize: 14,
+            color: Color(int.parse(messages.textColor ?? "0xffffffff")),
+            fontWeight: messages.bold ? FontWeight.w800 : FontWeight.normal,
+            fontStyle: messages.italic ? FontStyle.italic : FontStyle.normal,
+            decoration: messages.underline
+                ? TextDecoration.underline
+                : TextDecoration.none),
+      );
+
+  Widget emojiMessageView() => Text(
+        messages.message,
+        style: TextStyle(
+            fontSize: 100,
+            color: Color(int.parse(messages.textColor ?? "0xffffffff")),
+            fontWeight: messages.bold ? FontWeight.w800 : FontWeight.normal,
+            fontStyle: messages.italic ? FontStyle.italic : FontStyle.normal,
+            decoration: messages.underline
+                ? TextDecoration.underline
+                : TextDecoration.none),
+      );
 }

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -31,6 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Color pickedBubbleColor = Color(0xFF0B410E);
   // Color currentColor = Color(0xff443a49);
   bool isBold = false, isItalic = false, isUnderline = false;
+  String messageType = "text";
 
   changeBubbleColor(Color color) {
     setState(() => pickedBubbleColor = color);
@@ -165,6 +169,12 @@ class _ChatScreenState extends State<ChatScreen> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.black,
+          // floatingActionButton: FloatingActionButton(
+          //   child: Icon(Icons.ac_unit),
+          //   onPressed: () {
+          //     scrollToBottom();
+          //   },
+          // ),
           // appBar: AppBar(
           //   title: Text(userName),
           // ),
@@ -242,6 +252,47 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
     );
   }
+
+  Widget emojiPicker() => SafeArea(
+        child: Material(
+          child: EmojiPicker(
+            onEmojiSelected: (category, emoji) {
+              print(category);
+              print(emoji.emoji);
+              _messageController.text = emoji.emoji;
+              messageType = "emoji";
+              sendMessage();
+              Navigator.pop(context);
+            },
+            onBackspacePressed: () {
+              // Backspace-Button tapped logic
+              // Remove this line to also remove the button in the UI
+            },
+            config: Config(
+                columns: 7,
+                emojiSizeMax: 32 *
+                    (Platform.isIOS
+                        ? 1.30
+                        : 1.0), // Issue: https://github.com/flutter/flutter/issues/28894
+                verticalSpacing: 0,
+                horizontalSpacing: 0,
+                initCategory: Category.RECENT,
+                bgColor: Color(0xFFF2F2F2),
+                indicatorColor: Colors.blue,
+                iconColor: Colors.grey,
+                iconColorSelected: Colors.blue,
+                progressIndicatorColor: Colors.blue,
+                showRecentsTab: true,
+                recentsLimit: 28,
+                noRecentsText: "No Recents",
+                noRecentsStyle:
+                    const TextStyle(fontSize: 20, color: Colors.black26),
+                tabIndicatorAnimDuration: kTabScrollDuration,
+                categoryIcons: const CategoryIcons(),
+                buttonMode: ButtonMode.MATERIAL),
+          ),
+        ),
+      );
 
   Widget chatStyles() => Padding(
         padding: const EdgeInsets.all(8.0),
@@ -353,13 +404,26 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: TextField(
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
               controller: _messageController,
               style: const TextStyle(fontSize: 14),
-              // onChanged: (value) {
-              //   socket!.emit("Typing");
-              // },
-              decoration: const InputDecoration(
-                  border: InputBorder.none, hintText: "Type a message..."),
+              onChanged: (value) {
+                // socket!.emit("Typing");
+                messageType = "text";
+              },
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Type a message...",
+                prefixIcon: IconButton(
+                  icon:
+                      Icon(Icons.emoji_emotions_outlined, color: Colors.black),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => emojiPicker()));
+                  },
+                ),
+              ),
             ),
           ),
         ),
@@ -389,7 +453,8 @@ class _ChatScreenState extends State<ChatScreen> {
               pickedBubbleColor.toString().split("(")[1].split(")")[0],
           bold: isBold,
           italic: isItalic,
-          underline: isUnderline);
+          underline: isUnderline,
+          messageType: messageType);
       setState(() {
         messages.add(message);
         _messageController.clear();
@@ -455,16 +520,23 @@ class _ChatScreenState extends State<ChatScreen> {
         });
       }
     }
+    print(_scrollController.position.maxScrollExtent);
   }
 
   void scrollToBottom() async {
     // _scrollController.position.maxScrollExtent;
-    await Future.delayed(const Duration(milliseconds: 1));
-    SchedulerBinding.instance?.addPostFrameCallback((_) {
-      _scrollController.animateTo(_scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.fastOutSlowIn);
-    });
+    // await Future.delayed(const Duration(milliseconds: 1000));
+    // SchedulerBinding.instance?.addPostFrameCallback((_) {
+    //   _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+    //       duration: const Duration(milliseconds: 1000),
+    //       curve: Curves.fastOutSlowIn);
+    // });
+
+    Timer(
+      Duration(seconds: 1),
+      () =>
+          _scrollController.jumpTo(_scrollController.position.maxScrollExtent),
+    );
 
     _scrollController.addListener(pagination);
   }
@@ -490,7 +562,7 @@ class _ChatScreenState extends State<ChatScreen> {
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       Provider.of<SearchResponse>(context, listen: false).data = data;
-      print(data);
+      // print(data);
       return ChatResponse.fromJson(json.decode(response.body));
     } else {
       Toast.show(response.body, context,
@@ -501,7 +573,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void addMessages(ChatResponse value) {
     List data = value.data['data'];
-    print("data from history: $data");
+    // print("data from history: $data");
     for (int i = 0; i < data.length; i++) {
       MessageData msg = MessageData(
           socketId: socket.id,
@@ -515,16 +587,22 @@ class _ChatScreenState extends State<ChatScreen> {
           messageBubbleColor: data[i]["messageBubbleColor"],
           italic: data[i]["italic"] != 0,
           bold: data[i]["bold"] != 0,
-          underline: data[i]["underline"] != 0);
+          underline: data[i]["underline"] != 0,
+          messageType:
+              (data[i]["messageType"] != "") ? data[i]["messageType"] : "text");
       messages.add(msg);
       // messages.insert(0, msg);
+      scrollToBottom();
     }
     lastMessageId = data[0]["id"];
+    setState(() {
+      scrollToBottom();
+    });
   }
 
   void addOldMessages(ChatResponse value) {
     List data = value.data['data'];
-    print("data from history: $data");
+    // print("data from history: $data");
     for (int i = data.length - 1; i >= 0; i--) {
       MessageData msg = MessageData(
           socketId: socket.id,
@@ -538,7 +616,9 @@ class _ChatScreenState extends State<ChatScreen> {
           messageBubbleColor: data[i]["messageBubbleColor"],
           bold: data[i]["bold"] != 0,
           italic: data[i]["italic"] != 0,
-          underline: data[i]["underline"] != 0);
+          underline: data[i]["underline"] != 0,
+          messageType:
+              (data[i]["messageType"] != "") ? data[i]["messageType"] : "text");
       messages.insert(0, msg);
     }
     setState(() {});

@@ -13,6 +13,7 @@ class MessageData {
   bool bold = false;
   bool italic = false;
   bool underline = false;
+  String messageType = ""; //emoji
 
   MessageData(
       {@required this.socketId,
@@ -26,7 +27,8 @@ class MessageData {
       @required this.messageBubbleColor,
       @required this.bold,
       @required this.italic,
-      @required this.underline});
+      @required this.underline,
+      @required this.messageType});
 
   factory MessageData.fromJson(Map<String, dynamic> jsonData) {
     return MessageData(
@@ -42,6 +44,8 @@ class MessageData {
       bold: jsonData['bold'] == 1,
       italic: jsonData['italic'] == 1,
       underline: jsonData['underline'] == 1,
+      messageType:
+          (jsonData['messageType'] != "") ? jsonData['messageType'] : "text",
     );
   }
 
@@ -59,6 +63,7 @@ class MessageData {
     m['bold'] = bold;
     m['italic'] = italic;
     m['underline'] = underline;
+    m['messageType'] = messageType;
     return m;
   }
 }

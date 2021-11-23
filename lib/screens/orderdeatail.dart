@@ -356,7 +356,7 @@ class _OrderdeatailState extends State<Orderdeatail> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     items = widget.order['items'];
-    String status = getStatus(widget.order['order_status']);
+    // String status = getStatus(widget.order['order_status']);
     return SafeArea(
       child: Stack(
         children: [
