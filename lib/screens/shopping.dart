@@ -88,30 +88,30 @@ class _ShoppingState extends State<Shopping> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                "\$" +
-                                                    product[i]['Price']
-                                                        .toString(),
-                                                style: TextStyle(
-                                                  color: Colors.red,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: fontfamily,
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 15,
-                                              ),
-                                              Text(
-                                                product[i]['Discount']
-                                                        .toString() +
-                                                    "% off",
-                                                style: TextStyle(
-                                                  color: Colors.green,
-                                                  fontFamily: fontfamily,
-                                                  fontSize: 13,
-                                                ),
-                                              ),
+                                              // Text(
+                                              //   "\$" +
+                                              //       product[i]['Price']
+                                              //           .toString(),
+                                              //   style: TextStyle(
+                                              //     color: Colors.red,
+                                              //     fontWeight: FontWeight.bold,
+                                              //     fontFamily: fontfamily,
+                                              //     fontSize: 14,
+                                              //   ),
+                                              // ),
+                                              // if (int.parse(
+                                              //         product[i]['Discount']) >
+                                              //     0)
+                                              // Text(
+                                              //   product[i]['Discount']
+                                              //           .toString() +
+                                              //       "% off",
+                                              //   style: TextStyle(
+                                              //     color: Colors.green,
+                                              //     fontFamily: fontfamily,
+                                              //     fontSize: 13,
+                                              //   ),
+                                              // ),
                                             ],
                                           ),
                                           // Container(color: Color(0xFFdd0e34),height: 30,width: 120,

@@ -65,26 +65,146 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                 ],
               ),
             ),
-            body: Column(
+            body: ListView(
               children: [
                 SizedBox(
                   height: 10,
                 ),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("Check out",
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: fontfamily,
+                          fontWeight: FontWeight.bold)),
+                ),
+                for (int index = 0; index < cardvalue.cart1.length; index++)
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    //width: width * 0.7737,
+                    //height: height * 0.2201,
+                    height: height * 0.1621,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF222222),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15)),
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.grey.withOpacity(0.5),
+                      //     spreadRadius: 5,
+                      //     blurRadius: 7,
+                      //     offset: Offset(0, 3), // changes position of shadow
+                      //   ),
+                      // ],
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("Your order",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
+                        Container(
+                          height: height * 0.1070,
+                          margin: EdgeInsets.only(left: 20),
+                          width: width * 0.2194,
+                          // decoration: BoxDecoration(
+                          //     border: Border.all(
+                          //         color: Colors.black38, width: 2)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: CachedNetworkImage(
+                              imageUrl: baseurlimageproduct +
+                                  cardvalue.cart1[index].image,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) =>
+                                  Center(child: CircularProgressIndicator()),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: width * 0.5,
+                              child: Text(
+                                cardvalue.cart1[index].productname,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  fontFamily: fontfamily,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            // Text(" Size:-" + cardvalue.cart1[index].size,
+                            //     style: TextStyle(fontWeight: FontWeight.bold)),
+                            // Text("Color:-" + cardvalue.cart1[index].color,
+                            //     style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text(
+                              "Quantity: " +
+                                  cardvalue.cart1[index].quantity.toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
                                 fontFamily: fontfamily,
-                                fontWeight: FontWeight.bold)),
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text("Price: ",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      fontFamily: fontfamily,
+                                      color: Colors.white,
+                                    )),
+                                Text(
+                                    "\$" +
+                                        getDiscountPrice(
+                                            cardvalue.cart1[index].price *
+                                                cardvalue.cart1[index].quantity,
+                                            cardvalue.cart1[index].discount),
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      fontFamily: fontfamily,
+                                      color: Colors.red,
+                                    )),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                if (cardvalue.cart1[index].discount > 0)
+                                  Text(
+                                      (cardvalue.cart1[index].price *
+                                              cardvalue.cart1[index].quantity)
+                                          .toString(),
+                                      style: TextStyle(
+                                        decorationColor: Colors.white,
+                                        decorationStyle:
+                                            TextDecorationStyle.solid,
+                                        decoration: TextDecoration.lineThrough,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        fontFamily: fontfamily,
+                                        color: Colors.white,
+                                      )),
+                              ],
+                            ),
+                          ],
+                        ),
                       ],
-                    )),
-                SizedBox(
+                    ),
+                  ),
+                /* SizedBox(
                   height: 250,
                   child: ListView.builder(
                       itemCount: cardvalue.cart1.length,
@@ -242,108 +362,119 @@ class _ShopCheckoutscreenState extends State<ShopCheckoutscreen> {
                           ),
                         );
                       }),
-                ),
+                ),*/
                 SizedBox(
                   height: 10,
                 ),
                 Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Product Details",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: fontfamily,
-                                fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Product Details",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: fontfamily,
+                              fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  // Text("Total Quantity:",
-                                  //     style: TextStyle(
-                                  //       color: Color(0xFFFFFFFF),
-                                  //       fontSize: 12,
-                                  //       fontFamily: fontfamily,
-                                  //     )),
-                                  Text("Subtotal:",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                  Text("Tax:",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                  Text("Shipping Charge:",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                  Text("Grand Total:",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  // Text(cardvalue.cart1.length.toString(),
-                                  //     style: TextStyle(
-                                  //       color: Color(0xFFFFFFFF),
-                                  //       fontSize: 12,
-                                  //       fontFamily: fontfamily,
-                                  //     )),
-                                  Text("\$" + cardvalue.sum1.toStringAsFixed(2),
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                  Text("\$0.00",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                  Text("\$0.00",
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                  Text("\$" + cardvalue.sum1.toStringAsFixed(2),
-                                      style: TextStyle(
-                                        color: Color(0xFFFFFFFF),
-                                        fontSize: 12,
-                                        fontFamily: fontfamily,
-                                      )),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    )),
+                          child: SizedBox(
+                            height: 80,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    // Text("Total Quantity:",
+                                    //     style: TextStyle(
+                                    //       color: Color(0xFFFFFFFF),
+                                    //       fontSize: 12,
+                                    //       fontFamily: fontfamily,
+                                    //     )),
+                                    Text("Subtotal:",
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                    Text("Tax:",
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                    Text("Shipping Charge:",
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                    Text("Grand Total:",
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Text(cardvalue.cart1.length.toString(),
+                                    //     style: TextStyle(
+                                    //       color: Color(0xFFFFFFFF),
+                                    //       fontSize: 12,
+                                    //       fontFamily: fontfamily,
+                                    //     )),
+                                    Text(
+                                        "\$" +
+                                            cardvalue.sum1.toStringAsFixed(2),
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                    Text("\$0.00",
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                    Text("\$0.00",
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                    Text(
+                                        "\$" +
+                                            cardvalue.sum1.toStringAsFixed(2),
+                                        style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 12,
+                                          fontFamily: fontfamily,
+                                        )),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),

@@ -432,13 +432,9 @@ class _CardScreenState extends State<CardScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: height * 0.1390,
-                                  margin: EdgeInsets.only(left: 20),
-                                  width: width * 0.2194,
-                                  // decoration: BoxDecoration(
-                                  //     border: Border.all(
-                                  //         color: Colors.black, width: 2),
-                                  // ),
+                                  height: height * 0.1590,
+                                  margin: EdgeInsets.only(left: 10),
+                                  width: width * 0.2294,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: CachedNetworkImage(
@@ -471,42 +467,139 @@ class _CardScreenState extends State<CardScreen> {
                                         ),
                                       ),
                                     ),
-                                    Text("Size: " + cart.cart1[index].size,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: fontfamily,
-                                          fontSize: 12,
-                                          color: Colors.white,
-                                        )),
-                                    Text("Color: " + cart.cart1[index].color,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: fontfamily,
-                                          fontSize: 12,
-                                          color: Colors.white,
-                                        )),
-                                    Text(
-                                        "Price: \$ " +
-                                            (cart.cart1[index].price *
-                                                    cart.cart1[index].quantity)
-                                                .toString(),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 12,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white,
-                                        )),
-                                    Text(
-                                        "Discount: " +
-                                            (cart.cart1[index].discount)
-                                                .toString() +
-                                            "%",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 12,
-                                          fontFamily: fontfamily,
-                                          color: Colors.white,
-                                        )),
+                                    SizedBox(
+                                      width: width * 0.5,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Size: ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: fontfamily,
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              )),
+                                          Text(cart.cart1[index].size,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: fontfamily,
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.5,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Color: ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: fontfamily,
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              )),
+                                          Text(cart.cart1[index].color,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: fontfamily,
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                    if (cart.cart1[index].discount > 0)
+                                      SizedBox(
+                                        width: width * 0.5,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text("Discount: ",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 12,
+                                                  fontFamily: fontfamily,
+                                                  color: Colors.green,
+                                                )),
+                                            Text(
+                                                (cart.cart1[index].discount)
+                                                        .toString() +
+                                                    "%",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 12,
+                                                  fontFamily: fontfamily,
+                                                  color: Colors.green,
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    SizedBox(
+                                      width: width * 0.5,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Price: ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 12,
+                                                fontFamily: fontfamily,
+                                                color: Colors.white,
+                                              )),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                  "\$" +
+                                                      getDiscountPrice(
+                                                          cart.cart1[index]
+                                                                  .price *
+                                                              cart.cart1[index]
+                                                                  .quantity,
+                                                          cart.cart1[index]
+                                                              .discount),
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 12,
+                                                    fontFamily: fontfamily,
+                                                    color: Colors.red,
+                                                  )),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              if (cart.cart1[index].discount >
+                                                  0)
+                                                Text(
+                                                    (cart.cart1[index].price *
+                                                            cart.cart1[index]
+                                                                .quantity)
+                                                        .toString(),
+                                                    style: TextStyle(
+                                                      decorationColor:
+                                                          Colors.white,
+                                                      decorationStyle:
+                                                          TextDecorationStyle
+                                                              .solid,
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 12,
+                                                      fontFamily: fontfamily,
+                                                      color: Colors.white,
+                                                    )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
                                     Row(
                                       children: [
                                         Text("Quantity: ",
@@ -604,7 +697,7 @@ class _CardScreenState extends State<CardScreen> {
                             ),
                           ),
                           Positioned(
-                            bottom: 30,
+                            bottom: 12,
                             right: 50,
                             child: GestureDetector(
                                 onTap: () {
@@ -630,9 +723,18 @@ class _CardScreenState extends State<CardScreen> {
                                     },
                                   )..show();
                                 },
-                                child: new Icon(
-                                  Icons.delete,
+                                child: Card(
+                                  elevation: 10,
                                   color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: new Icon(
+                                      Icons.delete,
+                                      color: Colors.red[400],
+                                    ),
+                                  ),
                                 )),
                           )
                         ],

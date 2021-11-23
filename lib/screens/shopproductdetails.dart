@@ -179,29 +179,39 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                                 // fontFamily: fontfamily,
                                 fontWeight: FontWeight.bold)),
                       ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
                       Text(
                           "\$" +
                               getDiscountPrice(double.parse("$price"),
-                                  int.parse(widget.product['Discount'])) +
-                              " ",
+                                  int.parse(widget.product['Discount'])),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.red,
                               fontSize: 20,
                               fontWeight: FontWeight.bold)),
                       if (int.parse(widget.product['Discount']) > 0)
+                        SizedBox(
+                          width: 10,
+                        ),
+                      if (int.parse(widget.product['Discount']) > 0)
                         Text("\$" + "$price",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 16,
                                 decorationColor: Colors.white,
                                 decorationStyle: TextDecorationStyle.solid,
                                 decoration: TextDecoration.lineThrough,
                                 fontWeight: FontWeight.normal)),
                       if (int.parse(widget.product['Discount']) > 0)
                         SizedBox(
-                          width: 15,
+                          width: 10,
                         ),
                       if (int.parse(widget.product['Discount']) > 0)
                         Text(widget.product['Discount'].toString() + "% off",
@@ -212,15 +222,6 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                             )),
                     ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(widget.product['description'],
-                      // textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      )),
                 ),
                 SizedBox(
                   height: height * 0.0146,
@@ -381,8 +382,17 @@ class _ShopProductdetailsState extends State<ShopProductdetails> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(widget.product['description'],
+                      // textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      )),
+                ),
                 SizedBox(
-                  height: height * 0.0146,
+                  height: 100,
                 ),
               ],
             )),
