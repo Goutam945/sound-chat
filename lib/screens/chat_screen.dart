@@ -1,8 +1,11 @@
-import 'dart:io';
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+// import 'dart:io';
+// import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+// import 'package:enough_giphy_flutter/enough_giphy_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+// import 'package:giphy_get/giphy_get.dart';
+import 'package:giphy_picker/giphy_picker.dart';
 import 'package:socket_io_client/socket_io_client.dart' as io;
 import 'package:sound_chat/Model/message_data.dart';
 import 'package:sound_chat/common/appConfig.dart';
@@ -252,46 +255,49 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget emojiPicker() => SafeArea(
-        child: Material(
-          child: EmojiPicker(
-            onEmojiSelected: (category, emoji) {
-              // print(category);
-              // print(emoji.emoji);
-              _messageController.text = emoji.emoji;
-              messageType = "emoji";
-              sendMessage();
-              Navigator.pop(context);
-            },
-            onBackspacePressed: () {
-              // Backspace-Button tapped logic
-              // Remove this line to also remove the button in the UI
-            },
-            config: Config(
-                columns: 7,
-                emojiSizeMax: 32 *
-                    (Platform.isIOS
-                        ? 1.30
-                        : 1.0), // Issue: https://github.com/flutter/flutter/issues/28894
-                verticalSpacing: 0,
-                horizontalSpacing: 0,
-                initCategory: Category.RECENT,
-                bgColor: Color(0xFFF2F2F2),
-                indicatorColor: Colors.blue,
-                iconColor: Colors.grey,
-                iconColorSelected: Colors.blue,
-                progressIndicatorColor: Colors.blue,
-                showRecentsTab: true,
-                recentsLimit: 28,
-                noRecentsText: "No Recents",
-                noRecentsStyle:
-                    const TextStyle(fontSize: 20, color: Colors.black26),
-                tabIndicatorAnimDuration: kTabScrollDuration,
-                categoryIcons: const CategoryIcons(),
-                buttonMode: ButtonMode.MATERIAL),
-          ),
-        ),
-      );
+  // Widget emojiPicker() => SafeArea(
+  //       child: Material(
+  //         child: GiphyPicker.pickGif(
+  //                 context: context,
+  //                 apiKey: '[YOUR GIPHY APIKEY]');,
+  //         // child: EmojiPicker(
+  //         //   onEmojiSelected: (category, emoji) {
+  //         //     // print(category);
+  //         //     // print(emoji.emoji);
+  //         //     _messageController.text = emoji.emoji;
+  //         //     messageType = "emoji";
+  //         //     sendMessage();
+  //         //     Navigator.pop(context);
+  //         //   },
+  //         //   onBackspacePressed: () {
+  //         //     // Backspace-Button tapped logic
+  //         //     // Remove this line to also remove the button in the UI
+  //         //   },
+  //         //   config: Config(
+  //         //       columns: 7,
+  //         //       emojiSizeMax: 32 *
+  //         //           (Platform.isIOS
+  //         //               ? 1.30
+  //         //               : 1.0), // Issue: https://github.com/flutter/flutter/issues/28894
+  //         //       verticalSpacing: 0,
+  //         //       horizontalSpacing: 0,
+  //         //       initCategory: Category.RECENT,
+  //         //       bgColor: Color(0xFFF2F2F2),
+  //         //       indicatorColor: Colors.blue,
+  //         //       iconColor: Colors.grey,
+  //         //       iconColorSelected: Colors.blue,
+  //         //       progressIndicatorColor: Colors.blue,
+  //         //       showRecentsTab: true,
+  //         //       recentsLimit: 28,
+  //         //       noRecentsText: "No Recents",
+  //         //       noRecentsStyle:
+  //         //           const TextStyle(fontSize: 20, color: Colors.black26),
+  //         //       tabIndicatorAnimDuration: kTabScrollDuration,
+  //         //       categoryIcons: const CategoryIcons(),
+  //         //       buttonMode: ButtonMode.MATERIAL),
+  //         // ),
+  //       ),
+  //     );
 
   Widget chatStyles() => Padding(
         padding: const EdgeInsets.all(8.0),
@@ -402,14 +408,18 @@ class _ChatScreenState extends State<ChatScreen> {
           color: Colors.white,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: TextField(
+            child: TextFormField(
               keyboardType: TextInputType.multiline,
-              maxLines: null,
+              maxLines: 3,
+              minLines: 1,
               controller: _messageController,
               style: const TextStyle(fontSize: 14),
               onChanged: (value) {
                 // socket!.emit("Typing");
                 messageType = "text";
+                if (value.contains("giphy.com")) {
+                  messageType = "gif";
+                }
               },
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -417,9 +427,40 @@ class _ChatScreenState extends State<ChatScreen> {
                 prefixIcon: IconButton(
                   icon:
                       Icon(Icons.emoji_emotions_outlined, color: Colors.black),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => emojiPicker()));
+                  onPressed: () async {
+                    await GiphyPicker.pickGif(
+                            context: context,
+                            apiKey: 'giTNwQxcKh1Bam7hM21jY8iSdJDOQHLX')
+                        .then((gif) {
+                      _messageController.text = gif.images.original.url;
+                      messageType = "gif";
+                      sendMessage();
+                    });
+
+                    // await Giphy.getGif(
+                    //         context: context,
+                    //         apiKey: 'giTNwQxcKh1Bam7hM21jY8iSdJDOQHLX')
+                    //     .then((gif) {
+                    //   _messageController.text = gif.images.original.url;
+                    //   messageType = "gif";
+                    //   sendMessage();
+                    // });
+
+                    // final emoji = await GiphyGet.getGif(
+                    //   context: context, //Required
+                    //   apiKey: "giTNwQxcKh1Bam7hM21jY8iSdJDOQHLX",
+                    //   searchText:
+                    //       "Search GIPHY", //Optional - AppBar search hint text.
+                    //   tabColor: Colors.teal, // Optional- default accent color.
+                    // ).then((gif) {
+                    //   _messageController.text = gif.images.original.url;
+                    //   messageType = "gif";
+                    //   sendMessage();
+                    // });
+
+                    // print(emoji.embedUrl);
+                    // Navigator.of(context).push(
+                    //     MaterialPageRoute(builder: (context) => emojiPicker()));
                   },
                 ),
               ),

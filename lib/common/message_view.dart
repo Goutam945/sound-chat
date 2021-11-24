@@ -51,7 +51,9 @@ class MessageView extends StatelessWidget {
                           constraints: BoxConstraints(maxWidth: width * 0.7),
                           child: (messages.messageType == "text")
                               ? textMessageView()
-                              : emojiMessageView(),
+                              : (messages.messageType == "emoji")
+                                  ? emojiMessageView()
+                                  : gifMessageView(),
                         ),
                         // const SizedBox(
                         //   width: 10,
@@ -111,5 +113,24 @@ class MessageView extends StatelessWidget {
             decoration: messages.underline
                 ? TextDecoration.underline
                 : TextDecoration.none),
+      );
+
+  Widget gifMessageView() => Image.network(
+        messages.message,
+        headers: {'accept': 'image/*'},
+        loadingBuilder: (BuildContext context, Widget child,
+            ImageChunkEvent loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      loadingProgress.expectedTotalBytes
+                  : null,
+            ),
+          );
+        },
       );
 }

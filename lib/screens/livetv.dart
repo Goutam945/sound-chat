@@ -5,6 +5,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/api/audiovideo_url.dart';
 import 'package:sound_chat/common/index.dart';
 import 'package:sound_chat/screens/chat_screen.dart';
+import 'package:wakelock/wakelock.dart';
 
 /*
 class LiveVideo extends StatefulWidget {
@@ -337,6 +338,7 @@ class _VideoPlayerState extends State<VideoPlayer> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+    Wakelock.enable();
     videoPlayerConfig();
     createAudiovideoUrlsState(context).whenComplete(() => setUrl());
     super.initState();
@@ -349,6 +351,7 @@ class _VideoPlayerState extends State<VideoPlayer> with WidgetsBindingObserver {
       if (value)
         _betterPlayerController.enablePictureInPicture(_betterPlayerKey);
     });
+    Wakelock.disable();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

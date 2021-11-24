@@ -56,7 +56,11 @@ dependencies:
   stripe_payment: ^1.1.4
   youtube_player_iframe: ^2.2.2
   flutter_colorpicker: ^0.6.1
-  emoji_picker_flutter: ^1.0.8
+  # emoji_picker_flutter: ^1.0.8
+  # chat_pickers: ^0.2.3
+  giphy_picker: ^2.0.0
+  # giphy_get: ^2.0.3
+  # enough_giphy_flutter: ^0.2.2
 
 dev_dependencies:
   flutter_test:
