@@ -290,7 +290,10 @@ class _UpdatehomeState extends State<Updatehome> {
                     FutureBuilder(
                         future: apivideointerview,
                         builder: (context, snapshot) {
-                          if (snapshot.hasData)
+                          if (snapshot.hasData) {
+                            int length = snapshot
+                                .data.data['data']['free_content'].length;
+                            length = (length < 10) ? length : 10;
                             return Container(
                               color: Color(0xFF171719),
                               padding: EdgeInsets.only(
@@ -321,14 +324,7 @@ class _UpdatehomeState extends State<Updatehome> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        for (int i = 0;
-                                            i <
-                                                snapshot
-                                                    .data
-                                                    .data['data']
-                                                        ['free_content']
-                                                    .length;
-                                            i++)
+                                        for (int i = 0; i < length; i++)
                                           Row(
                                             children: [
                                               Column(
@@ -406,6 +402,7 @@ class _UpdatehomeState extends State<Updatehome> {
                                 ],
                               ),
                             );
+                          }
                           if (snapshot.hasError)
                             return Center(
                               child: Shimmer.fromColors(

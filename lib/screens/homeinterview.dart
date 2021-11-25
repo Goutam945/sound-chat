@@ -81,6 +81,15 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       var superherosLength = snapshot.data.data['data'];
+                      int peemiumindex =
+                          superherosLength['premium_content'].length;
+                      peemiumindex = (peemiumindex < 10) ? peemiumindex : 10;
+
+                      int bigyelloindex =
+                          superherosLength['yellow_content'].length;
+                      bigyelloindex = (bigyelloindex < 10) ? bigyelloindex : 10;
+                      int studioindex = superherosLength['free_content'].length;
+                      studioindex = (studioindex < 10) ? studioindex : 10;
                       return Container(
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -403,10 +412,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
                                               for (int i = 0;
-                                                  i <
-                                                      superherosLength[
-                                                              'premium_content']
-                                                          .length;
+                                                  i < peemiumindex;
                                                   i++)
                                                 Row(
                                                   children: [
@@ -463,7 +469,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                         Opacity(
                                                           opacity: 0.7,
                                                           child: Container(
-                                                              height: 20,
+                                                              //height: 19,
                                                               width: width *
                                                                   0.3094,
                                                               decoration: BoxDecoration(
@@ -479,6 +485,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .clip,
                                                                 style:
                                                                     TextStyle(
                                                                   color: Colors
@@ -559,10 +569,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
                                               for (int i = 0;
-                                                  i <
-                                                      superherosLength[
-                                                              'yellow_content']
-                                                          .length;
+                                                  i < bigyelloindex;
                                                   i++)
                                                 Row(
                                                   children: [
@@ -635,7 +642,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                         Opacity(
                                                           opacity: 0.7,
                                                           child: Container(
-                                                              height: 20,
+                                                              //height: 19,
                                                               width: width *
                                                                   0.3094,
                                                               decoration: BoxDecoration(
@@ -651,6 +658,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .clip,
                                                                 style:
                                                                     TextStyle(
                                                                   color: Colors
@@ -731,10 +742,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
                                               for (int i = 0;
-                                                  i <
-                                                      superherosLength[
-                                                              'free_content']
-                                                          .length;
+                                                  i < studioindex;
                                                   i++)
                                                 Row(
                                                   children: [
@@ -806,7 +814,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                         Opacity(
                                                           opacity: 0.7,
                                                           child: Container(
-                                                              height: 20,
+                                                              //height: 19,
                                                               width: width *
                                                                   0.3094,
                                                               decoration:
@@ -824,6 +832,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
+                                                                maxLines: 1,
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .clip,
                                                                 style:
                                                                     TextStyle(
                                                                   color: Colors
@@ -849,6 +861,11 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                             if (snapshot.hasData) {
                                               var phonesuperherosLength =
                                                   snapshot.data.data['data'];
+                                              int phoneindex =
+                                                  phonesuperherosLength.length;
+                                              phoneindex = (phoneindex < 10)
+                                                  ? phoneindex
+                                                  : 10;
                                               return Column(
                                                 children: [
                                                   Container(
@@ -929,9 +946,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                 .spaceEvenly,
                                                         children: [
                                                           for (int i = 0;
-                                                              i <
-                                                                  phonesuperherosLength
-                                                                      .length;
+                                                              i < phoneindex;
                                                               i++)
                                                             Row(
                                                               children: [
@@ -990,7 +1005,7 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                       opacity:
                                                                           0.7,
                                                                       child: Container(
-                                                                          height: 20,
+                                                                          //height: 19,
                                                                           width: width * 0.3094,
                                                                           decoration: BoxDecoration(
                                                                             borderRadius:
@@ -1002,6 +1017,10 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                             phonesuperherosLength[i]['post_title'],
                                                                             textAlign:
                                                                                 TextAlign.center,
+                                                                            maxLines:
+                                                                                1,
+                                                                            overflow:
+                                                                                TextOverflow.clip,
                                                                             style:
                                                                                 TextStyle(
                                                                               color: Colors.white,
