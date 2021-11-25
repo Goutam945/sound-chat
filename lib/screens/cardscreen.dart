@@ -458,7 +458,7 @@ class _CardScreenState extends State<CardScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        width: width * 0.6,
+                                        width: width * 0.5,
                                         child: Text(
                                           cart.cart1[index].productname,
                                           maxLines: 2,
