@@ -1,14 +1,15 @@
 import 'package:sound_chat/common/index.dart';
 import 'package:http/http.dart' as http;
+import 'package:sound_chat/common/shared_preferences.dart';
 
 Future<SubcriptionlevalResponse> createSubcriptionlevalState(
     int userid, context) async {
-  final http.Response response =
-      await http.post(Uri.parse(baseUrl + 'subscriberdetails'),
-          // headers: <String, String>{"content-type": "application/json"},
-          body: {
-        'user_id': "$userid",
-      });
+  final http.Response response = await http
+      .post(Uri.parse(baseUrl + 'subscriberdetails'), headers: <String, String>{
+    "x-access-token": await Sharedpreferences().getToken()
+  }, body: {
+    'user_id': "$userid",
+  });
   if (response.statusCode == 200) {
     //var data = json.decode(response.body);
     {

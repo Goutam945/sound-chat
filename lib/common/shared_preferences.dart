@@ -1,8 +1,16 @@
 import 'package:sound_chat/common/index.dart';
 
 class Sharedpreferences {
-  saveData(String email, String name, String phone, String image,
-      String country, int id, String userlogin, bool islogin) async {
+  saveData(
+      String email,
+      String name,
+      String phone,
+      String image,
+      String country,
+      int id,
+      String userlogin,
+      bool islogin,
+      String token) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     if (email != null) sharedPreferences.setString("email", email);
     if (name != null) sharedPreferences.setString("name", name);
@@ -12,6 +20,7 @@ class Sharedpreferences {
     if (id != null) sharedPreferences.setInt("id", id);
     if (userlogin != null) sharedPreferences.setString("userlogin", userlogin);
     if (islogin != null) sharedPreferences.setBool("islogin", islogin);
+    if (token != null) sharedPreferences.setString("accessToken", token);
   }
 //  saveDatalid(int levalid) async {
 //    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -42,6 +51,11 @@ class Sharedpreferences {
   Future<String> getName() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString('name');
+  }
+
+  Future<String> getToken() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('accessToken');
   }
 }
 

@@ -4,7 +4,9 @@ import 'package:sound_chat/common/shared_preferences.dart';
 
 Future<LogoutResponse> createLogoutState({int userid, context}) async {
   final http.Response response =
-      await http.post(Uri.parse(baseUrl + 'signout'), body: {
+      await http.post(Uri.parse(baseUrl + 'signout'), headers: <String, String>{
+    "x-access-token": await Sharedpreferences().getToken()
+  }, body: {
     'id': "$userid",
   });
   void remove() async {

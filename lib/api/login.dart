@@ -88,9 +88,8 @@ Future<LoginResponse> createLoginState(String mobile, String password,
         'device_type': divicetype,
       }));
   if (response.statusCode == 200) {
-    //print(response.body);
-
     dynamic data = json.decode(response.body);
+    print(data);
     if (data['status'] == null) {
       //Sharefrifrance
       String email = data['email'];
@@ -100,8 +99,9 @@ Future<LoginResponse> createLoginState(String mobile, String password,
       String country = data['country'];
       int id = data['id'];
       String userlogin = data['username'];
-      Sharedpreferences()
-          .saveData(email, name, phone, image, country, id, userlogin, true);
+      String token = data['accessToken'];
+      Sharedpreferences().saveData(
+          email, name, phone, image, country, id, userlogin, true, token);
       if (isRemembered) {
         Sharedpreferences()
             .saveUsernamePassword(username: mobile, password: password);

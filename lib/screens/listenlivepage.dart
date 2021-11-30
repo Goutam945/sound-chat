@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sound_chat/api/audiovideo_url.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/common/membershipdialog.dart';
 
 class Listenlivepage extends StatefulWidget {
   const Listenlivepage({Key key}) : super(key: key);
@@ -42,6 +43,7 @@ class _ListenlivepageState extends State<Listenlivepage>
   int showtime = 0;
   String audioUrl = '';
   var scheduleapi;
+  var membership;
   @override
   void initState() {
     super.initState();
@@ -80,6 +82,10 @@ class _ListenlivepageState extends State<Listenlivepage>
       //day = 7 - DateTime.now().subtract(Duration(hours: 10, minutes: 30)).weekday;
       //if (day == -1) day = 6;
     });
+    _loadSavedData()
+        .then((value) => createSubcriptionlevalState(id, context).then((value) {
+              membership = value.data['data'];
+            }));
   }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -436,7 +442,7 @@ class _ListenlivepageState extends State<Listenlivepage>
                                                               ),
                                                             ),
                                                       onTap: () {
-                                                        Navigator.push(
+                                                        /*Navigator.push(
                                                             context,
                                                             PageTransition(
                                                                 type: PageTransitionType
@@ -444,9 +450,35 @@ class _ListenlivepageState extends State<Listenlivepage>
                                                                 child: (email ==
                                                                         null)
                                                                     ? NewLogin()
-                                                                    : PodcastPlayCloud(
-                                                                        j,
-                                                                        weekday)));
+                                                                    : (membership !=
+                                                                                null &&
+                                                                            membership['stripe_status'] ==
+                                                                                'ACTIVE')
+                                                                        ? PodcastPlayCloud(
+                                                                            j,
+                                                                            weekday)
+                                                                        : UpgradeSubscription()));*/
+
+                                                        (email == null)
+                                                            ? Navigator.of(
+                                                                    context)
+                                                                .push(MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            NewLogin()))
+                                                            : (membership !=
+                                                                        null &&
+                                                                    membership[
+                                                                            'stripe_status'] ==
+                                                                        'ACTIVE')
+                                                                ? Navigator.of(
+                                                                        context)
+                                                                    .push(MaterialPageRoute(
+                                                                        builder: (context) => PodcastPlayCloud(
+                                                                            j,
+                                                                            weekday)))
+                                                                : showAlert(
+                                                                    context);
                                                       },
                                                     ))),
                                           ],

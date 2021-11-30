@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:sound_chat/common/index.dart';
+import 'package:sound_chat/common/membershipdialog.dart';
 
 class PodcastSchedule extends StatefulWidget {
   @override
@@ -178,7 +179,7 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                               GestureDetector(
                                                 onTap: () {
                                                   audioPlayer.pause();
-                                                  Navigator.push(
+                                                  /* Navigator.push(
                                                       context,
                                                       PageTransition(
                                                           type:
@@ -194,7 +195,24 @@ class _PodcastScheduleState extends State<PodcastSchedule> {
                                                                   ? PodcastPlayCloud(
                                                                       j,
                                                                       weekday)
-                                                                  : UpgradeSubscription()));
+                                                                  : UpgradeSubscription()));*/
+                                                  (email == null)
+                                                      ? Navigator.of(context)
+                                                          .push(MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  NewLogin()))
+                                                      : (membership != null &&
+                                                              membership[
+                                                                      'stripe_status'] ==
+                                                                  'ACTIVE')
+                                                          ? Navigator
+                                                                  .of(context)
+                                                              .push(MaterialPageRoute(
+                                                                  builder: (context) =>
+                                                                      PodcastPlayCloud(
+                                                                          j,
+                                                                          weekday)))
+                                                          : showAlert(context);
                                                 },
                                                 child: Container(
                                                   // padding: const EdgeInsets.only(top: 5),

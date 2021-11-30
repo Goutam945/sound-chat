@@ -173,6 +173,7 @@ class _SignupPageState extends State<Registrationship> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
+                      keyboardType: TextInputType.phone,
                       style: TextStyle(
                           color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(
@@ -180,20 +181,21 @@ class _SignupPageState extends State<Registrationship> {
                         border: border,
                         enabledBorder: border,
                         focusedBorder: border,
-                        labelText: "Username",
+                        labelText: "Mobile Number",
                         labelStyle: TextStyle(
                           color: Colors.white,
                         ),
                         fillColor: Colors.white,
-                        hintText: 'Username:',
+                        hintText: 'Mobile Number:',
                         hintStyle: TextStyle(color: Colors.white),
                         prefixIcon: Icon(
-                          Icons.account_circle_outlined,
+                          Icons.phone_android,
                           color: Color(0xFFA6B3BC),
                         ),
                       ),
                       controller: _phone,
-                      validator: Validators.required('Username is required'),
+                      validator:
+                          Validators.required('Mobile Number is required'),
                     ),
                   ),
                   SizedBox(

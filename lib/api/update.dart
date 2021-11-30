@@ -29,6 +29,8 @@ Future<UpdateResponse> createUpdateState(
   //         }));
   var request =
       http.MultipartRequest('POST', Uri.parse(baseUrl + 'updateprofile'));
+  request.headers
+      .addAll({"x-access-token": await Sharedpreferences().getToken()});
   request.fields['user_id'] = "$userid";
   request.fields['username'] = username;
   request.fields['email'] = email;
@@ -57,8 +59,9 @@ Future<UpdateResponse> createUpdateState(
       String country = data['country'];
       int id = data['id'];
       String userlogin = data['username'];
-      Sharedpreferences()
-          .saveData(email, name, phone, image, country, id, userlogin, true);
+      String token = data['accessToken'];
+      Sharedpreferences().saveData(
+          email, name, phone, image, country, id, userlogin, true, token);
       // print(id);
       createSubcriptionlevalState(id, context);
       Navigator.of(context).pushReplacement(

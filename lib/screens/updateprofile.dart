@@ -106,6 +106,7 @@ class _DesignUpdate extends State<DesignUpdate> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextFormField(
+                      readOnly: true,
                       style: TextStyle(
                           color: Colors.white, fontFamily: fontfamily),
                       decoration: InputDecoration(

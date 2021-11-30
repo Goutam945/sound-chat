@@ -83,7 +83,7 @@ class _DesignForgotpass extends State<DesignForgotpass> {
                           focusedBorder: border,
                           fillColor: Colors.white,
                           prefixIcon: Icon(
-                            Icons.phone_android,
+                            Icons.person,
                             color: Color(0xFFA6B3BC),
                           ),
                           hintText: 'Username',

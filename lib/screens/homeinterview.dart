@@ -1,6 +1,8 @@
 import 'package:sound_chat/common/index.dart';
 import "dart:math";
 
+import 'package:sound_chat/common/membershipdialog.dart';
+
 class AllHomeInterview extends StatefulWidget {
   @override
   _AllHomeInterviewState createState() => _AllHomeInterviewState();
@@ -457,13 +459,30 @@ class _AllHomeInterviewState extends State<AllHomeInterview> {
                                                                 ],
                                                               ),
                                                               onTap: () {
-                                                                Navigator.of(context).push(MaterialPageRoute(
+                                                                /* Navigator.of(context).push(MaterialPageRoute(
                                                                     builder: (context) => (email == null)
                                                                         ? NewLogin()
                                                                         : (membership != null && membership['stripe_status'] == 'ACTIVE')
                                                                             ? Primiumvideo(superherosLength['premium_content'][i]['video_url'], superherosLength['premium_content'][i]['post_title'], superherosLength['premium_content'][i]['post_excerpt'], i)
-                                                                            : UpgradeSubscription()));
-                                                                // Toast.show("PREMIUM MEMBERSHIP", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                                                                            : UpgradeSubscription()));*/
+
+                                                                (email == null)
+                                                                    ? Navigator.of(
+                                                                            context)
+                                                                        .push(MaterialPageRoute(
+                                                                            builder: (context) =>
+                                                                                NewLogin()))
+                                                                    : (membership !=
+                                                                                null &&
+                                                                            membership['stripe_status'] ==
+                                                                                'ACTIVE')
+                                                                        ? Navigator.of(context).push(MaterialPageRoute(
+                                                                            builder: (context) => Primiumvideo(
+                                                                                superherosLength['premium_content'][i]['video_url'],
+                                                                                superherosLength['premium_content'][i]['post_title'],
+                                                                                superherosLength['premium_content'][i]['post_excerpt'],
+                                                                                i)))
+                                                                        : showAlert(context);
                                                               },
                                                             )),
                                                         Opacity(

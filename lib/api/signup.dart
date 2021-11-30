@@ -97,12 +97,12 @@ Future<SignUpResponse> createSignUpState(
     File profilepic,
     context) async {
   var request = http.MultipartRequest('POST', Uri.parse(baseUrl + 'signup'));
-  request.fields['username'] = username;
+  request.fields['mobileno'] = username;
   request.fields['email'] = email;
   request.fields['fname'] = firstName;
   request.fields['lname'] = lastName;
   request.fields['password'] = password;
-  request.fields['mobileno'] = phoneNumber;
+  request.fields['username'] = phoneNumber;
   request.fields['country'] = country;
   request.fields['coupon'] = coupon;
   request.fields['device_token'] = token;
